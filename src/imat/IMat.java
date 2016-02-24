@@ -6,6 +6,7 @@
 package imat;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +27,7 @@ public class IMat extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
         
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 1600, 1000);
         
         primaryStage.setTitle("iMat");
         primaryStage.setScene(scene);

@@ -7,19 +7,35 @@ package imat;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class IMat_FXMLController implements Initializable {
 
     private IMat_presenter pres;
+    //private List<Pane> menuButtonsList;
 
     // Imports from sceneBuilder.
     @FXML
-    private Pane CategoryDariy, CategoryVegetables, CategoryFruit_Berries,
-            CategoryDryGoods, CategoryMeat_Fish_Shellfish, CategoryDrinks, CategoryCandy_Snacks;
+    private Pane CategoryDariy;
+    
+    @FXML
+    private Pane CategoryVegetables; 
+    @FXML
+    private Pane CategoryFruit_Berries;
+    @FXML
+    private Pane CategoryDryGoods; 
+    @FXML
+    private Pane CategoryMeat_Fish_Shellfish;
+    @FXML
+    private Pane CategoryDrinks;
+    @FXML
+    private Pane CategoryCandy_Snacks;
 
     /**
      * Initializes the controller class.
@@ -33,12 +49,16 @@ public class IMat_FXMLController implements Initializable {
                 CategoryDryGoods,
                 CategoryMeat_Fish_Shellfish,
                 CategoryDrinks,
-                CategoryCandy_Snacks);
+                CategoryCandy_Snacks); 
     }
-
+/*
     @FXML
     public void labelClickedEvent(ActionEvent event){
         
     }
-
+*/
+    public void setMenuButtonToActive(){
+        pres.setMenuButtonToActive();
+    }
+    
 }
