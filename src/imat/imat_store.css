@@ -5,3 +5,39 @@
 .mainFxmlClass {
 
 }
+
+.evenCategories {
+    -fx-color: #FF0000;
+}
+
+.oddCategories {
+    -fx-color: #0000FF;
+}
+
+.storeButtons{
+    -fx-background-color: #;
+}
+
+#storeItemView {
+    -fx-background-color: #FDFDFD;
+}
+
+#storeRegisterView {
+    -fx-background-color: #FFFF00;
+}
+
+#storeRegisterHeader {
+
+}
+
+#storeRegisterFooter {
+
+}
+
+#storeCheckoutButton{
+
+}
+
+#storeCategoryHeader{
+
+}

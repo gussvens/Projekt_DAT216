@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -24,13 +26,13 @@
                         <AnchorPane fx:id="searchPane" prefHeight="160.0" prefWidth="300.0" style="-fx-background-color: #2222FF;">
                            <children>
                               <TextField fx:id="searchField" layoutX="50.0" layoutY="34.0" prefHeight="40.0" prefWidth="180.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="searchButton" layoutX="203.0" layoutY="109.0" mnemonicParsing="false" text="Sök" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="searchButton" layoutX="203.0" layoutY="109.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@imat_store.css" text="Sök" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@imat_store.css" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="helpButton" layoutX="225.0" layoutY="27.0" mnemonicParsing="false" text="Hjälp" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                              <Button fx:id="helpButton" layoutX="225.0" layoutY="27.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@imat_store.css" text="Hjälp" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -39,65 +41,68 @@
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryDairy" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FF0055;">
                            <children>
-                              <Label alignment="CENTER" layoutX="103.0" layoutY="52.0" text="Mejeri" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton fx:id="mejeri" layoutX="96.0" layoutY="48.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" styleClass="evenCategories" stylesheets="@imat_store.css" text="Mejeri" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="43.0" />
                                  </font>
-                              </Label>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="categoryGroup" />
+                                 </toggleGroup>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryVegetable" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FFAAAA;">
                            <children>
-                              <Label alignment="CENTER" text="Grönsaker" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="oddCategories" stylesheets="@imat_store.css" text="Grönsaker" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryFruit_Berry" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FF0055;">
                            <children>
-                              <Label alignment="CENTER" text="Frukt &amp; Bär" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="evenCategories" stylesheets="@imat_store.css" text="Frukt &amp; Bär" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryDryGoods" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FFAAAA;">
                            <children>
-                              <Label alignment="CENTER" text="Torrvaror" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="oddCategories" stylesheets="@imat_store.css" text="Torrvaror" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FF0055;">
                            <children>
-                              <Label alignment="CENTER" text="Kött, Fisk &amp; Skaldjur" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="evenCategories" stylesheets="@imat_store.css" text="Kött, Fisk &amp; Skaldjur" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="30.0" />
+                                    <Font size="29.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryDrinks" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FFAAAA;">
                            <children>
-                              <Label alignment="CENTER" text="Dryck" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="oddCategories" stylesheets="@imat_store.css" text="Dryck" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="CategoryCandy_Snacks" prefHeight="120.0" prefWidth="300.0" style="-fx-background-color: #FF0055;">
                            <children>
-                              <Label alignment="CENTER" text="Godis &amp; Snacks" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ToggleButton layoutX="106.0" layoutY="48.0" mnemonicParsing="false" styleClass="evenCategories" stylesheets="@imat_store.css" text="Godis &amp; Snacks" toggleGroup="$categoryGroup" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
-                              </Label>
+                              </ToggleButton>
                            </children>
                         </AnchorPane>
                      </children>
@@ -107,9 +112,9 @@
                <children>
                   <VBox layoutX="303.0" layoutY="252.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane fx:id="breadcrumBar" prefHeight="40.0" prefWidth="1000.0">
+                        <AnchorPane fx:id="breadcrumBar" prefHeight="40.0" prefWidth="1000.0" styleClass="storeItemView" stylesheets="@imat_store.css">
                            <children>
-                              <Button fx:id="backButton" layoutX="2.0" layoutY="17.0" mnemonicParsing="false" prefWidth="200.0" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
+                              <Button fx:id="backButton" layoutX="2.0" layoutY="17.0" mnemonicParsing="false" prefWidth="200.0" styleClass="storeButtons" stylesheets="@imat_store.css" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -122,27 +127,27 @@
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="centerPaneTop" prefHeight="120.0" prefWidth="1000.0" />
-                        <ScrollPane hbarPolicy="NEVER">
+                        <ScrollPane hbarPolicy="NEVER" stylesheets="@imat_store.css">
                            <content>
-                              <AnchorPane fx:id="centerPaneCenter" prefHeight="840.0" prefWidth="1000.0" style="-fx-background-color: #CCAA99;" />
+                              <AnchorPane fx:id="centerPaneCenter" prefHeight="840.0" prefWidth="1000.0" stylesheets="@imat_store.css" />
                            </content>
                         </ScrollPane>
                      </children>
                   </VBox>
                </children></AnchorPane>
-            <AnchorPane fx:id="rightPane" prefHeight="1000.0" prefWidth="300.0">
+            <AnchorPane fx:id="rightPane" prefHeight="1000.0" prefWidth="300.0" styleClass="storeRegisterView" stylesheets="@imat_store.css">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <AnchorPane fx:id="rightPaneTop" prefHeight="160.0" prefWidth="300.0" style="-fx-background-color: #55FF55;">
+                        <AnchorPane fx:id="rightPaneTop" prefHeight="160.0" prefWidth="300.0">
                            <children>
                               <Label alignment="CENTER" contentDisplay="TOP" layoutX="103.0" layoutY="41.0" text="Min Varukorg" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                  <font>
                                     <Font name="System Italic" size="30.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="saveBasketButton" layoutX="25.0" layoutY="108.0" mnemonicParsing="false" text="Spara Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="emptyBasketButton" layoutX="169.0" layoutY="104.0" mnemonicParsing="false" text="Töm Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="saveBasketButton" layoutX="25.0" layoutY="108.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@imat_store.css" text="Spara Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="emptyBasketButton" layoutX="169.0" layoutY="104.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@imat_store.css" text="Töm Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                            </children>
                         </AnchorPane>
                         <ScrollPane hbarPolicy="NEVER">
@@ -150,7 +155,7 @@
                               <AnchorPane fx:id="rightPaneCenter" prefHeight="690.0" prefWidth="300.0" />
                            </content>
                         </ScrollPane>
-                        <AnchorPane fx:id="rightPaneBottom" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #FFFF55;">
+                        <AnchorPane fx:id="rightPaneBottom" prefHeight="150.0" prefWidth="300.0">
                            <children>
                               <Button fx:id="toCheckoutButton" layoutX="101.0" layoutY="62.0" mnemonicParsing="false" text="TILL KASSAN" textFill="#0000007f" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                  <font>

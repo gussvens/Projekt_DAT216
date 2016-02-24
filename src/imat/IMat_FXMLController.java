@@ -10,11 +10,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 
 public class IMat_FXMLController implements Initializable {
 
     private IMat_presenter pres;
+
 
     // Imports from sceneBuilder.
     @FXML
@@ -36,9 +38,5 @@ public class IMat_FXMLController implements Initializable {
                 CategoryCandy_Snacks);
     }
 
-    @FXML
-    public void labelClickedEvent(ActionEvent event){
-        
-    }
 
 }
