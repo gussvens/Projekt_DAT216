@@ -12,13 +12,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.layout.AnchorPane;
+
+import javafx.scene.control.ToggleButton;
+
 import javafx.scene.layout.Pane;
 
 public class IMat_FXMLController implements Initializable {
 
     private IMat_presenter pres;
     //private List<Pane> menuButtonsList;
+
 
     // Imports from sceneBuilder.
     @FXML
@@ -51,14 +56,11 @@ public class IMat_FXMLController implements Initializable {
                 CategoryDrinks,
                 CategoryCandy_Snacks); 
     }
-/*
-    @FXML
-    public void labelClickedEvent(ActionEvent event){
-        
-    }
-*/
+
+
     public void setMenuButtonToActive(){
         pres.setMenuButtonToActive();
     }
     
+
 }
