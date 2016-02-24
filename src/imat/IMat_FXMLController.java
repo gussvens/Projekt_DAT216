@@ -5,6 +5,7 @@
  */
 package imat;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -33,6 +34,11 @@ public class IMat_FXMLController implements Initializable {
                 CategoryMeat_Fish_Shellfish,
                 CategoryDrinks,
                 CategoryCandy_Snacks);
+    }
+
+    @FXML
+    public void labelClickedEvent(ActionEvent event){
+        
     }
 
 }
