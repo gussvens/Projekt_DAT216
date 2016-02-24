@@ -6,12 +6,16 @@
 
 }
 
-.evenCategories {
+.storeEvenCategories {
     -fx-color: #FF0000;
 }
 
-.oddCategories {
+.storeOddCategories {
     -fx-color: #0000FF;
+}
+
+#storeCategoryHeader{
+
 }
 
 .storeButtons{
@@ -35,9 +39,5 @@
 }
 
 #storeCheckoutButton{
-
-}
-
-#storeCategoryHeader{
 
 }
