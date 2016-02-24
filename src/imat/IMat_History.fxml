@@ -9,13 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_SavedListController">
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="imat.IMat_HistoryController">
    <children>
-      <HBox layoutX="169.0" layoutY="74.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <AnchorPane fx:id="searchPane" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0000FF;">
+                  <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0000FF;">
                      <children>
                         <Button fx:id="homeButton" layoutX="-2.0" layoutY="37.0" mnemonicParsing="false" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
                            <font>
@@ -37,7 +38,7 @@
                   </AnchorPane>
                   <ScrollPane hbarPolicy="NEVER">
                      <content>
-                        <AnchorPane fx:id="savedList_ListHolder" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #F0F0F0;" />
+                        <AnchorPane fx:id="history_RecieptsHolder" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #F0F0F0;" />
                      </content>
                   </ScrollPane>
                </children>
@@ -60,14 +61,14 @@
                   </AnchorPane>
                   <AnchorPane fx:id="centerPaneTop" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #F0F0F0;">
                      <children>
-                        <Label alignment="CENTER" layoutX="167.0" layoutY="14.0" text="Sparade Listor" textFill="#000000b3" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Label alignment="CENTER" layoutX="167.0" layoutY="14.0" text="Köphistorik" textFill="#000000b3" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font size="28.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <ScrollPane fx:id="centerPaneCenter" hbarPolicy="NEVER">
+                  <ScrollPane hbarPolicy="NEVER">
                      <content>
                         <AnchorPane fx:id="centerPaneCenter" prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: #FDFDFD;" />
                      </content>
