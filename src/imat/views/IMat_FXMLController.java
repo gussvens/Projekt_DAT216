@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imat.controllers;
+package imat.views;
 
+import imat.IMat;
 import imat.IMat_presenter;
 import imat.IMat_presenter;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.layout.AnchorPane;
@@ -45,6 +50,10 @@ public class IMat_FXMLController implements Initializable {
     @FXML
     private Button searchButton;
 
+    @FXML
+    private Button homeButton;
+
+
     /**
      * Initializes the controller class.
      */
@@ -61,6 +70,12 @@ public class IMat_FXMLController implements Initializable {
                 searchButton);
     }
 
+
+    @FXML
+    private void homeButtonClicked() throws IOException {
+        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+        IMat.getStage().setScene(new Scene(start, 1600, 1000));
+    }
    
 
 }

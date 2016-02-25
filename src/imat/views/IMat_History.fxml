@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65" fx:controller="imat.IMat_HistoryController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,7 +17,7 @@
                <children>
                   <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0000FF;">
                      <children>
-                        <Button fx:id="homeButton" layoutX="-2.0" layoutY="37.0" mnemonicParsing="false" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
+                        <Button fx:id="homeButton" layoutX="-2.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0">
                            <font>
                               <Font size="10.0" />
                            </font>
