@@ -5,11 +5,20 @@
  */
 package imat.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -18,6 +27,10 @@ import javafx.scene.image.ImageView;
  */
 public class IMat_Start_v2Controller implements Initializable {
 
+   
+    private Stage stage;
+    private Parent parent;
+    
     @FXML
     private ImageView goToStoreButton;
     
@@ -27,6 +40,22 @@ public class IMat_Start_v2Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        goToStoreButton.setOnMouseClicked(toStoreClicked);
     }  
+    
+    EventHandler<MouseEvent> toStoreClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   stage = (Stage) goToStoreButton.getScene().getWindow();
+                    try {   
+                        parent =  FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                        imat.IMat_presenter.setStage(stage, parent);
+                    } catch (IOException ex) {
+                        System.out.println("Fel i startcontrollern.");;
+                    }
+                }
+            };
+    
 }

@@ -6,13 +6,17 @@ import java.awt.color.ColorSpace;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -45,8 +49,11 @@ public class IMat_presenter {
     private Pane CategoryDariy, CategoryVegetables, CategoryFruit_Berries,
             CategoryDryGoods, CategoryMeat_Fish_Shellfish, CategoryDrinks,
             CategoryCandy_Snacks;
-    private Button searButton;
-
+    private Button searchButton;
+    
+    private ImageView goToStore;    
+    
+    
     public IMat_presenter(
             Pane CategoryDariy,
             Pane CategoryVegetables,
@@ -59,7 +66,7 @@ public class IMat_presenter {
 
         model = new IMat_Model();
 
-        this.searButton = searchButton;
+        this.searchButton = searchButton;
         this.CategoryDariy = CategoryDariy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
         this.CategoryDrinks = CategoryDrinks;
@@ -330,5 +337,14 @@ public class IMat_presenter {
                     System.out.println("\n");
                 }
             };
+    
+    
+    public static void setStage(Stage stage, Parent parent){
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        
+     ;
+        
+    }
 
 }
