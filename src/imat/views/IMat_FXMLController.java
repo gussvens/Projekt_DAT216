@@ -5,9 +5,8 @@
  */
 package imat.views;
 
-import imat.IMat;
+import imat.*;
 import imat.IMat_StoreItemController;
-import imat.IMat_presenter;
 import imat.IMat_presenter;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -31,6 +30,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ProductCategory;
 
 public class IMat_FXMLController implements Initializable {
 
@@ -82,8 +82,11 @@ public class IMat_FXMLController implements Initializable {
 
     @FXML
     private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
+        //Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+       // IMat.getStage().setScene(new Scene(start, 1360, 768));
+        IMat_Model model = new IMat_Model();
+        List<Product> list = model.getProducts(ProductCategory.BERRY);
+        placeStoreItems(list);
     }
     /*
      public void generateCustomProduct(List<Product> list){
@@ -106,7 +109,7 @@ public class IMat_FXMLController implements Initializable {
                 e.printStackTrace();
             }
         }
-        this.storeItemScrollPane.getChildrenUnmodifiable().add(flowPane);
+        this.storeItemScrollPane.setContent(flowPane);
     }
 
 }
