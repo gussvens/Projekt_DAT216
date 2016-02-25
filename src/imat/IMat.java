@@ -23,16 +23,26 @@ import javafx.stage.Stage;
  */
 public class IMat extends Application {
 
-   
+    private static IMat theInstance = new IMat();
+    private Stage stage;
+
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/IMat_Start_v2.fxml"));
 
+
         Scene scene = new Scene(root, 1360, 768);
+
+        theInstance.stage = primaryStage;
 
         primaryStage.setTitle("iMat");
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public synchronized static Stage getStage(){
+        return theInstance.stage;
     }
 
     /**
