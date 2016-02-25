@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imat;
+package imat.controllers;
 
+import imat.IMat_presenter;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;

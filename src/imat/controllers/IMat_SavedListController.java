@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package imat;
+package imat.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Gustav
  */
-public class IMat_StartController implements Initializable {
+public class IMat_SavedListController implements Initializable {
 
     /**
      * Initializes the controller class.
