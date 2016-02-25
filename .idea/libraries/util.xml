@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="util">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/lib/projectbackend-fx.jar!/se/chalmers/ait/dat215/project/util" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

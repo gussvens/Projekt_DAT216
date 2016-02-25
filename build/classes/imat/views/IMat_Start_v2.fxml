@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_Start_v2Controller">
+=======
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_Start_v2Controller">
+>>>>>>> aa6a420be766dc984801d8744645eb22818af964
     <stylesheets>
         <URL value="@/imat/css/imat_start_v2.css" />
     </stylesheets>
@@ -20,7 +23,7 @@
             <Font size="55.0" />
          </font>
       </Label>
-      <ImageView fx:id="goToStoreButton" fitHeight="300.0" fitWidth="450.0" layoutX="455.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="120.0">
+      <ImageView fx:id="goToStoreButton" fitHeight="300.0" fitWidth="450.0" onMouseClicked="#storeButtonClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="120.0">
          <image>
             <Image url="@../images/matButik.jpg" />
          </image>
@@ -33,19 +36,19 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <HBox layoutX="455.0" layoutY="486.0" prefHeight="135.0" prefWidth="450.0" spacing="15.0" AnchorPane.topAnchor="435.0">
+      <HBox layoutX="455.0" layoutY="486.0" prefHeight="135.0" prefWidth="450.0" spacing="15.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="435.0">
          <children>
-            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="goToSavedListButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#savedListButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/placeholder.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="goToHistoryButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#historyButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/placeholder.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="goToSettingsButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#settingsButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/placeholder.jpg" />
                </image>
@@ -60,7 +63,7 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <Label alignment="CENTER" layoutX="610.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Favoriter" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="610.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Historik" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

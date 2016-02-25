@@ -71,13 +71,15 @@ public class IMat_FXMLController implements Initializable {
                 CategoryDrinks,
                 CategoryCandy_Snacks,
                 searchButton);
+        
+        
     }
 
 
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1600, 1000));
+        IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
    // Just example code

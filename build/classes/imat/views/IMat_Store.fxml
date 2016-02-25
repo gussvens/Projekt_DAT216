@@ -122,7 +122,7 @@
          <children>
             <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="195.0">
                <children>
-                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -136,34 +136,31 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
+            <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
                <children>
-                  <ScrollPane layoutX="17.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
-                  <HBox layoutX="107.0" layoutY="568.0">
-                     <children>
-                        <Label layoutX="107.0" layoutY="570.0" prefHeight="21.0" prefWidth="77.0" text="Totalt pris:">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <TextField editable="false" layoutX="189.0" layoutY="568.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #e2e2e2;">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <Button layoutX="81.0" layoutY="627.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan">
+                  <Label layoutX="107.0" layoutY="570.0" prefHeight="21.0" prefWidth="77.0" text="Totalt pris:">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="15.0" />
                      </font>
+                  </Label>
+                  <TextField editable="false" layoutX="189.0" layoutY="568.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #e2e2e2;">
                      <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
                </children>
-            </Pane>
+            </HBox>
+            <Button layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -38,7 +38,7 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1600, 1000));
+        IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
     
 }

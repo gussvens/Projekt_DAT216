@@ -43,25 +43,25 @@ public class IMat_Start_v2Controller implements Initializable {
     @FXML
     private void storeButtonClicked() throws IOException{
         Parent store = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
-        IMat.getStage().setScene(new Scene(store, 1600, 1000));
+        IMat.getStage().setScene(new Scene(store, 1360, 768));
     }
 
     @FXML
     private void savedListButtonClicked() throws IOException{
         Parent savedList = FXMLLoader.load(getClass().getResource("IMat_SavedList.fxml"));
-        IMat.getStage().setScene(new Scene(savedList, 1600, 1000));
+        IMat.getStage().setScene(new Scene(savedList, 1360, 768));
     }
 
     @FXML
     private void historyButtonClicked() throws IOException{
         Parent history = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
-        IMat.getStage().setScene(new Scene(history, 1600, 1000));
+        IMat.getStage().setScene(new Scene(history, 1360, 768));
     }
 
     @FXML
     private void settingsButtonClicked() throws IOException{
         Parent settings = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
-        IMat.getStage().setScene(new Scene(settings, 1600, 1000));
+        IMat.getStage().setScene(new Scene(settings, 1360, 768));
     }
 
 }

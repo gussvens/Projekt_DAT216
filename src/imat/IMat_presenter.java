@@ -8,13 +8,17 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -47,8 +51,11 @@ public class IMat_presenter extends Observable{
     private Pane CategoryDariy, CategoryVegetables, CategoryFruit_Berries,
             CategoryDryGoods, CategoryMeat_Fish_Shellfish, CategoryDrinks,
             CategoryCandy_Snacks;
-    private Button searButton;
-
+    private Button searchButton;
+    
+    private ImageView goToStore;    
+    
+    
     public IMat_presenter(
             Pane CategoryDariy,
             Pane CategoryVegetables,
@@ -61,8 +68,7 @@ public class IMat_presenter extends Observable{
 
         model = new IMat_Model();
 
-
-        this.searButton = searchButton;
+        this.searchButton = searchButton;
         this.CategoryDariy = CategoryDariy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
         this.CategoryDrinks = CategoryDrinks;
@@ -192,7 +198,6 @@ public class IMat_presenter extends Observable{
                     int i = 0;
                     if (((Pane) t.getSource()).getId().equals("CategoryDariy")) {
                         i = 1;
-                        System.out.println("Hej");
                     } else if (((Pane) t.getSource()).getId().equals("CategoryCandy_Snacks")) {
                         i = 2;
                     } else if (((Pane) t.getSource()).getId().equals("CategoryDrinks")) {
@@ -325,10 +330,15 @@ public class IMat_presenter extends Observable{
 
                     // FOR TESTING... REMOVE WHEN DONE.
                     for (Product p : prodList) {
-                        System.out.println("hej");
+                        System.out.println(p.getName());
                     }
 
                     System.out.println("\n");
                 }
             };
+    
+    public static void setStage(Stage stage, Parent parent){
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+    }
 }

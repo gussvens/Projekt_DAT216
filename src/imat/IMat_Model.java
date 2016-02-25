@@ -6,7 +6,6 @@
 package imat;
 
 import java.util.List;
-
 import com.sun.org.apache.xpath.internal.SourceTree;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -24,9 +23,6 @@ public class IMat_Model {
    }
    
    public List<Product> getProducts(ProductCategory pc){
-       for(Product p : backEnd.getProducts(pc)){
-          System.out.println(p.getName());
-       }
        return backEnd.getProducts(pc);
    }
    
