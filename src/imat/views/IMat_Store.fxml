@@ -138,7 +138,7 @@
       </AnchorPane>
       <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" />
+            <ScrollPane layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
                <children>
                   <Label layoutX="107.0" layoutY="570.0" prefHeight="21.0" prefWidth="77.0" text="Totalt pris:">
