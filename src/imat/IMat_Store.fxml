@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
@@ -15,159 +18,128 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_FXMLController">
     <stylesheets>
         <URL value="@imat.fxml.css" />
     </stylesheets>
    <children>
-      <HBox layoutX="93.0" layoutY="54.0" prefHeight="1000.0" prefWidth="1600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="535.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
-            <AnchorPane fx:id="leftPane" prefHeight="1000.0" prefWidth="300.0">
+            <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <AnchorPane fx:id="searchPane" prefHeight="160.0" prefWidth="300.0" style="-fx-background-color: #2222FF;">
+                        <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                            <children>
-                              <TextField fx:id="searchField" layoutX="50.0" layoutY="34.0" prefHeight="40.0" prefWidth="180.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="searchButton" layoutX="203.0" layoutY="109.0" mnemonicParsing="false" text="Sök" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="helpButton" layoutX="225.0" layoutY="27.0" mnemonicParsing="false" text="Hjälp" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
+                              <TextField fx:id="searchField" focusTraversable="false" layoutX="50.0" layoutY="34.0" prefHeight="30.0" prefWidth="230.0" promptText="Sök produkter här..." AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" style="-fx-background-color: #a6eafc;" text="Sök" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                            </children>
-                        </AnchorPane>
-                        <Pane fx:id="CategoryDariy" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Mejeri">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryVegetables" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Grönsaker">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryFruit_Berries" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Frukt och bär">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryDryGoods" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Torrvaror">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Kött, fisk och skaldjur">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryDrinks" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Dryck">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                        <Pane fx:id="CategoryCandy_Snacks" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #DDDDDD;">
-                           <children>
-                              <Label layoutX="32.0" prefHeight="60.0" prefWidth="268.0" text="Godis och snacks">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
+                        </HBox>
+                        <Label layoutY="23.0" text="HÄR KAN DU SÖKA EFTER PRODUKTER">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </VBox>
-               </children></AnchorPane>
-            <AnchorPane fx:id="centerPane" prefHeight="1000.0" prefWidth="1000.0">
-               <children>
-                  <VBox layoutX="303.0" layoutY="252.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Pane>
+                  <Pane fx:id="CategoryDariy" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                      <children>
-                        <AnchorPane fx:id="breadcrumBar" prefHeight="40.0" prefWidth="1000.0">
-                           <children>
-                              <Button fx:id="backButton" layoutX="2.0" layoutY="17.0" mnemonicParsing="false" prefWidth="200.0" text="Tillbaka" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="800.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="breadCrumbLabel" layoutX="258.0" layoutY="40.0" text="breadcrumb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="centerPaneTop" prefHeight="120.0" prefWidth="1000.0" />
-                        <ScrollPane hbarPolicy="NEVER">
-                           <content>
-                              <AnchorPane fx:id="centerPaneCenter" prefHeight="840.0" prefWidth="1000.0" style="-fx-background-color: #CCAA99;" />
-                           </content>
-                        </ScrollPane>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Mejeri">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </VBox>
-               </children></AnchorPane>
-            <AnchorPane fx:id="rightPane" prefHeight="1000.0" prefWidth="300.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Pane>
+                  <Pane fx:id="CategoryVegetables" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                      <children>
-                        <AnchorPane fx:id="rightPaneTop" prefHeight="160.0" prefWidth="300.0" style="-fx-background-color: #55FF55;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="TOP" layoutX="103.0" layoutY="41.0" text="Min Varukorg" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                                 <font>
-                                    <Font name="System Italic" size="30.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="saveBasketButton" layoutX="25.0" layoutY="108.0" mnemonicParsing="false" text="Spara Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="emptyBasketButton" layoutX="169.0" layoutY="104.0" mnemonicParsing="false" text="Töm Varukorg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
-                           </children>
-                        </AnchorPane>
-                        <ScrollPane hbarPolicy="NEVER">
-                           <content>
-                              <AnchorPane fx:id="rightPaneCenter" prefHeight="690.0" prefWidth="300.0" />
-                           </content>
-                        </ScrollPane>
-                        <AnchorPane fx:id="rightPaneBottom" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #FFFF55;">
-                           <children>
-                              <Button fx:id="toCheckoutButton" layoutX="101.0" layoutY="62.0" mnemonicParsing="false" text="TILL KASSAN" textFill="#0000007f" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-                                 <font>
-                                    <Font name="System Bold" size="32.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Grönsaker">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </VBox>
-               </children></AnchorPane>
+                  </Pane>
+                  <Pane fx:id="CategoryFruit_Berries" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Frukt och bär">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="CategoryDryGoods" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Torrvaror">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Kött, fisk och skaldjur">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="CategoryDrinks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Dryck">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Godis och snacks">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
          </children>
-      </HBox>
+      </AnchorPane>
+      <AnchorPane fx:id="searchPane" layoutX="6.0" layoutY="14.0" prefHeight="15.0" prefWidth="195.0" AnchorPane.leftAnchor="12.0">
+         <children>
+            <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="195.0">
+               <children>
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="helpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="1005.0" layoutY="14.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="81.0" layoutY="627.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
