@@ -34,11 +34,12 @@ public class IMat_StoreItemController implements Initializable {
         // TODO
     }
 
+    //Only testing
     public void setItemNameLabel(String name){
         this.itemNameLabel.setText(name);
     }
 
-    public void setItemPriceLabel(int price){
+    public void setItemPriceLabel(double price){
         this.itemPriceLabel.setText(price + " kr");
     }
 

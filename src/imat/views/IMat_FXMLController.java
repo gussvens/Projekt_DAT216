@@ -6,6 +6,7 @@
 package imat.views;
 
 import imat.IMat;
+import imat.IMat_StoreItemController;
 import imat.IMat_presenter;
 import imat.IMat_presenter;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -82,11 +84,20 @@ public class IMat_FXMLController implements Initializable {
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
-    public void generateCustomProduct(List<Product> list){
-        List<CustomProduct> customProdList = new List<CustomProduct>();
+    public void placeStoreItems(List<Product> list){
+        FlowPane flowPane = new FlowPane();
         for(Product p : list){
-            CustomProduct tmp = new CustomProduct(p.getName, p.getImage...);
-            customProdList.add(tmp);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_StoreItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice());
+                flowPane.getChildren().add(storeItem);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
         }
+        this.storeItemScrollPane.getChildrenUnmodifiable().add(flowPane);
     }
 }
