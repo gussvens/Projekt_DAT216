@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.ait.dat215.project.Product;
@@ -33,10 +34,22 @@ public class IMat_StoreItemController implements Initializable {
         // TODO
     }
 
-    public IMat_StoreItemController(Product item){
+    public void setItemNameLabel(String name){
+        this.itemNameLabel.setText(name);
+    }
+
+    public void setItemPriceLabel(int price){
+        this.itemPriceLabel.setText(price + " kr");
+    }
+
+    public void setItemImage(Image image){
+        this.itemImage.setImage(image);
+    }
+
+   /* public IMat_StoreItemController(Product item){
         this.itemNameLabel.setText(item.getName());
         this.itemPriceLabel.setText(item.getPrice() + " kr");
         this.itemQuantityLabel.setText(item.getUnit() + " " + item.getUnitSuffix());
     }
-    
+    */
 }
