@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,8 +8,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_ProductInfoController">
+<AnchorPane id="AnchorPane" prefHeight="215.0" prefWidth="150.0" style="-fx-background-color: #777777;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="imat.views.IMat_ProductInfoController">
     <stylesheets>
-        <URL value="@imat_productinfo.css"/>
+        <URL value="@imat_productinfo.css" />
     </stylesheets>
+   <children>
+      <ImageView fx:id="prodPic" fitHeight="99.0" fitWidth="134.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/matButik.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="prodName" layoutX="8.0" layoutY="99.0" prefHeight="23.0" prefWidth="80.0" text="Produktnamn" />
+      <Label fx:id="prodPrice" layoutX="8.0" layoutY="119.0" prefHeight="23.0" prefWidth="42.0" text="Pris" />
+      <Button fx:id="prodFav" layoutX="8.0" layoutY="174.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" />
+      <Button fx:id="prodBuy" layoutX="104.0" layoutY="174.0" mnemonicParsing="false" text="Köp" />
+   </children>
 </AnchorPane>

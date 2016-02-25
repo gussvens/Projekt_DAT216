@@ -81,7 +81,7 @@ public class IMat_FXMLController implements Initializable {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
-
+/*
     public void generateCustomProduct(List<Product> list){
         List<CustomProduct> customProdList = new List<CustomProduct>();
         for(Product p : list){
@@ -89,4 +89,5 @@ public class IMat_FXMLController implements Initializable {
             customProdList.add(tmp);
         }
     }
+    */
 }
