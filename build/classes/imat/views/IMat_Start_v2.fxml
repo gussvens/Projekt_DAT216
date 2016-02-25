@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.controllers.IMat_Start_v2Controller">
+    <stylesheets>
+        <URL value="@/imat/css/imat_start_v2.css" />
+    </stylesheets>
+   <children>
+      <Label alignment="CENTER" text="iMat" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="goToStoreButton" fitHeight="300.0" fitWidth="450.0" layoutX="455.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="120.0">
+         <image>
+            <Image url="@../images/matButik.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="455.0" layoutY="380.0" prefHeight="17.0" prefWidth="450.0" style="-fx-background-color: #CCCCCC;" text="Till butiken" textFill="WHITE" AnchorPane.topAnchor="380.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <HBox layoutX="455.0" layoutY="486.0" prefHeight="135.0" prefWidth="450.0" spacing="15.0" AnchorPane.topAnchor="435.0">
+         <children>
+            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/placeholder.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/placeholder.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/placeholder.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label alignment="CENTER" layoutX="455.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Sparade listor" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" layoutX="610.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Favoriter" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label alignment="CENTER" layoutX="765.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Inställningar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+   </children>
+</AnchorPane>

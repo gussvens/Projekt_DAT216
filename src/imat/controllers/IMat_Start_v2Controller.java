@@ -7,21 +7,26 @@ package imat.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
  *
- * @author Gustav
+ * @author Andreas
  */
-public class IMat_StartController implements Initializable {
+public class IMat_Start_v2Controller implements Initializable {
 
+    @FXML
+    private ImageView goToStoreButton;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }  
 }
