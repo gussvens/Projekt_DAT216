@@ -158,5 +158,6 @@
             </Button>
          </children>
       </AnchorPane>
+      <ScrollPane fx:id="storeItemScrollPane" hbarPolicy="NEVER" layoutX="580.0" layoutY="149.0" prefHeight="619.0" prefWidth="782.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="149.0" />
    </children>
 </AnchorPane>

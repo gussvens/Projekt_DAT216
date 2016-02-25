@@ -5,6 +5,8 @@ import java.awt.Image;
 import java.awt.color.ColorSpace;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -21,7 +23,7 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  *
  * @author Andreas
  */
-public class IMat_presenter {
+public class IMat_presenter extends Observable{
 
     private IMat_Model model;
 
@@ -58,6 +60,7 @@ public class IMat_presenter {
             Button searchButton) {
 
         model = new IMat_Model();
+
 
         this.searButton = searchButton;
         this.CategoryDariy = CategoryDariy;
@@ -140,9 +143,6 @@ public class IMat_presenter {
     
     
     
-    
-    
-    
     // Helper to get the right menuButton.
     private Pane getButton(MouseEvent t) {
         return ((Pane) t.getSource());
@@ -192,6 +192,7 @@ public class IMat_presenter {
                     int i = 0;
                     if (((Pane) t.getSource()).getId().equals("CategoryDariy")) {
                         i = 1;
+                        System.out.println("Hej");
                     } else if (((Pane) t.getSource()).getId().equals("CategoryCandy_Snacks")) {
                         i = 2;
                     } else if (((Pane) t.getSource()).getId().equals("CategoryDrinks")) {
@@ -210,7 +211,7 @@ public class IMat_presenter {
                     prodList = new ArrayList<>();
                     tempProdList = new ArrayList<>();
 
-                    // The products in the category "dairie".
+                    // The products in the category "dairy".
                     if (i == 1) {
                         pC = ProductCategory.DAIRIES;
                         prodList = model.getProducts(pC);
@@ -324,11 +325,10 @@ public class IMat_presenter {
 
                     // FOR TESTING... REMOVE WHEN DONE.
                     for (Product p : prodList) {
-                        System.out.println(p.getName());
+                        System.out.println("hej");
                     }
 
                     System.out.println("\n");
                 }
             };
-
 }

@@ -21,11 +21,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.control.ToggleButton;
 
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import se.chalmers.ait.dat215.project.Product;
 
 public class IMat_FXMLController implements Initializable {
 
@@ -49,10 +52,10 @@ public class IMat_FXMLController implements Initializable {
     private Pane CategoryCandy_Snacks;
     @FXML
     private Button searchButton;
-
     @FXML
     private Button homeButton;
-
+    @FXML
+    private ScrollPane storeItemScrollPane;
 
     /**
      * Initializes the controller class.
@@ -76,6 +79,15 @@ public class IMat_FXMLController implements Initializable {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1600, 1000));
     }
-   
+
+   // Just example code
+  /*  public List<CustomProduct> generateCustomProduct(List<Product> list){
+        List<CustomProduct> customProdList = new List<CustomProduct>();
+        for(Product p : list){
+            CustomProduct tmp = new CustomProduct(p.getName, p.getImage...);
+            customProdList.add(tmp);
+        }
+    }
+*/
 
 }
