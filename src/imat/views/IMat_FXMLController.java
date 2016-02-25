@@ -82,14 +82,11 @@ public class IMat_FXMLController implements Initializable {
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
-   // Just example code
-  /*  public List<CustomProduct> generateCustomProduct(List<Product> list){
+    public List<CustomProduct> generateCustomProduct(List<Product> list){
         List<CustomProduct> customProdList = new List<CustomProduct>();
         for(Product p : list){
             CustomProduct tmp = new CustomProduct(p.getName, p.getImage...);
             customProdList.add(tmp);
         }
     }
-*/
-
 }
