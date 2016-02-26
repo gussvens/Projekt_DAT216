@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -31,6 +32,7 @@ public class IMat_BasketItemController implements Initializable {
     
     
     
+    
     /**
      * Initializes the controller class.
      */
@@ -38,5 +40,22 @@ public class IMat_BasketItemController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void setItemNameLabel(String name) {
+        this.basketProdName.setText(name);
+    }
+
+    public void setItemPriceLabel(double price) {
+        this.basketProdPrice.setText(Double.toString(price));
+    }
+
+
+    public void setItemQuantity(String quant) {
+        basketProdQuant.setText(quant);
+    }
+
+
+    
+    
     
 }
