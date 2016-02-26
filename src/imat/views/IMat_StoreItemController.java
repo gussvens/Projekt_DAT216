@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import imat.views.IMat_FXMLController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,12 +36,14 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Gustav
  */
-public class IMat_StoreItemController implements Initializable {
+public class IMat_StoreItemController extends IMat_FXMLController implements Initializable {
 
     private ShoppingCart sC;
 
     @FXML
-    private Label itemNameLabel, itemPriceLabel, itemQuantityLabel, itemId;
+    private Label itemNameLabel, itemPriceLabel, itemQuantityLabel;
+
+    private int itemId;
     @FXML
     private Button addButton;
     @FXML
@@ -61,54 +65,48 @@ public class IMat_StoreItemController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-
-                    System.out.println(itemNameLabel.getText());
-                    int id = Integer.parseInt(itemId.getText());
-                    Product p = new Product();
-                    p = IMatDataHandler.getInstance().getProduct(id);
+                    Product p;
+                    p = IMatDataHandler.getInstance().getProduct(itemId);
                     sC = IMatDataHandler.getInstance().getShoppingCart();
                     ShoppingItem sI = new ShoppingItem(p);
-                    sC.addItem(sI);
 
-                    placeStoreItems(sC.getItems());
+                    //Attempt at incrementing items already in the cart
+                    if(!sC.getItems().contains(sI)){
+                        sC.addItem(sI);
+                    }
+                    for(ShoppingItem s : sC.getItems()){
+                        if(s.getProduct().getName().equals(p.getName())){
+                            s.setAmount(s.getAmount() + 1);
+                            System.out.println(s.getAmount());
+                        }
+                    }
+                    placeBasketItems(sC.getItems());
                 }
             };
 
-    public void placeStoreItems(List<ShoppingItem> list) {
+    public void placeBasketItems(List<ShoppingItem> list) {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(250);
 
         for (ShoppingItem s : list) {
-
-            System.out.println("Size: " + sC.getItems().size());
             try {
                 Product p = s.getProduct();
-
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-                System.out.println("Hej");
                 Node storeItem = loader.load();
-                System.out.println("Hej2");
                 IMat_BasketItemController controller = loader.getController();
-                System.out.println("Hej3");
                 controller.setItemNameLabel(p.getName());
-                System.out.println("Hej4");
                 controller.setItemPriceLabel(p.getPrice());
-                System.out.println("Hej5");
 //controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
-                System.out.println("Hej6");
                 flowPane.getChildren().add(storeItem);
-
-                
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         
         basketScrollPane.setContent(flowPane);
-        System.out.println("Slut");
     }
 
     //Only testing
@@ -128,8 +126,12 @@ public class IMat_StoreItemController implements Initializable {
         itemQuantityLabel.setText(quant);
     }
 
-    public void setItemID(String id) {
-        itemId.setText(id);
+    public void setItemID(int id) {
+        this.itemId = id;
+    }
+
+    public void setScrollPane(ScrollPane sp){
+        this.basketScrollPane = sp;
     }
 
     /* public IMat_StoreItemController(Product item){

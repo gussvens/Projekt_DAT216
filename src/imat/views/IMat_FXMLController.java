@@ -31,6 +31,7 @@ import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 public class IMat_FXMLController implements Initializable {
 
@@ -61,7 +62,8 @@ public class IMat_FXMLController implements Initializable {
     @FXML
     private ScrollPane storeItemScrollPane;
     @FXML
-    private FlowPane storeFlowPane;
+    private ScrollPane basketScrollPane;
+
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -84,6 +86,8 @@ public class IMat_FXMLController implements Initializable {
                 searchButton
         );
 
+
+
         menuButtonList = new ArrayList<>();
         menuButtonList.add(CategoryCandy_Snacks);
         menuButtonList.add(CategoryDariy);
@@ -102,8 +106,7 @@ public class IMat_FXMLController implements Initializable {
 
     @FXML
     private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().
-                getResource("IMat_Start_v2.fxml"));
+        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
@@ -278,12 +281,48 @@ public class IMat_FXMLController implements Initializable {
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
+                controller.setItemID(p.getProductId());
+                controller.setScrollPane(basketScrollPane);
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        if(storeItemScrollPane == null){
+            System.out.println("null");
+        }
         this.storeItemScrollPane.setContent(flowPane);
     }
 
+/*    public void placeBasketItems(List<ShoppingItem> list) {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(250);
+
+        for (ShoppingItem s : list) {
+
+            try {
+                Product p = s.getProduct();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemQuantity(p.getUnit());
+                flowPane.getChildren().add(storeItem);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(basketScrollPane == null) {
+            System.out.println("fek ye");
+        }
+        this.basketScrollPane.setContent(flowPane);
+        System.out.println("Slut");
+    }*/
 }
