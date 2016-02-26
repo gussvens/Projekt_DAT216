@@ -36,7 +36,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  *
  * @author Gustav
  */
-public class IMat_StoreItemController extends IMat_FXMLController implements Initializable {
+public class IMat_StoreItemController implements Initializable {
 
     private ShoppingCart sC;
 
