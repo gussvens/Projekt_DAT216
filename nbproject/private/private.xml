@@ -3,20 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_HistoryController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/imat_store.css</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/mainpane.css</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/imat_start_v2.css</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat_presenter.java</file>
             <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_FXMLController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_Settings.fxml</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_SettingsController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat_Model.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/controllers/IMat_Start_v2Controller.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_Start_v2Controller.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_SavedListController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_Start_v2.fxml</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_BasketItemController.java</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_BasketItem.fxml</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/imat_basketitem.css</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_StoreItemController.java</file>
         </group>
     </open-files>
 </project-private>
