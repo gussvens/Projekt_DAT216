@@ -1,27 +1,17 @@
 package imat;
 
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.color.ColorSpace;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ProductCategory;
 
 /**
  *
@@ -29,7 +19,7 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  */
 public class IMat_presenter extends Observable {
 
-    private IMat_Model model;
+    private final IMat_Model model;
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #e2e2e2;";
@@ -41,17 +31,17 @@ public class IMat_presenter extends Observable {
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #95d9eb;";
     private final String SEARCH_BTN_DOWN = "-fx-background-color: #84c8da;";
 
-    private List<Pane> menuButtonsList;
+    private final List<Pane> menuButtonsList;
 
-    private List<Product> prodList;
-    private List<Product> tempProdList;
-
-    private Pane CategoryDariy, CategoryVegetables, CategoryFruit_Berries,
-            CategoryDryGoods, CategoryMeat_Fish_Shellfish, CategoryDrinks,
+    private final Pane CategoryDariy,
+            CategoryVegetables,
+            CategoryFruit_Berries,
+            CategoryDryGoods,
+            CategoryMeat_Fish_Shellfish,
+            CategoryDrinks,
             CategoryCandy_Snacks;
-    private Button searchButton;
 
-    private ImageView goToStore;
+    private final Button searchButton;
 
     public IMat_presenter(
             Pane CategoryDariy,
@@ -89,7 +79,6 @@ public class IMat_presenter extends Observable {
 
         // Sets mouseEvents and cursor to the searchButton
         for (Pane p : menuButtonsList) {
-            // p.setOnMouseClicked(menuButtonClicked);
             p.setOnMouseEntered(menuButtonEnter);
             p.setOnMouseExited(menuButtonExit);
             p.setCursor(Cursor.HAND);
@@ -175,9 +164,10 @@ public class IMat_presenter extends Observable {
             p.setStyle(MENU_DEFAULT_COLOR);
         }
 
-        ((Pane) t.getSource()).setStyle(MENU_CLICKED_COLOR);
+        getButton(t).setStyle(MENU_CLICKED_COLOR);
     }
 
+    // NOT NEEDED NOW... CAN BE REMOVED WHEN DONE
     public static void setStage(Stage stage, Parent parent) {
         Scene scene = new Scene(parent);
         stage.setScene(scene);

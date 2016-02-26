@@ -40,11 +40,15 @@ public class IMat_StoreItemController implements Initializable {
     }
 
     public void setItemPriceLabel(double price){
-        this.itemPriceLabel.setText(price + " kr");
+        this.itemPriceLabel.setText(Double.toString(price));
     }
 
     public void setItemImage(Image image){
         this.itemImage.setImage(image);
+    }
+    
+    public void setItemQuantity(String quant){
+        itemQuantityLabel.setText(quant);
     }
 
    /* public IMat_StoreItemController(Product item){

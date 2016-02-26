@@ -141,19 +141,22 @@
             <ScrollPane layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
                <children>
-                  <Label layoutX="107.0" layoutY="570.0" prefHeight="21.0" prefWidth="77.0" text="Totalt pris:">
+                  <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" text="Totalt pris:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField editable="false" layoutX="189.0" layoutY="568.0" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #e2e2e2;">
+                  <TextField alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </TextField>
                </children>
             </HBox>
-            <Button layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
+            <Button disable="true" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -163,6 +166,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" hbarPolicy="NEVER" layoutX="580.0" layoutY="149.0" prefHeight="619.0" prefWidth="782.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="149.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
    </children>
 </AnchorPane>

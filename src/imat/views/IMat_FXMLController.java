@@ -8,7 +8,6 @@ package imat.views;
 import imat.*;
 import imat.IMat_StoreItemController;
 import imat.IMat_presenter;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,11 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-
-import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
@@ -59,6 +54,8 @@ public class IMat_FXMLController implements Initializable {
     private Pane CategoryCandy_Snacks;
     @FXML
     private Button searchButton;
+    @FXML
+    private TextField searchField;
     @FXML
     private Button homeButton;
     @FXML
@@ -99,17 +96,36 @@ public class IMat_FXMLController implements Initializable {
         for (Pane p : menuButtonList) {
             p.setOnMouseClicked(menuButtonClicked);
         }
+        searchButton.setOnMouseClicked(searchButtonClicked);
+
     }
 
     @FXML
     private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+        Parent start = FXMLLoader.load(getClass().
+                getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
     private String getCurrentPane(MouseEvent t) {
         return ((Pane) t.getSource()).getId();
     }
+
+    // Searchfunction
+    EventHandler<MouseEvent> searchButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    List<Product> list = new ArrayList<>();
+                    list = IMatDataHandler.getInstance().
+                    findProducts(searchField.getText());
+
+                    if (!list.isEmpty()) {
+                        placeStoreItems(list);
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> menuButtonClicked
             = new EventHandler<MouseEvent>() {
@@ -118,10 +134,8 @@ public class IMat_FXMLController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     pres.colorChangeOnClick(t);
-                    
-                    
-                    
-                    // Getting the productlists
+
+                    // Getting the productlist
                     ProductCategory pC = null;
 
                     prodList = new ArrayList<>();
@@ -237,7 +251,7 @@ public class IMat_FXMLController implements Initializable {
                         pC = ProductCategory.VEGETABLE_FRUIT;
                     }
 
-                    placeStoreItems();
+                    placeStoreItems(prodList);
 
                     // FOR TESTING... REMOVE WHEN DONE.
                     for (Product p : prodList) {
@@ -248,13 +262,14 @@ public class IMat_FXMLController implements Initializable {
                 }
             };
 
-    public void placeStoreItems() {
+    // Place storeItems at the centerstage.
+    public void placeStoreItems(List<Product> list) {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
 
-        for (Product p : prodList) {
+        for (Product p : list) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
                 Node storeItem = loader.load();
@@ -262,6 +277,7 @@ public class IMat_FXMLController implements Initializable {
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
+                controller.setItemQuantity(p.getUnit());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
