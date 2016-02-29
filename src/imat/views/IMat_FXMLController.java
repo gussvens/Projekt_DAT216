@@ -40,7 +40,7 @@ public class IMat_FXMLController implements Initializable {
 
     // Imports from sceneBuilder.
     @FXML
-    private Pane CategoryDariy;
+    private Pane CategoryDairy;
     @FXML
     private Pane CategoryVegetables;
     @FXML
@@ -79,20 +79,20 @@ public class IMat_FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         model = new IMat_Model();
         pres = new IMat_presenter(
-                CategoryDariy,
                 CategoryVegetables,
                 CategoryFruit_Berries,
+                CategoryBread,
+                CategoryDairy,
                 CategoryDryGoods,
                 CategoryMeat_Fish_Shellfish,
                 CategoryDrinks,
                 CategoryCandy_Snacks,
-                CategoryBread,
                 searchButton
         );
 
         menuButtonList = new ArrayList<>();
         menuButtonList.add(CategoryCandy_Snacks);
-        menuButtonList.add(CategoryDariy);
+        menuButtonList.add(CategoryDairy);
         menuButtonList.add(CategoryDrinks);
         menuButtonList.add(CategoryDryGoods);
         menuButtonList.add(CategoryFruit_Berries);
@@ -148,7 +148,7 @@ public class IMat_FXMLController implements Initializable {
                     tempProdList = new ArrayList<>();
 
                     // Collects those product that should be in the Dairysection.
-                    if (getCurrentPane(t).equals("CategoryDariy")) {
+                    if (getCurrentPane(t).equals("CategoryDairy")) {
                         pC = ProductCategory.DAIRIES;
                         prodList = model.getProducts(pC);
 
