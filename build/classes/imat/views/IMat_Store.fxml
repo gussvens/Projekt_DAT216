@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
     <stylesheets>
-        <URL value="@imat.fxml.css" />
+        <URL value="@imat.store.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="535.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
+      <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="564.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
-            <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox prefHeight="579.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
@@ -114,6 +116,15 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Pane fx:id="CategoryBread" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                     <children>
+                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Bröd">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
          </children>
@@ -138,7 +149,7 @@
       </AnchorPane>
       <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane fx:id="basketScrollPane" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
+            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
                <children>
                   <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" text="Totalt pris:">

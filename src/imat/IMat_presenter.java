@@ -39,7 +39,8 @@ public class IMat_presenter extends Observable {
             CategoryDryGoods,
             CategoryMeat_Fish_Shellfish,
             CategoryDrinks,
-            CategoryCandy_Snacks;
+            CategoryCandy_Snacks,
+            CategoryBread;
 
     private final Button searchButton;
 
@@ -51,10 +52,12 @@ public class IMat_presenter extends Observable {
             Pane CategoryMeat_Fish_Shellfish,
             Pane CategoryDrinks,
             Pane CategoryCandy_Snacks,
+            Pane CategoryBread,
             Button searchButton) {
 
         model = new IMat_Model();
 
+        
         this.searchButton = searchButton;
         this.CategoryDariy = CategoryDariy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
@@ -63,7 +66,8 @@ public class IMat_presenter extends Observable {
         this.CategoryFruit_Berries = CategoryFruit_Berries;
         this.CategoryMeat_Fish_Shellfish = CategoryMeat_Fish_Shellfish;
         this.CategoryVegetables = CategoryVegetables;
-
+        this.CategoryBread = CategoryBread;
+        
         /*
          Puts all menuButtonObjects into a list so the listernerbinding
          will be more effective.
@@ -76,6 +80,7 @@ public class IMat_presenter extends Observable {
         menuButtonsList.add(CategoryMeat_Fish_Shellfish);
         menuButtonsList.add(CategoryVegetables);
         menuButtonsList.add(CategoryDrinks);
+        menuButtonsList.add(CategoryBread);
 
         // Sets mouseEvents and cursor to the searchButton
         for (Pane p : menuButtonsList) {

@@ -88,7 +88,7 @@ public class IMat_StoreItemController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
-        flowPane.setPrefWidth(250);
+        flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : list) {
             try {
