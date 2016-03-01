@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import imat.views.IMat_FXMLController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -50,6 +53,8 @@ public class IMat_StoreItemController implements Initializable {
     private ImageView itemImage, favorizeStarImage;
     @FXML
     private ScrollPane basketScrollPane;
+    @FXML
+    private TextField totalPrice;
 
     /**
      * Initializes the controller class.
@@ -69,21 +74,23 @@ public class IMat_StoreItemController implements Initializable {
                     p = IMat_Model.getBackEnd().getProduct(itemId);
                     sC = IMat_Model.getBackEnd().getShoppingCart();
                     List<Product> l = IMatDataHandler.getInstance().getProducts();
-                    for(Product x : l){
+                    for (Product x : l) {
                         System.out.println(x.getName());
                     }
                     ShoppingItem sI = new ShoppingItem(p);
 
                     //Attempt at incrementing items already in the cart
-                    if(!sC.getItems().contains(sI)){
+                    if (!sC.getItems().contains(sI)) {
                         sC.addItem(sI);
                     }
-                    for(ShoppingItem s : sC.getItems()){
-                        if(s.getProduct().getName().equals(p.getName())){
-                            s.setAmount(s.getAmount() + 1);
-                            System.out.println(s.getAmount());
-                        }
-                    }
+                    /*
+                     for (ShoppingItem s : sC.getItems()) {
+                     if (s.getProduct().getName().equals(p.getName())) {
+                     s.setAmount(s.getAmount() + 1);
+                     System.out.println(s.getAmount());
+                     }
+                     }
+                     */
                     placeBasketItems(sC.getItems());
                 }
             };
@@ -102,15 +109,19 @@ public class IMat_StoreItemController implements Initializable {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
-//controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        
+
         basketScrollPane.setContent(flowPane);
+        updateTotalPrice();
+    }
+
+    public void updateTotalPrice() {
+        IMat_FXMLController.getPresenter().setTotal();
     }
 
     //Only testing
@@ -134,7 +145,7 @@ public class IMat_StoreItemController implements Initializable {
         this.itemId = id;
     }
 
-    public void setScrollPane(ScrollPane sp){
+    public void setScrollPane(ScrollPane sp) {
         this.basketScrollPane = sp;
     }
 

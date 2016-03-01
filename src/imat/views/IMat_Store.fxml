@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -13,12 +20,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
     <stylesheets>
         <URL value="@imat.fxml.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="535.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
+      <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -151,7 +158,7 @@
       </AnchorPane>
       <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane fx:id="basketScrollPane" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
+            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
                <children>
                   <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" text="Totalt pris:">
@@ -159,7 +166,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
+                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -169,7 +176,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="toCheckoutButton" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
+            <Button fx:id="toCheckout" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" onAction="#checkoutButtonClicked" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
                <font>
                   <Font size="16.0" />
                </font>

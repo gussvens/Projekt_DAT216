@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -44,6 +47,8 @@ public class IMat_presenter extends Observable {
 
     private final Button searchButton;
 
+    private TextField totalPrice;
+
     public IMat_presenter(
             Pane CategoryDairy,
             Pane CategoryVegetables,
@@ -53,11 +58,12 @@ public class IMat_presenter extends Observable {
             Pane CategoryDrinks,
             Pane CategoryCandy_Snacks,
             Pane CategoryBread,
-            Button searchButton) {
+            Button searchButton,
+            TextField totalPrice) {
 
         model = new IMat_Model();
 
-        
+        this.totalPrice = totalPrice;
         this.searchButton = searchButton;
         this.CategoryDairy = CategoryDairy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
@@ -67,7 +73,7 @@ public class IMat_presenter extends Observable {
         this.CategoryMeat_Fish_Shellfish = CategoryMeat_Fish_Shellfish;
         this.CategoryVegetables = CategoryVegetables;
         this.CategoryBread = CategoryBread;
-        
+
         /*
          Puts all menuButtonObjects into a list so the listernerbinding
          will be more effective.
@@ -95,6 +101,10 @@ public class IMat_presenter extends Observable {
         searchButton.setOnMousePressed(searhButtonPressed);
         searchButton.setOnMouseReleased(searhButtonReleased);
         searchButton.setCursor(Cursor.HAND);
+
+       
+       // totalPrice.setText(".....");
+        System.out.println("Label = " + totalPrice.getText());
     }
 
     private void setSeachButtonColor(MouseEvent t, String s) {
@@ -177,4 +187,14 @@ public class IMat_presenter extends Observable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
     }
+    
+    /*
+    public Label getTotalField(){
+        return totalPrice;
+    }
+    */
+    public void setTotal(){
+        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
+    }
+    
 }
