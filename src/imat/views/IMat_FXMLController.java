@@ -90,7 +90,8 @@ public class IMat_FXMLController implements Initializable {
                 CategoryDrinks,
                 CategoryCandy_Snacks,
                 searchButton,
-                totalPrice
+                totalPrice,
+                toCheckout
         );
 
         menuButtonList = new ArrayList<>();

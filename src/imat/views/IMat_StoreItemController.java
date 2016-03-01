@@ -122,6 +122,7 @@ public class IMat_StoreItemController implements Initializable {
 
     public void updateTotalPrice() {
         IMat_FXMLController.getPresenter().setTotal();
+        IMat_FXMLController.getPresenter().setButtonActive();
     }
 
     //Only testing
