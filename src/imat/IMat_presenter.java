@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -100,8 +102,9 @@ public class IMat_presenter extends Observable {
         searchButton.setOnMouseReleased(searhButtonReleased);
         searchButton.setCursor(Cursor.HAND);
 
-        this.totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
-
+       
+       // totalPrice.setText(".....");
+        System.out.println("Label = " + totalPrice.getText());
     }
 
     private void setSeachButtonColor(MouseEvent t, String s) {
@@ -185,8 +188,13 @@ public class IMat_presenter extends Observable {
         stage.setScene(scene);
     }
     
-    public TextField getTotalField(){
+    /*
+    public Label getTotalField(){
         return totalPrice;
+    }
+    */
+    public void setTotal(){
+        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
     }
     
 }

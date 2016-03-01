@@ -109,7 +109,6 @@ public class IMat_StoreItemController implements Initializable {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
-//controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
@@ -122,14 +121,7 @@ public class IMat_StoreItemController implements Initializable {
     }
 
     public void updateTotalPrice() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_Store.fxml"));
-            Node storeItem = loader.load();
-            IMat_FXMLController controller = loader.getController();
-            controller.setTotal();
-        } catch (IOException ex) {
-            Logger.getLogger(IMat_StoreItemController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        IMat_FXMLController.getPresenter().setTotal();
     }
 
     //Only testing

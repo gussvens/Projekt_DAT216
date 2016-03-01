@@ -46,6 +46,7 @@ public class IMat_Start_v2Controller implements Initializable {
         System.out.println("hej");
         Parent store = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
         IMat.getStage().setScene(new Scene(store, 1360, 768));
+        System.out.println("då");
     }
 
     @FXML
