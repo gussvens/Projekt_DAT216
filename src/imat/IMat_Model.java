@@ -16,10 +16,10 @@ import se.chalmers.ait.dat215.project.ProductCategory;
  * @author Andreas
  */
 public class IMat_Model {
-   private final IMatDataHandler backEnd = IMatDataHandler.getInstance();
-   
-   public IMat_Model(){
-       
+   private static final IMatDataHandler backEnd = IMatDataHandler.getInstance();
+
+   public synchronized static IMatDataHandler getBackEnd(){
+      return backEnd;
    }
    
    public List<Product> getProducts(ProductCategory pc){

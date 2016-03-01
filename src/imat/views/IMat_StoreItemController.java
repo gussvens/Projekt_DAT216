@@ -66,8 +66,12 @@ public class IMat_StoreItemController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     Product p;
-                    p = IMatDataHandler.getInstance().getProduct(itemId);
-                    sC = IMatDataHandler.getInstance().getShoppingCart();
+                    p = IMat_Model.getBackEnd().getProduct(itemId);
+                    sC = IMat_Model.getBackEnd().getShoppingCart();
+                    List<Product> l = IMatDataHandler.getInstance().getProducts();
+                    for(Product x : l){
+                        System.out.println(x.getName());
+                    }
                     ShoppingItem sI = new ShoppingItem(p);
 
                     //Attempt at incrementing items already in the cart

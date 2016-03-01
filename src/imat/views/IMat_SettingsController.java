@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import imat.IMat;
+import imat.IMat_Model;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +21,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import se.chalmers.ait.dat215.project.Customer;
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  * FXML Controller class
@@ -46,12 +49,19 @@ public class IMat_SettingsController implements Initializable {
     @FXML private ComboBox deliveryDay;
     @FXML private TextArea comment;
 
+    private Customer c = IMat_Model.getBackEnd().getCustomer();
+
+    /*
+    Should try to connect all data to a customer, which
+    can be accessed from both here and from the checkout
+     */
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        c = IMatDataHandler.getInstance().getCustomer();
     }
 
     @FXML
@@ -62,7 +72,8 @@ public class IMat_SettingsController implements Initializable {
 
     @FXML
     public void setFirstName(String s){
-        firstName.setText(s);
+        c.setFirstName(s);
+        firstName.setText(c.getFirstName());
     }
     @FXML
     public void setLastName(String s){

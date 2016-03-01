@@ -28,14 +28,10 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ProductCategory;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.*;
 
 public class IMat_FXMLController implements Initializable {
 
-    private IMat_Model model;
     private IMat_presenter pres;
 
     // Imports from sceneBuilder.
@@ -77,7 +73,6 @@ public class IMat_FXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        model = new IMat_Model();
         pres = new IMat_presenter(
                 CategoryVegetables,
                 CategoryFruit_Berries,
@@ -150,15 +145,15 @@ public class IMat_FXMLController implements Initializable {
                     // Collects those product that should be in the Dairysection.
                     if (getCurrentPane(t).equals("CategoryDairy")) {
                         pC = ProductCategory.DAIRIES;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
                         pC = ProductCategory.SWEET;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.NUTS_AND_SEEDS;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -168,10 +163,10 @@ public class IMat_FXMLController implements Initializable {
                          */
                     } else if (getCurrentPane(t).equals("CategoryDrinks")) {
                         pC = ProductCategory.COLD_DRINKS;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.HOT_DRINKS;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -181,10 +176,10 @@ public class IMat_FXMLController implements Initializable {
                          */
                     } else if (getCurrentPane(t).equals("CategoryDryGoods")) {
                         pC = ProductCategory.FLOUR_SUGAR_SALT;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.PASTA;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -192,7 +187,7 @@ public class IMat_FXMLController implements Initializable {
 
                         pC = ProductCategory.NUTS_AND_SEEDS;
                         tempProdList.clear();
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -200,7 +195,7 @@ public class IMat_FXMLController implements Initializable {
 
                         pC = ProductCategory.POD;
                         tempProdList.clear();
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -208,7 +203,7 @@ public class IMat_FXMLController implements Initializable {
 
                         pC = ProductCategory.POTATO_RICE;
                         tempProdList.clear();
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
@@ -218,17 +213,17 @@ public class IMat_FXMLController implements Initializable {
                          */
                     } else if (getCurrentPane(t).equals("CategoryFruit_Berries")) {
                         pC = ProductCategory.EXOTIC_FRUIT;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.FRUIT;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
                         tempProdList.clear();
                         pC = ProductCategory.MELONS;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -236,13 +231,13 @@ public class IMat_FXMLController implements Initializable {
                         tempProdList.clear();
                         pC = ProductCategory.BERRY;
 
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
                         tempProdList.clear();
                         pC = ProductCategory.CITRUS_FRUIT;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -253,10 +248,10 @@ public class IMat_FXMLController implements Initializable {
                          */
                     } else if (getCurrentPane(t).equals("CategoryMeat_Fish_Shellfish")) {
                         pC = ProductCategory.MEAT;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.FISH;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -267,17 +262,17 @@ public class IMat_FXMLController implements Initializable {
                          */
                     } else if (getCurrentPane(t).equals("CategoryVegetables")) {
                         pC = ProductCategory.CABBAGE;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
 
                         pC = ProductCategory.HERB;
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
                         pC = ProductCategory.ROOT_VEGETABLE;
                         tempProdList.clear();
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
@@ -285,14 +280,14 @@ public class IMat_FXMLController implements Initializable {
 
                         pC = ProductCategory.VEGETABLE_FRUIT;
                         tempProdList.clear();
-                        tempProdList = model.getProducts(pC);
+                        tempProdList = IMat_Model.getBackEnd().getProducts(pC);
 
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
                     }else if(getCurrentPane(t).equals("CategoryBread")){
                         pC = ProductCategory.BREAD;
-                        prodList = model.getProducts(pC);
+                        prodList = IMat_Model.getBackEnd().getProducts(pC);
                     }
 
                     // Placing the items on the centerstage.

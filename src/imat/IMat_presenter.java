@@ -33,7 +33,7 @@ public class IMat_presenter extends Observable {
 
     private final List<Pane> menuButtonsList;
 
-    private final Pane CategoryDariy,
+    private final Pane CategoryDairy,
             CategoryVegetables,
             CategoryFruit_Berries,
             CategoryDryGoods,
@@ -45,7 +45,7 @@ public class IMat_presenter extends Observable {
     private final Button searchButton;
 
     public IMat_presenter(
-            Pane CategoryDariy,
+            Pane CategoryDairy,
             Pane CategoryVegetables,
             Pane CategoryFruit_Berries,
             Pane CategoryDryGoods,
@@ -59,7 +59,7 @@ public class IMat_presenter extends Observable {
 
         
         this.searchButton = searchButton;
-        this.CategoryDariy = CategoryDariy;
+        this.CategoryDairy = CategoryDairy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
         this.CategoryDrinks = CategoryDrinks;
         this.CategoryDryGoods = CategoryDryGoods;
@@ -73,7 +73,7 @@ public class IMat_presenter extends Observable {
          will be more effective.
          */
         menuButtonsList = new ArrayList<>();
-        menuButtonsList.add(CategoryDariy);
+        menuButtonsList.add(CategoryDairy);
         menuButtonsList.add(CategoryCandy_Snacks);
         menuButtonsList.add(CategoryDryGoods);
         menuButtonsList.add(CategoryFruit_Berries);
