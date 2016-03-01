@@ -12,9 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import se.chalmers.ait.dat215.project.ShoppingCart;
 
 /**
  * FXML Controller class
@@ -23,8 +21,6 @@ import se.chalmers.ait.dat215.project.ShoppingCart;
  */
 public class IMat_BasketItemController implements Initializable {
 
-    ShoppingCart sC;
-    
     @FXML
     private Label basketProdName;
     @FXML
@@ -33,8 +29,6 @@ public class IMat_BasketItemController implements Initializable {
     private Label basketProdQuant;
     @FXML
     private Button basketRemove;
-      @FXML
-    private TextField totPriceLabel;
     
     
     
@@ -59,14 +53,7 @@ public class IMat_BasketItemController implements Initializable {
     public void setItemQuantity(String quant) {
         basketProdQuant.setText(quant);
     }
-    
-    public void setPayButton(Boolean bool){
-        
-    }
 
-    public void setPayTotal(double sum){
-        totPriceLabel.setText(Double.toString(sum));
-    }
 
     
     

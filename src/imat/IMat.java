@@ -31,6 +31,7 @@ public class IMat extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("views/IMat_Start_v2.fxml"));
 
+        IMat_Model model = new IMat_Model();
 
         Scene scene = new Scene(root, 1360, 768);
 

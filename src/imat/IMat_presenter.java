@@ -1,39 +1,18 @@
 package imat;
 
-import imat.views.IMat_BasketItemController;
-import java.io.IOException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
 import java.util.Observable;
-import javafx.beans.property.StringProperty;
-import javafx.event.Event;
 
 import javafx.event.EventHandler;
-import javafx.event.EventTarget;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import se.chalmers.ait.dat215.project.CartEvent;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingCart;
-import se.chalmers.ait.dat215.project.ShoppingCartListener;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -42,8 +21,6 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class IMat_presenter extends Observable {
 
     private final IMat_Model model;
-    private ShoppingCart sC;
-    private ShoppingCartListener sCListener;
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #e2e2e2;";
@@ -55,11 +32,9 @@ public class IMat_presenter extends Observable {
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #95d9eb;";
     private final String SEARCH_BTN_DOWN = "-fx-background-color: #84c8da;";
 
-    private TextFlow textFlow;
-
     private final List<Pane> menuButtonsList;
 
-    private final Pane CategoryDariy,
+    private final Pane CategoryDairy,
             CategoryVegetables,
             CategoryFruit_Berries,
             CategoryDryGoods,
@@ -69,15 +44,11 @@ public class IMat_presenter extends Observable {
             CategoryBread;
 
     private final Button searchButton;
-    private Button payButton;
-    private TextField totPriceLabel;
-    private ScrollPane basketScrollPane;
-    private ScrollPane totalCostScrollPane;
-    private ShoppingCartListener sCL;
-    private Label totPrisLabel2;
-    
+
+    private TextField totalPrice;
+
     public IMat_presenter(
-            Pane CategoryDariy,
+            Pane CategoryDairy,
             Pane CategoryVegetables,
             Pane CategoryFruit_Berries,
             Pane CategoryDryGoods,
@@ -85,23 +56,14 @@ public class IMat_presenter extends Observable {
             Pane CategoryDrinks,
             Pane CategoryCandy_Snacks,
             Pane CategoryBread,
-            Button payButton,
             Button searchButton,
-            TextField totPriceLabel,
-            ScrollPane basketScrollPane,
-            Label totPrisLabel2,
-            TextFlow textFlow,
-            ScrollPane totalCostScrollPane) {
+            TextField totalPrice) {
 
         model = new IMat_Model();
-        model.setPresenter(this);
 
-        this.totalCostScrollPane = totalCostScrollPane;
-        this.textFlow = textFlow;
-        this.totPriceLabel = totPriceLabel;
-        this.payButton = payButton;
+        this.totalPrice = totalPrice;
         this.searchButton = searchButton;
-        this.CategoryDariy = CategoryDariy;
+        this.CategoryDairy = CategoryDairy;
         this.CategoryCandy_Snacks = CategoryCandy_Snacks;
         this.CategoryDrinks = CategoryDrinks;
         this.CategoryDryGoods = CategoryDryGoods;
@@ -109,13 +71,13 @@ public class IMat_presenter extends Observable {
         this.CategoryMeat_Fish_Shellfish = CategoryMeat_Fish_Shellfish;
         this.CategoryVegetables = CategoryVegetables;
         this.CategoryBread = CategoryBread;
-        this.totPrisLabel2 = totPrisLabel2;
+
         /*
          Puts all menuButtonObjects into a list so the listernerbinding
          will be more effective.
          */
         menuButtonsList = new ArrayList<>();
-        menuButtonsList.add(CategoryDariy);
+        menuButtonsList.add(CategoryDairy);
         menuButtonsList.add(CategoryCandy_Snacks);
         menuButtonsList.add(CategoryDryGoods);
         menuButtonsList.add(CategoryFruit_Berries);
@@ -138,36 +100,7 @@ public class IMat_presenter extends Observable {
         searchButton.setOnMouseReleased(searhButtonReleased);
         searchButton.setCursor(Cursor.HAND);
 
-        sC = model.getShoppingCart();
-
-        System.out.println("sC total: " + sC.getTotal());
-
-        totPriceLabel.setText(Double.toString(sC.getTotal()));
-
-        FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
-        flowPane.setPrefWidth(255);
-
-        for (ShoppingItem s : sC.getItems()) {
-            try {
-                Product p = s.getProduct();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-                Node storeItem = loader.load();
-                IMat_BasketItemController controller = loader.getController();
-                controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice());
-                controller.setItemQuantity(p.getUnit());
-                flowPane.getChildren().add(storeItem);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println("Totalt pris: " + sC.getTotal());
-
-        basketScrollPane.setContent(flowPane);
+        this.totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
 
     }
 
@@ -175,18 +108,6 @@ public class IMat_presenter extends Observable {
         ((Button) t.getSource()).setStyle(s);
     }
 
-    
-    EventHandler<MouseEvent> addPressed 
-            = new EventHandler<MouseEvent>() {
-
-        @Override
-        public void handle(MouseEvent event) {
-            System.out.println("Röv");
-        }
-    };
-    
-    
-    
     EventHandler<MouseEvent> searhButtonEnter
             = new EventHandler<MouseEvent>() {
 
@@ -264,7 +185,8 @@ public class IMat_presenter extends Observable {
         stage.setScene(scene);
     }
     
-    public TextField getTextField() {
-        return totPriceLabel;
+    public TextField getTotalField(){
+        return totalPrice;
     }
+    
 }

@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import se.chalmers.ait.dat215.project.Customer;
 
 /**
  * FXML Controller class
@@ -42,6 +43,7 @@ public class IMat_Start_v2Controller implements Initializable {
 
     @FXML
     private void storeButtonClicked() throws IOException{
+        System.out.println("hej");
         Parent store = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
         IMat.getStage().setScene(new Scene(store, 1360, 768));
     }

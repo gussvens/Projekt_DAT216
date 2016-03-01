@@ -28,8 +28,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
@@ -44,8 +42,6 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class IMat_StoreItemController implements Initializable {
 
     private ShoppingCart sC;
-    private IMat_Model model;
-    private IMat_presenter pres;
 
     @FXML
     private Label itemNameLabel, itemPriceLabel, itemQuantityLabel;
@@ -58,11 +54,7 @@ public class IMat_StoreItemController implements Initializable {
     @FXML
     private ScrollPane basketScrollPane;
     @FXML
-    private ScrollPane totalCostScrollPane;
-    @FXML
-    private TextField totPriceLabel;
-    @FXML
-    private TextFlow textFlow;
+    private TextField totalPrice;
 
     /**
      * Initializes the controller class.
@@ -70,8 +62,6 @@ public class IMat_StoreItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnMouseClicked(onButtonClicked);
-        model = new IMat_Model();
-        sC = model.getShoppingCart();
 
     }
 
@@ -81,8 +71,12 @@ public class IMat_StoreItemController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     Product p;
-                    p = IMatDataHandler.getInstance().getProduct(itemId);
-                    //sC = IMatDataHandler.getInstance().getShoppingCart();
+                    p = IMat_Model.getBackEnd().getProduct(itemId);
+                    sC = IMat_Model.getBackEnd().getShoppingCart();
+                    List<Product> l = IMatDataHandler.getInstance().getProducts();
+                    for (Product x : l) {
+                        System.out.println(x.getName());
+                    }
                     ShoppingItem sI = new ShoppingItem(p);
 
                     //Attempt at incrementing items already in the cart
@@ -93,12 +87,11 @@ public class IMat_StoreItemController implements Initializable {
                      for (ShoppingItem s : sC.getItems()) {
                      if (s.getProduct().getName().equals(p.getName())) {
                      s.setAmount(s.getAmount() + 1);
-                     System.out.println("Antal: " + s.getAmount());
+                     System.out.println(s.getAmount());
                      }
                      }
                      */
                     placeBasketItems(sC.getItems());
-                    pres = IMat_Model.getPresenter();
                 }
             };
 
@@ -109,7 +102,6 @@ public class IMat_StoreItemController implements Initializable {
         flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : list) {
-
             try {
                 Product p = s.getProduct();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
@@ -117,17 +109,27 @@ public class IMat_StoreItemController implements Initializable {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
+//controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
                 flowPane.getChildren().add(storeItem);
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        System.out.println("Totalt pris: " + sC.getTotal());
-
         basketScrollPane.setContent(flowPane);
+        updateTotalPrice();
+    }
+
+    public void updateTotalPrice() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_Store.fxml"));
+            Node storeItem = loader.load();
+            IMat_FXMLController controller = loader.getController();
+            controller.setTotal();
+        } catch (IOException ex) {
+            Logger.getLogger(IMat_StoreItemController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //Only testing
@@ -154,4 +156,11 @@ public class IMat_StoreItemController implements Initializable {
     public void setScrollPane(ScrollPane sp) {
         this.basketScrollPane = sp;
     }
+
+    /* public IMat_StoreItemController(Product item){
+     this.itemNameLabel.setText(item.getName());
+     this.itemPriceLabel.setText(item.getPrice() + " kr");
+     this.itemQuantityLabel.setText(item.getUnit() + " " + item.getUnitSuffix());
+     }
+     */
 }
