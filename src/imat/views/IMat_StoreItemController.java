@@ -18,6 +18,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -62,8 +63,21 @@ public class IMat_StoreItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnMouseClicked(onButtonClicked);
-
+        favorizeStarImage.setOnMouseClicked(favClicked);
+        favorizeStarImage.setCursor(Cursor.HAND);
     }
+
+    EventHandler<MouseEvent> favClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    
+                    // TODO Forstätt här. Ska läggas i favoriter.
+                    favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
+                    
+                }
+            };
 
     EventHandler<MouseEvent> onButtonClicked
             = new EventHandler<MouseEvent>() {

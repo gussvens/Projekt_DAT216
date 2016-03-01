@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -37,6 +38,7 @@ public class IMat_SubcategoryController implements Initializable {
         subAnchor.setOnMouseClicked(onSubPanelClicked);
         subAnchor.setOnMouseEntered(subCatEnter);
         subAnchor.setOnMouseExited(subCatExit);
+        subAnchor.setCursor(Cursor.HAND);
     }
 
     // Filter on click.
