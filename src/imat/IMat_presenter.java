@@ -58,6 +58,7 @@ public class IMat_presenter extends Observable {
 
     private TextField totalPrice;
     private ScrollPane basketScrollPane;
+    private ScrollPane checkOutScrollPane;
 
     public IMat_presenter(
             Pane CategoryDairy,
@@ -75,6 +76,8 @@ public class IMat_presenter extends Observable {
 
         model = new IMat_Model();
 
+        checkOutScrollPane = new ScrollPane();
+        
         this.basketScrollPane = basketScrollPane;
         this.toCheckout = toCheckout;
         this.totalPrice = totalPrice;
@@ -251,6 +254,10 @@ public class IMat_presenter extends Observable {
         }
     }
     
+    public void setCheckoutScrollPane(ScrollPane sP){
+        this.checkOutScrollPane = new ScrollPane();
+        this.checkOutScrollPane = sP;
+    }
 
     //
     //

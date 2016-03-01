@@ -13,6 +13,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,7 +81,7 @@ public class IMat_FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("jaa körss");
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
-        
+
         pres = new IMat_presenter(
                 CategoryVegetables,
                 CategoryFruit_Berries,
@@ -109,41 +111,57 @@ public class IMat_FXMLController implements Initializable {
             p.setOnMouseClicked(menuButtonClicked);
         }
         searchButton.setOnMouseClicked(searchButtonClicked);
+        toCheckout.setOnMouseClicked(checkoutButtonClicked);
 
     }
 
-    @FXML
-    private void checkoutButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
-        FXMLLoader loader = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
-        IMat_CheckoutController controller = loader.load();
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
+    EventHandler<MouseEvent> checkoutButtonClicked
+            = new EventHandler<MouseEvent>() {
 
-        FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
-        flowPane.setPrefWidth(255);
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
-        List<ShoppingItem> itemList = IMat_Model.getBackEnd().getShoppingCart().getItems();
-        for (ShoppingItem s : itemList) {
-            try {
-                Product p = s.getProduct();
-                FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-                Node storeItem = basketLoader.load();
-                IMat_BasketItemController basketController = basketLoader.getController();
-                basketController.setItemNameLabel(p.getName());
-                basketController.setItemPriceLabel(p.getPrice());
-                basketController.setItemQuantity(p.getUnit());
-                flowPane.getChildren().add(storeItem);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    /* 
+     @FXML
+     private void checkoutButtonClicked() throws IOException {
+     Parent start = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
+     FXMLLoader loader = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
+     IMat_CheckoutController controller = loader.load();
+     IMat.getStage().setScene(new Scene(start, 1360, 768));
 
-        controller.setScrollPane(flowPane);
+     FlowPane flowPane = new FlowPane();
+     flowPane.setVgap(6);
+     flowPane.setHgap(6);
+     flowPane.setPrefWidth(255);
 
-    }
+     List<ShoppingItem> itemList = IMat_Model.getBackEnd().getShoppingCart().getItems();
+     for (ShoppingItem s : itemList) {
+     try {
+     Product p = s.getProduct();
+     FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
+     Node storeItem = basketLoader.load();
+     IMat_BasketItemController basketController = basketLoader.getController();
+     basketController.setItemNameLabel(p.getName());
+     basketController.setItemPriceLabel(p.getPrice());
+     basketController.setItemQuantity(p.getUnit());
+     flowPane.getChildren().add(storeItem);
+     } catch (IOException e) {
+     e.printStackTrace();
+     }
+     }
 
+     controller.setScrollPane(flowPane);
+
+     }
+     */
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
@@ -356,7 +374,7 @@ public class IMat_FXMLController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
                 Node storeItem = loader.load();
                 IMat_StoreItemController controller = loader.getController();
-                
+
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
@@ -380,11 +398,10 @@ public class IMat_FXMLController implements Initializable {
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
         System.out.println(totalPrice.getText());
     }
-    
+
     // Returns the presenter made in this class.
-    public static IMat_presenter getPresenter(){
+    public static IMat_presenter getPresenter() {
         return pres;
     }
-    
-    
+
 }
