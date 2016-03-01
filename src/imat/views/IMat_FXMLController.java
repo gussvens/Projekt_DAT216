@@ -63,6 +63,8 @@ public class IMat_FXMLController implements Initializable {
     private ScrollPane storeItemScrollPane;
     @FXML
     private ScrollPane basketScrollPane;
+    @FXML
+    private Button toCheckoutButton;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -99,6 +101,7 @@ public class IMat_FXMLController implements Initializable {
             p.setOnMouseClicked(menuButtonClicked);
         }
         searchButton.setOnMouseClicked(searchButtonClicked);
+        toCheckoutButton.setOnMouseClicked(toCheckoutButtonClicked);
 
     }
 
@@ -107,6 +110,14 @@ public class IMat_FXMLController implements Initializable {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
+
+/*    @FXML
+    private void toCheckoutButtonClicked() throws IOException {
+        Parent start = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
+        IMat.getStage().setScene(new Scene(start, 1360, 768));
+    }*/
+
+
 
     private String getCurrentPane(MouseEvent t) {
         return ((Pane) t.getSource()).getId();
