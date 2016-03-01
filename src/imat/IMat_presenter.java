@@ -46,6 +46,7 @@ public class IMat_presenter extends Observable {
             CategoryBread;
 
     private final Button searchButton;
+    private Button toCheckout;
 
     private TextField totalPrice;
 
@@ -59,10 +60,12 @@ public class IMat_presenter extends Observable {
             Pane CategoryCandy_Snacks,
             Pane CategoryBread,
             Button searchButton,
-            TextField totalPrice) {
+            TextField totalPrice,
+            Button toCheckout) {
 
         model = new IMat_Model();
 
+        this.toCheckout = toCheckout;
         this.totalPrice = totalPrice;
         this.searchButton = searchButton;
         this.CategoryDairy = CategoryDairy;
@@ -195,6 +198,12 @@ public class IMat_presenter extends Observable {
     */
     public void setTotal(){
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
+    }
+    
+    public void setButtonActive(){
+        if(toCheckout.isDisabled()){
+            toCheckout.setDisable(false);
+        }
     }
     
 }
