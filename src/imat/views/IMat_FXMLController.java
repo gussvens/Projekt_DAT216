@@ -31,6 +31,7 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import se.chalmers.ait.dat215.project.*;
 
 public class IMat_FXMLController implements Initializable {
@@ -69,17 +70,21 @@ public class IMat_FXMLController implements Initializable {
     private TextField totalPrice;
     @FXML
     private Button toCheckout;
+    @FXML
+    private Label subName;
+    @FXML
+    private ScrollPane subScrollPane;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
     private List<Pane> menuButtonList;
+    private List<String> subNameList;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("jaa körss");
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
 
         pres = new IMat_presenter(
@@ -94,7 +99,9 @@ public class IMat_FXMLController implements Initializable {
                 searchButton,
                 totalPrice,
                 toCheckout,
-                basketScrollPane
+                basketScrollPane,
+                subScrollPane,
+                this
         );
 
         menuButtonList = new ArrayList<>();
@@ -129,39 +136,6 @@ public class IMat_FXMLController implements Initializable {
                 }
             };
 
-    /* 
-     @FXML
-     private void checkoutButtonClicked() throws IOException {
-     Parent start = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
-     FXMLLoader loader = FXMLLoader.load(getClass().getResource("IMat_Checkout.fxml"));
-     IMat_CheckoutController controller = loader.load();
-     IMat.getStage().setScene(new Scene(start, 1360, 768));
-
-     FlowPane flowPane = new FlowPane();
-     flowPane.setVgap(6);
-     flowPane.setHgap(6);
-     flowPane.setPrefWidth(255);
-
-     List<ShoppingItem> itemList = IMat_Model.getBackEnd().getShoppingCart().getItems();
-     for (ShoppingItem s : itemList) {
-     try {
-     Product p = s.getProduct();
-     FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-     Node storeItem = basketLoader.load();
-     IMat_BasketItemController basketController = basketLoader.getController();
-     basketController.setItemNameLabel(p.getName());
-     basketController.setItemPriceLabel(p.getPrice());
-     basketController.setItemQuantity(p.getUnit());
-     flowPane.getChildren().add(storeItem);
-     } catch (IOException e) {
-     e.printStackTrace();
-     }
-     }
-
-     controller.setScrollPane(flowPane);
-
-     }
-     */
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
@@ -201,12 +175,13 @@ public class IMat_FXMLController implements Initializable {
 
                     prodList = new ArrayList<>();
                     tempProdList = new ArrayList<>();
+                    subNameList = new ArrayList<>();
 
                     // Collects those product that should be in the Dairysection.
                     if (getCurrentPane(t).equals("CategoryDairy")) {
                         pC = ProductCategory.DAIRIES;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
-
+                        subNameList.add("Mejeri");
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
                         pC = ProductCategory.SWEET;
@@ -218,6 +193,12 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
+                        
+                        subNameList.add("Godis");
+                        subNameList.add("Nötter/Frön");
+                        
+                        
+                        
                         /* Collects those product that 
                          should be in the drinks-section.
                          */
@@ -231,6 +212,11 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
+                        
+                        subNameList.add("Kalla drycker");
+                        subNameList.add("Varma drycker");
+                        
+                        
                         /* Collects those product that 
                          should be in the dry goods-section.
                          */
@@ -267,7 +253,13 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
-
+                        subNameList.add("Mjöl/Socker/Salt");
+                        subNameList.add("Pasta");
+                        subNameList.add("Nötter/Frön");
+                        subNameList.add("Baljväxter");
+                        subNameList.add("Potatis/Ris");
+                        
+                        
                         /* Collects those product that should 
                          be in the fruit and berries-section.
                          */
@@ -302,7 +294,11 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
-
+                        subNameList.add("Exotisk frukt");
+                        subNameList.add("Frukt");
+                        subNameList.add("Meloner");
+                        subNameList.add("Bär");
+                        subNameList.add("Citrusfrukt");
                         /* Collects those product that should 
                          be in the meat and fish-section.
                          */
@@ -317,6 +313,8 @@ public class IMat_FXMLController implements Initializable {
                             prodList.add(p);
                         }
 
+                        subNameList.add("Kött");
+                        subNameList.add("Fisk");
                         /* Collects those product that should 
                          be in the vegetables-section.
                          */
@@ -345,9 +343,18 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
+                        subNameList.add("Sallad");
+                        subNameList.add("Örter");
+                        subNameList.add("Rotfrukter");
+                        subNameList.add("Grönsaksfrukt");
+                        
+                        
+                        
                     } else if (getCurrentPane(t).equals("CategoryBread")) {
                         pC = ProductCategory.BREAD;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
+                        subNameList.add("Bröd");
+                    
                     }
 
                     // Placing the items on the centerstage.
@@ -390,8 +397,75 @@ public class IMat_FXMLController implements Initializable {
             System.out.println("null");
         }
         this.storeItemScrollPane.setContent(flowPane);
+        placeSubItems(subNameList);
 
     }
+    
+    // Place storeItems at the centerstage.
+    public void upDateCenter(ProductCategory prod) {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(700);
+
+        List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
+        
+        
+        for (Product p : list) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_StoreItemController controller = loader.getController();
+
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
+                controller.setItemQuantity(p.getUnit());
+                controller.setItemID(p.getProductId());
+                controller.setScrollPane(basketScrollPane);
+                flowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (storeItemScrollPane == null) {
+            System.out.println("null");
+        }
+        this.storeItemScrollPane.setContent(flowPane);
+        placeSubItems(subNameList);
+
+    }
+    
+    public void placeSubItems(List<String> list) {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(640);
+        flowPane.setPrefHeight(104);
+        
+        
+        for (String p : list) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
+                Node storeItem = loader.load();
+                IMat_SubcategoryController controller = loader.getController();
+                controller.setSubName(p);
+                flowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if (storeItemScrollPane == null) {
+            System.out.println("null");
+        }
+        this.subScrollPane.setContent(flowPane);
+
+    }
+    
+    
+    
+    
+    
+    
 
     // Sets the totalSum in the GUI
     public void setTotal() {

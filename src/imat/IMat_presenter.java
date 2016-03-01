@@ -1,6 +1,7 @@
 package imat;
 
 import imat.views.IMat_BasketItemController;
+import imat.views.IMat_FXMLController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class IMat_presenter extends Observable {
 
+    private IMat_FXMLController FXMLcont;
     private final IMat_Model model;
 
     // MenuButton colors.
@@ -59,6 +61,7 @@ public class IMat_presenter extends Observable {
     private TextField totalPrice;
     private ScrollPane basketScrollPane;
     private ScrollPane checkOutScrollPane;
+    private ScrollPane subScrollPane;
 
     public IMat_presenter(
             Pane CategoryDairy,
@@ -72,12 +75,16 @@ public class IMat_presenter extends Observable {
             Button searchButton,
             TextField totalPrice,
             Button toCheckout,
-            ScrollPane basketScrollPane) {
+            ScrollPane basketScrollPane,
+            ScrollPane subScrollPane,
+            IMat_FXMLController FXMLcont) {
 
         model = new IMat_Model();
 
         checkOutScrollPane = new ScrollPane();
-        
+
+        this.FXMLcont = FXMLcont;
+        this.subScrollPane = subScrollPane;
         this.basketScrollPane = basketScrollPane;
         this.toCheckout = toCheckout;
         this.totalPrice = totalPrice;
@@ -118,11 +125,10 @@ public class IMat_presenter extends Observable {
         searchButton.setOnMousePressed(searchButtonPressed);
         searchButton.setOnMouseReleased(searchButtonReleased);
         searchButton.setCursor(Cursor.HAND);
-        
+
         updateBasket();
         System.out.println(IMat_Model.getBackEnd().getShoppingCart().getItems().size());
-        
-        
+
     }
 
     // EVENTHANDLERS
@@ -215,14 +221,44 @@ public class IMat_presenter extends Observable {
             toCheckout.setDisable(false);
         }
     }
-    
-    
+
     /* Updates the basket when removing products from the basket.
-    Sets the toCheckout-button to be disabled if list is empty.
+     Sets the toCheckout-button to be disabled if list is empty.
         
-    !!Could be used to update when placing products as well, I guess. !!
-    */
-    public void updateBasket(){
+     !!Could be used to update when placing products as well, I guess. !!
+     */
+    public void updateBasket() {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(255);
+
+        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+            try {
+                Product p = s.getProduct();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemQuantity(p.getUnit());
+                controller.setShoppingItem(s);
+                flowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        basketScrollPane.setContent(flowPane);
+        setTotal();
+
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(true);
+        } else {
+            toCheckout.setDisable(false);
+        }
+    }
+
+    public void filterSearch() {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
@@ -246,15 +282,15 @@ public class IMat_presenter extends Observable {
 
         basketScrollPane.setContent(flowPane);
         setTotal();
-        
-        if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
+
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
-        }else{
+        } else {
             toCheckout.setDisable(false);
         }
     }
-    
-    public void setCheckoutScrollPane(ScrollPane sP){
+
+    public void setCheckoutScrollPane(ScrollPane sP) {
         this.checkOutScrollPane = new ScrollPane();
         this.checkOutScrollPane = sP;
     }
@@ -266,4 +302,9 @@ public class IMat_presenter extends Observable {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
     }
+
+    public IMat_FXMLController getFXMLCont() {
+        return FXMLcont;
+    }
+
 }
