@@ -41,9 +41,9 @@ public class IMat_BasketItemController implements Initializable {
     private Button basketRemove;
     @FXML
     private ScrollPane basketScrollPane;
-        
+
     private ShoppingItem sI;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -60,8 +60,10 @@ public class IMat_BasketItemController implements Initializable {
                 public void handle(MouseEvent t) {
                     IMat_Model.getBackEnd().getShoppingCart().removeItem(sI);
                     IMat_FXMLController.getPresenter().updateBasket();
-                    
-                   // IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+
+                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                    }
                 }
             };
 
@@ -76,8 +78,8 @@ public class IMat_BasketItemController implements Initializable {
     public void setItemQuantity(String quant) {
         basketProdQuant.setText(quant);
     }
-    
-    public void setShoppingItem(ShoppingItem sI){
+
+    public void setShoppingItem(ShoppingItem sI) {
         this.sI = sI;
     }
 }
