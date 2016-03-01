@@ -21,9 +21,5 @@ public class IMat_Model {
    public synchronized static IMatDataHandler getBackEnd(){
       return backEnd;
    }
-   
-   public List<Product> getProducts(ProductCategory pc){
-       return backEnd.getProducts(pc);
-   }
-   
+
 }

@@ -52,7 +52,7 @@ public class IMat_SettingsController implements Initializable {
     private Customer c = IMat_Model.getBackEnd().getCustomer();
 
     /*
-    Should try to connect all data to a customer, which
+    Should try to connect all data to a single customer, which
     can be accessed from both here and from the checkout
      */
 
@@ -61,69 +61,71 @@ public class IMat_SettingsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        c = IMatDataHandler.getInstance().getCustomer();
+        c = IMat_Model.getBackEnd().getCustomer();
     }
 
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
+        System.out.println(c.getFirstName());
     }
 
     @FXML
-    public void setFirstName(String s){
-        c.setFirstName(s);
+    public void setFirstName(){
+        System.out.println("Hellå");
+        c.setFirstName("Hej");
         firstName.setText(c.getFirstName());
     }
     @FXML
-    public void setLastName(String s){
-        lastName.setText(s);
+    public void setLastName(){
+    //    lastName.setText();
     }
     @FXML
-    public void setCity(String s){
-        city.setText(s);
+    public void setCity(){
+    //    city.setText();
     }
     @FXML
-    public void setAddress(String s){
-        address.setText(s);
+    public void setAddress(){
+       // address.setText();
     }
     @FXML
-    public void setZipCode(String s){
-        zipCode.setText(s);
+    public void setZipCode(){
+        //zipCode.setText();
     }
     @FXML
-    public void setPayment(String s){
+    public void setPayment(){
         //TODO
     }
     @FXML
-    public void setCardType(String s){
+    public void setCardType(){
         //TODO
     }@FXML
-    public void setCard1(String s){
-        card1.setText(s);
+    public void setCard1(){
+        //card1.setText();
     }
     @FXML
-    public void setCard2(String s){
-        card2.setText(s);
+    public void setCard2(){
+      //  card2.setText();
     }
     @FXML
-    public void setCard3(String s){
-        card3.setText(s);
+    public void setCard3(){
+        //card3.setText();
     }
     @FXML
-    public void setCard4(String s){
-        card4.setText(s);
+    public void setCard4(){
+        //card4.setText();
     }
     @FXML
-    public void setCvc(String s){
-        cvc.setText(s);
+    public void setCvc(){
+        //cvc.setText();
     }
 
-    public void setDeliveryDay(ComboBox deliveryDay) {
+    public void setDeliveryDay() {
         //TODO
     }
 
-    public void setComment(String comment) {
+    public void setComment() {
         //TODO
     }
 }
