@@ -38,7 +38,7 @@ public class IMat_SettingsController implements Initializable {
     @FXML private TextField lastName;
     @FXML private TextField city;
     @FXML private TextField address;
-    @FXML private TextField zipCode;
+    @FXML private TextField postCode;
     @FXML private ComboBox payment;
     @FXML private ComboBox cardType;
     @FXML private TextField card1;
@@ -62,70 +62,71 @@ public class IMat_SettingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         c = IMat_Model.getBackEnd().getCustomer();
+        firstName.setText(c.getFirstName());
+        lastName.setText(c.getLastName());
+        address.setText(c.getAddress());
+        postCode.setText(c.getPostCode());
     }
 
     @FXML
     private void homeButtonClicked() throws IOException {
         Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
         IMat.getStage().setScene(new Scene(start, 1360, 768));
-        System.out.println(c.getFirstName());
     }
 
     @FXML
     public void setFirstName(){
-        System.out.println("Hellå");
-        c.setFirstName("Hej");
-        firstName.setText(c.getFirstName());
+        c.setFirstName(firstName.getText());
     }
     @FXML
     public void setLastName(){
-    //    lastName.setText();
+        c.setLastName(lastName.getText());
     }
     @FXML
     public void setCity(){
-    //    city.setText();
+        //No city-variable in backend
     }
     @FXML
     public void setAddress(){
-       // address.setText();
+       c.setAddress(address.getText());
     }
     @FXML
-    public void setZipCode(){
-        //zipCode.setText();
+    public void setPostCode(){
+        c.setPostCode(postCode.getText());
     }
     @FXML
     public void setPayment(){
-        //TODO
+        //No payment-variable in backend
     }
     @FXML
     public void setCardType(){
-        //TODO
+        //No cardtype-variable in backend
     }@FXML
     public void setCard1(){
-        //card1.setText();
+        //No card number-variable in backend
     }
     @FXML
     public void setCard2(){
-      //  card2.setText();
+      //
     }
     @FXML
     public void setCard3(){
-        //card3.setText();
+        //
     }
     @FXML
     public void setCard4(){
-        //card4.setText();
+        //
     }
     @FXML
     public void setCvc(){
-        //cvc.setText();
+        //No CVC-variable in backend
     }
 
     public void setDeliveryDay() {
-        //TODO
+        //No delivery day variable in backend
     }
 
     public void setComment() {
-        //TODO
+        //No Comment variable in backend
     }
 }
