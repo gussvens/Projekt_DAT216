@@ -91,7 +91,8 @@ public class IMat_FXMLController implements Initializable {
                 CategoryCandy_Snacks,
                 searchButton,
                 totalPrice,
-                toCheckout
+                toCheckout,
+                basketScrollPane
         );
 
         menuButtonList = new ArrayList<>();
@@ -374,43 +375,13 @@ public class IMat_FXMLController implements Initializable {
 
     }
 
-
-    /*    public void placeBasketItems(List<ShoppingItem> list) {
-     FlowPane flowPane = new FlowPane();
-     flowPane.setVgap(6);
-     flowPane.setHgap(6);
-     flowPane.setPrefWidth(250);
-
-     for (ShoppingItem s : list) {
-
-     try {
-     Product p = s.getProduct();
-
-     FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-     Node storeItem = loader.load();
-     IMat_BasketItemController controller = loader.getController();
-     controller.setItemNameLabel(p.getName());
-     controller.setItemPriceLabel(p.getPrice());
-     controller.setItemQuantity(p.getUnit());
-     flowPane.getChildren().add(storeItem);
-
-
-     } catch (IOException e) {
-     e.printStackTrace();
-     }
-     }
-
-     if(basketScrollPane == null) {
-     System.out.println("fek ye");
-     }
-     this.basketScrollPane.setContent(flowPane);
-     System.out.println("Slut");
-     }*/
+    // Sets the totalSum in the GUI
     public void setTotal() {
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
         System.out.println(totalPrice.getText());
     }
     
+    // Returns the presenter made in this class.
     public static IMat_presenter getPresenter(){
         return pres;
     }

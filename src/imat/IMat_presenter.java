@@ -1,20 +1,28 @@
 package imat;
 
+import imat.views.IMat_BasketItemController;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
@@ -49,6 +57,7 @@ public class IMat_presenter extends Observable {
     private Button toCheckout;
 
     private TextField totalPrice;
+    private ScrollPane basketScrollPane;
 
     public IMat_presenter(
             Pane CategoryDairy,
@@ -61,10 +70,12 @@ public class IMat_presenter extends Observable {
             Pane CategoryBread,
             Button searchButton,
             TextField totalPrice,
-            Button toCheckout) {
+            Button toCheckout,
+            ScrollPane basketScrollPane) {
 
         model = new IMat_Model();
 
+        this.basketScrollPane = basketScrollPane;
         this.toCheckout = toCheckout;
         this.totalPrice = totalPrice;
         this.searchButton = searchButton;
@@ -99,22 +110,20 @@ public class IMat_presenter extends Observable {
         }
 
         // Sets mouseEvents and cursor to the searchButton.
-        searchButton.setOnMouseEntered(searhButtonEnter);
-        searchButton.setOnMouseExited(searhButtonExit);
-        searchButton.setOnMousePressed(searhButtonPressed);
-        searchButton.setOnMouseReleased(searhButtonReleased);
+        searchButton.setOnMouseEntered(searchButtonEnter);
+        searchButton.setOnMouseExited(searchButtonExit);
+        searchButton.setOnMousePressed(searchButtonPressed);
+        searchButton.setOnMouseReleased(searchButtonReleased);
         searchButton.setCursor(Cursor.HAND);
-
-       
-       // totalPrice.setText(".....");
-        System.out.println("Label = " + totalPrice.getText());
+        
+        updateBasket();
+        System.out.println(IMat_Model.getBackEnd().getShoppingCart().getItems().size());
+        
+        
     }
 
-    private void setSeachButtonColor(MouseEvent t, String s) {
-        ((Button) t.getSource()).setStyle(s);
-    }
-
-    EventHandler<MouseEvent> searhButtonEnter
+    // EVENTHANDLERS
+    EventHandler<MouseEvent> searchButtonEnter
             = new EventHandler<MouseEvent>() {
 
                 @Override
@@ -123,7 +132,7 @@ public class IMat_presenter extends Observable {
                 }
             };
 
-    EventHandler<MouseEvent> searhButtonExit
+    EventHandler<MouseEvent> searchButtonExit
             = new EventHandler<MouseEvent>() {
 
                 @Override
@@ -131,7 +140,7 @@ public class IMat_presenter extends Observable {
                     setSeachButtonColor(t, SEARCH_BTN_DEFAULT);
                 }
             };
-    EventHandler<MouseEvent> searhButtonPressed
+    EventHandler<MouseEvent> searchButtonPressed
             = new EventHandler<MouseEvent>() {
 
                 @Override
@@ -139,7 +148,7 @@ public class IMat_presenter extends Observable {
                     setSeachButtonColor(t, SEARCH_BTN_DOWN);
                 }
             };
-    EventHandler<MouseEvent> searhButtonReleased
+    EventHandler<MouseEvent> searchButtonReleased
             = new EventHandler<MouseEvent>() {
 
                 @Override
@@ -147,11 +156,6 @@ public class IMat_presenter extends Observable {
                     setSeachButtonColor(t, SEARCH_BTN_ENTER);
                 }
             };
-
-    // Helper to get the right menuButton.
-    private Pane getButton(MouseEvent t) {
-        return ((Pane) t.getSource());
-    }
 
     // Resets the color of the menuButton on mouseExit. 
     EventHandler<MouseEvent> menuButtonExit
@@ -177,6 +181,16 @@ public class IMat_presenter extends Observable {
                 }
             };
 
+    // Helper...
+    private void setSeachButtonColor(MouseEvent t, String s) {
+        ((Button) t.getSource()).setStyle(s);
+    }
+
+    // Helper to get the right menuButton.
+    private Pane getButton(MouseEvent t) {
+        return ((Pane) t.getSource());
+    }
+
     public void colorChangeOnClick(MouseEvent t) {
         for (Pane p : menuButtonsList) {
             p.setStyle(MENU_DEFAULT_COLOR);
@@ -185,25 +199,64 @@ public class IMat_presenter extends Observable {
         getButton(t).setStyle(MENU_CLICKED_COLOR);
     }
 
+    // Sets the totalPrice every time a product is added to the basket.
+    public void setTotal() {
+        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
+    }
+
+    /* Sets the toCheckout-button to active 
+     when there are products in the basket
+     */
+    public void setButtonActive() {
+        if (toCheckout.isDisabled()) {
+            toCheckout.setDisable(false);
+        }
+    }
+    
+    
+    /* Updates the basket when removing products from the basket.
+    Sets the toCheckout-button to be disabled if list is empty.
+        
+    !!Could be used to update when placing products as well, I guess. !!
+    */
+    public void updateBasket(){
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(255);
+
+        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+            try {
+                Product p = s.getProduct();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemQuantity(p.getUnit());
+                controller.setShoppingItem(s);
+                flowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        basketScrollPane.setContent(flowPane);
+        setTotal();
+        
+        if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
+            toCheckout.setDisable(true);
+        }else{
+            toCheckout.setDisable(false);
+        }
+    }
+    
+
+    //
+    //
     // NOT NEEDED NOW... CAN BE REMOVED WHEN DONE
     public static void setStage(Stage stage, Parent parent) {
         Scene scene = new Scene(parent);
         stage.setScene(scene);
     }
-    
-    /*
-    public Label getTotalField(){
-        return totalPrice;
-    }
-    */
-    public void setTotal(){
-        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
-    }
-    
-    public void setButtonActive(){
-        if(toCheckout.isDisabled()){
-            toCheckout.setDisable(false);
-        }
-    }
-    
 }
