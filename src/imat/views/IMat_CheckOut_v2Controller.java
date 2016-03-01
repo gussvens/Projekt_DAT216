@@ -27,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -46,7 +47,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     @FXML
     private TextField address;
     @FXML
-    private TextField zipCode;
+    private TextField postCode;
     @FXML
     private TextField card1;
     @FXML
@@ -76,7 +77,8 @@ public class IMat_CheckOut_v2Controller implements Initializable {
 
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
-    
+
+    private Customer c;
     
     
     /**
@@ -88,11 +90,18 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 basketScrollPane,
                 checkoutTotPrice
         );
+
+        c = IMat_Model.getBackEnd().getCustomer();
         
         
         homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
         pres.updateScrollPane();
+
+        firstName.setText(c.getFirstName());
+        lastName.setText(c.getLastName());
+        address.setText(c.getAddress());
+        postCode.setText(c.getPostCode());
     }
 
     public void updateTotPrice() {
