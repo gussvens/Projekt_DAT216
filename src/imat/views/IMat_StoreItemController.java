@@ -110,6 +110,7 @@ public class IMat_StoreItemController implements Initializable {
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemQuantity(p.getUnit());
+                controller.setShoppingItem(s);
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -149,11 +150,4 @@ public class IMat_StoreItemController implements Initializable {
     public void setScrollPane(ScrollPane sp) {
         this.basketScrollPane = sp;
     }
-
-    /* public IMat_StoreItemController(Product item){
-     this.itemNameLabel.setText(item.getName());
-     this.itemPriceLabel.setText(item.getPrice() + " kr");
-     this.itemQuantityLabel.setText(item.getUnit() + " " + item.getUnitSuffix());
-     }
-     */
 }

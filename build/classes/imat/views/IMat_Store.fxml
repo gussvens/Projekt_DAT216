@@ -176,7 +176,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="toCheckout" disable="true" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" onAction="#checkoutButtonClicked" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
+            <Button fx:id="toCheckout" disable="true" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" text="Till kassan" AnchorPane.bottomAnchor="84.0">
                <font>
                   <Font size="16.0" />
                </font>
