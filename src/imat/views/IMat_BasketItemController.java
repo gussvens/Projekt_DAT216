@@ -41,6 +41,8 @@ public class IMat_BasketItemController implements Initializable {
     private Button basketRemove;
     @FXML
     private ScrollPane basketScrollPane;
+    @FXML
+    private Label nrOfBasketItems;
 
     private ShoppingItem sI;
 
@@ -82,4 +84,20 @@ public class IMat_BasketItemController implements Initializable {
     public void setShoppingItem(ShoppingItem sI) {
         this.sI = sI;
     }
+
+    public void setNrOfBasketItems() {
+
+        List<ShoppingItem> sIList = IMat_Model.getBackEnd().getShoppingCart().getItems();
+
+        int i = 1;
+        for (ShoppingItem s : sIList) {
+            if (s.getProduct().getName().equals(basketProdName.getText())) {
+                i++;
+            }
+        }
+
+        nrOfBasketItems.setText(Integer.toString(i));
+
+    }
+
 }
