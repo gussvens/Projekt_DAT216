@@ -375,8 +375,7 @@ public class IMat_FXMLController implements Initializable {
     // Place storeItems at the centerstage.
     public void placeStoreItems(List<Product> list) {
         FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
+        flowPane.setVgap(3);
         flowPane.setPrefWidth(700);
 
         for (Product p : list) {

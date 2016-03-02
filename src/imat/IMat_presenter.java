@@ -234,8 +234,7 @@ public class IMat_presenter extends Observable {
      */
     public void updateBasket() {
         FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
+        flowPane.setVgap(3);
         flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
@@ -246,7 +245,7 @@ public class IMat_presenter extends Observable {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice()*s.getAmount());
-                controller.setItemQuantity(p.getUnit());
+                controller.setItemQuantity("kr");
                 controller.setShoppingItem(s);
                 controller.setNrOfBasketItems(s.getAmount());
                 flowPane.getChildren().add(storeItem);

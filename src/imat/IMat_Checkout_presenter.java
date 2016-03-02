@@ -45,7 +45,7 @@ public class IMat_Checkout_presenter {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice() * s.getAmount());
-                controller.setItemQuantity(p.getUnit());
+                controller.setItemQuantity("kr");
                 controller.setShoppingItem(s);
                 controller.setNrOfBasketItems(s.getAmount());
                 flowPane.getChildren().add(storeItem);

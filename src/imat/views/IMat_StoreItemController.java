@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import imat.views.IMat_FXMLController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,12 +25,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
-import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -70,117 +65,65 @@ public class IMat_StoreItemController implements Initializable {
         favorizeStarImage.setCursor(Cursor.HAND);
     }
 
+    
+    // Add or remove favorites.
     EventHandler<MouseEvent> favClicked
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    if (!isFavorite) {
+                    Product prod = IMat_Model.getBackEnd().getProduct(itemId);  
+
+                    if (!IMat_Model.getBackEnd().favorites().contains(prod)) {
                         favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
-                        Product prod = IMat_Model.getBackEnd().getProduct(itemId);
                         IMat_Model.getBackEnd().addFavorite(prod);
-                        isFavorite = true;
-                    } else if (isFavorite) {
+                    } else {
                         favorizeStarImage.setImage(new Image("imat/images/star.jpg"));
-                        Product prod = IMat_Model.getBackEnd().getProduct(itemId);
                         IMat_Model.getBackEnd().removeFavorite(prod);
-                        isFavorite = false;
                     }
                 }
             };
 
+    // Adds one to the amount of this specific product in the basket. 
     EventHandler<MouseEvent> onButtonClicked
             = new EventHandler<MouseEvent>() {
-/*
-<<<<<<< HEAD
                 @Override
                 public void handle(MouseEvent t) {
-                    
                     Product p;
                     p = IMat_Model.getBackEnd().getProduct(itemId);
                     sC = IMat_Model.getBackEnd().getShoppingCart();
-                    //List<ShoppingItem> sCL = sC.getItems();
-                    
-                    System.out.println("Storleken på sC är: " + sC.getItems().size());
-                    
-                    
-                    
-                    List<Product> l = IMatDataHandler.getInstance().getProducts();
-                    for (Product x : l) {
-                        System.out.println(x.getName());
-                    }
-                    if (sC.getItems().isEmpty()) {
+                    boolean inBasket = false;
 
-                        ShoppingItem sI = new ShoppingItem(p);
-                        sC.addItem(sI);
-                    }
-                    /*
-                     //Attempt at incrementing items already in the cart
-                     if (!sC.getItems().contains(sI)) {
-                     sC.addItem(sI);
-                     }
-                     
-
-                    if (!sC.getItems().isEmpty()) {
-                       
+                    if (sC.getItems().size() > 0) {
                         for (ShoppingItem s : sC.getItems()) {
-
-                            if (s.getProduct().getName().equals(p.getName())) {
+                            if (s.getProduct().equals(p)) {
                                 s.setAmount(s.getAmount() + 1);
-                                //System.out.println(s.getAmount());
+                                System.out.println(s.getAmount());
+                                System.out.println("Finns redan");
                                 inBasket = true;
-                            } else {
-                               inBasket = false;
                             }
                         }
+                    } else {
+                        System.out.println("Nytt item");
+                        ShoppingItem sI = new ShoppingItem(p);
+                        sC.addItem(sI);
+                        inBasket = true;
                     }
+
                     if (!inBasket) {
+                        System.out.println("bool");
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
 
                     placeBasketItems(sC.getItems());
-=======
-*/
-        @Override
-        public void handle(MouseEvent t) {
-            Product p;
-            p = IMat_Model.getBackEnd().getProduct(itemId);
-            sC = IMat_Model.getBackEnd().getShoppingCart();
-            boolean inBasket = false;
-
-            //Attempt at incrementing items already in the cart
-
-            if(sC.getItems().size() > 0) {
-                for (ShoppingItem s : sC.getItems()) {
-                    if (s.getProduct().equals(p)) {
-                        s.setAmount(s.getAmount() + 1);
-                        System.out.println(s.getAmount());
-                        System.out.println("Finns redan");
-                        inBasket = true;
-                    }
                 }
-            } else {
-                System.out.println("Nytt item");
-                ShoppingItem sI = new ShoppingItem(p);
-                sC.addItem(sI);
-                inBasket = true;
-            }
+            };
 
-            if(!inBasket){
-                System.out.println("bool");
-                ShoppingItem sI = new ShoppingItem(p);
-                sC.addItem(sI);
-            }
-
-            placeBasketItems(sC.getItems());
-        }
-    };
-
+    // Place the storeItems in the basket.
     public void placeBasketItems(List<ShoppingItem> list) {
         FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
+        flowPane.setVgap(3);
         flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : list) {
@@ -191,16 +134,9 @@ public class IMat_StoreItemController implements Initializable {
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice() * s.getAmount());
-                controller.setItemQuantity(p.getUnit());
+                controller.setItemQuantity("kr");
                 controller.setShoppingItem(s);
-                /*
-<<<<<<< HEAD
-                int i = controller.setNrOfBasketItems();
-                System.out.println(s.getAmount());
-=======
-        */
                 controller.setNrOfBasketItems(s.getAmount());
-
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
