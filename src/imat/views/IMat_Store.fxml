@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -20,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
     <stylesheets>
         <URL value="@imat.fxml.css" />
     </stylesheets>
@@ -191,7 +184,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF; -fx-faint-focus-color: transparent; -fx-focus-color: transparent;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF; -fx-faint-focus-color: transparent; -fx-focus-color: transparent; -fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
       <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="32.0" prefHeight="103.0" prefWidth="641.0" style="-fx-border-color: #FFFFFF; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>
