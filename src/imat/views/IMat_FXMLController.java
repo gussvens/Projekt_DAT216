@@ -27,6 +27,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
@@ -193,12 +194,10 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
-                        
+
                         subNameList.add("Godis");
                         subNameList.add("Nötter/Frön");
-                        
-                        
-                        
+
                         /* Collects those product that 
                          should be in the drinks-section.
                          */
@@ -212,11 +211,10 @@ public class IMat_FXMLController implements Initializable {
                         for (Product p : tempProdList) {
                             prodList.add(p);
                         }
-                        
+
                         subNameList.add("Kalla drycker");
                         subNameList.add("Varma drycker");
-                        
-                        
+
                         /* Collects those product that 
                          should be in the dry goods-section.
                          */
@@ -258,8 +256,7 @@ public class IMat_FXMLController implements Initializable {
                         subNameList.add("Nötter/Frön");
                         subNameList.add("Baljväxter");
                         subNameList.add("Potatis/Ris");
-                        
-                        
+
                         /* Collects those product that should 
                          be in the fruit and berries-section.
                          */
@@ -347,14 +344,12 @@ public class IMat_FXMLController implements Initializable {
                         subNameList.add("Örter");
                         subNameList.add("Rotfrukter");
                         subNameList.add("Grönsaksfrukt");
-                        
-                        
-                        
+
                     } else if (getCurrentPane(t).equals("CategoryBread")) {
                         pC = ProductCategory.BREAD;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
                         subNameList.add("Bröd");
-                    
+
                     }
 
                     // Placing the items on the centerstage.
@@ -387,6 +382,9 @@ public class IMat_FXMLController implements Initializable {
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
                 controller.setItemID(p.getProductId());
+                if (IMat_Model.getBackEnd().isFavorite(p)) {
+                    controller.setFavPic(new Image("imat/images/golden_star.jpg"));
+                }
                 controller.setScrollPane(basketScrollPane);
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
@@ -400,7 +398,7 @@ public class IMat_FXMLController implements Initializable {
         placeSubItems(subNameList);
 
     }
-    
+
     // Place storeItems at the centerstage.
     public void upDateCenter(ProductCategory prod) {
         FlowPane flowPane = new FlowPane();
@@ -409,8 +407,7 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setPrefWidth(700);
 
         List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
-        
-        
+
         for (Product p : list) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
@@ -422,6 +419,9 @@ public class IMat_FXMLController implements Initializable {
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
                 controller.setItemQuantity(p.getUnit());
                 controller.setItemID(p.getProductId());
+                if (IMat_Model.getBackEnd().isFavorite(p)) {
+                    controller.setFavPic(new Image("imat/images/golden_star.jpg"));
+                }
                 controller.setScrollPane(basketScrollPane);
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
@@ -435,14 +435,13 @@ public class IMat_FXMLController implements Initializable {
         placeSubItems(subNameList);
 
     }
-    
+
     public void placeSubItems(List<String> list) {
         FlowPane flowPane = new FlowPane();
         flowPane.setHgap(6);
         flowPane.setPrefWidth(640);
         flowPane.setPrefHeight(104);
-        
-        
+
         for (String p : list) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
@@ -460,12 +459,6 @@ public class IMat_FXMLController implements Initializable {
         this.subScrollPane.setContent(flowPane);
 
     }
-    
-    
-    
-    
-    
-    
 
     // Sets the totalSum in the GUI
     public void setTotal() {

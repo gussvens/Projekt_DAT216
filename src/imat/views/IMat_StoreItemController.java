@@ -72,10 +72,9 @@ public class IMat_StoreItemController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    
-                    // TODO Forstätt här. Ska läggas i favoriter.
                     favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
-                    
+                    Product prod = IMat_Model.getBackEnd().getProduct(itemId);
+                    IMat_Model.getBackEnd().addFavorite(prod);
                 }
             };
 
@@ -164,4 +163,11 @@ public class IMat_StoreItemController implements Initializable {
     public void setScrollPane(ScrollPane sp) {
         this.basketScrollPane = sp;
     }
+    
+    public void setFavPic(Image im){
+        this.favorizeStarImage.setImage(im);
+    }
+    
+    
+    
 }
