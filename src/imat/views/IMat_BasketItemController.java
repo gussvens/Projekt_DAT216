@@ -74,7 +74,7 @@ public class IMat_BasketItemController implements Initializable {
     }
 
     public void setItemPriceLabel(double price) {
-        this.basketProdPrice.setText(Double.toString(price));
+        this.basketProdPrice.setText(price + "");
     }
 
     public void setItemQuantity(String quant) {
@@ -85,7 +85,11 @@ public class IMat_BasketItemController implements Initializable {
         this.sI = sI;
     }
 
-    public void setNrOfBasketItems() {
+    public void setNrOfBasketItems(double amount){
+        this.nrOfBasketItems.setText(amount + "");
+    }
+
+  /*  public void setNrOfBasketItems() {
 
         List<ShoppingItem> sIList = IMat_Model.getBackEnd().getShoppingCart().getItems();
 
@@ -99,5 +103,5 @@ public class IMat_BasketItemController implements Initializable {
         nrOfBasketItems.setText(Integer.toString(i));
 
     }
-
+*/
 }

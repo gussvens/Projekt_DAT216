@@ -95,18 +95,32 @@ public class IMat_StoreItemController implements Initializable {
             Product p;
             p = IMat_Model.getBackEnd().getProduct(itemId);
             sC = IMat_Model.getBackEnd().getShoppingCart();
-            List<Product> l = IMatDataHandler.getInstance().getProducts();
-            /*for (Product x : l) {
-                System.out.println(x.getName());
-            }*/
+            boolean inBasket = false;
+
             //Attempt at incrementing items already in the cart
-            for(ShoppingItem s : sC.getItems())
-                if(s.getProduct() == p){
-                    s.setAmount(s.getAmount() + 1);
-                } else {
-                    ShoppingItem sI = new ShoppingItem(p);
-                    sC.addItem(sI);
+
+            if(sC.getItems().size() > 0) {
+                for (ShoppingItem s : sC.getItems()) {
+                    if (s.getProduct().equals(p)) {
+                        s.setAmount(s.getAmount() + 1);
+                        System.out.println(s.getAmount());
+                        System.out.println("Finns redan");
+                        inBasket = true;
+                    }
                 }
+            } else {
+                System.out.println("Nytt item");
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+                inBasket = true;
+            }
+
+            if(!inBasket){
+                System.out.println("bool");
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+            }
+
             placeBasketItems(sC.getItems());
         }
     };
@@ -124,9 +138,10 @@ public class IMat_StoreItemController implements Initializable {
                 Node storeItem = loader.load();
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
                 controller.setItemQuantity(p.getUnit());
                 controller.setShoppingItem(s);
+                controller.setNrOfBasketItems(s.getAmount());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
