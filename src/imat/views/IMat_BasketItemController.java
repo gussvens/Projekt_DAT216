@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import se.chalmers.ait.dat215.project.Product;
@@ -43,6 +44,12 @@ public class IMat_BasketItemController implements Initializable {
     private ScrollPane basketScrollPane;
     @FXML
     private Label nrOfBasketItems;
+    @FXML
+    private TextField nrOfProducts;
+    @FXML
+    private Button incAmount;
+    @FXML
+    private Button decAmount;
 
     private ShoppingItem sI;
 
@@ -52,6 +59,8 @@ public class IMat_BasketItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         basketRemove.setOnMouseClicked(removeObject);
+        incAmount.setOnMouseClicked(incrementAmount);
+        decAmount.setOnMouseClicked(decrementAmount);
     }
 
     // Removes the shoppigItem from the cart and the flowpane.
@@ -68,6 +77,29 @@ public class IMat_BasketItemController implements Initializable {
                     }
                 }
             };
+
+    /*
+    Clicking on increment or decrement amount should dynamically change
+    its value. This doesn't work yet.
+     */
+
+    EventHandler<MouseEvent> incrementAmount
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            sI.setAmount(sI.getAmount() + 1);
+        }
+    };
+
+    EventHandler<MouseEvent> decrementAmount
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            sI.setAmount(sI.getAmount() - 1);
+        }
+    };
 
     public void setItemNameLabel(String name) {
         this.basketProdName.setText(name);
@@ -87,6 +119,8 @@ public class IMat_BasketItemController implements Initializable {
 
     public void setNrOfBasketItems(double amount){
         this.nrOfBasketItems.setText(amount + "");
+        //Supposed to dynamically change with .getAmount()
+        this.nrOfProducts.setText(amount + "");
     }
 
   /*  public void setNrOfBasketItems() {
