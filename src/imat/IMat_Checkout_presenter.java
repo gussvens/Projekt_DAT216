@@ -17,7 +17,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
- * @author Andreas
+ * @author Group 12
  */
 public class IMat_Checkout_presenter {
 

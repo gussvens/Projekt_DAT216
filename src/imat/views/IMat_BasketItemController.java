@@ -1,5 +1,6 @@
 package imat.views;
 
+import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,9 +38,12 @@ public class IMat_BasketItemController implements Initializable {
     private Label nrOfBasketItems;
     @FXML
     private ImageView addAnother;
+    @FXML
+    private ImageView removeOne;
 
     private ShoppingItem sI;
     private Boolean inBasket;
+    private ShoppingCart sC;
 
     /**
      * Initializes the controller class.
@@ -50,6 +54,9 @@ public class IMat_BasketItemController implements Initializable {
         basketRemove.setCursor(Cursor.HAND);
         addAnother.setOnMouseClicked(addObject);
         addAnother.setCursor(Cursor.HAND);
+        removeOne.setOnMouseClicked(removeOneObject);
+        removeOne.setCursor(Cursor.HAND);
+        sC = IMat_Model.getBackEnd().getShoppingCart();
     }
 
     // Removes the shoppingItem from the cart and the flowpane.
@@ -58,7 +65,7 @@ public class IMat_BasketItemController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    IMat_Model.getBackEnd().getShoppingCart().removeItem(sI);
+                    sC.removeItem(sI);
                     IMat_FXMLController.getPresenter().updateBasket();
 
                     if (IMat_CheckOut_v2Controller.getPresenter() != null) {
@@ -66,47 +73,58 @@ public class IMat_BasketItemController implements Initializable {
                     }
                 }
             };
-    
-     EventHandler<MouseEvent> addObject
+
+    EventHandler<MouseEvent> removeOneObject
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
+                    sI.setAmount(sI.getAmount() - 1);
+                   
+                    if (sI.getAmount() == 0) {
+                       sC.removeItem(sI);
+                    }
                     
+                    IMat_FXMLController.getPresenter().updateBasket();
+                    if (getPresenter() != null) {
+                        getPresenter().updateScrollPane();
+                    }
+                }
+            };
+
+    EventHandler<MouseEvent> addObject
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+
                     Product p = sI.getProduct();
-                    ShoppingCart sC = IMat_Model.getBackEnd().getShoppingCart();
                     
-                     if (sC.getItems().size() > 0) {
+                    if (sC.getItems().size() > 0) {
                         for (ShoppingItem s : sC.getItems()) {
                             if (s.getProduct().equals(p)) {
                                 s.setAmount(s.getAmount() + 1);
-                                System.out.println(s.getAmount());
-                                System.out.println("Finns redan");
                                 inBasket = true;
                             }
                         }
                     } else {
-                        System.out.println("Nytt item");
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                         inBasket = true;
                     }
 
                     if (!inBasket) {
-                        System.out.println("bool");
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
-                    
-                    //IMat_Model.getBackEnd().getShoppingCart().addItem(sI);
+
                     IMat_FXMLController.getPresenter().updateBasket();
 
-                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                    if (getPresenter() != null) {
+                        getPresenter().updateScrollPane();
                     }
                 }
             };
-    
 
     public void setItemNameLabel(String name) {
         this.basketProdName.setText(name);
@@ -126,5 +144,9 @@ public class IMat_BasketItemController implements Initializable {
 
     public void setNrOfBasketItems(double amount) {
         this.nrOfBasketItems.setText((int) amount + "");
+    }
+    
+    private IMat_Checkout_presenter getPresenter(){
+        return IMat_CheckOut_v2Controller.getPresenter();
     }
 }

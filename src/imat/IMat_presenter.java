@@ -6,16 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,12 +26,10 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  *
- * @author Andreas
+ * @author Group 12
  */
 public class IMat_presenter extends Observable {
-
-    private IMat_FXMLController FXMLcont;
-    private final IMat_Model model;
+    //private final IMat_Model model;
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
@@ -46,8 +41,15 @@ public class IMat_presenter extends Observable {
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #95d9eb;";
     private final String SEARCH_BTN_DOWN = "-fx-background-color: #84c8da;";
 
+    private IMat_FXMLController FXMLcont;
     private final List<Pane> menuButtonsList;
-
+    private ScrollPane basketScrollPane;
+    private ScrollPane checkOutScrollPane;
+    private ScrollPane subScrollPane;
+    private final Button searchButton;
+    private Button toCheckout;
+    private TextField totalPrice;
+    private ImageView menuFavStar;
     private final Pane CategoryDairy,
             CategoryVegetables,
             CategoryFruit_Berries,
@@ -58,15 +60,7 @@ public class IMat_presenter extends Observable {
             CategoryBread,
             CategoryFavorites;
 
-    private final Button searchButton;
-    private Button toCheckout;
-
-    private TextField totalPrice;
-    private ScrollPane basketScrollPane;
-    private ScrollPane checkOutScrollPane;
-    private ScrollPane subScrollPane;
-    private ImageView menuFavStar;
-
+    
     public IMat_presenter(
             Pane CategoryDairy,
             Pane CategoryVegetables,
@@ -84,10 +78,6 @@ public class IMat_presenter extends Observable {
             IMat_FXMLController FXMLcont,
             Pane CategoryFavorites,
             ImageView menuFavStar) {
-
-        model = new IMat_Model();
-
-        checkOutScrollPane = new ScrollPane();
 
         this.menuFavStar = menuFavStar;
         this.CategoryFavorites = CategoryFavorites;
@@ -135,9 +125,12 @@ public class IMat_presenter extends Observable {
         searchButton.setOnMouseReleased(searchButtonReleased);
         searchButton.setCursor(Cursor.HAND);
 
+        checkOutScrollPane = new ScrollPane();
+        
+        // NOT SURE IF NEEDED HERE...
+        //model = new IMat_Model();
+        
         updateBasket();
-        System.out.println(IMat_Model.getBackEnd().getShoppingCart().getItems().size());
-
     }
 
     // EVENTHANDLERS
@@ -209,6 +202,13 @@ public class IMat_presenter extends Observable {
         return ((Pane) t.getSource());
     }
 
+    private double getTotal(){
+        return IMat_Model.getBackEnd().getShoppingCart().getTotal();
+    }
+    
+    
+    
+    // Sets the color of a menuPane when it's clicked.
     public void colorChangeOnClick(MouseEvent t) {
         for (Pane p : menuButtonsList) {
             p.setStyle(MENU_DEFAULT_COLOR);
@@ -219,9 +219,15 @@ public class IMat_presenter extends Observable {
 
     // Sets the totalPrice every time a product is added to the basket.
     public void setTotal() {
-        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
+        totalPrice.setText(Double.toString(getTotal()) + " kr");
     }
 
+    
+    
+    
+    
+    
+    
     /* Sets the toCheckout-button to active 
      when there are products in the basket
      */
@@ -248,7 +254,7 @@ public class IMat_presenter extends Observable {
                 Node storeItem = loader.load();
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice()*s.getAmount());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
                 controller.setItemQuantity("kr");
                 controller.setShoppingItem(s);
                 controller.setNrOfBasketItems(s.getAmount());
@@ -258,10 +264,10 @@ public class IMat_presenter extends Observable {
             }
         }
         /*
-        if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
-            flowPane.getChildren().add(new ImageView("imat/images/shoppingCart.jpg"));
-        }
-                */
+         if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
+         flowPane.getChildren().add(new ImageView("imat/images/shoppingCart.jpg"));
+         }
+         */
         basketScrollPane.setContent(flowPane);
         setTotal();
 
@@ -321,10 +327,11 @@ public class IMat_presenter extends Observable {
         return FXMLcont;
     }
 
-    public void setFavStarInactive(){
+    public void setFavStarInactive() {
         menuFavStar.setImage(new Image("imat/images/star_trans.png"));
     }
-    public void setFavStarActive(){
+
+    public void setFavStarActive() {
         menuFavStar.setImage(new Image("imat/images/golden_star_trans.png"));
     }
 }

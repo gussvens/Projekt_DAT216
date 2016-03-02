@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package imat;
 
 import imat.views.IMat_BasketItemController;
@@ -25,7 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -33,16 +30,19 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 /**
  * FXML Controller class
  *
- * @author Gustav
+ * @author Group 12
  */
 public class IMat_StoreItemController implements Initializable {
 
-    private ShoppingCart sC;
-
+    // MenuButton colors.
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #E0E0E0;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color: #d6eeff;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color: #a6eafc;";
+    
+    
+    // FXML inports
     @FXML
     private Label itemNameLabel, itemPriceLabel, itemQuantityLabel;
-
-    private int itemId;
     @FXML
     private Button addButton;
     @FXML
@@ -52,20 +52,28 @@ public class IMat_StoreItemController implements Initializable {
     @FXML
     private TextField totalPrice;
 
+    // Other variables
     private boolean isFavorite = false;
     private boolean inBasket = false;
+    private ShoppingCart sC;
+    private int itemId;
 
-    /**
-     * Initializes the controller class.
-     */
+    // Adds some listeners and sets the cursor for the favorite-button.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         addButton.setOnMouseClicked(onButtonClicked);
+        addButton.setOnMouseEntered(storeItemEnter);
+        addButton.setOnMouseExited(storeItemExit);
+        addButton.setOnMousePressed(storeItemPressed);
+        addButton.setOnMouseReleased(storeItemReleased);
         favorizeStarImage.setOnMouseClicked(favClicked);
         favorizeStarImage.setCursor(Cursor.HAND);
     }
 
-    // Add or remove favorites.
+    /*
+     Add or remove favorites and sets the star in the menu to active if
+     there are any objects set to favorite.
+     */
     EventHandler<MouseEvent> favClicked
             = new EventHandler<MouseEvent>() {
 
@@ -101,20 +109,16 @@ public class IMat_StoreItemController implements Initializable {
                         for (ShoppingItem s : sC.getItems()) {
                             if (s.getProduct().equals(p)) {
                                 s.setAmount(s.getAmount() + 1);
-                                System.out.println(s.getAmount());
-                                System.out.println("Finns redan");
                                 inBasket = true;
                             }
                         }
                     } else {
-                        System.out.println("Nytt item");
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                         inBasket = true;
                     }
 
                     if (!inBasket) {
-                        System.out.println("bool");
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
@@ -150,12 +154,67 @@ public class IMat_StoreItemController implements Initializable {
         updateTotalPrice();
     }
 
+    
+    
     public void updateTotalPrice() {
         IMat_FXMLController.getPresenter().setTotal();
         IMat_FXMLController.getPresenter().setButtonActive();
     }
 
-    //Only testing
+    // Resets the color of the menuButton on mouseExit. 
+    EventHandler<MouseEvent> storeItemExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    if (getButton(t).getStyle().equals(MENU_ENTER_COLOR)) {
+                        getButton(t).setStyle(MENU_DEFAULT_COLOR);
+                    }
+                }
+            };
+    
+    EventHandler<MouseEvent> storeItemPressed
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    
+                    getButton(t).setStyle(MENU_CLICKED_COLOR);
+                    
+                }
+            };
+    EventHandler<MouseEvent> storeItemReleased
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    
+                    getButton(t).setStyle(MENU_ENTER_COLOR);
+                    
+                }
+            };
+
+    // Changes the color of the menuButton on mouseEnter.
+    EventHandler<MouseEvent> storeItemEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    if (!getButton(t).getStyle().equals(MENU_CLICKED_COLOR)) {
+                        getButton(t).setStyle(MENU_ENTER_COLOR);
+                    }
+                }
+            };
+
+    // Helper to get the right menuButton.
+    private Button getButton(MouseEvent t) {
+        return ((Button) t.getSource());
+    }
+    
+    
+    
+
+    // Setters
     public void setItemNameLabel(String name) {
         this.itemNameLabel.setText(name);
     }

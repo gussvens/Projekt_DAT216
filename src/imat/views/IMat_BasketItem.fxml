@@ -37,7 +37,7 @@
             <Label fx:id="basketProdQuant" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="15.0" prefHeight="17.0" prefWidth="11.0" text="kr" />
          </children>
       </HBox>
-      <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="41.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="48.0">
+      <ImageView fx:id="removeOne" fitHeight="15.0" fitWidth="15.0" layoutX="41.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="48.0">
          <image>
             <Image url="@../images/pil2.jpg" />
          </image>

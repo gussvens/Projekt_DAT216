@@ -6,6 +6,14 @@
 
 }
 
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+
 .evenCategories {
     -fx-color: #FF0000;
 }
