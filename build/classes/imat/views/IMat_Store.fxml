@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.geometry.*?>
@@ -53,16 +54,21 @@
                   </Pane>
                   <Pane fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label fx:id="CategoryFavourites" layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Favoriter">
+                        <Label fx:id="CategoryFavourites" layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Favoriter">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <ImageView fx:id="menuFavStar" fitHeight="20.0" fitWidth="20.0" layoutX="11.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/star_trans.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Pane fx:id="CategoryVegetables" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Grönsaker">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Grönsaker">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -71,7 +77,7 @@
                   </Pane>
                   <Pane fx:id="CategoryFruit_Berries" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Frukt och bär">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Frukt och bär">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -80,7 +86,7 @@
                   </Pane>
                   <Pane fx:id="CategoryBread" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Bröd">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Bröd">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -89,7 +95,7 @@
                   </Pane>
                   <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Kött, fisk och skaldjur">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Kött, fisk och skaldjur">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -98,7 +104,7 @@
                   </Pane>
                   <Pane fx:id="CategoryDairy" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Mejeri">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Mejeri">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -110,7 +116,7 @@
                   </Pane>
                   <Pane fx:id="CategoryDryGoods" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Torrvaror">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Torrvaror">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -119,7 +125,7 @@
                   </Pane>
                   <Pane fx:id="CategoryDrinks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Dryck">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Dryck">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -128,7 +134,7 @@
                   </Pane>
                   <Pane fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
-                        <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Godis och snacks">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Godis och snacks">
                            <font>
                               <Font size="16.0" />
                            </font>

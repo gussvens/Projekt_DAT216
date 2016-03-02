@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -64,6 +65,7 @@ public class IMat_presenter extends Observable {
     private ScrollPane basketScrollPane;
     private ScrollPane checkOutScrollPane;
     private ScrollPane subScrollPane;
+    private ImageView menuFavStar;
 
     public IMat_presenter(
             Pane CategoryDairy,
@@ -80,12 +82,14 @@ public class IMat_presenter extends Observable {
             ScrollPane basketScrollPane,
             ScrollPane subScrollPane,
             IMat_FXMLController FXMLcont,
-            Pane CategoryFavorites) {
+            Pane CategoryFavorites,
+            ImageView menuFavStar) {
 
         model = new IMat_Model();
 
         checkOutScrollPane = new ScrollPane();
 
+        this.menuFavStar = menuFavStar;
         this.CategoryFavorites = CategoryFavorites;
         this.FXMLcont = FXMLcont;
         this.subScrollPane = subScrollPane;
@@ -317,4 +321,10 @@ public class IMat_presenter extends Observable {
         return FXMLcont;
     }
 
+    public void setFavStarInactive(){
+        menuFavStar.setImage(new Image("imat/images/star_trans.png"));
+    }
+    public void setFavStarActive(){
+        menuFavStar.setImage(new Image("imat/images/golden_star_trans.png"));
+    }
 }

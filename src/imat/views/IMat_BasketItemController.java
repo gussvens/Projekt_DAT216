@@ -49,6 +49,7 @@ public class IMat_BasketItemController implements Initializable {
         basketRemove.setOnMouseClicked(removeObject);
         basketRemove.setCursor(Cursor.HAND);
         addAnother.setOnMouseClicked(addObject);
+        addAnother.setCursor(Cursor.HAND);
     }
 
     // Removes the shoppingItem from the cart and the flowpane.

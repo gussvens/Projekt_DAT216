@@ -30,6 +30,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -78,6 +79,8 @@ public class IMat_FXMLController implements Initializable {
     private ScrollPane subScrollPane;
     @FXML
     private Pane CategoryFavorites;
+    @FXML
+    private ImageView menuFavStar;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -106,7 +109,8 @@ public class IMat_FXMLController implements Initializable {
                 basketScrollPane,
                 subScrollPane,
                 this,
-                CategoryFavorites
+                CategoryFavorites,
+                menuFavStar
         );
 
         menuButtonList = new ArrayList<>();
@@ -375,7 +379,8 @@ public class IMat_FXMLController implements Initializable {
     // Place storeItems at the centerstage.
     public void placeStoreItems(List<Product> list) {
         FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(3);
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
 
         for (Product p : list) {
