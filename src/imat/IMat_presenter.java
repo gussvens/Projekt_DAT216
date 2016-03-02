@@ -35,7 +35,7 @@ public class IMat_presenter extends Observable {
     private final IMat_Model model;
 
     // MenuButton colors.
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #e2e2e2;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
     private final String MENU_ENTER_COLOR = "-fx-background-color: #d6eeff;";
     private final String MENU_CLICKED_COLOR = "-fx-background-color: #a6eafc;";
 
@@ -235,6 +235,7 @@ public class IMat_presenter extends Observable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
+        flowPane.setStyle("-fx-background: #FFFFFF;");
         flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {

@@ -376,6 +376,7 @@ public class IMat_FXMLController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
+        flowPane.setStyle("-fx-background: #FFFFFF;");
         flowPane.setPrefWidth(700);
 
         for (Product p : list) {
@@ -412,6 +413,7 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
+        flowPane.setStyle("-fx-background-color: #FFFFFF");
 
         List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
 

@@ -18,8 +18,12 @@
     -fx-background-color: #DDDDDD;
 }
 
-#storeItemView {
+.centerStageViews{
     -fx-background-color: #FDFDFD;
+}
+
+#storeItemScrollPane{
+    -fx-foreground-color: #000000;
 }
 
 #storeRegisterView {
