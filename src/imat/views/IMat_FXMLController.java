@@ -425,6 +425,7 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setHgap(6);
         flowPane.setOpacity(0);
         flowPane.setPrefWidth(700);
+        flowPane.setStyle("-fx-background-color: #FFFFFF");
 
         List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
 
