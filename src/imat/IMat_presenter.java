@@ -53,7 +53,8 @@ public class IMat_presenter extends Observable {
             CategoryMeat_Fish_Shellfish,
             CategoryDrinks,
             CategoryCandy_Snacks,
-            CategoryBread;
+            CategoryBread,
+            CategoryFavorites;
 
     private final Button searchButton;
     private Button toCheckout;
@@ -77,12 +78,14 @@ public class IMat_presenter extends Observable {
             Button toCheckout,
             ScrollPane basketScrollPane,
             ScrollPane subScrollPane,
-            IMat_FXMLController FXMLcont) {
+            IMat_FXMLController FXMLcont,
+            Pane CategoryFavorites) {
 
         model = new IMat_Model();
 
         checkOutScrollPane = new ScrollPane();
 
+        this.CategoryFavorites = CategoryFavorites;
         this.FXMLcont = FXMLcont;
         this.subScrollPane = subScrollPane;
         this.basketScrollPane = basketScrollPane;
@@ -111,6 +114,7 @@ public class IMat_presenter extends Observable {
         menuButtonsList.add(CategoryVegetables);
         menuButtonsList.add(CategoryDrinks);
         menuButtonsList.add(CategoryBread);
+        menuButtonsList.add(CategoryFavorites);
 
         // Sets mouseEvents and cursor to the searchButton
         for (Pane p : menuButtonsList) {

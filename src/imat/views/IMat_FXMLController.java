@@ -75,6 +75,8 @@ public class IMat_FXMLController implements Initializable {
     private Label subName;
     @FXML
     private ScrollPane subScrollPane;
+    @FXML
+    private Pane CategoryFavorites;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -102,7 +104,8 @@ public class IMat_FXMLController implements Initializable {
                 toCheckout,
                 basketScrollPane,
                 subScrollPane,
-                this
+                this,
+                CategoryFavorites
         );
 
         menuButtonList = new ArrayList<>();
@@ -114,6 +117,7 @@ public class IMat_FXMLController implements Initializable {
         menuButtonList.add(CategoryMeat_Fish_Shellfish);
         menuButtonList.add(CategoryVegetables);
         menuButtonList.add(CategoryBread);
+        menuButtonList.add(CategoryFavorites);
 
         for (Pane p : menuButtonList) {
             p.setOnMouseClicked(menuButtonClicked);
@@ -183,6 +187,9 @@ public class IMat_FXMLController implements Initializable {
                         pC = ProductCategory.DAIRIES;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
                         subNameList.add("Mejeri");
+                    }else if (getCurrentPane(t).equals("CategoryFavorites")){
+                        prodList = IMat_Model.getBackEnd().favorites();
+                    
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
                         pC = ProductCategory.SWEET;

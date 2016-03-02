@@ -57,6 +57,7 @@ public class IMat_StoreItemController implements Initializable {
     @FXML
     private TextField totalPrice;
 
+    private boolean isFavorite = false;
     /**
      * Initializes the controller class.
      */
@@ -72,9 +73,17 @@ public class IMat_StoreItemController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
-                    Product prod = IMat_Model.getBackEnd().getProduct(itemId);
-                    IMat_Model.getBackEnd().addFavorite(prod);
+                    if (!isFavorite) {
+                        favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
+                        Product prod = IMat_Model.getBackEnd().getProduct(itemId);
+                        IMat_Model.getBackEnd().addFavorite(prod);
+                        isFavorite = true;
+                    }else if(isFavorite){
+                        favorizeStarImage.setImage(new Image("imat/images/star.jpg"));
+                        Product prod = IMat_Model.getBackEnd().getProduct(itemId);
+                        IMat_Model.getBackEnd().removeFavorite(prod);
+                        isFavorite = false;
+                    }
                 }
             };
 
@@ -163,11 +172,9 @@ public class IMat_StoreItemController implements Initializable {
     public void setScrollPane(ScrollPane sp) {
         this.basketScrollPane = sp;
     }
-    
-    public void setFavPic(Image im){
+
+    public void setFavPic(Image im) {
         this.favorizeStarImage.setImage(im);
     }
-    
-    
-    
+
 }

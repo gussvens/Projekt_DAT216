@@ -50,7 +50,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Pane>
-                  <Pane fx:id="CategoryCandy_Snacks1" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                      <children>
                         <Label fx:id="CategoryFavourites" layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Favoriter">
                            <font>
