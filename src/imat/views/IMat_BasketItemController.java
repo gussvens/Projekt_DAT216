@@ -36,7 +36,7 @@ public class IMat_BasketItemController implements Initializable {
     @FXML
     private Label nrOfBasketItems;
     @FXML
-    private Button addAnother;
+    private ImageView addAnother;
 
     private ShoppingItem sI;
     private Boolean inBasket;
