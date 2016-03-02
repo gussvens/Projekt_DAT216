@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import se.chalmers.ait.dat215.project.Customer;
 
 /**
@@ -25,10 +26,10 @@ import se.chalmers.ait.dat215.project.Customer;
  */
 public class IMat_Start_v2Controller implements Initializable {
 
-    @FXML private ImageView goToStoreButton;
-    @FXML private ImageView goToSavedListButton;
-    @FXML private ImageView goToHistoryButton;
-    @FXML private ImageView goToSettingsButton;
+    @FXML private StackPane goToStoreButton;
+    @FXML private StackPane goToSavedListButton;
+    @FXML private StackPane goToHistoryButton;
+    @FXML private StackPane goToSettingsButton;
 
 
     
