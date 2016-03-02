@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
@@ -124,7 +125,7 @@ public class IMat_FXMLController implements Initializable {
         }
         searchButton.setOnMouseClicked(searchButtonClicked);
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
-
+        initCenter();
     }
 
     EventHandler<MouseEvent> checkoutButtonClicked
@@ -187,9 +188,9 @@ public class IMat_FXMLController implements Initializable {
                         pC = ProductCategory.DAIRIES;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
                         subNameList.add("Mejeri");
-                    }else if (getCurrentPane(t).equals("CategoryFavorites")){
+                    } else if (getCurrentPane(t).equals("CategoryFavorites")) {
                         prodList = IMat_Model.getBackEnd().favorites();
-                    
+
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
                         pC = ProductCategory.SWEET;
@@ -376,7 +377,6 @@ public class IMat_FXMLController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
-        flowPane.setStyle("-fx-background: #FFFFFF;");
         flowPane.setPrefWidth(700);
 
         for (Product p : list) {
@@ -405,6 +405,17 @@ public class IMat_FXMLController implements Initializable {
         this.storeItemScrollPane.setContent(flowPane);
         placeSubItems(subNameList);
 
+    }
+
+    public void initCenter() {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(700);
+
+        flowPane.getChildren().add(new ImageView("imat/images/shoppingCart2.jpg"));
+
+        this.storeItemScrollPane.setContent(flowPane);
     }
 
     // Place storeItems at the centerstage.

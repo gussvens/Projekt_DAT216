@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -253,6 +254,11 @@ public class IMat_presenter extends Observable {
                 e.printStackTrace();
             }
         }
+        /*
+        if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
+            flowPane.getChildren().add(new ImageView("imat/images/shoppingCart.jpg"));
+        }
+                */
         basketScrollPane.setContent(flowPane);
         setTotal();
 
