@@ -90,32 +90,26 @@ public class IMat_StoreItemController implements Initializable {
     EventHandler<MouseEvent> onButtonClicked
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    Product p;
-                    p = IMat_Model.getBackEnd().getProduct(itemId);
-                    sC = IMat_Model.getBackEnd().getShoppingCart();
-                    List<Product> l = IMatDataHandler.getInstance().getProducts();
-                    for (Product x : l) {
-                        System.out.println(x.getName());
-                    }
+        @Override
+        public void handle(MouseEvent t) {
+            Product p;
+            p = IMat_Model.getBackEnd().getProduct(itemId);
+            sC = IMat_Model.getBackEnd().getShoppingCart();
+            List<Product> l = IMatDataHandler.getInstance().getProducts();
+            /*for (Product x : l) {
+                System.out.println(x.getName());
+            }*/
+            //Attempt at incrementing items already in the cart
+            for(ShoppingItem s : sC.getItems())
+                if(s.getProduct() == p){
+                    s.setAmount(s.getAmount() + 1);
+                } else {
                     ShoppingItem sI = new ShoppingItem(p);
-
-                    //Attempt at incrementing items already in the cart
-                    if (!sC.getItems().contains(sI)) {
-                        sC.addItem(sI);
-                    }
-                    /*
-                     for (ShoppingItem s : sC.getItems()) {
-                     if (s.getProduct().getName().equals(p.getName())) {
-                     s.setAmount(s.getAmount() + 1);
-                     System.out.println(s.getAmount());
-                     }
-                     }
-                     */
-                    placeBasketItems(sC.getItems());
+                    sC.addItem(sI);
                 }
-            };
+            placeBasketItems(sC.getItems());
+        }
+    };
 
     public void placeBasketItems(List<ShoppingItem> list) {
         FlowPane flowPane = new FlowPane();
