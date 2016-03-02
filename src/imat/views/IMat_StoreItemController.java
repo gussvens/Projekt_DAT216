@@ -58,6 +58,8 @@ public class IMat_StoreItemController implements Initializable {
     private TextField totalPrice;
 
     private boolean isFavorite = false;
+    private boolean inBasket = false;
+
     /**
      * Initializes the controller class.
      */
@@ -78,7 +80,7 @@ public class IMat_StoreItemController implements Initializable {
                         Product prod = IMat_Model.getBackEnd().getProduct(itemId);
                         IMat_Model.getBackEnd().addFavorite(prod);
                         isFavorite = true;
-                    }else if(isFavorite){
+                    } else if (isFavorite) {
                         favorizeStarImage.setImage(new Image("imat/images/star.jpg"));
                         Product prod = IMat_Model.getBackEnd().getProduct(itemId);
                         IMat_Model.getBackEnd().removeFavorite(prod);
@@ -92,27 +94,50 @@ public class IMat_StoreItemController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
+                    
                     Product p;
                     p = IMat_Model.getBackEnd().getProduct(itemId);
                     sC = IMat_Model.getBackEnd().getShoppingCart();
+                    //List<ShoppingItem> sCL = sC.getItems();
+                    
+                    System.out.println("Storleken på sC är: " + sC.getItems().size());
+                    
+                    
+                    
                     List<Product> l = IMatDataHandler.getInstance().getProducts();
                     for (Product x : l) {
                         System.out.println(x.getName());
                     }
-                    ShoppingItem sI = new ShoppingItem(p);
+                    if (sC.getItems().isEmpty()) {
 
-                    //Attempt at incrementing items already in the cart
-                    if (!sC.getItems().contains(sI)) {
+                        ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
                     /*
-                     for (ShoppingItem s : sC.getItems()) {
-                     if (s.getProduct().getName().equals(p.getName())) {
-                     s.setAmount(s.getAmount() + 1);
-                     System.out.println(s.getAmount());
-                     }
+                     //Attempt at incrementing items already in the cart
+                     if (!sC.getItems().contains(sI)) {
+                     sC.addItem(sI);
                      }
                      */
+
+                    if (!sC.getItems().isEmpty()) {
+                       
+                        for (ShoppingItem s : sC.getItems()) {
+
+                            if (s.getProduct().getName().equals(p.getName())) {
+                                s.setAmount(s.getAmount() + 1);
+                                //System.out.println(s.getAmount());
+                                inBasket = true;
+                            } else {
+                               inBasket = false;
+                            }
+                        }
+                    }
+                    if (!inBasket) {
+                        ShoppingItem sI = new ShoppingItem(p);
+                        sC.addItem(sI);
+                    }
+
                     placeBasketItems(sC.getItems());
                 }
             };
@@ -133,6 +158,8 @@ public class IMat_StoreItemController implements Initializable {
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemQuantity(p.getUnit());
                 controller.setShoppingItem(s);
+                int i = controller.setNrOfBasketItems();
+                System.out.println(s.getAmount());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();

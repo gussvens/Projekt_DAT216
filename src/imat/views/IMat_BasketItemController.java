@@ -85,11 +85,11 @@ public class IMat_BasketItemController implements Initializable {
         this.sI = sI;
     }
 
-    public void setNrOfBasketItems() {
+    public int setNrOfBasketItems() {
 
         List<ShoppingItem> sIList = IMat_Model.getBackEnd().getShoppingCart().getItems();
 
-        int i = 1;
+        int i = 0;
         for (ShoppingItem s : sIList) {
             if (s.getProduct().getName().equals(basketProdName.getText())) {
                 i++;
@@ -97,7 +97,7 @@ public class IMat_BasketItemController implements Initializable {
         }
 
         nrOfBasketItems.setText(Integer.toString(i));
-
+        return i;
     }
 
 }
