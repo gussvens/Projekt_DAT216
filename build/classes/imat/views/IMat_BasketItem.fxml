@@ -12,15 +12,15 @@
         <URL value="@css/imat_basketitem.css" />
     </stylesheets>
    <children>
-      <HBox layoutY="15.0" spacing="4.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <HBox layoutX="17.0" layoutY="17.0" prefHeight="17.0" prefWidth="124.0" spacing="4.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
          <children>
-            <Label layoutY="15.0" text="1" />
+            <Label fx:id="nrOfBasketItems" layoutY="15.0" prefHeight="17.0" prefWidth="20.0" text="1" />
             <Label fx:id="basketProdName" layoutX="35.0" layoutY="15.0" prefHeight="17.0" prefWidth="105.0" text="Banankotletter" />
          </children>
       </HBox>
-      <HBox layoutX="172.0" layoutY="15.0" spacing="3.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="15.0">
+      <HBox alignment="TOP_RIGHT" layoutX="172.0" layoutY="18.0" prefHeight="17.0" prefWidth="116.0" spacing="3.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="17.0">
          <children>
-            <Label fx:id="basketProdPrice" layoutX="90.0" layoutY="15.0" text="100.00" />
+            <Label fx:id="basketProdPrice" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="15.0" prefHeight="17.0" prefWidth="65.0" text="100.00" />
             <Label fx:id="basketProdQuant" layoutX="129.0" layoutY="15.0" prefHeight="17.0" prefWidth="34.0" text="kr/st" />
          </children>
       </HBox>
