@@ -412,7 +412,8 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
-        flowPane.setOpacity(0);
+        flowPane.setStyle("-fx-background-color: #FFFFFF;");
+
         flowPane.getChildren().add(new ImageView("imat/images/shoppingCart2.jpg"));
 
         this.storeItemScrollPane.setContent(flowPane);
@@ -423,9 +424,7 @@ public class IMat_FXMLController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
-        flowPane.setOpacity(0);
         flowPane.setPrefWidth(700);
-        flowPane.setStyle("-fx-background-color: #FFFFFF");
 
         List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
 
@@ -461,7 +460,6 @@ public class IMat_FXMLController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setHgap(6);
         flowPane.setPrefWidth(640);
-        flowPane.setOpacity(0);
         flowPane.setPrefHeight(104);
 
         for (String p : list) {

@@ -192,7 +192,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" disable="true" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF; -fx-background-color: #FFFFFF; -fx-faint-focus-color: transparent; -fx-focus-color: transparent;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="32.0" prefHeight="103.0" prefWidth="641.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="32.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="32.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

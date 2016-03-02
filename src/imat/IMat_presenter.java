@@ -236,7 +236,6 @@ public class IMat_presenter extends Observable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
-        flowPane.setStyle("-fx-background: #FFFFFF;");
         flowPane.setPrefWidth(255);
 
         for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
