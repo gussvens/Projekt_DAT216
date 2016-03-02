@@ -412,6 +412,7 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
+        flowPane.setStyle("-fx-background-color: #FFFFFF;");
 
         flowPane.getChildren().add(new ImageView("imat/images/shoppingCart2.jpg"));
 
@@ -424,7 +425,6 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(700);
-        flowPane.setStyle("-fx-background-color: #FFFFFF");
 
         List<Product> list = IMat_Model.getBackEnd().getProducts(prod);
 
