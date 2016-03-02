@@ -25,11 +25,12 @@
         <URL value="@imat.fxml.css" />
     </stylesheets>
    <children>
+      <Pane prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #EEEEEE;">
                      <children>
                         <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                            <children>
@@ -50,7 +51,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Pane>
-                  <Pane fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label fx:id="CategoryFavourites" layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Favoriter">
                            <font>
@@ -59,7 +60,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryVegetables" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryVegetables" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Grönsaker">
                            <font>
@@ -68,7 +69,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryFruit_Berries" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryFruit_Berries" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Frukt och bär">
                            <font>
@@ -77,7 +78,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryBread" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryBread" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Bröd">
                            <font>
@@ -86,7 +87,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Kött, fisk och skaldjur">
                            <font>
@@ -95,7 +96,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryDairy" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryDairy" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Mejeri">
                            <font>
@@ -107,7 +108,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Pane>
-                  <Pane fx:id="CategoryDryGoods" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryDryGoods" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Torrvaror">
                            <font>
@@ -116,7 +117,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryDrinks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryDrinks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Dryck">
                            <font>
@@ -125,7 +126,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
                      <children>
                         <Label layoutX="30.0" prefHeight="55.0" prefWidth="195.0" text="Godis och snacks">
                            <font>
@@ -142,12 +143,12 @@
          <children>
             <HBox layoutY="-1.0">
                <children>
-                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #EEEEEE;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="helpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="helpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #EEEEEE;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -156,7 +157,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
@@ -166,7 +167,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
+                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #EEEEEE;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -191,7 +192,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF; -fx-faint-focus-color: transparent; -fx-focus-color: transparent;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="32.0" prefHeight="103.0" prefWidth="641.0" style="-fx-border-color: #FFFFFF; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="32.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF; -fx-background-color: #FFFFFF; -fx-faint-focus-color: transparent; -fx-focus-color: transparent;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="32.0" prefHeight="103.0" prefWidth="641.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" vbarPolicy="NEVER" AnchorPane.leftAnchor="346.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

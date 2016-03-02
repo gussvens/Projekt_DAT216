@@ -376,6 +376,7 @@ public class IMat_FXMLController implements Initializable {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
+        flowPane.setStyle("-fx-background: #FFFFFF;");
         flowPane.setPrefWidth(700);
 
         for (Product p : list) {
