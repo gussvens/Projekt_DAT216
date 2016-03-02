@@ -2,11 +2,13 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_Start_v2Controller">
@@ -14,66 +16,89 @@
         <URL value="@/imat/css/imat_start_v2.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" text="iMat" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
-         <font>
-            <Font size="55.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="goToStoreButton" fitHeight="300.0" fitWidth="450.0" onMouseClicked="#storeButtonClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="120.0">
-         <image>
-            <Image url="@../images/matButik.jpg" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="455.0" layoutY="380.0" prefHeight="17.0" prefWidth="450.0" style="-fx-background-color: #CCCCCC;" text="Till butiken" textFill="WHITE" AnchorPane.topAnchor="380.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
+      <StackPane fx:id="goToStoreButton" layoutX="455.0" layoutY="120.0" onMouseClicked="#storeButtonClicked" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <ImageView fitHeight="300.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/matButik.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="450.0" style="-fx-background-color: #CCCCCC;" text="Till butiken" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </StackPane>
       <HBox layoutX="455.0" layoutY="486.0" prefHeight="135.0" prefWidth="450.0" spacing="15.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="435.0">
          <children>
-            <ImageView fx:id="goToSavedListButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#savedListButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/placeholder.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="goToHistoryButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#historyButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/placeholder.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="goToSettingsButton" fitHeight="125.0" fitWidth="140.0" onMouseClicked="#settingsButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/placeholder.jpg" />
-               </image>
-            </ImageView>
+            <StackPane fx:id="goToSavedListButton" onMouseClicked="#savedListButtonClicked">
+               <children>
+                  <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/placeholder.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Sparade listor" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="goToHistoryButton" onMouseClicked="#historyButtonClicked">
+               <children>
+                  <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/placeholder.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Historik" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </StackPane>
+            <StackPane fx:id="goToSettingsButton" onMouseClicked="#settingsButtonClicked">
+               <children>
+                  <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/placeholder.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Inställningar" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </StackPane>
          </children>
       </HBox>
-      <Label alignment="CENTER" layoutX="455.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Sparade listor" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" layoutX="610.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Historik" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
-      <Label alignment="CENTER" layoutX="765.0" layoutY="520.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Inställningar" textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </Label>
    </children>
 </AnchorPane>

@@ -1,27 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package imat.views;
 
-import com.sun.org.apache.xerces.internal.util.DOMUtil;
 import imat.IMat_Model;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
@@ -54,7 +42,7 @@ public class IMat_BasketItemController implements Initializable {
         basketRemove.setOnMouseClicked(removeObject);
     }
 
-    // Removes the shoppigItem from the cart and the flowpane.
+    // Removes the shoppingItem from the cart and the flowpane.
     EventHandler<MouseEvent> removeObject
             = new EventHandler<MouseEvent>() {
 
@@ -74,7 +62,7 @@ public class IMat_BasketItemController implements Initializable {
     }
 
     public void setItemPriceLabel(double price) {
-        this.basketProdPrice.setText(Double.toString(price));
+        this.basketProdPrice.setText(price + "");
     }
 
     public void setItemQuantity(String quant) {
@@ -85,19 +73,7 @@ public class IMat_BasketItemController implements Initializable {
         this.sI = sI;
     }
 
-    public int setNrOfBasketItems() {
-
-        List<ShoppingItem> sIList = IMat_Model.getBackEnd().getShoppingCart().getItems();
-
-        int i = 0;
-        for (ShoppingItem s : sIList) {
-            if (s.getProduct().getName().equals(basketProdName.getText())) {
-                i++;
-            }
-        }
-
-        nrOfBasketItems.setText(Integer.toString(i));
-        return i;
+    public void setNrOfBasketItems(double amount) {
+        this.nrOfBasketItems.setText((int) amount + "");
     }
-
 }

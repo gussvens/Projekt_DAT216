@@ -44,9 +44,10 @@ public class IMat_Checkout_presenter {
                 Node storeItem = loader.load();
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
                 controller.setItemQuantity(p.getUnit());
                 controller.setShoppingItem(s);
+                controller.setNrOfBasketItems(s.getAmount());
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -91,7 +91,8 @@ public class IMat_StoreItemController implements Initializable {
 
     EventHandler<MouseEvent> onButtonClicked
             = new EventHandler<MouseEvent>() {
-
+/*
+<<<<<<< HEAD
                 @Override
                 public void handle(MouseEvent t) {
                     
@@ -118,7 +119,7 @@ public class IMat_StoreItemController implements Initializable {
                      if (!sC.getItems().contains(sI)) {
                      sC.addItem(sI);
                      }
-                     */
+                     
 
                     if (!sC.getItems().isEmpty()) {
                        
@@ -139,8 +140,42 @@ public class IMat_StoreItemController implements Initializable {
                     }
 
                     placeBasketItems(sC.getItems());
+=======
+*/
+        @Override
+        public void handle(MouseEvent t) {
+            Product p;
+            p = IMat_Model.getBackEnd().getProduct(itemId);
+            sC = IMat_Model.getBackEnd().getShoppingCart();
+            boolean inBasket = false;
+
+            //Attempt at incrementing items already in the cart
+
+            if(sC.getItems().size() > 0) {
+                for (ShoppingItem s : sC.getItems()) {
+                    if (s.getProduct().equals(p)) {
+                        s.setAmount(s.getAmount() + 1);
+                        System.out.println(s.getAmount());
+                        System.out.println("Finns redan");
+                        inBasket = true;
+                    }
                 }
-            };
+            } else {
+                System.out.println("Nytt item");
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+                inBasket = true;
+            }
+
+            if(!inBasket){
+                System.out.println("bool");
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+            }
+
+            placeBasketItems(sC.getItems());
+        }
+    };
 
     public void placeBasketItems(List<ShoppingItem> list) {
         FlowPane flowPane = new FlowPane();
@@ -155,11 +190,17 @@ public class IMat_StoreItemController implements Initializable {
                 Node storeItem = loader.load();
                 IMat_BasketItemController controller = loader.getController();
                 controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
                 controller.setItemQuantity(p.getUnit());
                 controller.setShoppingItem(s);
+                /*
+<<<<<<< HEAD
                 int i = controller.setNrOfBasketItems();
                 System.out.println(s.getAmount());
+=======
+        */
+                controller.setNrOfBasketItems(s.getAmount());
+
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();

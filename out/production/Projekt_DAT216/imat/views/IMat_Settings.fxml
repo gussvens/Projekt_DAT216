@@ -1,51 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_SettingsController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_SettingsController">
    <children>
-      <VBox layoutX="370.0" layoutY="175.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="searchPane" prefHeight="15.0" prefWidth="268.0" AnchorPane.leftAnchor="12.0">
          <children>
-            <AnchorPane prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutY="-1.0">
                <children>
-                  <HBox layoutX="300.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0000FF;">
-                           <children>
-                              <Button fx:id="homeButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" text="Tillbaka till Startsidan" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="10.0">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="helpButton" layoutX="125.0" layoutY="17.0" mnemonicParsing="false" text="Hjälp" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #F0F0F0;">
-                           <children>
-                              <Label layoutX="91.0" layoutY="32.0" text="Inställningar" textFill="#000000b0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font size="28.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fx:id="settings_CogImage" fitHeight="80.0" fitWidth="80.0" layoutX="-51.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="settings_HelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
-            </AnchorPane>
-            <AnchorPane fx:id="centerPane" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #FDFDFD;" />
+            </HBox>
          </children>
-      </VBox>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="500.0" layoutY="58.0" text="INSTÄLLNINGAR" textFill="#000000ad" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="58.0">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="727.0" layoutY="125.0" prefHeight="657.0" prefWidth="311.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="690.0" AnchorPane.rightAnchor="287.0" AnchorPane.topAnchor="105.0">
+         <children>
+            <TextField fx:id="firstName" layoutX="65.0" layoutY="37.0" onKeyTyped="#setFirstName" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="37.0" />
+            <TextField fx:id="lastName" layoutX="68.0" layoutY="81.0" onKeyTyped="#setLastName" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="72.0" />
+            <TextField fx:id="city" layoutX="68.0" layoutY="126.0" prefHeight="25.0" prefWidth="250.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="125.0" />
+            <TextField fx:id="address" layoutX="73.0" layoutY="185.0" onKeyTyped="#setAddress" prefHeight="25.0" prefWidth="270.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="161.0" />
+            <TextField fx:id="postCode" layoutX="390.0" layoutY="220.0" onKeyTyped="#setPostCode" prefHeight="25.0" prefWidth="112.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="205.0" />
+            <ComboBox fx:id="payment" layoutX="390.0" layoutY="266.0" prefWidth="150.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="259.0" />
+            <ComboBox fx:id="cardType" layoutX="390.0" layoutY="299.0" prefWidth="150.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="295.0" />
+            <TextField fx:id="card1" layoutX="390.0" layoutY="360.0" onAction="#setCard1" prefHeight="25.0" prefWidth="57.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="339.0" />
+            <TextField fx:id="card2" layoutX="450.0" layoutY="350.0" onAction="#setCard2" prefHeight="25.0" prefWidth="57.0" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="339.0" />
+            <TextField fx:id="card3" layoutX="516.0" layoutY="346.0" onAction="#setCard3" prefHeight="25.0" prefWidth="57.0" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="339.0" />
+            <TextField fx:id="card4" layoutX="582.0" layoutY="346.0" onAction="#setCard4" prefHeight="25.0" prefWidth="57.0" AnchorPane.leftAnchor="207.0" AnchorPane.topAnchor="339.0" />
+            <TextField fx:id="cvc" layoutX="371.0" layoutY="389.0" onAction="#setCvc" prefHeight="25.0" prefWidth="43.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="383.0" />
+            <ComboBox fx:id="deliveryDay" layoutX="390.0" layoutY="440.0" prefWidth="150.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="436.0" />
+            <TextArea fx:id="comment" layoutX="371.0" layoutY="512.0" prefHeight="130.0" prefWidth="340.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="491.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="408.0" layoutY="332.0" prefHeight="633.0" prefWidth="270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="105.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" layoutX="223.0" layoutY="42.0" prefHeight="17.0" prefWidth="84.0" text="Förnamn:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="37.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="73.0" prefHeight="27.0" prefWidth="112.0" text="Efternamn:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="72.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="185.0" layoutY="104.0" prefHeight="17.0" prefWidth="84.0" text="Stad:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="163.0" prefHeight="27.0" prefWidth="135.0" text="Gatuadress:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="161.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="187.0" layoutY="204.0" prefHeight="27.0" prefWidth="127.0" text="Postnummer:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="205.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="180.0" layoutY="263.0" prefHeight="17.0" prefWidth="84.0" text="Betalsätt:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="259.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="140.0" layoutY="292.0" prefHeight="17.0" prefWidth="84.0" text="Korttyp:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="295.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="346.0" prefHeight="27.0" prefWidth="128.0" text="Kortnummer:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="339.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="170.0" layoutY="385.0" prefHeight="17.0" prefWidth="84.0" text="CVC:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="383.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="186.0" layoutY="442.0" prefHeight="27.0" prefWidth="133.0" text="Leveransdag:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="436.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="186.0" layoutY="496.0" prefHeight="27.0" prefWidth="123.0" text="Kommentar:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="491.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
