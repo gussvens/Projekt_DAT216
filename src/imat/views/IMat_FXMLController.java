@@ -542,8 +542,6 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-
-        System.out.println("Indexet på den klickade subben var: " + activeSubindex);
         
         this.subScrollPane.setContent(flowPane);
 
