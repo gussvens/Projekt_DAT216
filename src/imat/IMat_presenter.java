@@ -137,6 +137,7 @@ public class IMat_presenter extends Observable {
 
         // NOT SURE IF NEEDED HERE...
         //model = new IMat_Model();
+        
         updateBasket();
     }
 
@@ -262,11 +263,6 @@ public class IMat_presenter extends Observable {
                 e.printStackTrace();
             }
         }
-        /*
-         if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()){
-         flowPane.getChildren().add(new ImageView("imat/images/shoppingCart.jpg"));
-         }
-         */
         basketScrollPane.setContent(flowPane);
         setTotal();
 

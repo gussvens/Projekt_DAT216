@@ -30,6 +30,8 @@ public class IMat_SubcategoryController implements Initializable {
     @FXML
     private AnchorPane subAnchor;
 
+    private int indexNr;
+
     /**
      * Initializes the controller class.
      */
@@ -91,9 +93,14 @@ public class IMat_SubcategoryController implements Initializable {
                         prod = ProductCategory.VEGETABLE_FRUIT;
                     } else if (subName.getText().equals("Bröd")) {
                         prod = ProductCategory.BREAD;
+                    } else if (subName.getText().equals("Allt")){
+                        prod = ProductCategory.DAIRIES;
                     }
-                    
+
+                    IMat_FXMLController.activeSubIndex(indexNr);
+                    //getButton(t).setStyle(MENU_CLICKED_COLOR);
                     IMat_FXMLController.getPresenter().getFXMLCont().upDateCenter(prod);
+                    //getButton(t).setStyle(MENU_CLICKED_COLOR);
                 }
             };
 
@@ -132,4 +139,13 @@ public class IMat_SubcategoryController implements Initializable {
     public void setSubName(String name) {
         subName.setText(name);
     }
+
+    public void setIndex(int i) {
+        indexNr = i;
+    }
+
+    public void getAnchorPane() {
+        subAnchor.setStyle(MENU_CLICKED_COLOR);
+    }
+
 }

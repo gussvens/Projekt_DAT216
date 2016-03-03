@@ -30,9 +30,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.*;
 
+/**
+ *
+ * @author Group 12
+ */
 public class IMat_FXMLController implements Initializable {
 
     private static IMat_presenter pres;
+    private static int activeSubindex;
 
     // Imports from sceneBuilder.
     @FXML
@@ -155,6 +160,8 @@ public class IMat_FXMLController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
+
+                    // TODO: Implement a way to save this list in a smart way.
                     System.out.println("\nNu borde egenligen en lista på alla varor skapas och sparas någon stans.");
                     System.out.println("INTE implementerat\n");
                 }
@@ -199,7 +206,6 @@ public class IMat_FXMLController implements Initializable {
                         placeStoreItems(list);
 
                         // TODO: if the list is empty, add text that displays this.
-                        
                     }
 
                 }
@@ -217,7 +223,7 @@ public class IMat_FXMLController implements Initializable {
                     findProducts(searchField.getText());
 
                     placeStoreItems(list);
-                    
+
                     // TODO: if the list is empty, add text that displays this.
                 }
             };
@@ -228,6 +234,7 @@ public class IMat_FXMLController implements Initializable {
                 // Sets functionality on each of the menubuttons.
                 @Override
                 public void handle(MouseEvent t) {
+                    activeSubindex = 0;
                     pres.clearSeachField();
                     pres.colorChangeOnClick(t);
 
@@ -242,6 +249,7 @@ public class IMat_FXMLController implements Initializable {
                     if (getCurrentPane(t).equals("CategoryDairy")) {
                         pC = ProductCategory.DAIRIES;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
+                        //subNameList.add("Allt");
                         subNameList.add("Mejeri");
 
                         // Collects those products mareked as favorites.
@@ -419,15 +427,6 @@ public class IMat_FXMLController implements Initializable {
 
                     // Placing the items on the centerstage.
                     placeStoreItems(prodList);
-
-                    /*
-                     // FOR TESTING... REMOVE WHEN DONE.
-                     for (Product p : prodList) {
-                     System.out.println(p.getName());
-                     }
-
-                     System.out.println("\n");
-                     */
                 }
             };
 
@@ -522,12 +521,19 @@ public class IMat_FXMLController implements Initializable {
         flowPane.setPrefWidth(640);
         flowPane.setPrefHeight(104);
 
+        int i = 1;
         for (String p : list) {
+            
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
                 Node storeItem = loader.load();
                 IMat_SubcategoryController controller = loader.getController();
                 controller.setSubName(p);
+                controller.setIndex(i);
+                if(i == activeSubindex){
+                    controller.getAnchorPane();
+                }
+                i++;
                 flowPane.getChildren().add(storeItem);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -537,6 +543,8 @@ public class IMat_FXMLController implements Initializable {
             System.out.println("null");
         }
 
+        System.out.println("Indexet på den klickade subben var: " + activeSubindex);
+        
         this.subScrollPane.setContent(flowPane);
 
     }
@@ -551,5 +559,8 @@ public class IMat_FXMLController implements Initializable {
     public static IMat_presenter getPresenter() {
         return pres;
     }
-
+    
+    public static void activeSubIndex(int i){
+        activeSubindex = i;
+    }
 }
