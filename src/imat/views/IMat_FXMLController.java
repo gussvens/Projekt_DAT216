@@ -109,7 +109,8 @@ public class IMat_FXMLController implements Initializable {
                 CategoryFavorites,
                 menuFavStar,
                 saveAsListButton,
-                removeAllFromBasket
+                removeAllFromBasket,
+                searchField
         );
 
         menuButtonList = new ArrayList<>();
@@ -195,9 +196,10 @@ public class IMat_FXMLController implements Initializable {
                         list = IMatDataHandler.getInstance().
                         findProducts(searchField.getText());
 
-                        if (!list.isEmpty()) {
-                            placeStoreItems(list);
-                        }
+                        placeStoreItems(list);
+
+                        // TODO: if the list is empty, add text that displays this.
+                        
                     }
 
                 }
@@ -214,9 +216,9 @@ public class IMat_FXMLController implements Initializable {
                     list = IMatDataHandler.getInstance().
                     findProducts(searchField.getText());
 
-                    if (!list.isEmpty()) {
-                        placeStoreItems(list);
-                    }
+                    placeStoreItems(list);
+                    
+                    // TODO: if the list is empty, add text that displays this.
                 }
             };
 
@@ -226,6 +228,7 @@ public class IMat_FXMLController implements Initializable {
                 // Sets functionality on each of the menubuttons.
                 @Override
                 public void handle(MouseEvent t) {
+                    pres.clearSeachField();
                     pres.colorChangeOnClick(t);
 
                     // Getting the productlist
@@ -457,7 +460,7 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        
+
         this.storeItemScrollPane.setContent(flowPane);
 
         placeSubItems(subNameList);
@@ -507,7 +510,7 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        
+
         this.storeItemScrollPane.setContent(flowPane);
         placeSubItems(subNameList);
 
@@ -533,16 +536,8 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        if (list.isEmpty()) {
-            FlowPane flowPane2 = new FlowPane();
-            flowPane.setHgap(6);
-            flowPane.setPrefWidth(640);
-            flowPane.setPrefHeight(104);
 
-            this.subScrollPane.setContent(flowPane2);
-        } else {
-            this.subScrollPane.setContent(flowPane);
-        }
+        this.subScrollPane.setContent(flowPane);
 
     }
 

@@ -51,6 +51,7 @@ public class IMat_presenter extends Observable {
     private Button saveAsListButton;
     private Button toCheckout;
     private TextField totalPrice;
+    private TextField searchTextField;
     private ImageView menuFavStar;
     private final Pane CategoryDairy,
             CategoryVegetables,
@@ -80,8 +81,10 @@ public class IMat_presenter extends Observable {
             Pane CategoryFavorites,
             ImageView menuFavStar,
             Button saveAsListButton,
-            Button removeAllFromBasket) {
+            Button removeAllFromBasket,
+            TextField searchTextField) {
 
+        this.searchTextField = searchTextField;
         this.saveAsListButton = saveAsListButton;
         this.removeAllFromBasket = removeAllFromBasket;
         this.menuFavStar = menuFavStar;
@@ -350,4 +353,8 @@ public class IMat_presenter extends Observable {
         saveAsListButton.setDisable(true);
     }
 
+    public void clearSeachField(){
+        searchTextField.setText("");
+        searchTextField.setPromptText("Sök produkter här...");
+    }
 }
