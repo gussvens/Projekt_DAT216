@@ -23,13 +23,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.*;
-
-
-
 
 public class IMat_FXMLController implements Initializable {
 
@@ -127,16 +126,17 @@ public class IMat_FXMLController implements Initializable {
         for (Pane p : menuButtonList) {
             p.setOnMouseClicked(menuButtonClicked);
         }
-        
+
         // Sets listeners to the buttons
         searchButton.setOnMouseClicked(searchButtonClicked);
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
         removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
         saveAsListButton.setOnMouseClicked(saveList);
-       
+        searchField.setOnKeyPressed(searchEnterPressed);
+
         // Initializing centerstage.
         initCenter();
-        
+
     }
 
     EventHandler<MouseEvent> setBasketEmpty
@@ -144,11 +144,11 @@ public class IMat_FXMLController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                   IMat_Model.getBackEnd().getShoppingCart().clear();
-                   pres.updateBasket();
+                    IMat_Model.getBackEnd().getShoppingCart().clear();
+                    pres.updateBasket();
                 }
             };
-    
+
     EventHandler<MouseEvent> saveList
             = new EventHandler<MouseEvent>() {
 
@@ -159,10 +159,6 @@ public class IMat_FXMLController implements Initializable {
                 }
             };
 
-    
-    
-    
-    
     EventHandler<MouseEvent> checkoutButtonClicked
             = new EventHandler<MouseEvent>() {
 
@@ -187,12 +183,33 @@ public class IMat_FXMLController implements Initializable {
         return ((Pane) t.getSource()).getId();
     }
 
+    EventHandler<KeyEvent> searchEnterPressed
+            = new EventHandler<KeyEvent>() {
+
+                @Override
+                public void handle(KeyEvent ke) {
+
+                    if (ke.getCode().equals(KeyCode.ENTER)) {
+                        subNameList = new ArrayList<>();
+                        List<Product> list = new ArrayList<>();
+                        list = IMatDataHandler.getInstance().
+                        findProducts(searchField.getText());
+
+                        if (!list.isEmpty()) {
+                            placeStoreItems(list);
+                        }
+                    }
+
+                }
+            };
+
     // Searchfunction
     EventHandler<MouseEvent> searchButtonClicked
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
+                    subNameList = new ArrayList<>();
                     List<Product> list = new ArrayList<>();
                     list = IMatDataHandler.getInstance().
                     findProducts(searchField.getText());
@@ -423,7 +440,6 @@ public class IMat_FXMLController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
                 Node storeItem = loader.load();
                 IMat_StoreItemController controller = loader.getController();
-
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
@@ -441,7 +457,9 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
+        
         this.storeItemScrollPane.setContent(flowPane);
+
         placeSubItems(subNameList);
 
     }
@@ -472,7 +490,6 @@ public class IMat_FXMLController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
                 Node storeItem = loader.load();
                 IMat_StoreItemController controller = loader.getController();
-
                 controller.setItemNameLabel(p.getName());
                 controller.setItemPriceLabel(p.getPrice());
                 controller.setItemImage(IMatDataHandler.getInstance().getFXImage(p));
@@ -490,6 +507,7 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
+        
         this.storeItemScrollPane.setContent(flowPane);
         placeSubItems(subNameList);
 
@@ -515,7 +533,16 @@ public class IMat_FXMLController implements Initializable {
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        this.subScrollPane.setContent(flowPane);
+        if (list.isEmpty()) {
+            FlowPane flowPane2 = new FlowPane();
+            flowPane.setHgap(6);
+            flowPane.setPrefWidth(640);
+            flowPane.setPrefHeight(104);
+
+            this.subScrollPane.setContent(flowPane2);
+        } else {
+            this.subScrollPane.setContent(flowPane);
+        }
 
     }
 
