@@ -33,7 +33,7 @@
                   </Button>
                   <Label fx:id="itemNameLabel" alignment="CENTER" text="itemName" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                   <HBox layoutX="10.0" layoutY="25.0">

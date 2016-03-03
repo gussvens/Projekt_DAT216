@@ -27,12 +27,12 @@
         <URL value="@imat.fxml.css" />
     </stylesheets>
    <children>
-      <Pane prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #EEEEEE;">
+                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                      <children>
                         <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                            <children>
@@ -150,12 +150,12 @@
          <children>
             <HBox layoutY="-1.0">
                <children>
-                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #EEEEEE;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #e2e2e2;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="helpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #EEEEEE;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                  <Button fx:id="helpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #E2e2e2;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -164,17 +164,23 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
-            <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="177.0">
+            <HBox layoutX="40.0" layoutY="119.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
+                  <Button mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
+               </children>
+            </HBox>
+            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
+            <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="8.0">
                <children>
                   <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" text="Totalt pris:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #EEEEEE;">
+                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -192,11 +198,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="81.0" layoutY="68.0" text="Din kundvagn">
+            <Label layoutX="103.0" layoutY="50.0" text="Din kundvagn">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="57.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shoppingCart_small.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />

@@ -20,8 +20,8 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class IMat_SubcategoryController implements Initializable {
 
     // Colors. !! CAN BE CHANGED IN CSS INSTEAD, I GUESS. !!
-
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #e2e2e2;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
+    private final String MENU_DEFAULT_BORDER_COLOR = "-fx-border-color: #DDDDDD;";
     private final String MENU_ENTER_COLOR = "-fx-background-color: #d6eeff;";
     private final String MENU_CLICKED_COLOR = "-fx-background-color: #a6eafc;";
 
@@ -104,6 +104,7 @@ public class IMat_SubcategoryController implements Initializable {
                 public void handle(MouseEvent t) {
                     if (getButton(t).getStyle().equals(MENU_ENTER_COLOR)) {
                         getButton(t).setStyle(MENU_DEFAULT_COLOR);
+                        getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
                     }
                 }
             };
@@ -116,6 +117,7 @@ public class IMat_SubcategoryController implements Initializable {
                 public void handle(MouseEvent t) {
                     if (!getButton(t).getStyle().equals(MENU_CLICKED_COLOR)) {
                         getButton(t).setStyle(MENU_ENTER_COLOR);
+                        //getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
                     }
                 }
             };
