@@ -168,8 +168,8 @@
          <children>
             <HBox layoutX="40.0" layoutY="119.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
-                  <Button mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
+                  <Button fx:id="saveAsListButton" mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
+                  <Button fx:id="removeAllFromBasket" mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
                </children>
             </HBox>
             <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />

@@ -151,6 +151,8 @@ public class IMat_StoreItemController implements Initializable {
         }
 
         basketScrollPane.setContent(flowPane);
+        IMat_FXMLController.getPresenter().setRemoveAllFromBasketActive();
+        IMat_FXMLController.getPresenter().setSaveListButtonActive();
         updateTotalPrice();
     }
 

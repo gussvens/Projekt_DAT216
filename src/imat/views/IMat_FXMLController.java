@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package imat.views;
 
 import imat.*;
@@ -24,18 +19,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import se.chalmers.ait.dat215.project.*;
+
+
+
 
 public class IMat_FXMLController implements Initializable {
 
@@ -81,6 +75,10 @@ public class IMat_FXMLController implements Initializable {
     private Pane CategoryFavorites;
     @FXML
     private ImageView menuFavStar;
+    @FXML
+    private Button removeAllFromBasket;
+    @FXML
+    private Button saveAsListButton;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -110,7 +108,9 @@ public class IMat_FXMLController implements Initializable {
                 subScrollPane,
                 this,
                 CategoryFavorites,
-                menuFavStar
+                menuFavStar,
+                saveAsListButton,
+                removeAllFromBasket
         );
 
         menuButtonList = new ArrayList<>();
@@ -127,11 +127,42 @@ public class IMat_FXMLController implements Initializable {
         for (Pane p : menuButtonList) {
             p.setOnMouseClicked(menuButtonClicked);
         }
+        
+        // Sets listeners to the buttons
         searchButton.setOnMouseClicked(searchButtonClicked);
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
+        removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
+        saveAsListButton.setOnMouseClicked(saveList);
+       
+        // Initializing centerstage.
         initCenter();
+        
     }
 
+    EventHandler<MouseEvent> setBasketEmpty
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   IMat_Model.getBackEnd().getShoppingCart().clear();
+                   pres.updateBasket();
+                }
+            };
+    
+    EventHandler<MouseEvent> saveList
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    System.out.println("\nNu borde egenligen en lista på alla varor skapas och sparas någon stans.");
+                    System.out.println("INTE implementerat\n");
+                }
+            };
+
+    
+    
+    
+    
     EventHandler<MouseEvent> checkoutButtonClicked
             = new EventHandler<MouseEvent>() {
 
@@ -192,6 +223,8 @@ public class IMat_FXMLController implements Initializable {
                         pC = ProductCategory.DAIRIES;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
                         subNameList.add("Mejeri");
+
+                        // Collects those products mareked as favorites.
                     } else if (getCurrentPane(t).equals("CategoryFavorites")) {
                         prodList = IMat_Model.getBackEnd().favorites();
 
@@ -367,12 +400,14 @@ public class IMat_FXMLController implements Initializable {
                     // Placing the items on the centerstage.
                     placeStoreItems(prodList);
 
-                    // FOR TESTING... REMOVE WHEN DONE.
-                    for (Product p : prodList) {
-                        System.out.println(p.getName());
-                    }
+                    /*
+                     // FOR TESTING... REMOVE WHEN DONE.
+                     for (Product p : prodList) {
+                     System.out.println(p.getName());
+                     }
 
-                    System.out.println("\n");
+                     System.out.println("\n");
+                     */
                 }
             };
 

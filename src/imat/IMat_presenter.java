@@ -47,6 +47,8 @@ public class IMat_presenter extends Observable {
     private ScrollPane checkOutScrollPane;
     private ScrollPane subScrollPane;
     private final Button searchButton;
+    private Button removeAllFromBasket;
+    private Button saveAsListButton;
     private Button toCheckout;
     private TextField totalPrice;
     private ImageView menuFavStar;
@@ -60,7 +62,6 @@ public class IMat_presenter extends Observable {
             CategoryBread,
             CategoryFavorites;
 
-    
     public IMat_presenter(
             Pane CategoryDairy,
             Pane CategoryVegetables,
@@ -77,8 +78,12 @@ public class IMat_presenter extends Observable {
             ScrollPane subScrollPane,
             IMat_FXMLController FXMLcont,
             Pane CategoryFavorites,
-            ImageView menuFavStar) {
+            ImageView menuFavStar,
+            Button saveAsListButton,
+            Button removeAllFromBasket) {
 
+        this.saveAsListButton = saveAsListButton;
+        this.removeAllFromBasket = removeAllFromBasket;
         this.menuFavStar = menuFavStar;
         this.CategoryFavorites = CategoryFavorites;
         this.FXMLcont = FXMLcont;
@@ -126,10 +131,9 @@ public class IMat_presenter extends Observable {
         searchButton.setCursor(Cursor.HAND);
 
         checkOutScrollPane = new ScrollPane();
-        
+
         // NOT SURE IF NEEDED HERE...
         //model = new IMat_Model();
-        
         updateBasket();
     }
 
@@ -202,12 +206,10 @@ public class IMat_presenter extends Observable {
         return ((Pane) t.getSource());
     }
 
-    private double getTotal(){
+    private double getTotal() {
         return IMat_Model.getBackEnd().getShoppingCart().getTotal();
     }
-    
-    
-    
+
     // Sets the color of a menuPane when it's clicked.
     public void colorChangeOnClick(MouseEvent t) {
         for (Pane p : menuButtonsList) {
@@ -222,12 +224,6 @@ public class IMat_presenter extends Observable {
         totalPrice.setText(Double.toString(getTotal()) + " kr");
     }
 
-    
-    
-    
-    
-    
-    
     /* Sets the toCheckout-button to active 
      when there are products in the basket
      */
@@ -273,8 +269,12 @@ public class IMat_presenter extends Observable {
 
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
+            setRemoveAllFromBasketInactive();
+            setSaveListButtonInctive();
         } else {
             toCheckout.setDisable(false);
+            setRemoveAllFromBasketActive();
+            setSaveListButtonActive();
         }
     }
 
@@ -334,4 +334,20 @@ public class IMat_presenter extends Observable {
     public void setFavStarActive() {
         menuFavStar.setImage(new Image("imat/images/golden_star_trans.png"));
     }
+
+    public void setRemoveAllFromBasketActive() {
+        removeAllFromBasket.setDisable(false);
+    }
+
+    public void setRemoveAllFromBasketInactive() {
+        removeAllFromBasket.setDisable(true);
+    }
+    
+    public void setSaveListButtonActive(){
+        saveAsListButton.setDisable(false);
+    }
+    public void setSaveListButtonInctive(){
+        saveAsListButton.setDisable(true);
+    }
+
 }

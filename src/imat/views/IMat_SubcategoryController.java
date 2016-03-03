@@ -92,6 +92,7 @@ public class IMat_SubcategoryController implements Initializable {
                     } else if (subName.getText().equals("Bröd")) {
                         prod = ProductCategory.BREAD;
                     }
+                    
                     IMat_FXMLController.getPresenter().getFXMLCont().upDateCenter(prod);
                 }
             };
