@@ -98,37 +98,37 @@ public class IMat_StoreItemController implements Initializable {
     // Adds one to the amount of this specific product in the basket. 
     EventHandler<MouseEvent> onButtonClicked
             = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent t) {
-                    Product p;
-                    p = IMat_Model.getBackEnd().getProduct(itemId);
-                    sC = IMat_Model.getBackEnd().getShoppingCart();
-                    boolean inBasket = false;
+        @Override
+        public void handle(MouseEvent t) {
+            Product p;
+            p = IMat_Model.getBackEnd().getProduct(itemId);
+            sC = IMat_Model.getBackEnd().getShoppingCart();
+            boolean inBasket = false;
 
-                    if (sC.getItems().size() > 0) {
-                        for (ShoppingItem s : sC.getItems()) {
-                            if (s.getProduct().equals(p)) {
-                                s.setAmount(s.getAmount() + 1);
-                                inBasket = true;
-                            }
-                        }
-                    } else {
-                        ShoppingItem sI = new ShoppingItem(p);
-                        sC.addItem(sI);
+            if (sC.getItems().size() > 0) {
+                for (ShoppingItem s : sC.getItems()) {
+                    if (s.getProduct().equals(p)) {
+                        s.setAmount(s.getAmount() + 1);
                         inBasket = true;
                     }
-
-                    if (!inBasket) {
-                        ShoppingItem sI = new ShoppingItem(p);
-                        sC.addItem(sI);
-                    }
-
-                    placeBasketItems(sC.getItems());
                 }
-            };
+            } else {
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+                inBasket = true;
+            }
+
+            if (!inBasket) {
+                ShoppingItem sI = new ShoppingItem(p);
+                sC.addItem(sI);
+            }
+            updateTotalPrice();
+            //placeBasketItems(sC.getItems());
+        }
+    };
 
     // Place the storeItems in the basket.
-    public void placeBasketItems(List<ShoppingItem> list) {
+    /*public void placeBasketItems(List<ShoppingItem> list) {
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(3);
         flowPane.setPrefWidth(255);
@@ -154,7 +154,7 @@ public class IMat_StoreItemController implements Initializable {
         IMat_FXMLController.getPresenter().setRemoveAllFromBasketActive();
         IMat_FXMLController.getPresenter().setSaveListButtonActive();
         updateTotalPrice();
-    }
+    }*/
 
     
     

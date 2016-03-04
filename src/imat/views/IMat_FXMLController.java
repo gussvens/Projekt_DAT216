@@ -143,6 +143,28 @@ public class IMat_FXMLController implements Initializable {
         // Initializing centerstage.
         initCenter();
 
+        FlowPane basketFlowPane = new FlowPane();
+        basketFlowPane.setVgap(3);
+        basketFlowPane.setPrefWidth(255);
+
+        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+            try {
+                Product p = s.getProduct();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
+                controller.setItemQuantity("kr");
+                controller.setShoppingItem(s);
+                controller.setNrOfBasketItems(s.getAmount());
+                basketFlowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        basketScrollPane.setContent(basketFlowPane);
+
     }
 
     EventHandler<MouseEvent> setBasketEmpty
