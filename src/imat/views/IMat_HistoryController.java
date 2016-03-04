@@ -24,15 +24,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import se.chalmers.ait.dat215.project.Order;
-import java.util.Collections;
+import se.chalmers.ait.dat215.project.*;
 
 /**
  * FXML Controller class
  *
  * @author Gustav
  */
-public class IMat_HistoryController implements Initializable {
+public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
     @FXML
     private Button homeButton;
@@ -63,74 +62,68 @@ public class IMat_HistoryController implements Initializable {
 
     private List<Label> labelList = new ArrayList<>();*/
 
+    @FXML
+    private ScrollPane historyItemScrollPane;
+    @FXML
+    private ScrollPane basketScrollPane;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
+
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(250);
 
         List<Order> orderList = IMat_Model.getBackEnd().getOrders();
-        if(orderList.size() >= 9){
-            for(int i = orderList.size()-1; i >= orderList.size()-10;
-                i--){
+        if (orderList.size() >= 9) {
+            for (int i = orderList.size() - 1; i >= orderList.size() - 10;
+                 i--) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
                     IMat_HistoryCategoriesController controller = loader.getController();
-                    controller.setDateLabel(orderList.get(i).getDate().toString());
+                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + orderList.get(i).getDate().getMonth() + 1
+                            + "-" + orderList.get(i).getDate().getDate());
                     //Should be a class for the content of the specific order
-                    /*IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(orderList.get(i));
-                    models.add(model);
-                    controller.setOrder(orderList.get(i));*/
+                    controller.setOrder(orderList.get(i));
+                    controller.setCont(this);
                     flowPane.getChildren().add(historyCategory);
-                } catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         } else {
             int j = orderList.size() - 1;
-            while(j >= 0) {
+            while (j >= 0) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
                     IMat_HistoryCategoriesController controller = loader.getController();
-                    controller.setDateLabel(orderList.get(j).getDate().toString());
-                    //Should be a class for the content of the specific order
-                    /*IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(orderList.get(i));
-                    models.add(model);
-                    controller.setOrder(orderList.get(i));*/
+                    controller.setDateLabel(orderList.get(j).getDate().getYear() + 1900 + "-" + (orderList.get(j).getDate().getMonth() + 1)
+                            + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
+                    controller.setOrder(orderList.get(j));
+                    controller.setCont(this);
                     flowPane.getChildren().add(historyCategory);
                     j--;
-                } catch(IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
-        /*
-        for(Order o : IMat_Model.getBackEnd().getOrders()){
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
-                Node historyCategory = loader.load();
-                IMat_HistoryCategoriesController controller = loader.getController();
-                controller.setDateLabel(o.getDate().toString());
-                //Should be a class for the content of the specific order
-                IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(o);
-                models.add(model);
-                controller.setOrder(o);
-                flowPane.getChildren().add(historyCategory);
-            } catch (IOException e){
-                e.printStackTrace();
-            }
-        }*/
         historyCategoryPane.getChildren().add(flowPane);
-
     }
 
 
+
+    public void setHistoryItemScrollPane(FlowPane flowPane){
+        historyItemScrollPane.setContent(flowPane);
+    }
 
     @FXML
     private void homeButtonClicked() throws IOException {
@@ -138,5 +131,28 @@ public class IMat_HistoryController implements Initializable {
         IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
+    public void shoppingCartChanged(CartEvent evt){
+        FlowPane basketFlowPane = new FlowPane();
+        basketFlowPane.setVgap(3);
+        basketFlowPane.setPrefWidth(255);
+
+        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+            try {
+                Product p = s.getProduct();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
+                controller.setItemQuantity("kr");
+                controller.setShoppingItem(s);
+                controller.setNrOfBasketItems(s.getAmount());
+                basketFlowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        basketScrollPane.setContent(basketFlowPane);
+    }
 
 }
