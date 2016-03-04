@@ -74,6 +74,8 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private Button backToStore;
     @FXML
     private TextField checkoutTotPrice;
+    @FXML
+    private Button changeInfo;
 
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
@@ -102,12 +104,37 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
+        city.setText(IMat_SettingsController.getCity());
+        card1.setText(IMat_SettingsController.getCard1());
+        card2.setText(IMat_SettingsController.getCard2());
+        card3.setText(IMat_SettingsController.getCard3());
+        card4.setText(IMat_SettingsController.getCard4());
+        cvc.setText(IMat_SettingsController.getCvc());
+        changeInfo.setOnMouseClicked(changeInfoButtonPressed);
     }
 
     public void updateTotPrice() {
         checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
     }
     
+    EventHandler<MouseEvent> changeInfoButtonPressed
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    firstName.setDisable(false);
+                    lastName.setDisable(false);
+                    city.setDisable(false);
+                    address.setDisable(false);
+                    postCode.setDisable(false);
+                    card1.setDisable(false);
+                    card2.setDisable(false);
+                    card3.setDisable(false);
+                    card4.setDisable(false);
+                    cvc.setDisable(false);
+                    
+                }
+            };
     
     
     /*

@@ -33,7 +33,7 @@ public class IMat_Checkout_presenter {
 
     public void updateScrollPane(){
          FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
+        flowPane.setVgap(3);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(255);
 
