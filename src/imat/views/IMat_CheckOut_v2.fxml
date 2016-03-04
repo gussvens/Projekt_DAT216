@@ -140,7 +140,7 @@
          </font>
       </Label>
       <Button fx:id="backToStore" layoutX="1219.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Tillbaka till butiken" />
-      <Button fx:id="doneButton" layoutX="967.0" layoutY="652.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="229.0" text="SLUTFÖR KÖR">
+      <Button fx:id="doneButton" layoutX="967.0" layoutY="652.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="229.0" text="SLUTFÖR KÖP">
          <font>
             <Font size="25.0" />
          </font>

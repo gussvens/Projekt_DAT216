@@ -15,53 +15,58 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
    <children>
-      <AnchorPane fx:id="leftPane" prefHeight="535.0" prefWidth="250.0" style="-fx-background-color: #FDFDFD;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
+      <Pane layoutY="5.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="leftPane1" layoutX="20.0" layoutY="54.0" prefHeight="634.0" prefWidth="250.0">
                <children>
-                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+                  <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
+                        <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                            <children>
-                              <TextField fx:id="historySearchField" focusTraversable="false" layoutX="50.0" layoutY="34.0" prefHeight="30.0" prefWidth="210.0" promptText="Sök datum här..." AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="historySearchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" style="-fx-background-color: #a6eafc;" text="Sök" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                              <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
+                                 <children>
+                                    <TextField fx:id="searchField" focusTraversable="false" layoutX="50.0" layoutY="34.0" prefHeight="30.0" prefWidth="210.0" promptText="Sök produkter här..." AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="100.0" />
+                                    <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" style="-fx-background-color: #a6eafc;" text="Sök" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                                 </children>
+                              </HBox>
+                              <Label layoutY="23.0" text="HÄR KAN DU SÖKA EFTER PRODUKTER">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
                            </children>
-                        </HBox>
-                        <Label layoutY="23.0" text="HÄR KAN DU SÖKA EFTER DATUM">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Pane>
+                        <Pane fx:id="historyCategoryPane" prefHeight="542.0" prefWidth="250.0" />
                      </children>
-                     <padding>
-                        <Insets bottom="5.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Pane>
+                  </VBox>
                </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="searchPane" prefHeight="15.0" prefWidth="268.0" style="-fx-background-color: #FDFDFD;" AnchorPane.leftAnchor="12.0">
-         <children>
-            <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="268.0">
+            </AnchorPane>
+            <AnchorPane fx:id="searchPane" layoutX="11.0" layoutY="14.0" prefHeight="15.0" prefWidth="268.0" style="-fx-background-color: Transparent;">
                <children>
-                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="historyHelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                  <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="268.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="historyHelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </Pane>
       <AnchorPane prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ScrollPane fx:id="basketScrollPane" layoutX="16.0" layoutY="150.0" prefHeight="404.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
@@ -101,7 +106,6 @@
          </children>
       </AnchorPane>
       <ScrollPane fx:id="historyItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" prefHeight="535.0" prefWidth="647.0" style="-fx-border-color: #FFFFFF;" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
-      <ScrollPane fx:id="HistoryScrollPane" focusTraversable="false" hbarPolicy="NEVER" prefWidth="250.0" style="-fx-border-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0" />
       <Label alignment="CENTER" text="HISTORIK" textFill="#000000ad" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="60.0">
          <font>
             <Font size="40.0" />

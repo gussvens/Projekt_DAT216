@@ -8,6 +8,7 @@ package imat;
 import java.util.List;
 import com.sun.org.apache.xpath.internal.SourceTree;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 
@@ -18,8 +19,10 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class IMat_Model {
    private static final IMatDataHandler backEnd = IMatDataHandler.getInstance();
 
+
    public synchronized static IMatDataHandler getBackEnd(){
       return backEnd;
    }
+
 
 }
