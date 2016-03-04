@@ -160,10 +160,8 @@ public class IMat_FXMLController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-
-                    // TODO: Implement a way to save this list in a smart way.
-                    System.out.println("\nNu borde egenligen en lista på alla varor skapas och sparas någon stans.");
-                    System.out.println("INTE implementerat\n");
+                    Order order = new Order();
+                    order.setItems(IMat_Model.getBackEnd().getShoppingCart().getItems());
                 }
             };
 

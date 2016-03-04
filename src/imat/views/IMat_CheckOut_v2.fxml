@@ -35,7 +35,7 @@
                   </Label>
                   <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
                      <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        
                      </cursor>
                      <font>
                         <Font size="15.0" />
@@ -102,12 +102,12 @@
                <children>
                   <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        
                      </cursor>
                   </Button>
                   <Button fx:id="settings_HelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                      
                      </cursor>
                   </Button>
                </children>
@@ -152,7 +152,10 @@
             <Font size="14.0" />
          </font>
       </Label>
+
       <Label layoutX="1053.0" layoutY="161.0" text="Leveransdag">
+
+    
          <font>
             <Font size="14.0" />
          </font>

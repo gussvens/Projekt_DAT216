@@ -10,6 +10,7 @@ import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -76,7 +77,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private TextField checkoutTotPrice;
     @FXML
     private Button changeInfo;
-
+/*=======
+    private Button doneButton;
+>>>>>>> fe8719727037b2d8b82050b1a6bb9804d3a67d6f
+*/
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
 
@@ -98,6 +102,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         
         homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
+        //doneButton.setOnMouseClicked(doneButtonClicked);
         pres.updateScrollPane();
 
         firstName.setText(c.getFirstName());
@@ -164,6 +169,16 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
     }
 */
+    EventHandler<MouseEvent>doneButtonClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            IMat_Model.getBackEnd().placeOrder();
+            IMat_Model.getBackEnd().getShoppingCart().clear();
+            System.out.println(IMat_Model.getBackEnd().getOrders().size());
+        }
+    };
+
     // Back to start
     EventHandler<MouseEvent> homeButtonClicked
             = new EventHandler<MouseEvent>() {
