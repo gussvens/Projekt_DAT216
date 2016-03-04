@@ -77,10 +77,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private TextField checkoutTotPrice;
     @FXML
     private Button changeInfo;
-/*=======
+    @FXML
     private Button doneButton;
->>>>>>> fe8719727037b2d8b82050b1a6bb9804d3a67d6f
-*/
+
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
 
@@ -102,7 +101,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         
         homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
-        //doneButton.setOnMouseClicked(doneButtonClicked);
+        doneButton.setOnMouseClicked(doneButtonClicked);
         pres.updateScrollPane();
 
         firstName.setText(c.getFirstName());

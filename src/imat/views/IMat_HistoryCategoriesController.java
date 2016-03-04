@@ -34,10 +34,10 @@ public class IMat_HistoryCategoriesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        categoryPane.setOnMouseClicked(categoryPaneClicked);
+//        categoryPane.setOnMouseClicked(categoryPaneClicked);
     }
 
-    EventHandler<MouseEvent> categoryPaneClicked =
+  /*  EventHandler<MouseEvent> categoryPaneClicked =
             new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -62,8 +62,7 @@ public class IMat_HistoryCategoriesController implements Initializable {
                     }
 
                 }
-            };
-
+            };*/
     public void setDateLabel(String date){
         this.dateLabel.setText(date);
     }

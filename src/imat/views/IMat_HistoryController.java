@@ -73,13 +73,50 @@ public class IMat_HistoryController implements Initializable {
         flowPane.setHgap(6);
         flowPane.setPrefWidth(250);
 
-        List<Order> orders = IMat_Model.getBackEnd().getOrders();
+        List<Order> orderList = IMat_Model.getBackEnd().getOrders();
+        if(orderList.size() >= 9){
+            for(int i = orderList.size()-1; i >= orderList.size()-10;
+                i--){
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
+                    Node historyCategory = loader.load();
+                    IMat_HistoryCategoriesController controller = loader.getController();
+                    controller.setDateLabel(orderList.get(i).getDate().toString());
+                    //Should be a class for the content of the specific order
+                    /*IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(orderList.get(i));
+                    models.add(model);
+                    controller.setOrder(orderList.get(i));*/
+                    flowPane.getChildren().add(historyCategory);
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            int j = orderList.size() - 1;
+            while(j >= 0) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
+                    Node historyCategory = loader.load();
+                    IMat_HistoryCategoriesController controller = loader.getController();
+                    controller.setDateLabel(orderList.get(j).getDate().toString());
+                    //Should be a class for the content of the specific order
+                    /*IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(orderList.get(i));
+                    models.add(model);
+                    controller.setOrder(orderList.get(i));*/
+                    flowPane.getChildren().add(historyCategory);
+                    j--;
+                } catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+        /*
         for(Order o : IMat_Model.getBackEnd().getOrders()){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                 Node historyCategory = loader.load();
                 IMat_HistoryCategoriesController controller = loader.getController();
-                controller.setDateLabel("hej");
+                controller.setDateLabel(o.getDate().toString());
                 //Should be a class for the content of the specific order
                 IMat_HistoryCategoriesModel model = new IMat_HistoryCategoriesModel(o);
                 models.add(model);
@@ -88,7 +125,7 @@ public class IMat_HistoryController implements Initializable {
             } catch (IOException e){
                 e.printStackTrace();
             }
-        }
+        }*/
         historyCategoryPane.getChildren().add(flowPane);
 
     }
