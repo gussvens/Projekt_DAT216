@@ -48,22 +48,45 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="searchPane" layoutX="11.0" layoutY="14.0" prefHeight="15.0" prefWidth="268.0" style="-fx-background-color: Transparent;">
+            <AnchorPane fx:id="searchPane" layoutX="12.0" layoutY="14.0" prefHeight="43.0" prefWidth="261.0">
                <children>
-                  <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="268.0" style="-fx-background-color: transparent;">
-                     <children>
-                        <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="historyHelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="    Till Start" AnchorPane.leftAnchor="9.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="settingsButton" layoutX="219.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="storeButton" layoutX="153.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/shoppingCart_small.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

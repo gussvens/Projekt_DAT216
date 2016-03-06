@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="300.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/matButik.jpg" />
+                  <Image url="@../images/shoppingCart2.jpg" />
                </image>
             </ImageView>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="450.0" style="-fx-background-color: #CCCCCC;" text="Till butiken" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
@@ -38,31 +38,11 @@
       </StackPane>
       <HBox layoutX="455.0" layoutY="486.0" prefHeight="135.0" prefWidth="450.0" spacing="15.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="435.0">
          <children>
-            <StackPane fx:id="goToSavedListButton" onMouseClicked="#savedListButtonClicked">
+            <StackPane fx:id="goToHistoryButton" onMouseClicked="#historyButtonClicked" prefHeight="135.0" prefWidth="225.0">
                <children>
-                  <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="125.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/placeholder.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Sparade listor" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </StackPane>
-            <StackPane fx:id="goToHistoryButton" onMouseClicked="#historyButtonClicked">
-               <children>
-                  <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/placeholder.jpg" />
+                        <Image url="@../images/history.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Historik" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
@@ -78,14 +58,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </StackPane>
-            <StackPane fx:id="goToSettingsButton" onMouseClicked="#settingsButtonClicked">
+            <StackPane fx:id="goToSettingsButton" onMouseClicked="#settingsButtonClicked" prefHeight="135.0" prefWidth="225.0">
                <children>
                   <ImageView fitHeight="125.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/placeholder.jpg" />
+                        <Image url="@../images/settings.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Inställningar" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #CCCCCC;" text="Uppgifter" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>

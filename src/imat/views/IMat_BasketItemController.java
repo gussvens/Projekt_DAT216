@@ -118,11 +118,8 @@ public class IMat_BasketItemController implements Initializable {
                         sC.addItem(sI);
                     }
 
-                    IMat_FXMLController.getPresenter().updateBasket();
+                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
 
-                    if (getPresenter() != null) {
-                        getPresenter().updateScrollPane();
-                    }
                 }
             };
 

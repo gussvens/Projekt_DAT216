@@ -14,6 +14,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -64,6 +66,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     @FXML
     private Button homeButton;
     @FXML
+    private Button historyButton;
+    @FXML
+    private Button settingsButton;
+    @FXML
     private ScrollPane storeItemScrollPane;
     @FXML
     private ScrollPane basketScrollPane;
@@ -113,7 +119,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 this,
                 CategoryFavorites,
                 menuFavStar,
-                saveAsListButton,
+              //  saveAsListButton,
                 removeAllFromBasket,
                 searchField
         );
@@ -137,16 +143,40 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         searchButton.setOnMouseClicked(searchButtonClicked);
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
         removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
-        saveAsListButton.setOnMouseClicked(saveList);
+//        saveAsListButton.setOnMouseClicked(saveList);
         searchField.setOnKeyPressed(searchEnterPressed);
+        homeButton.setOnMouseClicked(homeButtonClicked);
+        historyButton.setOnMouseClicked(historyButtonClicked);
+        settingsButton.setOnMouseClicked(settingsButtonClicked);
 
         // Initializing centerstage.
         initCenter();
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
 
+        FlowPane basketFlowPane = new FlowPane();
+        basketFlowPane.setVgap(3);
+        basketFlowPane.setPrefWidth(255);
 
+        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+            try {
+                Product p = s.getProduct();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
+                Node storeItem = loader.load();
+                IMat_BasketItemController controller = loader.getController();
+                controller.setItemNameLabel(p.getName());
+                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
+                controller.setItemQuantity("kr");
+                controller.setShoppingItem(s);
+                controller.setNrOfBasketItems(s.getAmount());
+                basketFlowPane.getChildren().add(storeItem);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        basketScrollPane.setContent(basketFlowPane);
     }
+
 
     EventHandler<MouseEvent> setBasketEmpty
             = new EventHandler<MouseEvent>() {
@@ -182,11 +212,48 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 }
             };
 
-    @FXML
-    private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
-    }
+
+    EventHandler<MouseEvent> homeButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> historyButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> settingsButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
 
     public void shoppingCartChanged(CartEvent evt){
         FlowPane basketFlowPane = new FlowPane();
@@ -280,6 +347,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         // Collects those products mareked as favorites.
                     } else if (getCurrentPane(t).equals("CategoryFavorites")) {
                         prodList = IMat_Model.getBackEnd().favorites();
+
 
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
@@ -390,7 +458,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                             prodList.add(p);
                         }
                         subNameList.add("Exotisk frukt");
-                        subNameList.add("Frukt");
+                        subNameList.add("Stenfrukt");
                         subNameList.add("Meloner");
                         subNameList.add("Bär");
                         subNameList.add("Citrusfrukt");
@@ -408,7 +476,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                             prodList.add(p);
                         }
 
-                        subNameList.add("Kött");
+                        subNameList.add("Kött/Kyckling");
                         subNameList.add("Fisk");
                         /* Collects those product that should 
                          be in the vegetables-section.
@@ -555,6 +623,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 IMat_SubcategoryController controller = loader.getController();
                 controller.setSubName(p);
                 controller.setIndex(i);
+                controller.setSubImage(getSubImage(p));
                 if(i == activeSubindex){
                     controller.getAnchorPane();
                 }
@@ -567,10 +636,102 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        
+        flowPane.setOrientation(Orientation.HORIZONTAL);
+
         this.subScrollPane.setContent(flowPane);
 
     }
+
+    private Image getSubImage(String s){
+        if(s.equals("Mejeri")){
+
+            return(new Image("imat/images/sub/dairy.png"));
+
+        } else if(s.equals("Godis")){
+
+            return(new Image("imat/images/sub/sweets.png"));
+
+        } else if(s.equals("Nötter/Frön")){
+
+            return(new Image("imat/images/sub/nuts.png"));
+
+        } else if(s.equals("Kalla drycker")){
+
+            return(new Image("imat/images/sub/cold-drinks.png"));
+
+        } else if(s.equals("Varma drycker")){
+
+            return(new Image("imat/images/sub/hot-drinks.png"));
+
+        } else if(s.equals("Mjöl/Socker/Salt")){
+
+            return(new Image("imat/images/sub/flour.png"));
+
+        } else if(s.equals("Pasta")){
+
+            return(new Image("imat/images/sub/pasta.png"));
+
+        } else if(s.equals("Baljväxter")){
+
+            return(new Image("imat/images/sub/balj.png"));
+
+        } else if(s.equals("Potatis/Ris")){
+
+            return(new Image("imat/images/sub/potato.png"));
+
+        } else if(s.equals("Exotisk frukt")){
+
+            return(new Image("imat/images/sub/exotic.png"));
+
+        } else if(s.equals("Stenfrukt")){
+
+            return(new Image("imat/images/sub/sten.png"));
+
+        } else if(s.equals("Meloner")){
+
+            return(new Image("imat/images/sub/melon.png"));
+
+        } else if(s.equals("Bär")){
+
+            return(new Image("imat/images/sub/berries.png"));
+
+        } else if(s.equals("Citrusfrukt")){
+
+            return(new Image("imat/images/sub/citrus.png"));
+
+        } else if(s.equals("Kött/Kyckling")){
+
+            return(new Image("imat/images/sub/meat.png"));
+
+        } else if(s.equals("Fisk")){
+
+            return(new Image("imat/images/sub/fish.png"));
+
+        } else if(s.equals("Sallad")){
+
+            return(new Image("imat/images/sub/sallad.png"));
+
+        } else if(s.equals("Örter")){
+
+            return(new Image("imat/images/sub/herbs.png"));
+
+        } else if(s.equals("Rotfrukter")){
+
+            return(new Image("imat/images/sub/root.png"));
+
+        } else if(s.equals("Grönsaksfrukt")){
+
+            return(new Image("imat/images/sub/cucumber.png"));
+
+        } else if(s.equals("Bröd")){
+
+            return(new Image("imat/images/sub/bread.png"));
+
+        }
+        return(new Image("imat/images/sub/dairy.png"));
+    }
+
+
 
     // Sets the totalSum in the GUI
     public void setTotal() {
