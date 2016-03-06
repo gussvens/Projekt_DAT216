@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package imat.views;
 
 import java.io.IOException;
@@ -20,20 +15,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import se.chalmers.ait.dat215.project.Order;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingItem;
+import se.chalmers.ait.dat215.project.*;
+
 
 /**
  * FXML Controller class
  *
- * @author Gustav
+ * @author Group 12
  */
-public class IMat_HistoryController implements Initializable {
+public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
     @FXML
     private Button homeButton;
@@ -41,29 +34,28 @@ public class IMat_HistoryController implements Initializable {
     @FXML
     private Pane historyCategoryPane;
 
-  /* Hitting a wall with presenting
-    the history
-    @FXML
-    private Label dateLabel1;
-    @FXML
-    private Label dateLabel2;
-    @FXML
-    private Label dateLabel3;
-    @FXML
-    private Label dateLabel4;
-    @FXML
-    private Label dateLabel5;
-    @FXML
-    private Label dateLabel6;
-    @FXML
-    private Label dateLabel7;
-    @FXML
-    private Label dateLabel8;
-    @FXML
-    private Label dateLabel9;
+    /* Hitting a wall with presenting
+     the history
+     @FXML
+     private Label dateLabel1;
+     @FXML
+     private Label dateLabel2;
+     @FXML
+     private Label dateLabel3;
+     @FXML
+     private Label dateLabel4;
+     @FXML
+     private Label dateLabel5;
+     @FXML
+     private Label dateLabel6;
+     @FXML
+     private Label dateLabel7;
+     @FXML
+     private Label dateLabel8;
+     @FXML
+     private Label dateLabel9;
 
-    private List<Label> labelList = new ArrayList<>();*/
-
+     private List<Label> labelList = new ArrayList<>();*/
     @FXML
     private ScrollPane historyItemScrollPane;
     @FXML
@@ -74,6 +66,9 @@ public class IMat_HistoryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
+
         FlowPane flowPane = new FlowPane();
         flowPane.setVgap(6);
         flowPane.setHgap(6);
@@ -82,7 +77,7 @@ public class IMat_HistoryController implements Initializable {
         List<Order> orderList = IMat_Model.getBackEnd().getOrders();
         if (orderList.size() >= 9) {
             for (int i = orderList.size() - 1; i >= orderList.size() - 10;
-                 i--) {
+                    i--) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
@@ -116,7 +111,19 @@ public class IMat_HistoryController implements Initializable {
             }
         }
         historyCategoryPane.getChildren().add(flowPane);
+    }
 
+    public void setHistoryItemScrollPane(FlowPane flowPane) {
+        historyItemScrollPane.setContent(flowPane);
+    }
+
+    @FXML
+    private void homeButtonClicked() throws IOException {
+        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+        IMat.getStage().setScene(new Scene(start, 1360, 768));
+    }
+
+    public void shoppingCartChanged(CartEvent evt) {
         FlowPane basketFlowPane = new FlowPane();
         basketFlowPane.setVgap(3);
         basketFlowPane.setPrefWidth(255);
@@ -139,16 +146,4 @@ public class IMat_HistoryController implements Initializable {
         }
         basketScrollPane.setContent(basketFlowPane);
     }
-
-    public void setHistoryItemScrollPane(FlowPane flowPane){
-        historyItemScrollPane.setContent(flowPane);
-    }
-
-    @FXML
-    private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
-    }
-
-
 }

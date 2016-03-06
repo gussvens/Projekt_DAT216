@@ -1,18 +1,12 @@
 package imat;
 
-import imat.views.IMat_BasketItemController;
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-
 import imat.views.IMat_FXMLController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -20,9 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -123,40 +114,10 @@ public class IMat_StoreItemController implements Initializable {
                 sC.addItem(sI);
             }
             updateTotalPrice();
-            //placeBasketItems(sC.getItems());
+
+            IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
         }
     };
-
-    // Place the storeItems in the basket.
-    /*public void placeBasketItems(List<ShoppingItem> list) {
-        FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(3);
-        flowPane.setPrefWidth(255);
-
-        for (ShoppingItem s : list) {
-            try {
-                Product p = s.getProduct();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("views/IMat_BasketItem.fxml"));
-                Node storeItem = loader.load();
-                IMat_BasketItemController controller = loader.getController();
-                controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
-                controller.setItemQuantity("kr");
-                controller.setShoppingItem(s);
-                controller.setNrOfBasketItems(s.getAmount());
-                flowPane.getChildren().add(storeItem);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        basketScrollPane.setContent(flowPane);
-        IMat_FXMLController.getPresenter().setRemoveAllFromBasketActive();
-        IMat_FXMLController.getPresenter().setSaveListButtonActive();
-        updateTotalPrice();
-    }*/
-
-    
     
     public void updateTotalPrice() {
         IMat_FXMLController.getPresenter().setTotal();
