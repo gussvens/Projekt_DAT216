@@ -48,7 +48,7 @@ public class IMat_presenter extends Observable {
     private ScrollPane subScrollPane;
     private final Button searchButton;
     private Button removeAllFromBasket;
-    private Button saveAsListButton;
+    //private Button saveAsListButton;
     private Button toCheckout;
     private TextField totalPrice;
     private TextField searchTextField;
@@ -80,12 +80,12 @@ public class IMat_presenter extends Observable {
             IMat_FXMLController FXMLcont,
             Pane CategoryFavorites,
             ImageView menuFavStar,
-            Button saveAsListButton,
+            //Button saveAsListButton,
             Button removeAllFromBasket,
             TextField searchTextField) {
 
         this.searchTextField = searchTextField;
-        this.saveAsListButton = saveAsListButton;
+       // this.saveAsListButton = saveAsListButton;
         this.removeAllFromBasket = removeAllFromBasket;
         this.menuFavStar = menuFavStar;
         this.CategoryFavorites = CategoryFavorites;
@@ -269,11 +269,11 @@ public class IMat_presenter extends Observable {
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             setRemoveAllFromBasketInactive();
-            setSaveListButtonInctive();
+           // setSaveListButtonInctive();
         } else {
             toCheckout.setDisable(false);
             setRemoveAllFromBasketActive();
-            setSaveListButtonActive();
+            //setSaveListButtonActive();
         }
     }
 
@@ -342,12 +342,12 @@ public class IMat_presenter extends Observable {
         removeAllFromBasket.setDisable(true);
     }
     
-    public void setSaveListButtonActive(){
+   /* public void setSaveListButtonActive(){
         saveAsListButton.setDisable(false);
     }
-    public void setSaveListButtonInctive(){
+      public void setSaveListButtonInctive(){
         saveAsListButton.setDisable(true);
-    }
+    }*/
 
     public void clearSeachField(){
         searchTextField.setText("");

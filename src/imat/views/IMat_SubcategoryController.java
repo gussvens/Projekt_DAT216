@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -29,6 +31,8 @@ public class IMat_SubcategoryController implements Initializable {
     private Label subName;
     @FXML
     private AnchorPane subAnchor;
+    @FXML
+    private ImageView subImage;
 
     private int indexNr;
 
@@ -71,7 +75,7 @@ public class IMat_SubcategoryController implements Initializable {
                         prod = ProductCategory.POTATO_RICE;
                     } else if (subName.getText().equals("Exotisk frukt")) {
                         prod = ProductCategory.EXOTIC_FRUIT;
-                    } else if (subName.getText().equals("Frukt")) {
+                    } else if (subName.getText().equals("Stenfrukt")) {
                         prod = ProductCategory.FRUIT;
                     } else if (subName.getText().equals("Meloner")) {
                         prod = ProductCategory.MELONS;
@@ -79,7 +83,7 @@ public class IMat_SubcategoryController implements Initializable {
                         prod = ProductCategory.BERRY;
                     } else if (subName.getText().equals("Citrusfrukt")) {
                         prod = ProductCategory.CITRUS_FRUIT;
-                    } else if (subName.getText().equals("Kött")) {
+                    } else if (subName.getText().equals("Kött/Kyckling")) {
                         prod = ProductCategory.MEAT;
                     } else if (subName.getText().equals("Fisk")) {
                         prod = ProductCategory.FISH;
@@ -138,6 +142,10 @@ public class IMat_SubcategoryController implements Initializable {
     // Sets the label of the filterButton.
     public void setSubName(String name) {
         subName.setText(name);
+    }
+
+    public void setSubImage(Image image){
+        subImage.setImage(image);
     }
 
     public void setIndex(int i) {

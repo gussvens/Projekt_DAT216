@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -14,13 +21,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
    <children>
       <Pane layoutY="5.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="leftPane1" layoutX="20.0" layoutY="54.0" prefHeight="634.0" prefWidth="250.0">
                <children>
-                  <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                      <children>
                         <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                            <children>
@@ -48,22 +55,45 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="searchPane" layoutX="11.0" layoutY="14.0" prefHeight="15.0" prefWidth="268.0" style="-fx-background-color: Transparent;">
+            <AnchorPane fx:id="searchPane" layoutX="12.0" layoutY="14.0" prefHeight="43.0" prefWidth="261.0">
                <children>
-                  <HBox layoutY="-1.0" prefHeight="30.0" prefWidth="268.0" style="-fx-background-color: transparent;">
-                     <children>
-                        <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="historyHelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
+                  <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="    Till Start" AnchorPane.leftAnchor="9.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="settingsButton" layoutX="219.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="storeButton" layoutX="153.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/shoppingCart_small.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
@@ -77,7 +107,7 @@
       <AnchorPane layoutX="1063.0" layoutY="212.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #AAAAAA;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
-            <HBox layoutX="41.0" layoutY="100.0" spacing="10.0">
+            <HBox layoutX="64.0" layoutY="120.0" spacing="10.0">
                <children>
                   <Button fx:id="saveAsListButton" mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
                   <Button fx:id="removeAllFromBasket" mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />

@@ -13,6 +13,9 @@ import imat.IMat;
 import imat.IMat_Model;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -39,6 +42,10 @@ public class IMat_SettingsController implements Initializable {
 
     @FXML
     private Button homeButton;
+    @FXML
+    private Button storeButton;
+    @FXML
+    private Button historyButton;
 
     @FXML
     private TextField firstName;
@@ -101,7 +108,12 @@ public class IMat_SettingsController implements Initializable {
         card3.setText(staticCard3);
         card4.setText(staticCard4);
         cvc.setText(staticCvc);
+
         saveSettings.setOnMouseClicked(onSaveButtonClick);
+
+        homeButton.setOnMouseClicked(homeButtonClicked);
+        storeButton.setOnMouseClicked(storeButtonClicked);
+        historyButton.setOnMouseClicked(historyButtonClicked);
         
         
         /*
@@ -131,15 +143,51 @@ public class IMat_SettingsController implements Initializable {
                     setCvc();
                 }
             };
-    
-    
-    
-    
-    @FXML
-    private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
-    }
+
+
+
+
+    EventHandler<MouseEvent> homeButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> storeButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> historyButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
 
     @FXML
     public void setFirstName() {
