@@ -114,9 +114,11 @@ public class IMat_SubcategoryController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    if (getButton(t).getStyle().equals(MENU_ENTER_COLOR)) {
-                        getButton(t).setStyle(MENU_DEFAULT_COLOR);
+                    if (subName.getStyle().equals(MENU_ENTER_COLOR)) {
+                        //subName.setStyle(MENU_DEFAULT_COLOR);
                         getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
+                        subName.setStyle(MENU_DEFAULT_COLOR);
+                        
                     }
                 }
             };
@@ -127,9 +129,10 @@ public class IMat_SubcategoryController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    if (!getButton(t).getStyle().equals(MENU_CLICKED_COLOR)) {
+                    if (!subName.getStyle().equals(MENU_CLICKED_COLOR)) {
                         getButton(t).setStyle(MENU_ENTER_COLOR);
-                        //getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
+                        getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
+                        subName.setStyle(MENU_ENTER_COLOR);
                     }
                 }
             };
@@ -153,7 +156,7 @@ public class IMat_SubcategoryController implements Initializable {
     }
 
     public void getAnchorPane() {
-        subAnchor.setStyle(MENU_CLICKED_COLOR);
+        subName.setStyle(MENU_CLICKED_COLOR);
     }
 
 }

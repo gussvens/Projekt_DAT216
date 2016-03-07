@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
@@ -7,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="subAnchor" prefHeight="95.0" prefWidth="100.0" style="-fx-border-color: #DDDDDD;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_SubcategoryController">
+<AnchorPane id="AnchorPane" fx:id="subAnchor" prefHeight="95.0" prefWidth="100.0" style="-fx-border-color: #DDDDDD;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_SubcategoryController">
     <stylesheets>
         <URL value="@imat_subcategory.css" />
     </stylesheets>
@@ -15,7 +21,7 @@
       <StackPane layoutX="1.0" layoutY="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="subImage" fitHeight="95.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="subName" alignment="CENTER" prefHeight="19.0" prefWidth="100.0" style="-fx-background-color: #DDDDDD;" text="Banankotletter" StackPane.alignment="BOTTOM_RIGHT">
+            <Label fx:id="subName" alignment="CENTER" prefHeight="19.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF;" text="Banankotletter" StackPane.alignment="BOTTOM_RIGHT">
                <font>
                   <Font size="13.0" />
                </font>
