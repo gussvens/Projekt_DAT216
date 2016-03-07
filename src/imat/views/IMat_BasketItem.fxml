@@ -21,7 +21,7 @@
     </stylesheets>
    <children>
       <Button layoutX="156.0" layoutY="41.0" mnemonicParsing="false" text="Ta bort vara" visible="false" AnchorPane.rightAnchor="15.0" />
-      <HBox layoutX="16.0" layoutY="29.0" spacing="3.0">
+      <HBox layoutX="16.0" layoutY="29.0" spacing="3.0" AnchorPane.leftAnchor="10.0">
          <children>
             <ImageView fx:id="removeOne" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,18 +39,18 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox alignment="TOP_RIGHT" layoutX="130.0" layoutY="29.0" prefHeight="17.0" prefWidth="96.0" spacing="3.0" AnchorPane.leftAnchor="130.0">
+      <HBox alignment="TOP_RIGHT" layoutX="130.0" layoutY="29.0" prefHeight="17.0" prefWidth="96.0" spacing="3.0" AnchorPane.leftAnchor="125.0">
          <children>
             <Label fx:id="basketProdPrice" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="15.0" prefHeight="17.0" prefWidth="54.0" text="100.00" />
             <Label fx:id="basketProdQuant" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="15.0" prefHeight="17.0" prefWidth="11.0" text="kr" />
          </children>
       </HBox>
-      <Label fx:id="basketProdName" layoutX="72.0" layoutY="29.0" prefHeight="17.0" prefWidth="106.0" text="Banankotletter">
+      <Label fx:id="basketProdName" layoutX="72.0" layoutY="29.0" prefHeight="17.0" prefWidth="106.0" text="Banankotletter" AnchorPane.leftAnchor="70.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <ImageView fx:id="basketRemove" fitHeight="25.0" fitWidth="15.0" layoutX="234.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="basketRemove" fitHeight="25.0" fitWidth="15.0" layoutX="234.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0">
          <image>
             <Image url="@../images/closeButton.png" />
          </image>
