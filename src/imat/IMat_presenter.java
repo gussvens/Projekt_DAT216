@@ -33,8 +33,8 @@ public class IMat_presenter extends Observable {
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color:  #;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #ffcc80;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #ff9900;";
 
     // enter: d6eeff
     // clicked: a6eafc
