@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Group 12
+ * @author Andreas
  */
 public class IMat extends Application {
 

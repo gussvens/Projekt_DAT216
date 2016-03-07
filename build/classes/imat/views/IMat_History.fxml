@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -21,13 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
    <children>
       <Pane layoutY="5.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="leftPane1" layoutX="20.0" layoutY="54.0" prefHeight="634.0" prefWidth="250.0">
                <children>
-                  <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                  <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
                            <children>
@@ -107,7 +100,7 @@
       <AnchorPane layoutX="1063.0" layoutY="212.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #AAAAAA;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
-            <HBox layoutX="64.0" layoutY="120.0" spacing="10.0">
+            <HBox layoutX="41.0" layoutY="100.0" spacing="10.0">
                <children>
                   <Button fx:id="saveAsListButton" mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
                   <Button fx:id="removeAllFromBasket" mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
