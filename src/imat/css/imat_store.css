@@ -6,17 +6,21 @@
 }
 
 #categoryPane{
-    -fx-background-color: linear-gradient(to left, #AADDAA, #77AA77);
+    -fx-background-color: #7CC447;
 
 }
 
 #checkoutPane{
-    -fx-background-color: linear-gradient(to left, #77AA77, #AADDAA);
+    -fx-background-color: #7CC447;
 
 }
 
+.storeCategories{
+    -fx-background-color: #FDFDFD;
+}
+
 .storeButtons{
-    -fx-background-color: #DDFFDD;
+    -fx-background-color: #99FF00;
 }
 
 .centerStageViews{

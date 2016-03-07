@@ -87,8 +87,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private ImageView menuFavStar;
     @FXML
     private Button removeAllFromBasket;
-    @FXML
-    private Button saveAsListButton;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -145,7 +143,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
 //        saveAsListButton.setOnMouseClicked(saveList);
         searchField.setOnKeyPressed(searchEnterPressed);
-        homeButton.setOnMouseClicked(homeButtonClicked);
+//        homeButton.setOnMouseClicked(homeButtonClicked);
         historyButton.setOnMouseClicked(historyButtonClicked);
         settingsButton.setOnMouseClicked(settingsButtonClicked);
 
