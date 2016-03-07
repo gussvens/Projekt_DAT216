@@ -1,12 +1,3 @@
-/*
- * Empty Stylesheet file.
- */
-
-.mainFxmlClass {
-
-}
-
-
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
@@ -15,51 +6,51 @@
 }
 
 #categoryPane{
-    -fx-background-color: linear-gradient(to left, #BBBBBB, #DDDDDD);
+    -fx-background-color: linear-gradient(to left, #AADDAA, #77AA77);
 
 }
 
 #checkoutPane{
-    -fx-background-color: linear-gradient(to left, #DDDDDD, #BBBBBB);
+    -fx-background-color: linear-gradient(to left, #77AA77, #AADDAA);
 
-}
-
-.evenCategories {
-    -fx-color: #FF0000;
-}
-
-.oddCategories {
-    -fx-color: #0000FF;
 }
 
 .storeButtons{
-    -fx-background-color: #DDDDDD;
+    -fx-background-color: #DDFFDD;
 }
 
 .centerStageViews{
-    -fx-background-color: #FDFDFD;
+    -fx-background-color: transparent;
 }
 
 #storeItemScrollPane{
     -fx-foreground-color: #000000;
 }
 
-#storeRegisterView {
-    -fx-background-color: #FFFF00;
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+	-fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
 }
 
-#storeRegisterHeader {
-
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+	-fx-background-color:transparent;
+	-fx-background-radius: 0em;
+	-fx-padding:0 0 10 0;
 }
 
-#storeRegisterFooter {
 
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #AACCAA;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
 }
 
-#storeCheckoutButton{
-
-}
-
-#storeCategoryHeader{
-
+.scroll-bar:horizontal ,
+.scroll-bar:vertical {
+	-fx-background-color: transparent;
 }

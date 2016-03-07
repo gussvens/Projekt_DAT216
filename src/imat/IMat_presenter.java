@@ -32,7 +32,7 @@ public class IMat_presenter extends Observable {
     //private final IMat_Model model;
 
     // MenuButton colors.
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #DDFFDD;";
     private final String MENU_ENTER_COLOR = "-fx-background-color:  #ffcc80;";
     private final String MENU_CLICKED_COLOR = "-fx-background-color:  #ff9900;";
 
@@ -43,9 +43,9 @@ public class IMat_presenter extends Observable {
     // enter ff9933
 
     // SearchButton colors.
-    private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #a6eafc;";
-    private final String SEARCH_BTN_ENTER = "-fx-background-color: #95d9eb;";
-    private final String SEARCH_BTN_DOWN = "-fx-background-color: #84c8da;";
+    private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #DDFFDD;";
+    private final String SEARCH_BTN_ENTER = "-fx-background-color: #EEFFEE;";
+    private final String SEARCH_BTN_DOWN = "-fx-background-color: #BBDDBB;";
 
     private IMat_FXMLController FXMLcont;
     private final List<Pane> menuButtonsList;

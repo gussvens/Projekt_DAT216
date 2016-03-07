@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,13 +17,13 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryController">
    <children>
-      <Pane layoutY="5.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="categoryPane" layoutY="5.0" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_history.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="leftPane1" layoutX="20.0" layoutY="54.0" prefHeight="634.0" prefWidth="250.0">
                <children>
                   <VBox fx:id="historyCategoryVBox" prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                        <Pane prefHeight="92.0" prefWidth="250.0">
                            <children>
                               <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                                  <children>
@@ -50,20 +51,23 @@
             </AnchorPane>
             <AnchorPane fx:id="searchPane" layoutX="12.0" layoutY="14.0" prefHeight="43.0" prefWidth="261.0">
                <children>
-                  <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="    Till Start" AnchorPane.leftAnchor="9.0">
+                  <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" styleClass="historyButtons" text="    Till Start" AnchorPane.leftAnchor="9.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow color="#0000008c" />
+                     </effect>
                   </Button>
                   <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/home.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="settingsButton" layoutX="219.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                  <Button fx:id="settingsButton" layoutX="212.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="historyButtons">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,8 +78,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow color="#0000008c" />
+                     </effect>
                   </Button>
-                  <Button fx:id="storeButton" layoutX="153.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
+                  <Button fx:id="storeButton" layoutX="153.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" styleClass="historyButtons">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,6 +93,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <effect>
+                        <DropShadow color="#0000008c" />
+                     </effect>
                   </Button>
                </children>
             </AnchorPane>
@@ -97,15 +107,13 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="1063.0" layoutY="212.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="checkoutPane" layoutX="1063.0" layoutY="212.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_history.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #AAAAAA;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
-            <HBox layoutX="41.0" layoutY="100.0" spacing="10.0">
-               <children>
-                  <Button fx:id="saveAsListButton" mnemonicParsing="false" text="Spara som lista" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="120.0" />
-                  <Button fx:id="removeAllFromBasket" mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="120.0" />
-               </children>
-            </HBox>
+            <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #99CC99;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0">
+               <effect>
+                  <DropShadow color="#00000040" />
+               </effect></Pane>
+            <HBox layoutX="41.0" layoutY="100.0" spacing="10.0" />
             <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="180.0" prefHeight="394.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="180.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="8.0">
                <children>
@@ -114,7 +122,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: #e2e2e2;">
+                  <TextField fx:id="totalPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="30.0" prefWidth="86.0" promptText="0 kr" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -132,12 +140,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="103.0" layoutY="40.0" text="Din kundvagn">
+            <Label layoutX="101.0" layoutY="58.0" text="Din kundvagn">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="57.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="55.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/shoppingCart_small.png" />
                </image>
@@ -145,6 +153,11 @@
             <Label layoutX="30.0" layoutY="156.0" text="Antal" />
             <Label layoutX="88.0" layoutY="156.0" text="Produkt" />
             <Label layoutX="202.0" layoutY="156.0" text="Totalt pris" />
+            <Button fx:id="removeAllFromBasket" layoutX="190.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" styleClass="historyButtons" text="Töm varukorgen" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="117.0">
+               <effect>
+                  <DropShadow color="#00000059" />
+               </effect>
+            </Button>
          </children>
       </AnchorPane>
    </children>
