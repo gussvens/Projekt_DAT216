@@ -266,15 +266,7 @@ public class IMat_presenter extends Observable {
         basketScrollPane.setContent(flowPane);
         setTotal();
 
-        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
-            toCheckout.setDisable(true);
-            setRemoveAllFromBasketInactive();
-           // setSaveListButtonInctive();
-        } else {
-            toCheckout.setDisable(false);
-            setRemoveAllFromBasketActive();
-            //setSaveListButtonActive();
-        }
+
     }
 
     public void filterSearch() {

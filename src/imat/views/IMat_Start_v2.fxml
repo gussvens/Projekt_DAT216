@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="300.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/shoppingCart2.jpg" />
+                  <Image url="@../images/shoppingCart_transparent.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="450.0" style="-fx-background-color: #CCCCCC;" text="Till butiken" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
