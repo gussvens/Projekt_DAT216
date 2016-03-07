@@ -20,12 +20,12 @@
         <URL value="@imat.fxml.css" />
     </stylesheets>
    <children>
-      <Pane prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane id="categoryPane" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: #e2e2e2;">
+                  <Pane prefHeight="92.0" prefWidth="250.0" style="-fx-background-color: transparent;">
                      <children>
                         <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                            <children>
@@ -180,7 +180,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" style="-fx-background-color: #e2e2e2;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="checkoutPane" layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #AAAAAA;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="41.0" layoutY="100.0" spacing="10.0" />
@@ -226,7 +226,7 @@
             <Button fx:id="removeAllFromBasket" layoutX="166.0" layoutY="122.0" mnemonicParsing="false" text="Töm varukorgen" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="122.0" />
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="535.0" prefWidth="647.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="349.0" layoutY="14.0" prefHeight="103.0" prefWidth="641.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="349.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="14.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="147.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="330.0" layoutY="14.0" prefHeight="103.0" prefWidth="641.0" style="-fx-background-color: #FFFFFF;" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="14.0" />
    </children>
 </AnchorPane>
