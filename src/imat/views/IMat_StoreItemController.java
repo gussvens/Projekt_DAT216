@@ -35,9 +35,9 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 public class IMat_StoreItemController implements Initializable {
 
     // MenuButton colors.
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #E0E0E0;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color: #d6eeff;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color: #a6eafc;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #009973;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #22BB95;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #11AA84;";
     
     
     // FXML inports

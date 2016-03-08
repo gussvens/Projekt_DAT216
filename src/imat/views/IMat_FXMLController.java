@@ -324,6 +324,9 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 // Sets functionality on each of the menubuttons.
                 @Override
                 public void handle(MouseEvent t) {
+                    System.out.println(t.getSource().toString());
+                    
+                    
                     activeSubindex = 0;
                     pres.clearSeachField();
                     pres.colorChangeOnClick(t);
@@ -343,12 +346,13 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         subNameList.add("Mejeri");
 
                         // Collects those products mareked as favorites.
-                    } else if (getCurrentPane(t).equals("CategoryFavorites")) {
+                    } else if (getCurrentPane(t).equals("topCategory")) {
                         prodList = IMat_Model.getBackEnd().favorites();
+                        System.out.println("i fav ifen");
 
 
                         // Collects those product that should be in the candy-section.
-                    } else if (getCurrentPane(t).equals("CategoryCandy_Snacks")) {
+                    } else if (getCurrentPane(t).equals("bottomCategory")) {
                         pC = ProductCategory.SWEET;
                         prodList = IMat_Model.getBackEnd().getProducts(pC);
 
@@ -655,7 +659,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
         } else if(s.equals("Kalla drycker")){
 
-            return(new Image("imat/images/iconer/cold-drinks.png"));
+            return(new Image("imat/images/iconer/cold_drinks.png"));
 
         } else if(s.equals("Varma drycker")){
 
