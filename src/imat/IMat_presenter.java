@@ -35,8 +35,8 @@ public class IMat_presenter extends Observable {
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color:  #FFBD6F;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #FF681A;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #D2FF67;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #BAE74E;";
 
     //ff9900
     //ffcc80
@@ -111,8 +111,6 @@ public class IMat_presenter extends Observable {
         this.CategoryMeat_Fish_Shellfish = CategoryMeat_Fish_Shellfish;
         this.CategoryVegetables = CategoryVegetables;
         this.CategoryBread = CategoryBread;
-
-        //    7CC447
 
 
         /*
