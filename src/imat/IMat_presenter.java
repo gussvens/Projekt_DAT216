@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -32,20 +34,17 @@ public class IMat_presenter extends Observable {
     //private final IMat_Model model;
 
     // MenuButton colors.
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color:  #ffcc80;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #ff9900;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #BCE954;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #667c26;";
 
-    // enter: d6eeff
-    // clicked: a6eafc
-
-    // clicked ff3300
-    // enter ff9933
-
+    //ff9900
+    //ffcc80
+    //
     // SearchButton colors.
-    private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #ffcc80;";
-    private final String SEARCH_BTN_ENTER = "-fx-background-color: #ffcc80;";
-    private final String SEARCH_BTN_DOWN = "-fx-background-color: #ff9900;";
+    private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #DDFFDD;";
+    private final String SEARCH_BTN_ENTER = "-fx-background-color: #EEFFEE;";
+    private final String SEARCH_BTN_DOWN = "-fx-background-color: #BBDDBB;";
 
     private IMat_FXMLController FXMLcont;
     private final List<Pane> menuButtonsList;
@@ -91,7 +90,7 @@ public class IMat_presenter extends Observable {
             TextField searchTextField) {
 
         this.searchTextField = searchTextField;
-       // this.saveAsListButton = saveAsListButton;
+        // this.saveAsListButton = saveAsListButton;
         this.removeAllFromBasket = removeAllFromBasket;
         this.menuFavStar = menuFavStar;
         this.CategoryFavorites = CategoryFavorites;
@@ -143,7 +142,6 @@ public class IMat_presenter extends Observable {
 
         // NOT SURE IF NEEDED HERE...
         //model = new IMat_Model();
-        
         updateBasket();
     }
 
@@ -227,9 +225,11 @@ public class IMat_presenter extends Observable {
         }
 
         getButton(t).setStyle(MENU_CLICKED_COLOR);
+        //Change colour of selected item to white. getButton(t).getChildren().get(0).getAccessibleRole() something?
     }
 
     // Sets the totalPrice every time a product is added to the basket.
+
     public void setTotal() {
         totalPrice.setText(Double.toString(getTotal()) + " kr");
     }
@@ -275,7 +275,7 @@ public class IMat_presenter extends Observable {
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             setRemoveAllFromBasketInactive();
-           // setSaveListButtonInctive();
+            // setSaveListButtonInctive();
         } else {
             toCheckout.setDisable(false);
             setRemoveAllFromBasketActive();
@@ -347,15 +347,14 @@ public class IMat_presenter extends Observable {
     public void setRemoveAllFromBasketInactive() {
         removeAllFromBasket.setDisable(true);
     }
-    
-   /* public void setSaveListButtonActive(){
-        saveAsListButton.setDisable(false);
-    }
-      public void setSaveListButtonInctive(){
-        saveAsListButton.setDisable(true);
-    }*/
 
-    public void clearSeachField(){
+    /* public void setSaveListButtonActive(){
+     saveAsListButton.setDisable(false);
+     }
+     public void setSaveListButtonInctive(){
+     saveAsListButton.setDisable(true);
+     }*/
+    public void clearSeachField() {
         searchTextField.setText("");
         searchTextField.setPromptText("Sök produkter här...");
     }

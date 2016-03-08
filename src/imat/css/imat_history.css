@@ -1,35 +1,39 @@
-.historyEvenCategories{
-
+#categoryPane{
+    -fx-background-color: linear-gradient(to left, #AADDAA, #77AA77);
 }
 
-.historyOddCategories{
-
-}
-
-#historyCategoryHeader{
-
-}
-
-#historyItemHeader{
-
-}
-
-#historyItemView{
-
-}
-
-#historyRegisterView {
-
-}
-
-#historyRegisterHeader {
-
-}
-
-#historyRegisterFooter {
-
+#checkoutPane{
+    -fx-background-color: linear-gradient(to left, #77AA77, #AADDAA);
 }
 
 .historyButtons{
+    -fx-background-color: #DDFFDD;
+}
 
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+	-fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+	-fx-background-color:transparent;
+	-fx-background-radius: 0em;
+	-fx-padding:0 0 10 0;
+}
+
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #AACCAA;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+.scroll-bar:horizontal ,
+.scroll-bar:vertical {
+	-fx-background-color: transparent;
 }

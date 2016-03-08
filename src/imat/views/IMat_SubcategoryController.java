@@ -23,9 +23,11 @@ public class IMat_SubcategoryController implements Initializable {
 
     // Colors. !! CAN BE CHANGED IN CSS INSTEAD, I GUESS. !!
     private final String MENU_DEFAULT_BORDER_COLOR = "-fx-border-color: #DDDDDD;";
+
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color:  #ffcc80;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #ff9900;";
+
+    private final String MENU_ENTER_COLOR = "-fx-background-color: #ffcc80;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color: #ff9900;";
 
     @FXML
     private Label subName;
