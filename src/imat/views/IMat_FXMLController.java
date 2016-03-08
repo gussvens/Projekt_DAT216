@@ -655,7 +655,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
         } else if(s.equals("Kalla drycker")){
 
-            return(new Image("imat/images/iconer/cold-drinks.png"));
+            return(new Image("imat/images/iconer/cold_drinks.png"));
 
         } else if(s.equals("Varma drycker")){
 

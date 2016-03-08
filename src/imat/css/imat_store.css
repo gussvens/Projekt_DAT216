@@ -5,15 +5,11 @@
    -fx-background-color: transparent;
 }
 
-#categoryPane{
-    -fx-background-color: #97D77d;
-    -fx-opacity: 0.65;
+#categoryPane, #checkoutPane{
+    -fx-background-color: linear-gradient(to bottom, #009973, #00CC83);
+    -fx-opacity: 0.70;
 }
 
-#checkoutPane{
-    -fx-background-color: gradient#97D77d;
-    -fx-opacity: 0.65;
-}
 
 .storeCategories{
     -fx-background-color: #FDFDFD;
@@ -24,15 +20,15 @@
 }
 
 .categoryLabels{
-    -fx-text-fill: #654321 ;
+    -fx-text-fill: #444444;
 }
 
 .storeButtons{
-    -fx-background-color: #FEFEFE;
+    -fx-background-color: #FDFDFD;
 }
 
 .storeLabels{
-    -fx-text-fill: #4d2800;
+    -fx-text-fill: #444444;
 }
 
 .centerStageViews{
@@ -70,7 +66,8 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #FF8D3E;
+    -fx-background-color: #BBBBBB;
+    -fx-opacity: 0.55;
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
 }
