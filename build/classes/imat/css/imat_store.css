@@ -14,6 +14,15 @@
    -fx-background-color: transparent;
 }
 
+#categoryPane{
+    -fx-background-color: linear-gradient(to left, #BBBBBB, #DDDDDD);
+
+}
+
+#checkoutPane{
+    -fx-background-color: linear-gradient(to left, #DDDDDD, #BBBBBB);
+
+}
 
 .evenCategories {
     -fx-color: #FF0000;

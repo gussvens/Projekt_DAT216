@@ -22,10 +22,10 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 public class IMat_SubcategoryController implements Initializable {
 
     // Colors. !! CAN BE CHANGED IN CSS INSTEAD, I GUESS. !!
-    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
     private final String MENU_DEFAULT_BORDER_COLOR = "-fx-border-color: #DDDDDD;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color: #d6eeff;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color: #a6eafc;";
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FFFFFF;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #ffcc80;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #ff9900;";
 
     @FXML
     private Label subName;
@@ -97,7 +97,7 @@ public class IMat_SubcategoryController implements Initializable {
                         prod = ProductCategory.VEGETABLE_FRUIT;
                     } else if (subName.getText().equals("Bröd")) {
                         prod = ProductCategory.BREAD;
-                    } else if (subName.getText().equals("Allt")){
+                    } else if (subName.getText().equals("Allt")) {
                         prod = ProductCategory.DAIRIES;
                     }
 
@@ -118,7 +118,7 @@ public class IMat_SubcategoryController implements Initializable {
                         //subName.setStyle(MENU_DEFAULT_COLOR);
                         getButton(t).setStyle(MENU_DEFAULT_BORDER_COLOR);
                         subName.setStyle(MENU_DEFAULT_COLOR);
-                        
+
                     }
                 }
             };
@@ -147,7 +147,7 @@ public class IMat_SubcategoryController implements Initializable {
         subName.setText(name);
     }
 
-    public void setSubImage(Image image){
+    public void setSubImage(Image image) {
         subImage.setImage(image);
     }
 
