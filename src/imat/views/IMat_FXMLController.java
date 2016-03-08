@@ -643,19 +643,19 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private Image getSubImage(String s){
         if(s.equals("Mejeri")){
 
-            return(new Image("imat/images/sub/dairy.png"));
+            return(new Image("imat/images/iconer/dairy.png"));
 
         } else if(s.equals("Godis")){
 
-            return(new Image("imat/images/sub/sweets.png"));
+            return(new Image("imat/images/iconer/sweets.png"));
 
         } else if(s.equals("Nötter/Frön")){
 
-            return(new Image("imat/images/sub/nuts.png"));
+            return(new Image("imat/images/iconer/nuts_seeds.png"));
 
         } else if(s.equals("Kalla drycker")){
 
-            return(new Image("imat/images/sub/cold-drinks.png"));
+            return(new Image("imat/images/iconer/cold-drinks.png"));
 
         } else if(s.equals("Varma drycker")){
 

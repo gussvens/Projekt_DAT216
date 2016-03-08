@@ -35,12 +35,17 @@ public class IMat_presenter extends Observable {
 
     // MenuButton colors.
     private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
-    private final String MENU_ENTER_COLOR = "-fx-background-color:  #BCE954;";
-    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #667c26;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #D2FF67;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #BAE74E;";
 
     //ff9900
     //ffcc80
-    //
+
+
+    //BCE954
+    //667c26
+
+
     // SearchButton colors.
     private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #DDFFDD;";
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #EEFFEE;";
@@ -109,6 +114,7 @@ public class IMat_presenter extends Observable {
         this.CategoryVegetables = CategoryVegetables;
         this.CategoryBread = CategoryBread;
 
+
         /*
          Puts all menuButtonObjects into a list so the listernerbinding
          will be more effective.
@@ -142,6 +148,7 @@ public class IMat_presenter extends Observable {
 
         // NOT SURE IF NEEDED HERE...
         //model = new IMat_Model();
+
         updateBasket();
     }
 
@@ -149,60 +156,60 @@ public class IMat_presenter extends Observable {
     EventHandler<MouseEvent> searchButtonEnter
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    setSeachButtonColor(t, SEARCH_BTN_ENTER);
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            setSeachButtonColor(t, SEARCH_BTN_ENTER);
+        }
+    };
 
     EventHandler<MouseEvent> searchButtonExit
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    setSeachButtonColor(t, SEARCH_BTN_DEFAULT);
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            setSeachButtonColor(t, SEARCH_BTN_DEFAULT);
+        }
+    };
     EventHandler<MouseEvent> searchButtonPressed
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    setSeachButtonColor(t, SEARCH_BTN_DOWN);
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            setSeachButtonColor(t, SEARCH_BTN_DOWN);
+        }
+    };
     EventHandler<MouseEvent> searchButtonReleased
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    setSeachButtonColor(t, SEARCH_BTN_ENTER);
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            setSeachButtonColor(t, SEARCH_BTN_ENTER);
+        }
+    };
 
     // Resets the color of the menuButton on mouseExit. 
     EventHandler<MouseEvent> menuButtonExit
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    if (getButton(t).getStyle().equals(MENU_ENTER_COLOR)) {
-                        getButton(t).setStyle(MENU_DEFAULT_COLOR);
-                    }
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            if (getButton(t).getStyle().equals(MENU_ENTER_COLOR)) {
+                getButton(t).setStyle(MENU_DEFAULT_COLOR);
+            }
+        }
+    };
 
     // Changes the color of the menuButton on mouseEnter.
     EventHandler<MouseEvent> menuButtonEnter
             = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    if (!getButton(t).getStyle().equals(MENU_CLICKED_COLOR)) {
-                        getButton(t).setStyle(MENU_ENTER_COLOR);
-                    }
-                }
-            };
+        @Override
+        public void handle(MouseEvent t) {
+            if (!getButton(t).getStyle().equals(MENU_CLICKED_COLOR)) {
+                getButton(t).setStyle(MENU_ENTER_COLOR);
+            }
+        }
+    };
 
     // Helper...
     private void setSeachButtonColor(MouseEvent t, String s) {
@@ -228,7 +235,10 @@ public class IMat_presenter extends Observable {
         //Change colour of selected item to white. getButton(t).getChildren().get(0).getAccessibleRole() something?
     }
 
-    // Sets the totalPrice every time a product is added to the basket.
+
+        // Sets the totalPrice every time a product is added to the basket.
+    
+
 
     public void setTotal() {
         totalPrice.setText(Double.toString(getTotal()) + " kr");
@@ -348,14 +358,17 @@ public class IMat_presenter extends Observable {
         removeAllFromBasket.setDisable(true);
     }
 
+
     /* public void setSaveListButtonActive(){
      saveAsListButton.setDisable(false);
      }
      public void setSaveListButtonInctive(){
      saveAsListButton.setDisable(true);
      }*/
+
     public void clearSeachField() {
         searchTextField.setText("");
         searchTextField.setPromptText("Sök produkter här...");
     }
 }
+

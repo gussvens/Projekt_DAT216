@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,10 +30,10 @@
                         <HBox layoutY="40.0" prefHeight="30.0" prefWidth="250.0" spacing="5.0">
                            <children>
                               <TextField fx:id="searchField" focusTraversable="false" layoutX="50.0" layoutY="34.0" prefHeight="30.0" prefWidth="210.0" promptText="Sök produkter här..." AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="100.0" />
-                              <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" style="-fx-background-color: #DDFFDD;" text="Sök" textFill="#274927" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+                              <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Sök" textFill="#274927" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                            </children>
                         </HBox>
-                        <Label layoutY="23.0" text="HÄR KAN DU SÖKA EFTER PRODUKTER" textFill="#274927">
+                        <Label layoutY="23.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="HÄR KAN DU SÖKA EFTER PRODUKTER" textFill="#274927">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -47,9 +46,9 @@
                         <Insets />
                      </opaqueInsets>
                   </Pane>
-                  <Pane fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
+                  <Pane id="topCategory" fx:id="CategoryFavorites" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label fx:id="CategoryFavourites" layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Favoriter" textFill="#274927">
+                        <Label fx:id="CategoryFavourites" layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Favoriter" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -63,7 +62,7 @@
                   </Pane>
                   <Pane fx:id="CategoryVegetables" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Grönsaker" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Grönsaker" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -72,7 +71,7 @@
                   </Pane>
                   <Pane fx:id="CategoryFruit_Berries" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Frukt och bär" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Frukt och bär" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -81,7 +80,7 @@
                   </Pane>
                   <Pane fx:id="CategoryBread" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="41.0" prefHeight="55.0" prefWidth="195.0" text="Bröd" textFill="#274927">
+                        <Label layoutX="41.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Bröd" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -90,7 +89,7 @@
                   </Pane>
                   <Pane fx:id="CategoryMeat_Fish_Shellfish" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Kött, fisk och skaldjur" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Kött, fisk och skaldjur" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -99,7 +98,7 @@
                   </Pane>
                   <Pane fx:id="CategoryDairy" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Mejeri" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Mejeri" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -111,7 +110,7 @@
                   </Pane>
                   <Pane fx:id="CategoryDryGoods" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Torrvaror" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Torrvaror" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -120,16 +119,16 @@
                   </Pane>
                   <Pane fx:id="CategoryDrinks" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Dryck" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Dryck" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
+                  <Pane id="bottomCategory" fx:id="CategoryCandy_Snacks" prefHeight="55.0" prefWidth="250.0" styleClass="storeCategories" stylesheets="@../css/imat_store.css">
                      <children>
-                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" text="Godis och snacks" textFill="#274927">
+                        <Label layoutX="40.0" prefHeight="55.0" prefWidth="195.0" styleClass="categoryLabels" stylesheets="@../css/imat_store.css" text="Godis och snacks" textFill="#274927">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -142,7 +141,7 @@
       </AnchorPane>
       <AnchorPane fx:id="searchPane" layoutX="23.0" layoutY="14.0" prefHeight="44.0" prefWidth="250.0" AnchorPane.leftAnchor="23.0">
          <children>
-            <Button fx:id="settingsButton" layoutX="137.0" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="113.0" style="-fx-background-color: #DDFFDD;" text="       Uppgifter" textFill="#274927">
+            <Button fx:id="settingsButton" layoutX="137.0" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="       Uppgifter" textFill="#274927">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -150,7 +149,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="historyButton" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #DDFFDD;" text="     Historik" textFill="#274927">
+            <Button fx:id="historyButton" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="123.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="     Historik" textFill="#274927">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -172,16 +171,12 @@
       </AnchorPane>
       <AnchorPane id="checkoutPane" layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #99CC99;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0">
-               <effect>
-                  <DropShadow color="#00000041" />
-               </effect>
-            </Pane>
+            <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #CDFA65;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="41.0" layoutY="100.0" spacing="10.0" />
             <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="180.0" prefHeight="394.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="180.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="8.0">
                <children>
-                  <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" text="Totalt pris:" textFill="#274927">
+                  <Label layoutX="107.0" layoutY="570.0" prefHeight="30.0" prefWidth="77.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -204,7 +199,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="101.0" layoutY="58.0" prefHeight="31.0" prefWidth="138.0" text="Din kundvagn" textFill="#224422">
+            <Label layoutX="101.0" layoutY="58.0" prefHeight="31.0" prefWidth="138.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Din kundvagn" textFill="#331a00">
                <font>
                   <Font size="21.0" />
                </font>
@@ -214,17 +209,17 @@
                   <Image url="@../images/shoppingCart_small.png" />
                </image>
             </ImageView>
-            <Label layoutX="30.0" layoutY="156.0" text="Antal" textFill="#274927" />
-            <Label layoutX="88.0" layoutY="156.0" text="Produkt" textFill="#274927" />
-            <Label layoutX="202.0" layoutY="156.0" text="Totalt pris" textFill="#274927" />
-            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="117.0" mnemonicParsing="false" style="-fx-background-color: #DDFFDD;" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="117.0">
+            <Label layoutX="30.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
+            <Label layoutX="88.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
+            <Label layoutX="202.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
+            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="117.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="117.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="347.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="147.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="152.0" />
       <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="31.0" />
    </children>
 </AnchorPane>

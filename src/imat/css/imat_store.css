@@ -6,21 +6,33 @@
 }
 
 #categoryPane{
-    -fx-background-color: #7CC447;
-
+    -fx-background-color: #97D77d;
+    -fx-opacity: 0.65;
 }
 
 #checkoutPane{
-    -fx-background-color: #7CC447;
-
+    -fx-background-color: #97D77d;
+    -fx-opacity: 0.65;
 }
 
 .storeCategories{
     -fx-background-color: #FDFDFD;
 }
 
+.storeCategories:hover {
+    -fx-background-color: firebrick;
+}
+
+.categoryLabels{
+    -fx-text-fill: #654321 ;
+}
+
 .storeButtons{
-    -fx-background-color: #99FF00;
+    -fx-background-color: #FEFEFE;
+}
+
+.storeLabels{
+    -fx-text-fill: #4d2800;
 }
 
 .centerStageViews{
@@ -46,10 +58,19 @@
 	-fx-padding:0 0 10 0;
 }
 
+#topCategory{
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5 5 0 0;
+}
+
+#bottomCategory{
+    -fx-border-radius: 0 0 5 5;
+    -fx-background-radius: 0 0 5 5;
+}
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #AACCAA;
+    -fx-background-color: #FF8D3E;
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
 }

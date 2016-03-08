@@ -185,7 +185,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         @Override
         public void handle(MouseEvent t) {
             try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
                 IMat.getStage().setScene(new Scene(start, 1360, 768));
             } catch (IOException ex) {
                 Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
