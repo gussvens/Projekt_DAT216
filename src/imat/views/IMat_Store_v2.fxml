@@ -164,7 +164,7 @@
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="143.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/settings.png" />
+                  <Image url="@../images/user.png" />
                </image>
             </ImageView>
          </children>

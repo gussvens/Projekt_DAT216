@@ -46,7 +46,6 @@ public class IMat_SettingsController implements Initializable {
     private Button storeButton;
     @FXML
     private Button historyButton;
-
     @FXML
     private TextField firstName;
     @FXML
@@ -144,9 +143,6 @@ public class IMat_SettingsController implements Initializable {
                 }
             };
 
-
-
-
     EventHandler<MouseEvent> homeButtonClicked
             = new EventHandler<MouseEvent>() {
 
@@ -167,7 +163,7 @@ public class IMat_SettingsController implements Initializable {
         @Override
         public void handle(MouseEvent t) {
             try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
                 IMat.getStage().setScene(new Scene(start, 1360, 768));
             } catch (IOException ex) {
                 Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);

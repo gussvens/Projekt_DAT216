@@ -38,37 +38,12 @@ import se.chalmers.ait.dat215.project.*;
 public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
     @FXML
-    private Button homeButton;
-    @FXML
     private Button storeButton;
     @FXML
     private Button settingsButton;
     private List<IMat_HistoryCategoriesModel> models = new ArrayList<>();
     @FXML
     private Pane historyCategoryPane;
-
-  /* Hitting a wall with presenting
-    the history
-    @FXML
-    private Label dateLabel1;
-    @FXML
-    private Label dateLabel2;
-    @FXML
-    private Label dateLabel3;
-    @FXML
-    private Label dateLabel4;
-    @FXML
-    private Label dateLabel5;
-    @FXML
-    private Label dateLabel6;
-    @FXML
-    private Label dateLabel7;
-    @FXML
-    private Label dateLabel8;
-    @FXML
-    private Label dateLabel9;
-
-    private List<Label> labelList = new ArrayList<>();*/
 
     @FXML
     private ScrollPane historyItemScrollPane;
@@ -83,7 +58,6 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
 
-        homeButton.setOnMouseClicked(homeButtonClicked);
         storeButton.setOnMouseClicked(storeButtonClicked);
         settingsButton.setOnMouseClicked(settingsButtonClicked);
 
@@ -134,6 +108,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                 }
             }
         }
+
         historyCategoryPane.getChildren().add(flowPane);
 
         FlowPane basketFlowPane = new FlowPane();
@@ -164,20 +139,6 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     public void setHistoryItemScrollPane(FlowPane flowPane){
         historyItemScrollPane.setContent(flowPane);
     }
-
-    EventHandler<MouseEvent> homeButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
 
     EventHandler<MouseEvent> storeButtonClicked
             = new EventHandler<MouseEvent>() {

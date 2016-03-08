@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="categoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="250.0" style="-fx-background-color: #DDFFDD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryCategoriesController">
+<AnchorPane id="categoryPane" fx:id="categoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="250.0" stylesheets="@../css/imat_historyCategories.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_HistoryCategoriesController">
    <children>
-      <Label fx:id="dateLabel" alignment="CENTER" layoutX="28.0" prefHeight="55.0" prefWidth="195.0" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="0.0">
+      <Label id="categoryLabel" fx:id="dateLabel" layoutX="41.0" prefHeight="55.0" prefWidth="195.0" stylesheets="@../css/imat_historyCategories.css" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font size="16.0" />
          </font>

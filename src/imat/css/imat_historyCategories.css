@@ -1,0 +1,8 @@
+#categoryPane{
+    -fx-background-color: #FDFDFD;
+}
+
+#categoryLabel{
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}

@@ -1,34 +1,31 @@
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
+
 .scroll-pane {
    -fx-background-color: transparent;
 }
 
-#categoryPane{
-    -fx-background-color: #FF8D3E;
-
-}
-
-#checkoutPane{
-    -fx-background-color: #FF8D3E;
-
+#categoryPane, #checkoutPane{
+    -fx-background-color: linear-gradient(to bottom, #009973, #00CC83);
+    -fx-opacity: 0.70;
 }
 
 .storeCategories{
-    -fx-background-color: #FEFEFE;
+    -fx-background-color: #FDFDFD;
 }
 
 .categoryLabels{
-    -fx-text-fill: #4d2800;
+    -fx-text-fill: #444444;
 }
 
 .storeButtons{
-    -fx-background-color: #FEFEFE;
+    -fx-background-color: #FDFDFD;
+    -fx-text-fill: #444444;
 }
 
 .storeLabels{
-    -fx-text-fill: #4d2800;
+    -fx-text-fill: #333333;
 }
 
 .centerStageViews{
@@ -54,6 +51,7 @@
 	-fx-padding:0 0 10 0;
 }
 
+
 #topCategory{
     -fx-border-radius: 5 5 0 0;
     -fx-background-radius: 5 5 0 0;
@@ -66,7 +64,8 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: #FF8D3E;
+    -fx-background-color: #BBBBBB;
+    -fx-opacity: 0.55;
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
 }
