@@ -5,8 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,6 +12,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_SettingsController">
    <children>
+      <AnchorPane fx:id="searchPane" prefHeight="15.0" prefWidth="268.0" AnchorPane.leftAnchor="12.0">
+         <children>
+            <HBox layoutY="-1.0">
+               <children>
+                  <Button fx:id="homeButton" layoutX="67.0" layoutY="43.0" mnemonicParsing="false" onMouseClicked="#homeButtonClicked" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #FDFDFD;" text="Tillbaka till Startsidan" underline="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="100.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="settings_HelpButton" layoutX="170.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #FDFDFD;" text="Hjälp" underline="true" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="20.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
       <Label alignment="CENTER" layoutY="88.0" prefHeight="45.0" prefWidth="215.0" text="Dina uppgifter" textFill="#000000ad" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
          <font>
             <Font size="30.0" />
@@ -21,10 +37,10 @@
       </Label>
       <AnchorPane layoutX="509.0" layoutY="179.0" prefHeight="382.0" prefWidth="300.0">
          <children>
-            <TextField fx:id="postCode" layoutX="100.0" layoutY="140.0" onAction="#setPostCode" prefHeight="25.0" prefWidth="77.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="140.0" />
+            <TextField fx:id="postCode" layoutX="100.0" layoutY="140.0" onAction="#setPostCode" prefHeight="25.0" prefWidth="77.0" promptText="te.x. 123 45" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="140.0" />
             <VBox layoutX="12.0" layoutY="37.0" prefHeight="55.0" prefWidth="187.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TextField fx:id="firstName" layoutX="65.0" layoutY="37.0" onAction="#setFirstName" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="37.0" />
+                  <TextField fx:id="firstName" layoutX="65.0" layoutY="37.0" onAction="#setFirstName" prefHeight="25.0" prefWidth="149.0" promptText="Skriv namn" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="37.0" />
                   <TextField fx:id="lastName" layoutX="68.0" layoutY="81.0" onAction="#setLastName" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="72.0" />
                </children>
             </VBox>
@@ -34,8 +50,8 @@
                   <TextField fx:id="address" layoutX="73.0" layoutY="185.0" onAction="#setAddress" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="161.0" />
                </children>
             </VBox>
-            <ComboBox fx:id="payment1" layoutX="100.0" layoutY="225.0" prefHeight="25.0" prefWidth="187.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="190.0" />
-            <ComboBox fx:id="cardType1" layoutX="100.0" layoutY="256.0" prefHeight="25.0" prefWidth="187.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="221.0" />
+            <ComboBox fx:id="paymentBox" layoutX="100.0" layoutY="225.0" onAction="#handleComboBoxAction" prefHeight="25.0" prefWidth="187.0" promptText="Välj" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="190.0" />
+            <ComboBox fx:id="cardTypeBox" layoutX="100.0" layoutY="256.0" prefHeight="25.0" prefWidth="187.0" promptText="Välj" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="221.0" />
             <HBox layoutX="100.0" layoutY="287.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="252.0">
                <children>
                   <TextField fx:id="card1" layoutX="390.0" layoutY="360.0" prefHeight="25.0" prefWidth="43.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="339.0" />
@@ -67,47 +83,6 @@
                </children>
             </VBox>
             <Button fx:id="saveSettings" layoutX="191.0" layoutY="328.0" mnemonicParsing="false" text="Spara uppgifter" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="searchPane" layoutX="22.0" layoutY="24.0" prefHeight="43.0" prefWidth="261.0">
-         <children>
-            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="122.0" text="    Till Start" AnchorPane.leftAnchor="9.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/home.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="historyButton" layoutX="219.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/history.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="storeButton" layoutX="153.0" layoutY="3.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/shoppingCart_small.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
       </AnchorPane>
    </children>
