@@ -29,18 +29,20 @@
       <URL value="@imat.fxml.css" />
    </stylesheets>
    <children>
-      <Pane id="categoryPane" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="bgPane" layoutX="935.0" layoutY="-48.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane id="categoryPane" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="searchPane" prefHeight="44.0" prefWidth="250.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="14.0">
          <children>
-            <AnchorPane fx:id="searchPane" layoutX="23.0" layoutY="18.0" prefHeight="44.0" prefWidth="250.0">
+            <HBox layoutY="1.0" spacing="24.0">
                <children>
                   <Pane fx:id="storeButton" layoutY="1.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/history2.png" />
+                              <Image url="@../images/shoppingCart_small_new.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="-1.0" prefHeight="42.0" prefWidth="113.0" styleClass="categoryLabels" text="      Historik">
+                        <Label alignment="CENTER" layoutX="11.0" prefHeight="42.0" prefWidth="113.0" styleClass="categoryLabels" text="Butiken">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -56,7 +58,7 @@
                   </Pane>
                   <Pane fx:id="settingsButton" layoutX="137.0" layoutY="2.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
                      <children>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/user.png" />
                            </image>
@@ -76,8 +78,9 @@
                      </children>
                   </Pane>
                </children>
-            </AnchorPane>
-         </children></Pane>
+            </HBox>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -105,7 +108,7 @@
       </AnchorPane>
       <AnchorPane id="checkoutPane" layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
+            <Pane fx:id="basketTopPane" layoutX="14.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
             <HBox layoutX="41.0" layoutY="100.0" spacing="10.0" />
             <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="180.0" prefHeight="394.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="194.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="180.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="8.0">
@@ -125,7 +128,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="toCheckout" disable="true" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #EEFFEE;" text="Till kassan" textFill="#274927" AnchorPane.bottomAnchor="84.0">
+            <Button fx:id="toCheckout" disable="true" layoutX="81.0" layoutY="629.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #EEFFEE;" text="Till kassan" textFill="#274927" AnchorPane.bottomAnchor="73.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -133,12 +136,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="101.0" layoutY="58.0" prefHeight="31.0" prefWidth="138.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Din kundvagn" textFill="#331a00">
+            <Label layoutX="101.0" layoutY="58.0" prefHeight="31.0" prefWidth="138.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Din kundvagn" textFill="#331a00" AnchorPane.topAnchor="40.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="55.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="55.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="29.0">
                <image>
                   <Image url="@../images/shoppingCart_small.png" />
                </image>
