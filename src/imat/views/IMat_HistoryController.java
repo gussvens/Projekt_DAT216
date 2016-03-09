@@ -39,9 +39,9 @@ import se.chalmers.ait.dat215.project.*;
 public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
     @FXML
-    private Button storeButton;
+    private Pane storeButton;
     @FXML
-    private Button settingsButton;
+    private Pane settingsButton;
     private List<IMat_HistoryCategoriesModel> models = new ArrayList<>();
     @FXML
     private Pane historyCategoryPane;

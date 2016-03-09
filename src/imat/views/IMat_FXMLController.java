@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,6 +39,10 @@ import se.chalmers.ait.dat215.project.*;
  * @author Group 12
  */
 public class IMat_FXMLController implements Initializable, ShoppingCartListener {
+
+    private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
+    private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
+    private final String BTN_DEFAULT_CLICK = "-fx-background-color: #9bd1c4;";
 
     private static IMat_presenter pres;
     private static int activeSubindex;
@@ -88,9 +93,8 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private Button removeAllFromBasket;
     @FXML
     private ImageView userPic;
-     @FXML
+    @FXML
     private ImageView historyPic;
-    
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -121,7 +125,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 this,
                 CategoryFavorites,
                 menuFavStar,
-              //  saveAsListButton,
+                //  saveAsListButton,
                 removeAllFromBasket,
                 searchField
         );
@@ -141,22 +145,41 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             p.setOnMouseClicked(menuButtonClicked);
         }
 
-        // Sets listeners to the buttons
+        // SearchButton
         searchButton.setOnMouseClicked(searchButtonClicked);
-        toCheckout.setOnMouseClicked(checkoutButtonClicked);
-        removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
-//        saveAsListButton.setOnMouseClicked(saveList);
-        searchField.setOnKeyPressed(searchEnterPressed);
-//        homeButton.setOnMouseClicked(homeButtonClicked);
+        searchButton.setOnMouseEntered(searchButtonEnter);
+        searchButton.setOnMouseClicked(searchButtonClicked);
+        searchButton.setCursor(Cursor.HAND);
+
+        // HistoryButton
         historyButton.setOnMouseClicked(historyButtonClicked);
         historyButton.setOnMouseEntered(historyButtonEnter);
         historyButton.setOnMouseExited(historyButtonExit);
-        
+        historyButton.setCursor(Cursor.HAND);
+
+        // SettingButton
         settingsButton.setOnMouseClicked(settingsButtonClicked);
         settingsButton.setOnMouseEntered(settingsButtonEnter);
         settingsButton.setOnMouseExited(settingsButtonExit);
+        settingsButton.setCursor(Cursor.HAND);
+
+        // Empty-basketButton
+        removeAllFromBasket.setOnMouseClicked(setBasketEmpty);
+        removeAllFromBasket.setOnMouseEntered(removeButtonEnter);
+        removeAllFromBasket.setOnMouseExited(removeButtonExit);
+        removeAllFromBasket.setCursor(Cursor.HAND);
         
         
+        toCheckout.setOnMouseClicked(checkoutButtonClicked);
+        toCheckout.setOnMouseEntered(toCheckOutEnter);
+        toCheckout.setOnMouseExited(toCheckOutExit);
+        toCheckout.setCursor(Cursor.HAND);
+        
+        
+        
+        searchField.setOnKeyPressed(searchEnterPressed);
+        // homeButton.setOnMouseClicked(homeButtonClicked);
+        // saveAsListButton.setOnMouseClicked(saveList);
 
         // Initializing centerstage.
         initCenter();
@@ -196,42 +219,102 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         }
     }
 
-     EventHandler<MouseEvent> historyButtonEnter
+    EventHandler<MouseEvent> removeButtonEnter
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                   historyPic.setImage(new Image("imat/images/history2_mouseOver.png"));
+                    if (!removeAllFromBasket.isDisabled()) {
+                        removeAllFromBasket.setStyle(BTN_DEFAULT_ENTER);
+                    }
                 }
             };
     
-     EventHandler<MouseEvent> historyButtonExit
+    EventHandler<MouseEvent> toCheckOutEnter
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                   historyPic.setImage(new Image("imat/images/history2.png"));
+                    if (!toCheckout.isDisabled()) {
+                        toCheckout.setStyle(BTN_DEFAULT_ENTER);
+                    }
                 }
             };
-     
-     EventHandler<MouseEvent> settingsButtonEnter
+     EventHandler<MouseEvent> toCheckOutExit
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                  userPic.setImage(new Image("imat/images/user_mouseOver.png"));
+                    if (!toCheckout.isDisabled()) {
+                        toCheckout.setStyle(BTN_DEFAULT_EXIT);
+                    }
                 }
             };
-     
-     EventHandler<MouseEvent> settingsButtonExit
+    
+    EventHandler<MouseEvent> removeButtonExit
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                  userPic.setImage(new Image("imat/images/user.png"));
+                    
+                        removeAllFromBasket.setStyle(BTN_DEFAULT_EXIT);
+                   
                 }
             };
-     
+
+    EventHandler<MouseEvent> searchButtonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    searchButton.setStyle(BTN_DEFAULT_ENTER);
+                }
+            };
+
+    EventHandler<MouseEvent> searchButtonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    searchButton.setStyle(BTN_DEFAULT_EXIT);
+                }
+            };
+
+    EventHandler<MouseEvent> historyButtonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    historyButton.setStyle(BTN_DEFAULT_ENTER);
+                }
+            };
+
+    EventHandler<MouseEvent> historyButtonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    historyButton.setStyle(BTN_DEFAULT_EXIT);
+                }
+            };
+
+    EventHandler<MouseEvent> settingsButtonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    settingsButton.setStyle(BTN_DEFAULT_ENTER);
+                }
+            };
+
+    EventHandler<MouseEvent> settingsButtonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    settingsButton.setStyle(BTN_DEFAULT_EXIT);
+                }
+            };
 
     EventHandler<MouseEvent> setBasketEmpty
             = new EventHandler<MouseEvent>() {
@@ -267,50 +350,51 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 }
             };
 
-
     EventHandler<MouseEvent> homeButtonClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> historyButtonClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        historyButton.setStyle(BTN_DEFAULT_CLICK);
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> settingsButtonClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        settingsButton.setStyle(BTN_DEFAULT_CLICK);
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
-    public void shoppingCartChanged(CartEvent evt){
+    public void shoppingCartChanged(CartEvent evt) {
         FlowPane basketFlowPane = new FlowPane();
         basketFlowPane.setVgap(3);
         basketFlowPane.setPrefWidth(255);
@@ -374,6 +458,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
                 @Override
                 public void handle(MouseEvent t) {
+                    searchButton.setStyle(BTN_DEFAULT_CLICK);
                     subNameList = new ArrayList<>();
                     List<Product> list = new ArrayList<>();
                     list = IMatDataHandler.getInstance().
@@ -392,8 +477,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 @Override
                 public void handle(MouseEvent t) {
                     System.out.println(t.getSource().toString());
-                    
-                    
+
                     activeSubindex = 0;
                     pres.clearSeachField();
                     pres.colorChangeOnClick(t);
@@ -416,7 +500,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     } else if (getCurrentPane(t).equals("topCategory")) {
                         prodList = IMat_Model.getBackEnd().favorites();
                         System.out.println("i fav ifen");
-
 
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("bottomCategory")) {
@@ -685,7 +768,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
         int i = 1;
         for (String p : list) {
-            
+
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
                 Node storeItem = loader.load();
@@ -693,7 +776,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 controller.setSubName(p);
                 controller.setIndex(i);
                 controller.setSubImage(getSubImage(p));
-                if(i == activeSubindex){
+                if (i == activeSubindex) {
                     controller.getAnchorPane();
                 }
                 i++;
@@ -711,96 +794,94 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
     }
 
-    private Image getSubImage(String s){
-        if(s.equals("Mejeri")){
+    private Image getSubImage(String s) {
+        if (s.equals("Mejeri")) {
 
-            return(new Image("imat/images/sub/dairy.png"));
+            return (new Image("imat/images/sub/dairy.png"));
 
-        } else if(s.equals("Godis")){
+        } else if (s.equals("Godis")) {
 
-            return(new Image("imat/images/sub/sweets.png"));
+            return (new Image("imat/images/sub/sweets.png"));
 
-        } else if(s.equals("Nötter/Frön")){
+        } else if (s.equals("Nötter/Frön")) {
 
-            return(new Image("imat/images/sub/nuts.png"));
+            return (new Image("imat/images/sub/nuts.png"));
 
-        } else if(s.equals("Kalla drycker")){
+        } else if (s.equals("Kalla drycker")) {
 
-            return(new Image("imat/images/sub/cold-drinks.png"));
+            return (new Image("imat/images/sub/cold-drinks.png"));
 
-        } else if(s.equals("Varma drycker")){
+        } else if (s.equals("Varma drycker")) {
 
-            return(new Image("imat/images/sub/hot-drinks.png"));
+            return (new Image("imat/images/sub/hot-drinks.png"));
 
-        } else if(s.equals("Mjöl/Socker/Salt")){
+        } else if (s.equals("Mjöl/Socker/Salt")) {
 
-            return(new Image("imat/images/sub/flour.png"));
+            return (new Image("imat/images/sub/flour.png"));
 
-        } else if(s.equals("Pasta")){
+        } else if (s.equals("Pasta")) {
 
-            return(new Image("imat/images/sub/pasta.png"));
+            return (new Image("imat/images/sub/pasta.png"));
 
-        } else if(s.equals("Baljväxter")){
+        } else if (s.equals("Baljväxter")) {
 
-            return(new Image("imat/images/sub/balj.png"));
+            return (new Image("imat/images/sub/balj.png"));
 
-        } else if(s.equals("Potatis/Ris")){
+        } else if (s.equals("Potatis/Ris")) {
 
-            return(new Image("imat/images/sub/potato.png"));
+            return (new Image("imat/images/sub/potato.png"));
 
-        } else if(s.equals("Exotisk frukt")){
+        } else if (s.equals("Exotisk frukt")) {
 
-            return(new Image("imat/images/sub/exotic.png"));
+            return (new Image("imat/images/sub/exotic.png"));
 
-        } else if(s.equals("Stenfrukt")){
+        } else if (s.equals("Stenfrukt")) {
 
-            return(new Image("imat/images/sub/sten.png"));
+            return (new Image("imat/images/sub/sten.png"));
 
-        } else if(s.equals("Meloner")){
+        } else if (s.equals("Meloner")) {
 
-            return(new Image("imat/images/sub/melon.png"));
+            return (new Image("imat/images/sub/melon.png"));
 
-        } else if(s.equals("Bär")){
+        } else if (s.equals("Bär")) {
 
-            return(new Image("imat/images/sub/berries.png"));
+            return (new Image("imat/images/sub/berries.png"));
 
-        } else if(s.equals("Citrusfrukt")){
+        } else if (s.equals("Citrusfrukt")) {
 
-            return(new Image("imat/images/sub/citrus.png"));
+            return (new Image("imat/images/sub/citrus.png"));
 
-        } else if(s.equals("Kött/Kyckling")){
+        } else if (s.equals("Kött/Kyckling")) {
 
-            return(new Image("imat/images/sub/meat.png"));
+            return (new Image("imat/images/sub/meat.png"));
 
-        } else if(s.equals("Fisk")){
+        } else if (s.equals("Fisk")) {
 
-            return(new Image("imat/images/sub/fish.png"));
+            return (new Image("imat/images/sub/fish.png"));
 
-        } else if(s.equals("Sallad")){
+        } else if (s.equals("Sallad")) {
 
-            return(new Image("imat/images/sub/sallad.png"));
+            return (new Image("imat/images/sub/sallad.png"));
 
-        } else if(s.equals("Örter")){
+        } else if (s.equals("Örter")) {
 
-            return(new Image("imat/images/sub/herbs.png"));
+            return (new Image("imat/images/sub/herbs.png"));
 
-        } else if(s.equals("Rotfrukter")){
+        } else if (s.equals("Rotfrukter")) {
 
-            return(new Image("imat/images/sub/root.png"));
+            return (new Image("imat/images/sub/root.png"));
 
-        } else if(s.equals("Grönsaksfrukt")){
+        } else if (s.equals("Grönsaksfrukt")) {
 
-            return(new Image("imat/images/sub/cucumber.png"));
+            return (new Image("imat/images/sub/cucumber.png"));
 
-        } else if(s.equals("Bröd")){
+        } else if (s.equals("Bröd")) {
 
-            return(new Image("imat/images/sub/bread.png"));
+            return (new Image("imat/images/sub/bread.png"));
 
         }
-        return(new Image("imat/images/sub/dairy.png"));
+        return (new Image("imat/images/sub/dairy.png"));
     }
-
-
 
     // Sets the totalSum in the GUI
     public void setTotal() {
@@ -812,8 +893,8 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     public static IMat_presenter getPresenter() {
         return pres;
     }
-    
-    public static void activeSubIndex(int i){
+
+    public static void activeSubIndex(int i) {
         activeSubindex = i;
     }
 }
