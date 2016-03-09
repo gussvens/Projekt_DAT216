@@ -13,9 +13,6 @@ import imat.IMat;
 import imat.IMat_Model;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -39,13 +36,12 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  * @author Group 12
  */
 public class IMat_SettingsController implements Initializable {
+    
+   final static ObservableList<String> paymentOptions = FXCollections.observableArrayList("Faktura","Kontant","Kreditkort");
+   final static ObservableList<String> cardTypeOptions = FXCollections.observableArrayList("VISA","MasterCard");
 
     @FXML
     private Button homeButton;
-    @FXML
-    private Button storeButton;
-    @FXML
-    private Button historyButton;
     @FXML
     private TextField firstName;
     @FXML
@@ -57,9 +53,9 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private TextField postCode;
     @FXML
-    private ComboBox payment;
+    private ComboBox paymentBox;
     @FXML
-    private ComboBox cardType;
+    private ComboBox cardTypeBox;
     @FXML
     private TextField card1;
     @FXML
@@ -71,7 +67,7 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private TextField cvc;
     @FXML
-    private ComboBox deliveryDay;
+    private ComboBox datePicker;
     @FXML
     private TextArea comment;
     @FXML
@@ -84,6 +80,8 @@ public class IMat_SettingsController implements Initializable {
     private static String staticCard3;
     private static String staticCard4;
     private static String staticCvc;
+    private static String staticPayment;
+    private static String staticCardType;
 
     private Customer c = IMat_Model.getBackEnd().getCustomer();
 
@@ -107,13 +105,12 @@ public class IMat_SettingsController implements Initializable {
         card3.setText(staticCard3);
         card4.setText(staticCard4);
         cvc.setText(staticCvc);
-
         saveSettings.setOnMouseClicked(onSaveButtonClick);
+        paymentBox.setItems(paymentOptions);
+        cardTypeBox.setItems(cardTypeOptions);
+        paymentBox.setValue(staticPayment);
+        cardTypeBox.setValue(staticCardType);
 
-        homeButton.setOnMouseClicked(homeButtonClicked);
-        storeButton.setOnMouseClicked(storeButtonClicked);
-        historyButton.setOnMouseClicked(historyButtonClicked);
-        
         
         /*
         List<String> list = new ArrayList<String>();
@@ -127,6 +124,8 @@ public class IMat_SettingsController implements Initializable {
         */
         
     }
+    
+    
 
     
     EventHandler<MouseEvent> onSaveButtonClick
@@ -134,56 +133,46 @@ public class IMat_SettingsController implements Initializable {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    setCity();
-                    setCard1();
-                    setCard2();
-                    setCard3();
-                    setCard4();
-                    setCvc();
+                    setAddress();
+                    staticCard1 = card1.getText();
+                    staticCard2 = card2.getText();
+                    staticCard3 = card3.getText();
+                    staticCard4 = card4.getText();
+                    staticCardType=(String) cardTypeBox.getValue();
+                    staticCity = (String) city.getText();
+                    staticCvc = cvc.getText();
+                    setFirstName();
+                    setLastName();
+                    staticPayment=(String) paymentBox.getValue();
+                    setPostCode();
                 }
             };
-
-    EventHandler<MouseEvent> homeButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    
+    @FXML
+    private void handleComboBoxAction() {
+        String selectedOption = (String) paymentBox.getSelectionModel().getSelectedItem();
+        if(selectedOption=="Faktura" || selectedOption=="Kontant"){
+            cardTypeBox.setDisable(true);
+            cvc.setDisable(true);
+            card1.setDisable(true);
+            card2.setDisable(true);
+            card3.setDisable(true);
+            card4.setDisable(true);
+        } else {
+            cardTypeBox.setDisable(false);
+            cvc.setDisable(false);
+            card1.setDisable(false);
+            card2.setDisable(false);
+            card3.setDisable(false);
+            card4.setDisable(false);
         }
-    };
-
-    EventHandler<MouseEvent> storeButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
-
-    EventHandler<MouseEvent> historyButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+}
+    
+    @FXML
+    private void homeButtonClicked() throws IOException {
+        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+        IMat.getStage().setScene(new Scene(start, 1360, 768));
+    }
 
     @FXML
     public void setFirstName() {
@@ -204,60 +193,49 @@ public class IMat_SettingsController implements Initializable {
     public void setPostCode() {
         c.setPostCode(postCode.getText());
     }
-
+    
     @FXML
-    public void setPayment() {
-        //No payment-variable in backend
+    public static void setPayment(String s) {
+       staticPayment=s;
+       
     }
 
-    @FXML
-    public void setCardType() {
-        //No cardtype-variable in backend
+    public static void setCardType(String s) {
+        staticCardType=s;
     }
 
-
-    public void setDeliveryDay() {
+    public static void setDeliveryDay() {
         //No delivery day variable in backend
     }
 
     public void setComment() {
         //No Comment variable in backend
     }
-
-    
-    
-    
-    
-    
-    
-    
     
     // Setters for the static variables
-    public void setCity() {
-        staticCity = city.getText();
+    public static void setCity(String s) {
+        staticCity = s;
     }
     
-    public void setCard1() {
-        staticCard1 = card1.getText();
+    public static void setCard1(String s) {
+        staticCard1 = s;
     }
 
-    public void setCard2() {
-        staticCard2 = card2.getText();
+    public static void setCard2(String s) {
+        staticCard2 = s;
     }
 
-    public void setCard3() {
-        staticCard3 = card3.getText();
+    public static void setCard3(String s) {
+        staticCard3 = s;
     }
 
-    public void setCard4() {
-        staticCard4 = card4.getText();
+    public static void setCard4(String s) {
+        staticCard4 = s;
     }
 
-    public void setCvc() {
-        staticCvc = cvc.getText();
+    public static void setCvc(String s) {
+        staticCvc = s;
     }
-    
-    
     
     // Getters for the static variables.
     public static String getCity() {
@@ -282,6 +260,22 @@ public class IMat_SettingsController implements Initializable {
 
     public static String getCvc() {
         return staticCvc;
+    }
+    
+    public static String getPayment() {
+        return staticPayment;
+    }
+    
+    public static String getCardType() {
+        return staticCardType;
+    }
+    
+    public static ObservableList<String> getCardTypeOptions(){
+        return cardTypeOptions;
+    }
+            
+    public static ObservableList<String> getPaymentOptions(){
+        return paymentOptions;
     }
 
 }

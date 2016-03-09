@@ -44,6 +44,14 @@ public class IMat extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+
+        //Saves the current state of the program on shutdown
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                IMat_Model.getBackEnd().shutDown();
+            }
+        }));
+
     }
 
 }

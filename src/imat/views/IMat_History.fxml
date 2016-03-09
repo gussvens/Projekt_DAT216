@@ -93,11 +93,6 @@
                               <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Sök" textFill="#274927" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                            </children>
                         </HBox>
-                        <Label layoutY="23.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="HÄR KAN DU SÖKA EFTER PRODUKTER" textFill="#274927">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
                      </children>
                      <padding>
                         <Insets bottom="5.0" />

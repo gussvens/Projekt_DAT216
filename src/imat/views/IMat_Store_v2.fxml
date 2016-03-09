@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -24,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FXMLController">
    <stylesheets>
       <URL value="@imat.fxml.css" />
    </stylesheets>
@@ -147,7 +139,7 @@
          <children>
             <Pane fx:id="historyButton" layoutY="1.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css" AnchorPane.topAnchor="1.0">
                <children>
-                  <ImageView fx:id="historyPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="historyPic" fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/history2.png" />
                      </image>
@@ -168,7 +160,7 @@
             </Pane>
             <Pane fx:id="settingsButton" layoutX="137.0" layoutY="2.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css" AnchorPane.topAnchor="1.0">
                <children>
-                  <ImageView fx:id="userPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="userPic" fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/user.png" />
                      </image>
