@@ -240,6 +240,6 @@
          </children>
       </AnchorPane>
       <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="152.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="31.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>
