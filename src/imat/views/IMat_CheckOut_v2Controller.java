@@ -238,8 +238,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         @Override
         public void handle(MouseEvent event) {
             errorLabel.setText("");
-            IMat_Model.getBackEnd().placeOrder();
-            IMat_Model.getBackEnd().getShoppingCart().clear();
+
             System.out.println(IMat_Model.getBackEnd().getOrders().size());
             
             String error="noerror";
@@ -279,7 +278,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 }                
             } else {
                 try {
-                    Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                 } catch (IOException ex) {
                     Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
