@@ -95,6 +95,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private ImageView userPic;
     @FXML
     private ImageView historyPic;
+    @FXML
+    private Pane basketTopPane;
+    @FXML
+    private Pane bgPane;
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -169,13 +173,11 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         removeAllFromBasket.setOnMouseExited(removeButtonExit);
         removeAllFromBasket.setCursor(Cursor.HAND);
         
-        
+        // CheckoutButton
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
         toCheckout.setOnMouseEntered(toCheckOutEnter);
         toCheckout.setOnMouseExited(toCheckOutExit);
         toCheckout.setCursor(Cursor.HAND);
-        
-        
         
         searchField.setOnKeyPressed(searchEnterPressed);
         // homeButton.setOnMouseClicked(homeButtonClicked);
