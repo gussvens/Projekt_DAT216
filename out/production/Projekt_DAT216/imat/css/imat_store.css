@@ -14,6 +14,11 @@
 .storeCategories{
     -fx-background-color: #FDFDFD;
 }
+.storeButtonPanes{
+    -fx-background-color: #FDFDFD;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+}
 
 .categoryLabels{
     -fx-text-fill: #444444;
@@ -21,7 +26,6 @@
 
 .storeButtons{
     -fx-background-color: #FDFDFD;
-    -fx-text-fill: #444444;
 }
 
 .storeLabels{
