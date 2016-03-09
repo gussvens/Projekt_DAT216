@@ -15,9 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 
@@ -31,6 +33,9 @@ public class IMat_FinishBuy implements Initializable {
     private TextField checkoutTotPrice1;
     @FXML
     private ScrollPane basketScrollPane;
+    @FXML
+    private Label adressnchill;
+    String personalInfo;
 
     /**
      * Initializes the controller class.
@@ -59,6 +64,10 @@ public class IMat_FinishBuy implements Initializable {
             }
         }
         basketScrollPane.setContent(receiptFlowPane);
+
+        Customer c = IMat_Model.getBackEnd().getCustomer();
+        this.adressnchill.setText(IMat_CheckOut_v2Controller.getPersonalInfo());
+
     }
     
 }

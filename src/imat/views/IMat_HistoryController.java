@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import imat.IMat;
 import imat.IMat_Model;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
@@ -95,6 +96,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         toCheckout.setOnMouseEntered(buttonEnter);
         toCheckout.setOnMouseExited(buttonExit);
         toCheckout.setCursor(Cursor.HAND);
+        toCheckout.setOnMouseClicked(toCheckoutClicked);
 
         // EmptyBasket
         removeAllFromBasket.setOnMouseClicked(removeButtonClicked);
@@ -133,6 +135,14 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
+                    if (i == orderList.size() - 1) {
+                        historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
+                        historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
+                    }
+                    if (i == orderList.size() - 10) {
+                        historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
+                        historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
+                    }
                     flowPane.getChildren().add(historyCategory);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -235,6 +245,20 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
 
                 }
             };
+
+    EventHandler<MouseEvent> toCheckoutClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
 
     EventHandler<MouseEvent> removeButtonClicked
             = new EventHandler<MouseEvent>() {

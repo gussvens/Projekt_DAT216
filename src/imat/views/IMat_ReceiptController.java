@@ -31,7 +31,7 @@ public class IMat_ReceiptController implements Initializable {
     }
 
     public void setNrOfReceiptItems(double d){
-        this.nrOfReceiptItems.setText(d + "");
+        this.nrOfReceiptItems.setText((int)d + "");
     }
 
     public void setReceiptProdName(String s){
@@ -39,7 +39,7 @@ public class IMat_ReceiptController implements Initializable {
     }
 
     public void setReceiptProdPrice(double d){
-        this.receiptProdPrice.setText(d + "");
+        this.receiptProdPrice.setText(d +  "");
     }
 
     public void setReceiptProdQuant(String s){

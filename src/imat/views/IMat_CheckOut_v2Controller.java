@@ -93,8 +93,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private static IMat_Checkout_presenter pres;
 
     private Customer c;
-    
+
     private List<TextField> cardList = new ArrayList<TextField>();
+
+    private static String personalInfo;
     
     
     /**
@@ -143,7 +145,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         }
         if(IMat_SettingsController.getCvc()!=null){
         cvc.setText(IMat_SettingsController.getCvc());
-        };
+        }
         
         paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
         paymentBox.setValue(IMat_SettingsController.getPayment());
@@ -242,18 +244,19 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             System.out.println(IMat_Model.getBackEnd().getOrders().size());
             
             String error="noerror";
-          try{  if(isAlpha(firstName.getText())==false){
-                error = "Ert för- och efternamn kan bara innehålla"
-                        + "\n bokstäver.";          
-            } else if(!isAlpha(city.getText())){
+          try{  if(isAlpha(firstName.getText())==false || firstName.getText().length() == 0) {
+              error = "Ert förnamn kan bara innehålla"
+                      + "\n bokstäver.";
+           } else if(!isAlphaNumeric(lastName.getText()) || lastName.getText().length() == 0){
+                  error="Ert efternamn kan bara innehålla bokstäver "
+                          + "\n och siffror.";
+              }
+           else if(!isAlpha(city.getText()) || city.getText().length() == 0){
                 error="Er stad kan bara innehålla bokstäver.";
-            } else if(!isAlphaNumeric(address.getText())){
+            } else if(!isAlphaNumeric(address.getText()) || address.getText().length() == 0){
                 error="Er gatuadress kan bara innehålla bokstäver "
                         + "\n och siffror.";
-            } else if(!isAlphaNumeric(address.getText())){
-                error="Er gatuadress kan bara innehålla bokstäver "
-                        + "\n och siffror.";
-            } else if( postCode.getText().length()!=5 || !postCode.getText().matches("[0-9]+")) {
+            }else if( postCode.getText().length()!=5 || !postCode.getText().matches("[0-9]+")) {
                 error="Ert postnummer kan bara innehålla siffror" + "\n"
                         + "och måste vara 5 siffror långt.";
             } else if (paymentBox.getValue()==null){
@@ -294,16 +297,22 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     
                 } else {
                     errorLabel.setTextFill(Color.RED);
-                    errorLabel.setText(error + "\n" +"Var god kontrollera igen.");
+                    errorLabel.setText(error + "\n" + "Var god kontrollera igen.");
                 
                 }
           } 
           
-            
+        String pI = firstName.getText() + " " + lastName.getText() + "\n" +
+                address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+
             //rött runt omkring och bara kontrolera uppgifter ist
-            
+        personalInfo = pI;
         }
     };
+
+    public static String getPersonalInfo(){
+        return personalInfo;
+    }
 
     // Back to start
     EventHandler<MouseEvent> homeButtonClicked

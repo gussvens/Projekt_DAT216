@@ -139,7 +139,7 @@ public class IMat_SettingsController implements Initializable {
                     staticCard3 = card3.getText();
                     staticCard4 = card4.getText();
                     staticCardType=(String) cardTypeBox.getValue();
-                    staticCity = (String) city.getText();
+                    staticCity = city.getText();
                     staticCvc = cvc.getText();
                     setFirstName();
                     setLastName();

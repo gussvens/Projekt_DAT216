@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="40.0" prefWidth="260.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_ReceiptController">
+<AnchorPane id="AnchorPane" prefHeight="40.0" prefWidth="310.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_ReceiptController">
    <stylesheets>
       <URL value="@css/imat_basketitem.css" />
    </stylesheets>
    <children>
-      <Label fx:id="nrOfReceiptItems" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="17.0" prefWidth="15.0" text="1">
+      <Label fx:id="nrOfReceiptItems" alignment="CENTER" layoutX="14.0" layoutY="12.0" prefHeight="17.0" prefWidth="34.0" text="1">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <HBox alignment="TOP_RIGHT" layoutX="130.0" layoutY="12.0" prefHeight="17.0" prefWidth="96.0" spacing="3.0" AnchorPane.leftAnchor="130.0">
+      <HBox alignment="TOP_RIGHT" layoutX="191.0" layoutY="12.0" prefHeight="17.0" prefWidth="96.0" spacing="3.0" AnchorPane.leftAnchor="191.0">
          <children>
             <Label fx:id="receiptProdPrice" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="15.0" prefHeight="17.0" prefWidth="54.0" text="100.00" />
             <Label fx:id="receiptProdQuant" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="15.0" prefHeight="17.0" prefWidth="11.0" text="kr" />
          </children>
       </HBox>
-      <Label fx:id="receiptProdName" layoutX="45.0" layoutY="12.0" prefHeight="17.0" prefWidth="106.0" text="Banankotletter" AnchorPane.leftAnchor="45.0">
+      <Label fx:id="receiptProdName" layoutX="61.0" layoutY="12.0" prefHeight="17.0" prefWidth="106.0" text="Banankotletter" AnchorPane.leftAnchor="61.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
