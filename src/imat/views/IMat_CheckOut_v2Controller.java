@@ -10,6 +10,7 @@ import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,16 +19,22 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -60,13 +67,11 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     @FXML
     private TextField cvc;
     @FXML
-    private TextArea comment;
+    private Label errorLabel;
     @FXML
-    private ComboBox payment;
+    private ComboBox paymentBox;
     @FXML
-    private ComboBox cardType;
-    @FXML
-    private ComboBox deliveryDay;
+    private ComboBox cardTypeBox;
     @FXML
     private ScrollPane basketScrollPane;
     @FXML
@@ -79,11 +84,17 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private Button changeInfo;
     @FXML
     private Button doneButton;
+    @FXML
+    private Button saveButton;
+    @FXML 
+    private DatePicker datePicker;
 
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
 
     private Customer c;
+    
+    private List<TextField> cardList = new ArrayList<TextField>();
     
     
     /**
@@ -93,11 +104,20 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pres = new IMat_Checkout_presenter(
                 basketScrollPane,
-                checkoutTotPrice
+                checkoutTotPrice      
         );
-
-        c = IMat_Model.getBackEnd().getCustomer();
+        cardList.add(card1);
+        cardList.add(card2);
+        cardList.add(card3);
+        cardList.add(card4);
+        for(TextField c : cardList){
+            c.addEventFilter(KeyEvent.KEY_RELEASED, sectionFinish(c,3));
+        }
+        card4.addEventFilter(KeyEvent.KEY_TYPED, numberMax(card4,3));
+        postCode.addEventFilter(KeyEvent.KEY_TYPED, numberMax(postCode,4));
+        cvc.addEventFilter(KeyEvent.KEY_TYPED, numberMax(cvc,2));
         
+        c = IMat_Model.getBackEnd().getCustomer();
         
         homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
@@ -109,14 +129,51 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
         city.setText(IMat_SettingsController.getCity());
+        if(IMat_SettingsController.getCard1()!=null){
         card1.setText(IMat_SettingsController.getCard1());
+        }
+        if(IMat_SettingsController.getCard2()!=null){
         card2.setText(IMat_SettingsController.getCard2());
+        }
+        if(IMat_SettingsController.getCard3()!=null){
         card3.setText(IMat_SettingsController.getCard3());
+        }
+        if(IMat_SettingsController.getCard4()!=null){
         card4.setText(IMat_SettingsController.getCard4());
+        }
+        if(IMat_SettingsController.getCvc()!=null){
         cvc.setText(IMat_SettingsController.getCvc());
+        };
+        
+        paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
+        paymentBox.setValue(IMat_SettingsController.getPayment());
+        
+        cardTypeBox.setItems(IMat_SettingsController.getCardTypeOptions());
+        cardTypeBox.setValue(IMat_SettingsController.getCardType());
+        
         changeInfo.setOnMouseClicked(changeInfoButtonPressed);
     }
-
+    
+    @FXML
+    private void handleComboBoxAction() {
+        String selectedOption = (String) paymentBox.getSelectionModel().getSelectedItem();
+        if(selectedOption=="Faktura" || selectedOption=="Kontant"){
+            cardTypeBox.setDisable(true);
+            cvc.setDisable(true);
+            card1.setDisable(true);
+            card2.setDisable(true);
+            card3.setDisable(true);
+            card4.setDisable(true);
+        } else {
+            cardTypeBox.setDisable(false);
+            cvc.setDisable(false);
+            card1.setDisable(false);
+            card2.setDisable(false);
+            card3.setDisable(false);
+            card4.setDisable(false);
+        }
+    }
+    
     public void updateTotPrice() {
         checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
     }
@@ -131,12 +188,20 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     city.setDisable(false);
                     address.setDisable(false);
                     postCode.setDisable(false);
+                    paymentBox.setDisable(false);
+                    if((String)paymentBox.getValue()=="Faktura"||(String)paymentBox.getValue()=="Kontant"){
+                        //shthahph!!
+                    } else {
                     card1.setDisable(false);
                     card2.setDisable(false);
                     card3.setDisable(false);
                     card4.setDisable(false);
                     cvc.setDisable(false);
+                    cardTypeBox.setDisable(false);
                     
+                    }
+                    saveButton.setDisable(false);
+                    changeInfo.setDisable(true);  
                 }
             };
     
@@ -172,9 +237,72 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
+            errorLabel.setText("");
             IMat_Model.getBackEnd().placeOrder();
             IMat_Model.getBackEnd().getShoppingCart().clear();
             System.out.println(IMat_Model.getBackEnd().getOrders().size());
+            
+            String error="noerror";
+          try{  if(isAlpha(firstName.getText())==false){
+                error = "Ert för- och efternamn kan bara innehålla"
+                        + "\n bokstäver.";          
+            } else if(!isAlpha(city.getText())){
+                error="Er stad kan bara innehålla bokstäver.";
+            } else if(!isAlphaNumeric(address.getText())){
+                error="Er gatuadress kan bara innehålla bokstäver "
+                        + "\n och siffror.";
+            } else if(!isAlphaNumeric(address.getText())){
+                error="Er gatuadress kan bara innehålla bokstäver "
+                        + "\n och siffror.";
+            } else if( postCode.getText().length()!=5 || !postCode.getText().matches("[0-9]+")) {
+                error="Ert postnummer kan bara innehålla siffror" + "\n"
+                        + "och måste vara 5 siffror långt.";
+            } else if (paymentBox.getValue()==null){
+                error="Ni måste välja ert betalningssätt.";
+            } else if(paymentBox.getValue()=="Kreditkort"){
+                if(!isCardNumberValid() ){
+                    System.out.println("motherfucker");
+                    error="Ert kreditkortsnummer får bara innehålla" +"\n"+
+                            "och måste vara 16 siffror långt";
+                } else if(cardTypeBox.getValue()==null){
+                    error="Ni måste välja er korttyp.";
+                } else if(!isNumeric(cvc.getText())||cvc.getText().length()!=3){
+                    error="Er cvc-kod kan bara innehålla siffror" + "\n" 
+                            + "och måste vara 3 siffror lång.";
+                } else {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }                
+            } else {
+                try {
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                    IMat.getStage().setScene(new Scene(start, 1360, 768));
+                } catch (IOException ex) {
+                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+          
+          } catch(NullPointerException e) {
+              error="Ni måste fylla i alla era uppgifter innan"+"\n"
+                      + "ni betalar.";
+              
+          } finally {
+                if (error=="noerror"){
+                    
+                } else {
+                    errorLabel.setTextFill(Color.RED);
+                    errorLabel.setText(error + "\n" +"Var god kontrollera igen.");
+                
+                }
+          } 
+          
+            
+            //rött runt omkring och bara kontrolera uppgifter ist
+            
         }
     };
 
@@ -212,4 +340,105 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         return pres;
     }
     
+    public boolean isCardNumberValid(){
+        boolean result=false;
+        for (TextField c:cardList){
+            if(isNumeric(c.getText())&&c.getText().length()==4){
+                result=true;
+            } else {
+                result=false;
+                break;
+            }  
+        }  
+        return result;
+    }
+    
+    public boolean isAlpha(String name) {
+    char[] chars = name.toCharArray();
+
+    for (char c : chars) {
+        if(!Character.isLetter(c)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+    public boolean isAlphaNumeric(String s){
+    String pattern= "^[a-zA-Z0-9]*$";
+        if(s.matches(pattern)){
+            return true;
+        }
+        return false;   
+}
+    public boolean isNumeric(String s){
+    String pattern= "[0-9]+";
+        if(s.matches(pattern)){
+            return true;
+        }
+        return false;   
+}
+        
+    @FXML
+    private EventHandler<KeyEvent> numberMax(TextField t, int i){
+        return new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event){       
+             if (t.getText().length()>i){
+              event.consume();
+             } if (t.getText()==null){
+                 //not a single fuck is given
+             }
+            }
+            
+        };
+    }
+     
+        @FXML
+        private EventHandler<KeyEvent> sectionFinish(TextField t, int i){
+        return new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event){  
+            
+             if (t.getText().length()>i){
+                if(cardList != null){
+                    
+                    int r=cardList.indexOf(t);
+                    if(r!=cardList.size()-1){
+                    cardList.get(r+1).requestFocus();
+                    }
+                 } 
+             };
+         }        
+    };                
+    }
+        @FXML
+        private void saveButtonAction(){
+            c.setAddress(address.getText());
+            c.setPostCode(postCode.getText());
+            c.setFirstName(firstName.getText());
+            c.setLastName(lastName.getText());
+            IMat_SettingsController.setCard1(card1.getText());
+            IMat_SettingsController.setCard2(card2.getText());
+            IMat_SettingsController.setCard3(card3.getText());
+            IMat_SettingsController.setCard4(card4.getText());
+            IMat_SettingsController.setCardType((String) cardTypeBox.getSelectionModel().getSelectedItem());
+            IMat_SettingsController.setPayment((String) paymentBox.getSelectionModel().getSelectedItem());
+            IMat_SettingsController.setCity(city.getText());
+            IMat_SettingsController.setCvc(cvc.getText());
+            saveButton.setDisable(true);
+            changeInfo.setDisable(false);
+                    firstName.setDisable(true);
+                    lastName.setDisable(true);
+                    city.setDisable(true);
+                    address.setDisable(true);
+                    postCode.setDisable(true);
+                    paymentBox.setDisable(true);
+                    card1.setDisable(true);
+                    card2.setDisable(true);
+                    card3.setDisable(true);
+                    card4.setDisable(true);
+                    cvc.setDisable(true);
+                    cardTypeBox.setDisable(true); 
+        } 
 }
