@@ -610,7 +610,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 controller.setItemQuantity(p.getUnit());
                 controller.setItemID(p.getProductId());
                 if (IMat_Model.getBackEnd().isFavorite(p)) {
-                    controller.setFavPic(new Image("imat/images/golden_star.jpg"));
+                    controller.setFavPic(new Image("imat/images/golden_star_trans_new.png"));
                 }
                 controller.setScrollPane(basketScrollPane);
                 flowPane.getChildren().add(storeItem);
@@ -660,7 +660,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 controller.setItemQuantity(p.getUnit());
                 controller.setItemID(p.getProductId());
                 if (IMat_Model.getBackEnd().isFavorite(p)) {
-                    controller.setFavPic(new Image("imat/images/golden_star.jpg"));
+                    controller.setFavPic(new Image("imat/images/golden_star_trans_new.png"));
                 }
                 controller.setScrollPane(basketScrollPane);
                 flowPane.getChildren().add(storeItem);

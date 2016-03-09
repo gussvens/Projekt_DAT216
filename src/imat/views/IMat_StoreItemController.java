@@ -82,11 +82,11 @@ public class IMat_StoreItemController implements Initializable {
                     Product prod = IMat_Model.getBackEnd().getProduct(itemId);
 
                     if (!IMat_Model.getBackEnd().favorites().contains(prod)) {
-                        favorizeStarImage.setImage(new Image("imat/images/golden_star.jpg"));
+                        favorizeStarImage.setImage(new Image("imat/images/golden_star_trans_new.png"));
                         IMat_Model.getBackEnd().addFavorite(prod);
                         IMat_FXMLController.getPresenter().setFavStarActive();
                     } else {
-                        favorizeStarImage.setImage(new Image("imat/images/star.jpg"));
+                        favorizeStarImage.setImage(new Image("imat/images/star_trans_new.png"));
                         IMat_Model.getBackEnd().removeFavorite(prod);
                         if (IMat_Model.getBackEnd().favorites().isEmpty()) {
                             IMat_FXMLController.getPresenter().setFavStarInactive();
