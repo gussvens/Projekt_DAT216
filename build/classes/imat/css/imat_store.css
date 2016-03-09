@@ -10,7 +10,9 @@
      -fx-background-insets: 0, 0, 1, 2;
 }
 
-
+.text {
+    -fx-font-smoothing-type: lcd; 
+} 
 
 #categoryPane, #bgPane{
     -fx-background-color: linear-gradient(to bottom, #009973, #00CC83);

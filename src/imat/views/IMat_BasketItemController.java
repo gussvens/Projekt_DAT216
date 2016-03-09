@@ -134,14 +134,12 @@ public class IMat_BasketItemController implements Initializable {
                 }
             };
 
-// Removes the shoppingItem from the cart and the flowpane.
+    // Removes the shoppingItem from the cart and the flowpane.
     EventHandler<MouseEvent> removeObject
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    //sC.removeItem(sI);
-
                     FadeTransition ft = new FadeTransition(Duration.millis(400), basketItemBg);
                     ft.setFromValue(1.0);
                     ft.setToValue(0.0);
@@ -154,13 +152,13 @@ public class IMat_BasketItemController implements Initializable {
 
                         @Override
                         public void handle(ActionEvent event) {
+                            sC.removeItem(sI);
                             IMat_FXMLController.getPresenter().updateBasket();
 
                             if (IMat_CheckOut_v2Controller.getPresenter() != null) {
                                 IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
                             }
-
-                            sC.removeItem(sI);
+                            
                         }
                     });
                 }
