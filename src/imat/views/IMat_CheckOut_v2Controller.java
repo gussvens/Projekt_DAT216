@@ -207,7 +207,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             };
     
     
-    /*
+    
     // Sets the basket.
     public void updateBasket() {
         FlowPane flowPane = new FlowPane();
@@ -233,7 +233,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         basketScrollPane.setContent(flowPane);
         checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
     }
-*/
+
     EventHandler<MouseEvent>doneButtonClicked
             = new EventHandler<MouseEvent>() {
         @Override
