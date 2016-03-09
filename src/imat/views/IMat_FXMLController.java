@@ -112,6 +112,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     public void initialize(URL url, ResourceBundle rb) {
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
 
+        if(!IMat_Model.getBackEnd().favorites().isEmpty()){
+            menuFavStar.setImage(new Image("imat/images/golden_star_trans_new.png"));
+        }
+        
         pres = new IMat_presenter(
                 CategoryVegetables,
                 CategoryFruit_Berries,
