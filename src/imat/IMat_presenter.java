@@ -49,7 +49,7 @@ public class IMat_presenter extends Observable {
     // SearchButton colors.
     private final String SEARCH_BTN_DEFAULT = "-fx-background-color: #FDFDFD;";
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #EEEEEE;";
-    private final String SEARCH_BTN_DOWN = "-fx-background-color: #BBBBBB;";
+    private final String SEARCH_BTN_DOWN = "-fx-background-color: #9bd1c4;";
 
     private IMat_FXMLController FXMLcont;
     private final List<Pane> menuButtonsList;
