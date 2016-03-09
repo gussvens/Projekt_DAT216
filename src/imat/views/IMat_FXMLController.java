@@ -217,6 +217,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
+            //basketFlowPane.setVisible(false);
             // setSaveListButtonInctive();
         } else {
             toCheckout.setDisable(false);
