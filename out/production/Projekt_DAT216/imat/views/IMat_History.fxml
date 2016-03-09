@@ -25,7 +25,7 @@
          <children>
             <AnchorPane fx:id="searchPane" layoutX="23.0" layoutY="18.0" prefHeight="44.0" prefWidth="250.0">
                <children>
-                  <Pane fx:id="historyButton" layoutY="1.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
+                  <Pane fx:id="storeButton" layoutY="1.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
