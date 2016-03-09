@@ -85,6 +85,11 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private ImageView menuFavStar;
     @FXML
     private Button removeAllFromBasket;
+    @FXML
+    private ImageView userPic;
+     @FXML
+    private ImageView historyPic;
+    
 
     private List<Product> prodList;
     private List<Product> tempProdList;
@@ -143,7 +148,14 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         searchField.setOnKeyPressed(searchEnterPressed);
 //        homeButton.setOnMouseClicked(homeButtonClicked);
         historyButton.setOnMouseClicked(historyButtonClicked);
+        historyButton.setOnMouseEntered(historyButtonEnter);
+        historyButton.setOnMouseExited(historyButtonExit);
+        
         settingsButton.setOnMouseClicked(settingsButtonClicked);
+        settingsButton.setOnMouseEntered(settingsButtonEnter);
+        settingsButton.setOnMouseExited(settingsButtonExit);
+        
+        
 
         // Initializing centerstage.
         initCenter();
@@ -173,6 +185,42 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         basketScrollPane.setContent(basketFlowPane);
     }
 
+     EventHandler<MouseEvent> historyButtonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   historyPic.setImage(new Image("imat/images/history2_mouseOver.png"));
+                }
+            };
+    
+     EventHandler<MouseEvent> historyButtonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   historyPic.setImage(new Image("imat/images/history2.png"));
+                }
+            };
+     
+     EventHandler<MouseEvent> settingsButtonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                  userPic.setImage(new Image("imat/images/user_mouseOver.png"));
+                }
+            };
+     
+     EventHandler<MouseEvent> settingsButtonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                  userPic.setImage(new Image("imat/images/user.png"));
+                }
+            };
+     
 
     EventHandler<MouseEvent> setBasketEmpty
             = new EventHandler<MouseEvent>() {
