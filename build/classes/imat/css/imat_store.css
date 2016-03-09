@@ -1,6 +1,7 @@
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
 }
+
 .scroll-pane {
    -fx-background-color: transparent;
 }
@@ -9,21 +10,9 @@
     -fx-background-color: linear-gradient(to bottom, #009973, #00CC83);
     -fx-opacity: 0.70;
 }
-/*
-<<<<<<< HEAD
-#checkoutPane{
-    -fx-background-color: #97D77d;
-    -fx-opacity: 0.65;
-}
-=======
->>>>>>> 40cf0ec4552db19c5549f65545863e738dfb705a
-*/
+
 .storeCategories{
     -fx-background-color: #FDFDFD;
-}
-
-.storeCategories:hover {
-    -fx-background-color: firebrick;
 }
 
 .categoryLabels{
@@ -32,10 +21,11 @@
 
 .storeButtons{
     -fx-background-color: #FDFDFD;
+    -fx-text-fill: #444444;
 }
 
 .storeLabels{
-    -fx-text-fill: #444444;
+    -fx-text-fill: #333333;
 }
 
 .centerStageViews{
