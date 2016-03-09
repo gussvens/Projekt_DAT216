@@ -11,7 +11,7 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="IMat.jar" size="748243" download="eager" />
+    <jar href="IMat.jar" size="754017" download="eager" />
     <jar href="lib/projectbackend-fx.jar" size="55897" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="IMat" >

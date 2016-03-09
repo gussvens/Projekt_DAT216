@@ -13,19 +13,24 @@ import imat.IMat;
 import imat.IMat_Model;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -36,12 +41,20 @@ import se.chalmers.ait.dat215.project.IMatDataHandler;
  * @author Group 12
  */
 public class IMat_SettingsController implements Initializable {
-    
-   final static ObservableList<String> paymentOptions = FXCollections.observableArrayList("Faktura","Kontant","Kreditkort");
-   final static ObservableList<String> cardTypeOptions = FXCollections.observableArrayList("VISA","MasterCard");
 
+    private final String DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
+    private final String ENTER_COLOR = "-fx-background-color:  #bdfbec;";
+    private final String CLICKED_COLOR = "-fx-background-color:  #adebdc;";
+    
+    final static ObservableList<String> paymentOptions = FXCollections.observableArrayList("Faktura", "Kontant", "Kreditkort");
+    final static ObservableList<String> cardTypeOptions = FXCollections.observableArrayList("VISA", "MasterCard");
+
+//    @FXML
+//    private Button homeButton;
     @FXML
-    private Button homeButton;
+    private Pane storeButton;
+    @FXML
+    private Pane historyButton;
     @FXML
     private TextField firstName;
     @FXML
@@ -73,7 +86,6 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private Button saveSettings;
 
-    
     private static String staticCity;
     private static String staticCard1;
     private static String staticCard2;
@@ -105,29 +117,103 @@ public class IMat_SettingsController implements Initializable {
         card3.setText(staticCard3);
         card4.setText(staticCard4);
         cvc.setText(staticCvc);
-        saveSettings.setOnMouseClicked(onSaveButtonClick);
         paymentBox.setItems(paymentOptions);
         cardTypeBox.setItems(cardTypeOptions);
         paymentBox.setValue(staticPayment);
         cardTypeBox.setValue(staticCardType);
+        saveSettings.setStyle(DEFAULT_COLOR);
 
+        // StoreButton
+        storeButton.setOnMouseClicked(storeButtonClicked);
+        storeButton.setOnMouseEntered(paneEnter);
+        storeButton.setOnMouseExited(paneExit);
+        storeButton.setCursor(Cursor.HAND);
         
+        // HistoryButton
+        historyButton.setOnMouseClicked(historyButtonClicked);
+        historyButton.setOnMouseEntered(paneEnter);
+        historyButton.setOnMouseExited(paneExit);
+        historyButton.setCursor(Cursor.HAND);
+        
+        // SaveButton
+        saveSettings.setOnMouseClicked(onSaveButtonClick);
+        saveSettings.setOnMouseEntered(buttonEnter);
+        saveSettings.setOnMouseExited(buttonExit);
+        saveSettings.setCursor(Cursor.HAND);
         /*
-        List<String> list = new ArrayList<String>();
-        list.add("Item A");
-        list.add("Item B");
-        list.add("Item C");
-        ObservableList obList = FXCollections.observableList(list);
-        cardType.getItems().clear();
-        cardType.setItems(obList);
-        //cardType.getItems().addAll("Visa");
-        */
-        
+         List<String> list = new ArrayList<String>();
+         list.add("Item A");
+         list.add("Item B");
+         list.add("Item C");
+         ObservableList obList = FXCollections.observableList(list);
+         cardType.getItems().clear();
+         cardType.setItems(obList);
+         //cardType.getItems().addAll("Visa");
+         */
     }
-    
-    
 
+    EventHandler<MouseEvent> storeButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_SettingsController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
     
+    EventHandler<MouseEvent> historyButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_SettingsController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
+    
+    EventHandler<MouseEvent> paneEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   ((Pane) t.getSource()).setStyle(ENTER_COLOR);
+                }
+            };
+    EventHandler<MouseEvent> paneExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   ((Pane) t.getSource()).setStyle(DEFAULT_COLOR);
+                }
+            };
+    
+    EventHandler<MouseEvent> buttonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   ((Button) t.getSource()).setStyle(ENTER_COLOR);
+                }
+            };
+    EventHandler<MouseEvent> buttonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                   ((Button) t.getSource()).setStyle(DEFAULT_COLOR);
+                }
+            };
+
     EventHandler<MouseEvent> onSaveButtonClick
             = new EventHandler<MouseEvent>() {
 
@@ -138,20 +224,20 @@ public class IMat_SettingsController implements Initializable {
                     staticCard2 = card2.getText();
                     staticCard3 = card3.getText();
                     staticCard4 = card4.getText();
-                    staticCardType=(String) cardTypeBox.getValue();
+                    staticCardType = (String) cardTypeBox.getValue();
                     staticCity = city.getText();
                     staticCvc = cvc.getText();
                     setFirstName();
                     setLastName();
-                    staticPayment=(String) paymentBox.getValue();
+                    staticPayment = (String) paymentBox.getValue();
                     setPostCode();
                 }
             };
-    
+
     @FXML
     private void handleComboBoxAction() {
         String selectedOption = (String) paymentBox.getSelectionModel().getSelectedItem();
-        if(selectedOption=="Faktura" || selectedOption=="Kontant"){
+        if (selectedOption == "Faktura" || selectedOption == "Kontant") {
             cardTypeBox.setDisable(true);
             cvc.setDisable(true);
             card1.setDisable(true);
@@ -166,14 +252,16 @@ public class IMat_SettingsController implements Initializable {
             card3.setDisable(false);
             card4.setDisable(false);
         }
-}
-    
-    @FXML
-    private void homeButtonClicked() throws IOException {
-        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-        IMat.getStage().setScene(new Scene(start, 1360, 768));
     }
 
+    /*
+     @FXML
+     private void homeButtonClicked() throws IOException {
+     Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+     IMat.getStage().setScene(new Scene(start, 1360, 768));
+     }
+
+     */
     @FXML
     public void setFirstName() {
         c.setFirstName(firstName.getText());
@@ -193,15 +281,15 @@ public class IMat_SettingsController implements Initializable {
     public void setPostCode() {
         c.setPostCode(postCode.getText());
     }
-    
+
     @FXML
     public static void setPayment(String s) {
-       staticPayment=s;
-       
+        staticPayment = s;
+
     }
 
     public static void setCardType(String s) {
-        staticCardType=s;
+        staticCardType = s;
     }
 
     public static void setDeliveryDay() {
@@ -211,12 +299,12 @@ public class IMat_SettingsController implements Initializable {
     public void setComment() {
         //No Comment variable in backend
     }
-    
+
     // Setters for the static variables
     public static void setCity(String s) {
         staticCity = s;
     }
-    
+
     public static void setCard1(String s) {
         staticCard1 = s;
     }
@@ -236,7 +324,7 @@ public class IMat_SettingsController implements Initializable {
     public static void setCvc(String s) {
         staticCvc = s;
     }
-    
+
     // Getters for the static variables.
     public static String getCity() {
         return staticCity;
@@ -261,20 +349,20 @@ public class IMat_SettingsController implements Initializable {
     public static String getCvc() {
         return staticCvc;
     }
-    
+
     public static String getPayment() {
         return staticPayment;
     }
-    
+
     public static String getCardType() {
         return staticCardType;
     }
-    
-    public static ObservableList<String> getCardTypeOptions(){
+
+    public static ObservableList<String> getCardTypeOptions() {
         return cardTypeOptions;
     }
-            
-    public static ObservableList<String> getPaymentOptions(){
+
+    public static ObservableList<String> getPaymentOptions() {
         return paymentOptions;
     }
 
