@@ -64,11 +64,9 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     @FXML
     private TextField searchField;
     @FXML
-    private Button homeButton;
+    private Pane historyButton;
     @FXML
-    private Button historyButton;
-    @FXML
-    private Button settingsButton;
+    private Pane settingsButton;
     @FXML
     private ScrollPane storeItemScrollPane;
     @FXML
