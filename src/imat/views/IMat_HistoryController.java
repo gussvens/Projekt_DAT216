@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -65,6 +66,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         flowPane.setVgap(6);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(250);
+
+        initCenter();
 
         if(IMat_Model.getBackEnd().getOrders().isEmpty()){
             Label emptyLabel = new Label();
@@ -153,6 +156,18 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             }
         }
     };
+
+    public void initCenter() {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(6);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(700);
+        flowPane.setStyle("-fx-background-color: #FFFFFF;");
+
+        flowPane.getChildren().add(new ImageView("imat/images/history2_big.png"));
+
+        this.historyItemScrollPane.setContent(flowPane);
+    }
 
     EventHandler<MouseEvent> settingsButtonClicked
             = new EventHandler<MouseEvent>() {
