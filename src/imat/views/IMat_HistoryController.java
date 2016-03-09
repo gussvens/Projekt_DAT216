@@ -19,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,6 +39,10 @@ import se.chalmers.ait.dat215.project.*;
  */
 public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
+    private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
+    private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
+    private final String BTN_DEFAULT_CLICK = "-fx-background-color: #9bd1c4;";
+
     @FXML
     private Pane storeButton;
     @FXML
@@ -54,6 +59,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     private Button toCheckout;
     @FXML
     private Button removeAllFromBasket;
+    @FXML
+    private Button searchButton;
 
     /**
      * Initializes the controller class.
@@ -62,18 +69,52 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     public void initialize(URL url, ResourceBundle rb) {
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(true);
+            removeAllFromBasket.setDisable(true);
+        }
 
+        if (!IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(false);
+            removeAllFromBasket.setDisable(false);
+        }
+
+        // StoreButton
         storeButton.setOnMouseClicked(storeButtonClicked);
+        storeButton.setOnMouseEntered(paneEnter);
+        storeButton.setOnMouseExited(paneExit);
+        storeButton.setCursor(Cursor.HAND);
+
+        // SettingsButton
         settingsButton.setOnMouseClicked(settingsButtonClicked);
+        settingsButton.setOnMouseEntered(paneEnter);
+        settingsButton.setOnMouseExited(paneExit);
+        settingsButton.setCursor(Cursor.HAND);
+
+        // CheckoutButton
+        toCheckout.setOnMouseEntered(buttonEnter);
+        toCheckout.setOnMouseExited(buttonExit);
+        toCheckout.setCursor(Cursor.HAND);
+
+        // EmptyBasket
+        removeAllFromBasket.setOnMouseClicked(removeButtonClicked);
+        removeAllFromBasket.setOnMouseEntered(buttonEnter);
+        removeAllFromBasket.setOnMouseExited(buttonExit);
+        removeAllFromBasket.setCursor(Cursor.HAND);
+        
+        // SearchButton
+        searchButton.setOnMouseEntered(buttonEnter);
+        searchButton.setOnMouseExited(buttonExit);
+        searchButton.setCursor(Cursor.HAND);
 
         FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
+        flowPane.setVgap(3);
         flowPane.setHgap(6);
         flowPane.setPrefWidth(250);
 
         initCenter();
 
-        if(IMat_Model.getBackEnd().getOrders().isEmpty()){
+        if (IMat_Model.getBackEnd().getOrders().isEmpty()) {
             Label emptyLabel = new Label();
             emptyLabel.setText("Ingen historik tillgänglig");
             flowPane.getChildren().add(emptyLabel);
@@ -82,7 +123,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         List<Order> orderList = IMat_Model.getBackEnd().getOrders();
         if (orderList.size() >= 9) {
             for (int i = orderList.size() - 1; i >= orderList.size() - 10;
-                 i--) {
+                    i--) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
@@ -108,6 +149,14 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                             + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
+                    if (j == orderList.size() - 1) {
+                        historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
+                        historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
+                    }
+                    if (j == 0) {
+                        historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
+                        historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
+                    }
                     flowPane.getChildren().add(historyCategory);
                     j--;
                 } catch (IOException e) {
@@ -141,25 +190,77 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         basketScrollPane.setContent(basketFlowPane);
     }
 
-
-
-    public void setHistoryItemScrollPane(FlowPane flowPane){
+    public void setHistoryItemScrollPane(FlowPane flowPane) {
         historyItemScrollPane.setContent(flowPane);
     }
 
+    EventHandler<MouseEvent> paneEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((Pane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+
+                }
+            };
+    EventHandler<MouseEvent> paneExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((Pane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+
+                }
+            };
+
+    EventHandler<MouseEvent> buttonEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    if (!((Button) t.getSource()).isDisabled()) {
+                        ((Button) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+                    }
+
+                }
+            };
+    EventHandler<MouseEvent> buttonExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    if (!((Button) t.getSource()).isDisabled()) {
+                        ((Button) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+                    }
+
+                }
+            };
+
+    EventHandler<MouseEvent> removeButtonClicked
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    IMat_Model.getBackEnd().getShoppingCart().clear();
+                    System.out.println("Cart size: " + IMat_Model.getBackEnd().getShoppingCart().getItems().size());
+                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(null), true);
+
+                }
+            };
+    
     EventHandler<MouseEvent> storeButtonClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     public void initCenter() {
         FlowPane flowPane = new FlowPane();
@@ -176,18 +277,18 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     EventHandler<MouseEvent> settingsButtonClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
-    public void shoppingCartChanged(CartEvent evt){
+    public void shoppingCartChanged(CartEvent evt) {
         FlowPane basketFlowPane = new FlowPane();
         basketFlowPane.setVgap(3);
         basketFlowPane.setPrefWidth(255);
@@ -209,7 +310,6 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             }
         }
         basketScrollPane.setContent(basketFlowPane);
-
 
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
