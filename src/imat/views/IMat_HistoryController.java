@@ -50,6 +50,10 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     private ScrollPane historyItemScrollPane;
     @FXML
     private ScrollPane basketScrollPane;
+    @FXML
+    private Button toCheckout;
+    @FXML
+    private Button removeAllFromBasket;
 
     /**
      * Initializes the controller class.
@@ -205,6 +209,17 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             }
         }
         basketScrollPane.setContent(basketFlowPane);
+
+
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(true);
+            removeAllFromBasket.setDisable(true);
+            // setSaveListButtonInctive();
+        } else {
+            toCheckout.setDisable(false);
+            removeAllFromBasket.setDisable(false);
+            //setSaveListButtonActive();
+        }
     }
 
 }

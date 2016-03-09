@@ -282,15 +282,6 @@ public class IMat_presenter extends Observable {
         basketScrollPane.setContent(flowPane);
         setTotal();
 
-        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
-            toCheckout.setDisable(true);
-            setRemoveAllFromBasketInactive();
-            // setSaveListButtonInctive();
-        } else {
-            toCheckout.setDisable(false);
-            setRemoveAllFromBasketActive();
-            //setSaveListButtonActive();
-        }
     }
 
     public void filterSearch() {
@@ -350,13 +341,6 @@ public class IMat_presenter extends Observable {
         menuFavStar.setImage(new Image("imat/images/golden_star_trans.png"));
     }
 
-    public void setRemoveAllFromBasketActive() {
-        removeAllFromBasket.setDisable(false);
-    }
-
-    public void setRemoveAllFromBasketInactive() {
-        removeAllFromBasket.setDisable(true);
-    }
 
 
     /* public void setSaveListButtonActive(){
