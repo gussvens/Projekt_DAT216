@@ -193,7 +193,7 @@
       <AnchorPane id="checkoutPane" layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane fx:id="basketTopPane" layoutX="16.0" layoutY="150.0" prefHeight="30.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="150.0" />
-            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="16.0" layoutY="180.0" prefHeight="388.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="180.0" />
+            <ScrollPane fx:id="basketScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="16.0" layoutY="180.0" prefHeight="388.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="180.0" />
             <HBox layoutX="111.0" layoutY="566.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="566.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="77.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
@@ -240,6 +240,6 @@
          </children>
       </AnchorPane>
       <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="152.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="25.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="21.0" />
    </children>
 </AnchorPane>

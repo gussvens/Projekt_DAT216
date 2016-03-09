@@ -4,16 +4,24 @@ import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javafx.animation.Animation.Status.RUNNING;
+import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -25,6 +33,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class IMat_BasketItemController implements Initializable {
 
+    @FXML
+    private AnchorPane basketItemBg;
     @FXML
     private Label basketProdName;
     @FXML
@@ -58,93 +68,101 @@ public class IMat_BasketItemController implements Initializable {
         removeOne.setOnMouseClicked(removeOneObject);
         removeOne.setCursor(Cursor.HAND);
         sC = IMat_Model.getBackEnd().getShoppingCart();
-        
+
         // PlusButton
         addAnother.setOnMouseEntered(enterPlusButton);
         addAnother.setOnMouseExited(exitPlusButton);
         addAnother.setOnMousePressed(clickedPlusButton);
         addAnother.setOnMouseReleased(exitPlusButton);
         addAnother.setCursor(Cursor.HAND);
-        
+
         //MinusButton
         removeOne.setOnMouseEntered(enterMinusButton);
         removeOne.setOnMouseExited(exitMinusButton);
         removeOne.setOnMousePressed(clickedMinusButton);
         removeOne.setOnMouseReleased(exitMinusButton);
         removeOne.setCursor(Cursor.HAND);
-        
-        
-        
+
     }
 
-EventHandler<MouseEvent> enterMinusButton
+    EventHandler<MouseEvent> enterMinusButton
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/enter_minus_button.jpg"));
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/enter_minus_button.jpg"));
                 }
             };
-EventHandler<MouseEvent> exitMinusButton
+    EventHandler<MouseEvent> exitMinusButton
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/def_minus_button.jpg"));
-                }
-            };  
-EventHandler<MouseEvent> clickedMinusButton
-            = new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/clicked_minus_button.jpg"));
-                }
-            };  
-EventHandler<MouseEvent> enterPlusButton
-            = new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/enter_plus_button.jpg"));
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/def_minus_button.jpg"));
                 }
             };
-EventHandler<MouseEvent> exitPlusButton
+    EventHandler<MouseEvent> clickedMinusButton
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/def_plus_button.jpg"));
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/clicked_minus_button.jpg"));
                 }
-            };  
-EventHandler<MouseEvent> clickedPlusButton
+            };
+    EventHandler<MouseEvent> enterPlusButton
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    ((ImageView)t.getSource()).setImage(new Image("imat/images/clicked_plus_button.jpg"));
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/enter_plus_button.jpg"));
                 }
-            };  
+            };
+    EventHandler<MouseEvent> exitPlusButton
+            = new EventHandler<MouseEvent>() {
 
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/def_plus_button.jpg"));
+                }
+            };
+    EventHandler<MouseEvent> clickedPlusButton
+            = new EventHandler<MouseEvent>() {
 
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView) t.getSource()).setImage(new Image("imat/images/clicked_plus_button.jpg"));
+                }
+            };
 
-
-// Removes the shoppingItem from the cart and the flowpane.
+    // Removes the shoppingItem from the cart and the flowpane.
     EventHandler<MouseEvent> removeObject
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    sC.removeItem(sI);
-                    IMat_FXMLController.getPresenter().updateBasket();
+                    FadeTransition ft = new FadeTransition(Duration.millis(400), basketItemBg);
+                    ft.setFromValue(1.0);
+                    ft.setToValue(0.0);
+                    ft.setCycleCount(1);
+                    ft.setAutoReverse(true);
 
-                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
-                    }
+                    ft.play();
+
+                    ft.setOnFinished(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent event) {
+                            sC.removeItem(sI);
+                            IMat_FXMLController.getPresenter().updateBasket();
+
+                            if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                                IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                            }
+                            
+                        }
+                    });
                 }
             };
-    
-    
 
     EventHandler<MouseEvent> removeOneObject
             = new EventHandler<MouseEvent>() {

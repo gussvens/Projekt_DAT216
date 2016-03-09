@@ -32,6 +32,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import se.chalmers.ait.dat215.project.*;
 
 /**
@@ -217,11 +222,15 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
-            // setSaveListButtonInctive();
+            Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
+            text1.setFont(Font.font("System", 13));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            basketFlowPane.getChildren().add(textFlow);
+            basketFlowPane.setAlignment(Pos.CENTER);
         } else {
             toCheckout.setDisable(false);
             removeAllFromBasket.setDisable(false);
-            //setSaveListButtonActive();
         }
     }
 
@@ -426,7 +435,12 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
-            // setSaveListButtonInctive();
+            Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
+            text1.setFont(Font.font("System", 13));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            basketFlowPane.getChildren().add(textFlow);
+            basketFlowPane.setAlignment(Pos.CENTER);
         } else {
             toCheckout.setDisable(false);
             removeAllFromBasket.setDisable(false);
