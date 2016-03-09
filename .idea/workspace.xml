@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46e6fc5c-f3b8-4670-a127-4694a5966ed5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/imat/css/imat_delivery.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/css/imat_checkout.css" afterPath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/css/imat_checkout.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/css/imat_checkout.css" afterPath="$PROJECT_DIR$/src/imat/css/imat_checkout.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/css/imat_delivery.css" afterPath="$PROJECT_DIR$/src/imat/css/imat_delivery.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" afterPath="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" />
     </list>
     <ignored path="Projekt_DAT216.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,27 +31,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IMat_FXMLController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java">
+      <file leaf-file-name="IMat_CheckOut_v2Controller.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="194" column="8" selection-start-line="194" selection-start-column="8" selection-end-line="214" selection-end-column="52" />
+              <caret line="376" column="62" selection-start-line="376" selection-start-column="62" selection-end-line="376" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IMat_CheckOut_v2Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
+      <file leaf-file-name="IMat_BasketItemController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5925926">
+              <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IMat_Checkout_presenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/imat/IMat_Checkout_presenter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="9" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
-              <folding>
-                <element signature="e#11971#11972#0" expanded="true" />
-                <element signature="e#12006#12007#0" expanded="true" />
-                <element signature="e#12677#12678#0" expanded="true" />
-                <element signature="e#12704#12705#0" expanded="true" />
-              </folding>
+              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,18 +68,11 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imat_checkout.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/imat/css/imat_checkout.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-              <folding />
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding>
+                <marker date="1457561837675" expanded="true" signature="10713:10728" placeholder="..." />
+                <marker date="1457561837675" expanded="true" signature="10713:10742" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,17 +84,30 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <marker date="1457563749360" expanded="true" signature="6193:6208" placeholder="..." />
+                <marker date="1457563749360" expanded="true" signature="6193:6222" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imat_delivery.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/imat/css/imat_delivery.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imat_delivery.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/imat/css/imat_delivery.css">
+      <file leaf-file-name="imat_checkout_v2.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8148148">
-              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -118,9 +127,11 @@
         <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="52" column="80" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
+              <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1800#1801#0" expanded="true" />
+                <element signature="e#1839#1840#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,19 +143,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IMat_HistoryController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="332" column="36" selection-start-line="332" selection-start-column="36" selection-end-line="332" selection-end-column="36" />
-              <folding>
-                <element signature="e#8064#8065#0" expanded="true" />
-                <element signature="e#8122#8123#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -178,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/imat/views/IMat_SavedListController.java" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_start_v2.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_Checkout.fxml" />
-        <option value="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_Start_v2Controller.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_Store.fxml" />
         <option value="$PROJECT_DIR$/src/imat/views/imat_subcategory.css" />
@@ -189,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/imat/views/IMat_CheckoutController.java" />
         <option value="$PROJECT_DIR$/src/imat/IMat_HistoryPresenter.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java" />
-        <option value="$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_history.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategories.fxml" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_StoreItemController.java" />
@@ -207,9 +203,11 @@
         <option value="$PROJECT_DIR$/src/imat/css/imat_checkout.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java" />
-        <option value="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
-        <option value="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
+        <option value="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_delivery.css" />
+        <option value="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
+        <option value="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
+        <option value="$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java" />
       </list>
     </option>
   </component>
@@ -774,13 +772,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_SavedList.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -972,13 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/IMat_Checkout_presenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.44">
-          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1098,61 +1082,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="139" column="50" selection-start-line="139" selection-start-column="50" selection-end-line="139" selection-end-column="50" />
           <folding>
-            <element signature="e#5436#5437#0" expanded="true" />
-            <element signature="e#5487#5488#0" expanded="true" />
-            <element signature="e#5530#5531#0" expanded="true" />
-            <element signature="e#5579#5580#0" expanded="true" />
-            <element signature="e#5621#5622#0" expanded="true" />
-            <element signature="e#5668#5669#0" expanded="true" />
-            <element signature="e#5711#5712#0" expanded="true" />
-            <element signature="e#5760#5761#0" expanded="true" />
-            <element signature="e#5907#5908#0" expanded="true" />
-            <element signature="e#5939#5940#0" expanded="true" />
-            <element signature="e#6201#6202#0" expanded="true" />
-            <element signature="e#6231#6232#0" expanded="true" />
-            <element signature="e#6280#6281#0" expanded="true" />
-            <element signature="e#6311#6312#0" expanded="true" />
-            <element signature="e#6356#6357#0" expanded="true" />
-            <element signature="e#6387#6388#0" expanded="true" />
-            <element signature="e#6432#6433#0" expanded="true" />
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6508#6509#0" expanded="true" />
-            <element signature="e#6539#6540#0" expanded="true" />
-            <element signature="e#6582#6583#0" expanded="true" />
-            <element signature="e#6611#6612#0" expanded="true" />
-            <element signature="e#6694#6695#0" expanded="true" />
-            <element signature="e#6727#6728#0" expanded="true" />
-            <element signature="e#6766#6767#0" expanded="true" />
-            <element signature="e#6800#6801#0" expanded="true" />
-            <element signature="e#6839#6840#0" expanded="true" />
-            <element signature="e#6873#6874#0" expanded="true" />
-            <element signature="e#6912#6913#0" expanded="true" />
-            <element signature="e#6946#6947#0" expanded="true" />
-            <element signature="e#6985#6986#0" expanded="true" />
-            <element signature="e#7019#7020#0" expanded="true" />
-            <element signature="e#7056#7057#0" expanded="true" />
-            <element signature="e#7088#7089#0" expanded="true" />
-            <element signature="e#7133#7134#0" expanded="true" />
-            <element signature="e#7169#7170#0" expanded="true" />
-            <element signature="e#7215#7216#0" expanded="true" />
-            <element signature="e#7252#7253#0" expanded="true" />
-            <element signature="e#7320#7321#0" expanded="true" />
-            <element signature="e#7358#7359#0" expanded="true" />
-            <element signature="e#7433#7434#0" expanded="true" />
-            <element signature="e#7470#7471#0" expanded="true" />
+            <element signature="e#8859#8860#0" expanded="true" />
+            <element signature="e#8910#8911#0" expanded="true" />
+            <element signature="e#8953#8954#0" expanded="true" />
+            <element signature="e#9002#9003#0" expanded="true" />
+            <element signature="e#9044#9045#0" expanded="true" />
+            <element signature="e#9091#9092#0" expanded="true" />
+            <element signature="e#9134#9135#0" expanded="true" />
+            <element signature="e#9183#9184#0" expanded="true" />
+            <element signature="e#9322#9323#0" expanded="true" />
+            <element signature="e#9356#9357#0" expanded="true" />
+            <element signature="e#9614#9615#0" expanded="true" />
+            <element signature="e#9644#9645#0" expanded="true" />
+            <element signature="e#9689#9690#0" expanded="true" />
+            <element signature="e#9720#9721#0" expanded="true" />
+            <element signature="e#9765#9766#0" expanded="true" />
+            <element signature="e#9796#9797#0" expanded="true" />
+            <element signature="e#9841#9842#0" expanded="true" />
+            <element signature="e#9872#9873#0" expanded="true" />
+            <element signature="e#9917#9918#0" expanded="true" />
+            <element signature="e#9948#9949#0" expanded="true" />
+            <element signature="e#9991#9992#0" expanded="true" />
+            <element signature="e#10020#10021#0" expanded="true" />
+            <element signature="e#10099#10100#0" expanded="true" />
+            <element signature="e#10132#10133#0" expanded="true" />
+            <element signature="e#10171#10172#0" expanded="true" />
+            <element signature="e#10205#10206#0" expanded="true" />
+            <element signature="e#10244#10245#0" expanded="true" />
+            <element signature="e#10278#10279#0" expanded="true" />
+            <element signature="e#10317#10318#0" expanded="true" />
+            <element signature="e#10351#10352#0" expanded="true" />
+            <element signature="e#10390#10391#0" expanded="true" />
+            <element signature="e#10424#10425#0" expanded="true" />
+            <element signature="e#10461#10462#0" expanded="true" />
+            <element signature="e#10493#10494#0" expanded="true" />
+            <element signature="e#10534#10535#0" expanded="true" />
+            <element signature="e#10570#10571#0" expanded="true" />
+            <element signature="e#10612#10613#0" expanded="true" />
+            <element signature="e#10649#10650#0" expanded="true" />
+            <element signature="e#10714#10715#0" expanded="true" />
+            <element signature="e#10752#10753#0" expanded="true" />
+            <element signature="e#10816#10817#0" expanded="true" />
+            <element signature="e#10853#10854#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1191,8 +1167,11 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1457563749360" expanded="true" signature="6193:6208" placeholder="..." />
+            <marker date="1457563749360" expanded="true" signature="6193:6222" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1200,14 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="194" column="8" selection-start-line="194" selection-start-column="8" selection-end-line="214" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1220,37 +1191,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="80" selection-start-line="52" selection-start-column="80" selection-end-line="52" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="9" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
-          <folding>
-            <element signature="e#11971#11972#0" expanded="true" />
-            <element signature="e#12006#12007#0" expanded="true" />
-            <element signature="e#12677#12678#0" expanded="true" />
-            <element signature="e#12704#12705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1457561837675" expanded="true" signature="10713:10728" placeholder="..." />
+            <marker date="1457561837675" expanded="true" signature="10713:10742" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1262,10 +1213,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/css/imat_delivery.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8148148">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/IMat_Checkout_presenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1800#1801#0" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="376" column="62" selection-start-line="376" selection-start-column="62" selection-end-line="376" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5925926">
+          <caret line="202" column="24" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
           <folding />
         </state>
       </provider>

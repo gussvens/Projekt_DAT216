@@ -161,6 +161,8 @@ EventHandler<MouseEvent> clickedPlusButton
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
                     }
+
+                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(sI, true);
                 }
             };
 
@@ -195,6 +197,8 @@ EventHandler<MouseEvent> clickedPlusButton
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
                     }
+
+                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(sI, true);
                     /*
                      //IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
                      IMat_FXMLController.getPresenter().updateBasket();

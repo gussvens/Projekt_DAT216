@@ -7,15 +7,18 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_DeliveryController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_DeliveryController">
    <children>
       <Pane id="sequenceMap" layoutX="350.0" layoutY="50.0" prefHeight="60.0" prefWidth="600.0" />
       <Pane id="backButton" fx:id="backButton" layoutX="41.0" layoutY="46.0" prefHeight="63.0" prefWidth="200.0" stylesheets="@../css/imat_delivery.css">
@@ -37,7 +40,7 @@
       </Pane>
       <AnchorPane layoutX="200.0" layoutY="150.0" prefHeight="493.0" prefWidth="624.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FDFDFD;">
          <children>
-            <DatePicker layoutX="89.0" layoutY="111.0" />
+            <DatePicker layoutX="89.0" layoutY="111.0" promptText="DD/MM/YYYY" />
             <Label layoutX="88.0" layoutY="45.0" text="Leveransdag">
                <font>
                   <Font size="27.0" />
@@ -47,18 +50,21 @@
                <font>
                   <Font size="14.0" />
                </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="timeGroup" />
+               </toggleGroup>
             </RadioButton>
             <Label layoutX="89.0" layoutY="167.0" text="Tid">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <RadioButton layoutX="163.0" layoutY="238.0" mnemonicParsing="false" text="15:00">
+            <RadioButton layoutX="163.0" layoutY="238.0" mnemonicParsing="false" text="15:00" toggleGroup="$timeGroup">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="238.0" layoutY="238.0" mnemonicParsing="false" text="17:00">
+            <RadioButton layoutX="238.0" layoutY="238.0" mnemonicParsing="false" text="17:00" toggleGroup="$timeGroup">
                <font>
                   <Font size="14.0" />
                </font>
@@ -72,9 +78,9 @@
             <Pane layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="622.0" style="-fx-background-color: #8dCbBc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="doneButton" layoutX="1025.0" layoutY="683.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #00CC83; -fx-opacity: 0.7;" text="Gå vidare">
+      <Button fx:id="doneButton" layoutX="957.0" layoutY="659.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #FDFDFD;" text="Gå vidare">
          <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -82,8 +88,31 @@
       </Button>
       <VBox layoutX="880.0" layoutY="150.0" prefHeight="493.0">
          <children>
-            <Pane fx:id="basketTopPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;" />
-            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="465.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
+            <Pane fx:id="basketTopPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;">
+               <children>
+                  <Label layoutX="11.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
+                  <Label layoutX="81.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
+                  <Label layoutX="196.0" layoutY="11.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
+               </children>
+            </Pane>
+            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
+            <HBox prefHeight="31.0" prefWidth="241.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="31.0" prefWidth="181.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
