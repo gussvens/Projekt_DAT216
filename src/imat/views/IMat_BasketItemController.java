@@ -11,6 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import se.chalmers.ait.dat215.project.Product;
@@ -57,9 +58,78 @@ public class IMat_BasketItemController implements Initializable {
         removeOne.setOnMouseClicked(removeOneObject);
         removeOne.setCursor(Cursor.HAND);
         sC = IMat_Model.getBackEnd().getShoppingCart();
+        
+        // PlusButton
+        addAnother.setOnMouseEntered(enterPlusButton);
+        addAnother.setOnMouseExited(exitPlusButton);
+        addAnother.setOnMousePressed(clickedPlusButton);
+        addAnother.setOnMouseReleased(exitPlusButton);
+        addAnother.setCursor(Cursor.HAND);
+        
+        //MinusButton
+        removeOne.setOnMouseEntered(enterMinusButton);
+        removeOne.setOnMouseExited(exitMinusButton);
+        removeOne.setOnMousePressed(clickedMinusButton);
+        removeOne.setOnMouseReleased(exitMinusButton);
+        removeOne.setCursor(Cursor.HAND);
+        
+        
+        
     }
 
-    // Removes the shoppingItem from the cart and the flowpane.
+EventHandler<MouseEvent> enterMinusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/enter_minus_button.jpg"));
+                }
+            };
+EventHandler<MouseEvent> exitMinusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/def_minus_button.jpg"));
+                }
+            };  
+EventHandler<MouseEvent> clickedMinusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/clicked_minus_button.jpg"));
+                }
+            };  
+EventHandler<MouseEvent> enterPlusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/enter_plus_button.jpg"));
+                }
+            };
+EventHandler<MouseEvent> exitPlusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/def_plus_button.jpg"));
+                }
+            };  
+EventHandler<MouseEvent> clickedPlusButton
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((ImageView)t.getSource()).setImage(new Image("imat/images/clicked_plus_button.jpg"));
+                }
+            };  
+
+
+
+
+// Removes the shoppingItem from the cart and the flowpane.
     EventHandler<MouseEvent> removeObject
             = new EventHandler<MouseEvent>() {
 
@@ -73,6 +143,8 @@ public class IMat_BasketItemController implements Initializable {
                     }
                 }
             };
+    
+    
 
     EventHandler<MouseEvent> removeOneObject
             = new EventHandler<MouseEvent>() {
