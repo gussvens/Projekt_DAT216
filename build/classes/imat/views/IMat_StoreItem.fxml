@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" style="-fx-background-color: #FFFFFF; -fx-border-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_StoreItemController">
+<AnchorPane id="AnchorPane" style="-fx-background-color: #FFFFFF; -fx-border-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.IMat_StoreItemController">
    <children>
       <Label fx:id="itemId" textFill="TRANSPARENT" />
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -48,7 +54,7 @@
                   <Button layoutY="56.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #FFFFFF;" />
                   <ImageView fx:id="favorizeStarImage" fitHeight="25.0" fitWidth="26.0" layoutX="17.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/star.jpg" />
+                        <Image url="@../images/star_trans_new.png" />
                      </image>
                   </ImageView>
                </children>

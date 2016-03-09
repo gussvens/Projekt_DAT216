@@ -51,7 +51,7 @@
                         </Label>
                         <ImageView fx:id="menuFavStar" fitHeight="20.0" fitWidth="20.0" layoutX="11.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/star_trans.png" />
+                              <Image url="@../images/star_trans_new.png" />
                            </image>
                         </ImageView>
                      </children>

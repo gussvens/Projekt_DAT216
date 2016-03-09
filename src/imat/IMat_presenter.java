@@ -334,11 +334,11 @@ public class IMat_presenter extends Observable {
     }
 
     public void setFavStarInactive() {
-        menuFavStar.setImage(new Image("imat/images/star_trans.png"));
+        menuFavStar.setImage(new Image("imat/images/star_trans_new.png"));
     }
 
     public void setFavStarActive() {
-        menuFavStar.setImage(new Image("imat/images/golden_star_trans.png"));
+        menuFavStar.setImage(new Image("imat/images/golden_star_trans_new.png"));
     }
 
 
