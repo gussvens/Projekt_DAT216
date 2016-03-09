@@ -1,0 +1,6 @@
+#navPane{
+    -fx-background-color: linear-gradient(to bottom, #009973, #00BB95);
+    -fx-opacity: 0.7;
+    -fx-border-radius: 0 0 5 0;
+    -fx-background-radius: 0 0 5 0;
+}

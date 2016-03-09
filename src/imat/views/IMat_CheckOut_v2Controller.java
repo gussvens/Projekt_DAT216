@@ -34,6 +34,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.Product;
@@ -75,19 +76,16 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     @FXML
     private ScrollPane basketScrollPane;
     @FXML
-    private Button homeButton;
-    @FXML
-    private Button backToStore;
+    private Pane backToStore;
     @FXML
     private TextField checkoutTotPrice;
-    @FXML
-    private Button changeInfo;
     @FXML
     private Button doneButton;
     @FXML
     private Button saveButton;
-    @FXML 
-    private DatePicker datePicker;
+    @FXML
+    private Label saveFeedback;
+
 
     // Had to have this to be able to delete products from this view.
     private static IMat_Checkout_presenter pres;
@@ -106,7 +104,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         pres = new IMat_Checkout_presenter(
                 basketScrollPane,
-                checkoutTotPrice      
+                checkoutTotPrice
         );
         cardList.add(card1);
         cardList.add(card2);
@@ -121,7 +119,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         
         c = IMat_Model.getBackEnd().getCustomer();
         
-        homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
         doneButton.setOnMouseClicked(doneButtonClicked);
         pres.updateScrollPane();
@@ -130,7 +127,8 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
-        city.setText(IMat_SettingsController.getCity());
+        city.setText(c.getPostAddress());
+
         if(IMat_SettingsController.getCard1()!=null){
         card1.setText(IMat_SettingsController.getCard1());
         }
@@ -146,14 +144,25 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         if(IMat_SettingsController.getCvc()!=null){
         cvc.setText(IMat_SettingsController.getCvc());
         }
-        
+
+        if((String)paymentBox.getValue()=="Faktura"||(String)paymentBox.getValue()=="Kontant"){
+            //shthahph!!
+        } else {
+            card1.setDisable(false);
+            card2.setDisable(false);
+            card3.setDisable(false);
+            card4.setDisable(false);
+            cvc.setDisable(false);
+            cardTypeBox.setDisable(false);
+
+        }
+
+
         paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
         paymentBox.setValue(IMat_SettingsController.getPayment());
         
         cardTypeBox.setItems(IMat_SettingsController.getCardTypeOptions());
         cardTypeBox.setValue(IMat_SettingsController.getCardType());
-        
-        changeInfo.setOnMouseClicked(changeInfoButtonPressed);
     }
     
     @FXML
@@ -175,65 +184,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             card4.setDisable(false);
         }
     }
-    
-    public void updateTotPrice() {
-        checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
-    }
-    
-    EventHandler<MouseEvent> changeInfoButtonPressed
-            = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    firstName.setDisable(false);
-                    lastName.setDisable(false);
-                    city.setDisable(false);
-                    address.setDisable(false);
-                    postCode.setDisable(false);
-                    paymentBox.setDisable(false);
-                    if((String)paymentBox.getValue()=="Faktura"||(String)paymentBox.getValue()=="Kontant"){
-                        //shthahph!!
-                    } else {
-                    card1.setDisable(false);
-                    card2.setDisable(false);
-                    card3.setDisable(false);
-                    card4.setDisable(false);
-                    cvc.setDisable(false);
-                    cardTypeBox.setDisable(false);
-                    
-                    }
-                    saveButton.setDisable(false);
-                    changeInfo.setDisable(true);  
-                }
-            };
-    
-    
-    
-    // Sets the basket.
-    public void updateBasket() {
-        FlowPane flowPane = new FlowPane();
-        flowPane.setVgap(6);
-        flowPane.setHgap(6);
-        flowPane.setPrefWidth(255);
-
-        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
-            try {
-                Product p = s.getProduct();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
-                Node storeItem = loader.load();
-                IMat_BasketItemController controller = loader.getController();
-                controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice());
-                controller.setItemQuantity(p.getUnit());
-                controller.setShoppingItem(s);
-                flowPane.getChildren().add(storeItem);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        basketScrollPane.setContent(flowPane);
-        checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
-    }
 
     EventHandler<MouseEvent>doneButtonClicked
             = new EventHandler<MouseEvent>() {
@@ -263,7 +214,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 error="Ni måste välja ert betalningssätt.";
             } else if(paymentBox.getValue()=="Kreditkort"){
                 if(!isCardNumberValid() ){
-                    System.out.println("motherfucker");
+                    
                     error="Ert kreditkortsnummer får bara innehålla" +"\n"+
                             "och måste vara 16 siffror långt";
                 } else if(cardTypeBox.getValue()==null){
@@ -273,7 +224,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                             + "och måste vara 3 siffror lång.";
                 } else {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                        personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                        address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,7 +234,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 }                
             } else {
                 try {
-                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                    personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                     address.getText() + "\n"  + postCode.getText() + "\n" + city.getText(); 
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                 } catch (IOException ex) {
                     Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -304,9 +259,13 @@ public class IMat_CheckOut_v2Controller implements Initializable {
           
         String pI = firstName.getText() + " " + lastName.getText() + "\n" +
                 address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+        
 
-            //rött runt omkring och bara kontrolera uppgifter ist
-        personalInfo = pI;
+        personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+        System.out.println(getPersonalInfo());
+        
+        
         }
     };
 
@@ -314,20 +273,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         return personalInfo;
     }
 
-    // Back to start
-    EventHandler<MouseEvent> homeButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-                        IMat.getStage().setScene(new Scene(start, 1360, 768));
-                    } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            };
 
     // Back to store
     EventHandler<MouseEvent> backToStoreClicked
@@ -336,7 +281,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,27 +371,16 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             c.setPostCode(postCode.getText());
             c.setFirstName(firstName.getText());
             c.setLastName(lastName.getText());
+            c.setPostAddress(city.getText());
             IMat_SettingsController.setCard1(card1.getText());
             IMat_SettingsController.setCard2(card2.getText());
             IMat_SettingsController.setCard3(card3.getText());
             IMat_SettingsController.setCard4(card4.getText());
             IMat_SettingsController.setCardType((String) cardTypeBox.getSelectionModel().getSelectedItem());
             IMat_SettingsController.setPayment((String) paymentBox.getSelectionModel().getSelectedItem());
-            IMat_SettingsController.setCity(city.getText());
             IMat_SettingsController.setCvc(cvc.getText());
-            saveButton.setDisable(true);
-            changeInfo.setDisable(false);
-                    firstName.setDisable(true);
-                    lastName.setDisable(true);
-                    city.setDisable(true);
-                    address.setDisable(true);
-                    postCode.setDisable(true);
-                    paymentBox.setDisable(true);
-                    card1.setDisable(true);
-                    card2.setDisable(true);
-                    card3.setDisable(true);
-                    card4.setDisable(true);
-                    cvc.setDisable(true);
-                    cardTypeBox.setDisable(true); 
+
+            saveFeedback.setText("Din information \nhar sparats!");
+
         } 
 }

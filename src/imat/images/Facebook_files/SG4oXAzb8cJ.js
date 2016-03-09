@@ -1,0 +1,5 @@
+/*!CK:1764945126!*//*1457467528,*/
+
+if (self.CavalryLogger) { CavalryLogger.start_js(["HOqPY"]); }
+
+__d('FBRTCUnsupportedBrowserMessage',['AsyncDialog','AsyncRequest','XBrowserNotSupportedDialogController','FBRTCSoundController'],function a(b,c,d,e,f,g){if(c.__markCompiled)c.__markCompiled();var h={_dialog:null,warnForOutgoingCall:function(i){var j=c('XBrowserNotSupportedDialogController').getURIBuilder().setBool('warning',true).getURI();this._presentDialog(j,i);},showForOutgoingCall:function(){var i=c('XBrowserNotSupportedDialogController').getURIBuilder().getURI();this._presentDialog(i);},showForIncomingCall:function(i,j){c('FBRTCSoundController').playIncomingRingtone(i,j,false);var k=c('XBrowserNotSupportedDialogController').getURIBuilder().setInt('user_id',j).getURI();this._presentDialog(k);},dismiss:function(){if(this._dialog)this._dialog.hide();},_presentDialog:function(i,j){if(this._dialog)return;var k=new (c('AsyncRequest'))(i);c('AsyncDialog').send(k,function(l){this._dialog=l;l.subscribe('hide',function(){this._dialog=null;if(j)j();}.bind(this));}.bind(this));}};f.exports=h;},null);

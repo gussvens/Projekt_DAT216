@@ -181,6 +181,8 @@ public class IMat_BasketItemController implements Initializable {
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
                     }
+
+                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(sI, true);
                 }
             };
 
@@ -216,12 +218,22 @@ public class IMat_BasketItemController implements Initializable {
                         getPresenter().updateScrollPane();
                     }
 
+
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
 
                     //IMat_FXMLController.getPresenter().updateBasket();
                     if (IMat_CheckOut_v2Controller.getPresenter() != null) {
                         IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
                     }
+
+
+                    /*
+                     //IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
+                     IMat_FXMLController.getPresenter().updateBasket();
+                     if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                     IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                     }
+                     */
 
                 }
             };

@@ -1,0 +1,5 @@
+/*!CK:4010389234!*//*1456887295,*/
+
+if (self.CavalryLogger) { CavalryLogger.start_js(["4rkIX"]); }
+
+__d("UFIReactionsAnimatedIconGradient.react",["React"],function a(b,c,d,e,f,g){var h,i;if(c.__markCompiled)c.__markCompiled();h=babelHelpers.inherits(j,c("React").Component);i=h&&h.prototype;j.prototype.shouldComponentUpdate=function(){"use strict";return false;};j.prototype.render=function(){"use strict";var k=this.props.gradient,l=[],m=k.color_start.key_values,n=m.length,o=k.color_end.key_values,p=o.length;for(var q=0;q<this.props.frameCount;q++)l.push(c("React").createElement("linearGradient",{id:this.props.id+"_"+q,key:this.props.id+"_"+q,x1:"0",x2:"0",y1:"0",y2:"1"},c("React").createElement("stop",{offset:"0%","stop-color":m[Math.min(q,n-1)]}),c("React").createElement("stop",{offset:"100%","stop-color":o[Math.min(q,p-1)]})));return (c("React").createElement("defs",null,l));};function j(){"use strict";h.apply(this,arguments);}f.exports=j;},null);

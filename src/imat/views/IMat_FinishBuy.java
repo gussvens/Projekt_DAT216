@@ -35,13 +35,15 @@ public class IMat_FinishBuy implements Initializable {
     private ScrollPane basketScrollPane;
     @FXML
     private Label adressnchill;
-    String personalInfo;
+    
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         checkoutTotPrice1.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
 
         FlowPane receiptFlowPane = new FlowPane();
@@ -66,8 +68,13 @@ public class IMat_FinishBuy implements Initializable {
         basketScrollPane.setContent(receiptFlowPane);
 
         Customer c = IMat_Model.getBackEnd().getCustomer();
+        
+        System.out.print(IMat_CheckOut_v2Controller.getPersonalInfo());
         this.adressnchill.setText(IMat_CheckOut_v2Controller.getPersonalInfo());
+       
 
     }
+    
+ 
     
 }
