@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="75.0" prefWidth="255.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_BasketItemController">
+<AnchorPane id="AnchorPane" fx:id="basketItemBg" prefHeight="75.0" prefWidth="255.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_BasketItemController">
     <stylesheets>
         <URL value="@css/imat_basketitem.css" />
     </stylesheets>

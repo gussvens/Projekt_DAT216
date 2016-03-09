@@ -4,7 +4,11 @@ import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javafx.animation.Animation.Status.RUNNING;
 import javafx.animation.FadeTransition;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +20,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
@@ -28,6 +33,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
  */
 public class IMat_BasketItemController implements Initializable {
 
+    @FXML
+    private AnchorPane basketItemBg;
     @FXML
     private Label basketProdName;
     @FXML
@@ -134,21 +141,28 @@ public class IMat_BasketItemController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     //sC.removeItem(sI);
-                    /*
-                    FadeTransition ft = new FadeTransition(Duration.millis(1000),basketProdPrice);
+
+                    FadeTransition ft = new FadeTransition(Duration.millis(400), basketItemBg);
                     ft.setFromValue(1.0);
-                    ft.setToValue(0.3);
+                    ft.setToValue(0.0);
                     ft.setCycleCount(1);
                     ft.setAutoReverse(true);
 
                     ft.play();
-                    */
-                    sC.removeItem(sI);
-                    IMat_FXMLController.getPresenter().updateBasket();
 
-                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
-                    }
+                    ft.setOnFinished(new EventHandler<ActionEvent>() {
+
+                        @Override
+                        public void handle(ActionEvent event) {
+                            IMat_FXMLController.getPresenter().updateBasket();
+
+                            if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                                IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                            }
+
+                            sC.removeItem(sI);
+                        }
+                    });
                 }
             };
 
