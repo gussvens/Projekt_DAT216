@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -171,6 +172,16 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             }
         }
         basketScrollPane.setContent(basketFlowPane);
+
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(true);
+            removeAllFromBasket.setDisable(true);
+            // setSaveListButtonInctive();
+        } else {
+            toCheckout.setDisable(false);
+            removeAllFromBasket.setDisable(false);
+            //setSaveListButtonActive();
+        }
     }
 
 
@@ -273,6 +284,16 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             }
         }
         basketScrollPane.setContent(basketFlowPane);
+
+        if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            toCheckout.setDisable(true);
+            removeAllFromBasket.setDisable(true);
+            // setSaveListButtonInctive();
+        } else {
+            toCheckout.setDisable(false);
+            removeAllFromBasket.setDisable(false);
+            //setSaveListButtonActive();
+        }
     }
 
     private String getCurrentPane(MouseEvent t) {
@@ -636,7 +657,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
-        flowPane.setOrientation(Orientation.HORIZONTAL);
+        flowPane.setAlignment(Pos.CENTER);
 
         this.subScrollPane.setContent(flowPane);
 
