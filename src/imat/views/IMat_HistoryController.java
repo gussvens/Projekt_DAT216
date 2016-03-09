@@ -20,6 +20,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -31,12 +32,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import se.chalmers.ait.dat215.project.*;
 
 /**
  * FXML Controller class
  *
- * @author Gustav
+ * @author Group 12
  */
 public class IMat_HistoryController implements Initializable, ShoppingCartListener {
 
@@ -73,6 +78,19 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
+
+            FlowPane basketFlowPane = new FlowPane();
+            basketFlowPane.setVgap(3);
+            basketFlowPane.setPrefWidth(255);
+
+            Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
+            text1.setFont(Font.font("System", 13));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            basketFlowPane.getChildren().add(textFlow);
+            basketFlowPane.setAlignment(Pos.CENTER);
+
+            basketScrollPane.setContent(basketFlowPane);
         }
 
         if (!IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
@@ -103,7 +121,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         removeAllFromBasket.setOnMouseEntered(buttonEnter);
         removeAllFromBasket.setOnMouseExited(buttonExit);
         removeAllFromBasket.setCursor(Cursor.HAND);
-        
+
         // SearchButton
         searchButton.setOnMouseEntered(buttonEnter);
         searchButton.setOnMouseExited(buttonExit);
@@ -181,21 +199,32 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         basketFlowPane.setVgap(3);
         basketFlowPane.setPrefWidth(255);
 
-        for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
-            try {
-                Product p = s.getProduct();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
-                Node storeItem = loader.load();
-                IMat_BasketItemController controller = loader.getController();
-                controller.setItemNameLabel(p.getName());
-                controller.setItemPriceLabel(p.getPrice() * s.getAmount());
-                controller.setItemQuantity("kr");
-                controller.setShoppingItem(s);
-                controller.setNrOfBasketItems(s.getAmount());
-                basketFlowPane.getChildren().add(storeItem);
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (!IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+            for (ShoppingItem s : IMat_Model.getBackEnd().getShoppingCart().getItems()) {
+                try {
+                    Product p = s.getProduct();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_BasketItem.fxml"));
+                    Node storeItem = loader.load();
+                    IMat_BasketItemController controller = loader.getController();
+                    controller.setItemNameLabel(p.getName());
+                    controller.setItemPriceLabel(p.getPrice() * s.getAmount());
+                    controller.setItemQuantity("kr");
+                    controller.setShoppingItem(s);
+                    controller.setNrOfBasketItems(s.getAmount());
+                    basketFlowPane.getChildren().add(storeItem);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+        }else{
+            Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
+            text1.setFont(Font.font("System", 13));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            basketFlowPane.getChildren().add(textFlow);
+            basketFlowPane.setAlignment(Pos.CENTER);
+            
+            
         }
         basketScrollPane.setContent(basketFlowPane);
     }
@@ -249,16 +278,16 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     EventHandler<MouseEvent> toCheckoutClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> removeButtonClicked
             = new EventHandler<MouseEvent>() {
@@ -271,7 +300,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
 
                 }
             };
-    
+
     EventHandler<MouseEvent> storeButtonClicked
             = new EventHandler<MouseEvent>() {
 
@@ -338,7 +367,12 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
-            // setSaveListButtonInctive();
+            Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
+            text1.setFont(Font.font("System", 13));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            basketFlowPane.getChildren().add(textFlow);
+            basketFlowPane.setAlignment(Pos.CENTER);
         } else {
             toCheckout.setDisable(false);
             removeAllFromBasket.setDisable(false);
