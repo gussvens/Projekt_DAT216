@@ -117,10 +117,13 @@ public class IMat_BasketItemController implements Initializable {
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
-
-                    IMat_FXMLController.getPresenter().setTotal();
+                    nrOfBasketItems.setText(Integer.toString(Integer.parseInt(nrOfBasketItems.getText())+1));
+                    
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
 
+                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                    }
                 }
             };
 
