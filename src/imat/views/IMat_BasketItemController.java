@@ -80,11 +80,11 @@ public class IMat_BasketItemController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     sI.setAmount(sI.getAmount() - 1);
-                   
+
                     if (sI.getAmount() == 0) {
-                       sC.removeItem(sI);
+                        sC.removeItem(sI);
                     }
-                    
+
                     IMat_FXMLController.getPresenter().updateBasket();
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
@@ -99,7 +99,7 @@ public class IMat_BasketItemController implements Initializable {
                 public void handle(MouseEvent t) {
 
                     Product p = sI.getProduct();
-                    
+
                     if (sC.getItems().size() > 0) {
                         for (ShoppingItem s : sC.getItems()) {
                             if (s.getProduct().equals(p)) {
@@ -117,13 +117,19 @@ public class IMat_BasketItemController implements Initializable {
                         ShoppingItem sI = new ShoppingItem(p);
                         sC.addItem(sI);
                     }
-                    nrOfBasketItems.setText(Integer.toString(Integer.parseInt(nrOfBasketItems.getText())+1));
-                    
-                    IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
+                    nrOfBasketItems.setText(Integer.toString(Integer.parseInt(nrOfBasketItems.getText()) + 1));
 
-                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                    IMat_FXMLController.getPresenter().updateBasket();
+                    if (getPresenter() != null) {
+                        getPresenter().updateScrollPane();
                     }
+                    /*
+                     //IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
+                     IMat_FXMLController.getPresenter().updateBasket();
+                     if (IMat_CheckOut_v2Controller.getPresenter() != null) {
+                     IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                     }
+                     */
                 }
             };
 
@@ -146,8 +152,8 @@ public class IMat_BasketItemController implements Initializable {
     public void setNrOfBasketItems(double amount) {
         this.nrOfBasketItems.setText((int) amount + "");
     }
-    
-    private IMat_Checkout_presenter getPresenter(){
+
+    private IMat_Checkout_presenter getPresenter() {
         return IMat_CheckOut_v2Controller.getPresenter();
     }
 }
