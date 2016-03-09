@@ -1,0 +1,23 @@
+#navPane{
+    -fx-background-color: linear-gradient(to bottom, #009973, #00BB95);
+    -fx-opacity: 0.7;
+    -fx-border-radius: 0 0 5 0;
+    -fx-background-radius: 0 0 5 0;
+}
+
+#backButton{
+    -fx-background-color: #FDFDFD;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+}
+
+#background{
+    -fx-background-color: linear-gradient(to bottom, #009973, #00CC83);
+    -fx-opacity: 0.70;
+}
+
+#sequenceMap{
+    -fx-background-color: #FDFDFD;
+    -fx-border-radius: 5 5 5 5;
+     -fx-background-radius: 5 5 5 5;
+}

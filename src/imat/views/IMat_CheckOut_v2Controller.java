@@ -121,7 +121,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         
         c = IMat_Model.getBackEnd().getCustomer();
         
-        homeButton.setOnMouseClicked(homeButtonClicked);
         backToStore.setOnMouseClicked(backToStoreClicked);
         doneButton.setOnMouseClicked(doneButtonClicked);
         pres.updateScrollPane();
@@ -130,7 +129,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
-        city.setText(IMat_SettingsController.getCity());
+        city.setText(c.getPostAddress());
         if(IMat_SettingsController.getCard1()!=null){
         card1.setText(IMat_SettingsController.getCard1());
         }
@@ -263,7 +262,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 error="Ni måste välja ert betalningssätt.";
             } else if(paymentBox.getValue()=="Kreditkort"){
                 if(!isCardNumberValid() ){
-                    System.out.println("motherfucker");
+                    
                     error="Ert kreditkortsnummer får bara innehålla" +"\n"+
                             "och måste vara 16 siffror långt";
                 } else if(cardTypeBox.getValue()==null){
@@ -273,7 +272,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                             + "och måste vara 3 siffror lång.";
                 } else {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                        personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                        address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,7 +282,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 }                
             } else {
                 try {
-                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                    personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                     address.getText() + "\n"  + postCode.getText() + "\n" + city.getText(); 
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                 } catch (IOException ex) {
                     Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -304,9 +307,13 @@ public class IMat_CheckOut_v2Controller implements Initializable {
           
         String pI = firstName.getText() + " " + lastName.getText() + "\n" +
                 address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+        
 
-            //rött runt omkring och bara kontrolera uppgifter ist
-        personalInfo = pI;
+        personalInfo = firstName.getText() + " " + lastName.getText() + "\n" +
+                address.getText() + "\n"  + postCode.getText() + "\n" + city.getText();
+        System.out.println(getPersonalInfo());
+        
+        
         }
     };
 
@@ -314,20 +321,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         return personalInfo;
     }
 
-    // Back to start
-    EventHandler<MouseEvent> homeButtonClicked
-            = new EventHandler<MouseEvent>() {
-
-                @Override
-                public void handle(MouseEvent t) {
-                    try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
-                        IMat.getStage().setScene(new Scene(start, 1360, 768));
-                    } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            };
 
     // Back to store
     EventHandler<MouseEvent> backToStoreClicked
@@ -336,7 +329,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,13 +419,14 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             c.setPostCode(postCode.getText());
             c.setFirstName(firstName.getText());
             c.setLastName(lastName.getText());
+            c.setPostAddress(city.getText());
             IMat_SettingsController.setCard1(card1.getText());
             IMat_SettingsController.setCard2(card2.getText());
             IMat_SettingsController.setCard3(card3.getText());
             IMat_SettingsController.setCard4(card4.getText());
             IMat_SettingsController.setCardType((String) cardTypeBox.getSelectionModel().getSelectedItem());
             IMat_SettingsController.setPayment((String) paymentBox.getSelectionModel().getSelectedItem());
-            IMat_SettingsController.setCity(city.getText());
+            
             IMat_SettingsController.setCvc(cvc.getText());
             saveButton.setDisable(true);
             changeInfo.setDisable(false);

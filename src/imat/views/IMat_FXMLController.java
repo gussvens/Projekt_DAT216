@@ -346,14 +346,14 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             = new EventHandler<MouseEvent>() {
 
                 @Override
-                public void handle(MouseEvent t) {
-                    try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
-                        IMat.getStage().setScene(new Scene(start, 1360, 768));
-                    } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             };
 
     EventHandler<MouseEvent> homeButtonClicked
