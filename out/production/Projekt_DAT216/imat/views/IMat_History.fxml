@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +21,55 @@
       <URL value="@imat.fxml.css" />
    </stylesheets>
    <children>
-      <Pane id="categoryPane" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane id="categoryPane" prefHeight="768.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="searchPane" layoutX="23.0" layoutY="18.0" prefHeight="44.0" prefWidth="250.0">
+               <children>
+                  <Pane fx:id="historyButton" layoutY="1.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/history2.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="-1.0" prefHeight="42.0" prefWidth="113.0" styleClass="categoryLabels" text="      Historik">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip text="Se dina tidigare utförda köp">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="settingsButton" layoutX="137.0" layoutY="2.0" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtonPanes" stylesheets="@../css/imat_store.css">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/user.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="42.0" prefWidth="113.0" styleClass="categoryLabels" text="      Uppgifter">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip text="Se och ändra dina förinställda personuppgifter">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </children></Pane>
       <AnchorPane fx:id="leftPane" layoutY="46.0" prefHeight="634.0" prefWidth="250.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
          <children>
             <VBox prefHeight="420.0" prefWidth="250.0" spacing="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -33,11 +82,6 @@
                               <Button fx:id="searchButton" layoutX="192.0" layoutY="109.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Sök" textFill="#274927" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
                            </children>
                         </HBox>
-                        <Label layoutY="23.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="HÄR KAN DU SÖKA EFTER PRODUKTER" textFill="#274927">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
                      </children>
                      <padding>
                         <Insets bottom="5.0" />
@@ -49,36 +93,6 @@
                   <Pane fx:id="historyCategoryPane" prefHeight="540.0" prefWidth="250.0" />
                </children>
             </VBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="searchPane" layoutX="23.0" layoutY="14.0" prefHeight="44.0" prefWidth="250.0" AnchorPane.leftAnchor="23.0">
-         <children>
-            <Button fx:id="settingsButton" layoutX="137.0" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="113.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="       Uppgifter" textFill="#274927">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="storeButton" layoutY="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="123.0" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="     Till butik" textFill="#274927">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/shoppingCart_small.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="143.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/user.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane id="checkoutPane" layoutX="658.0" layoutY="199.0" prefHeight="200.0" prefWidth="290.0" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -124,7 +138,7 @@
             <Label layoutX="30.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
             <Label layoutX="88.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
             <Label layoutX="202.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
-            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="117.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="117.0">
+            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="100.0" mnemonicParsing="false" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="100.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
