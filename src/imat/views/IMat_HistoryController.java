@@ -70,12 +70,27 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     private Button searchButton;
     @FXML
     private TextField totalPrice;
+    @FXML
+    private ScrollPane subScrollPane;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        FlowPane fPane = new FlowPane();
+        fPane.setHgap(6);
+        fPane.setPrefWidth(640);
+        fPane.setPrefHeight(104);
+
+        Text header = new Text("\t\t" + "   Din historik");
+        header.setFont(Font.font("System", 42));
+        header.setFontSmoothingType(FontSmoothingType.LCD);
+        TextFlow flow = new TextFlow(header);
+        fPane.getChildren().add(flow);
+        fPane.setAlignment(Pos.BASELINE_CENTER);
+
+        subScrollPane.setContent(flow);
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
         setTotal();
@@ -157,7 +172,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
-                    
+
                     if (i == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -182,7 +197,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                             + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
-                    
+
                     if (j == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -191,7 +206,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                         historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
                         historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
                     }
-                    
+
                     flowPane.getChildren().add(historyCategory);
                     j--;
                 } catch (IOException e) {
@@ -223,24 +238,19 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     e.printStackTrace();
                 }
             }
-        }else{
+        } else {
             Text text1 = new Text("\n\n\n\n\n\n\n\nDin kundvagn är för närvarande tom.");
             text1.setFont(Font.font("System", 13));
             text1.setFontSmoothingType(FontSmoothingType.LCD);
             TextFlow textFlow = new TextFlow(text1);
             basketFlowPane.getChildren().add(textFlow);
             basketFlowPane.setAlignment(Pos.CENTER);
-            
-            
+
         }
         basketScrollPane.setContent(basketFlowPane);
         setTotal();
-        
+
     }
-    
-    
-    
-    
 
     public void setHistoryItemScrollPane(FlowPane flowPane) {
         historyItemScrollPane.setContent(flowPane);
@@ -310,8 +320,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     IMat_Model.getBackEnd().getShoppingCart().clear();
                     System.out.println("Cart size: " + IMat_Model.getBackEnd().getShoppingCart().getItems().size());
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(null), true);
-                    
-                    
+
                     setTotal();
                 }
             };
@@ -337,8 +346,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         flowPane.setPrefWidth(700);
         flowPane.setStyle("-fx-background-color: #FFFFFF;");
 
-        flowPane.getChildren().add(new ImageView("imat/images/history2_big.png"));
-
+        flowPane.getChildren().add(new ImageView("imat/images/bigHistory.jpg"));
+        flowPane.setAlignment(Pos.CENTER);
         this.historyItemScrollPane.setContent(flowPane);
     }
 
@@ -396,9 +405,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         }
     }
 
-    
-    
-    public void setTotal(){
+    public void setTotal() {
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
     }
 }

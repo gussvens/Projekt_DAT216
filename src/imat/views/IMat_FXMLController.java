@@ -110,6 +110,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     private List<Product> tempProdList;
     private List<Pane> menuButtonList;
     private List<String> subNameList;
+    private String currentCategory;
 
     /**
      * Initializes the controller class.
@@ -520,7 +521,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         // Collects those products mareked as favorites.
                     } else if (getCurrentPane(t).equals("topCategory")) {
                         prodList = IMat_Model.getBackEnd().favorites();
-                        System.out.println("i fav ifen");
 
                         // Collects those product that should be in the candy-section.
                     } else if (getCurrentPane(t).equals("bottomCategory")) {
@@ -692,6 +692,9 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     }
 
                     // Placing the items on the centerstage.
+                    System.out.println(getCurrentPane(t));
+                    currentCategory = getCurrentPane(t);
+                    
                     placeStoreItems(prodList);
                 }
             };
@@ -787,25 +790,38 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         flowPane.setPrefWidth(640);
         flowPane.setPrefHeight(104);
 
-        int i = 1;
-        for (String p : list) {
+        if (!list.isEmpty()) {
+            int i = 1;
+            for (String p : list) {
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
-                Node storeItem = loader.load();
-                IMat_SubcategoryController controller = loader.getController();
-                controller.setSubName(p);
-                controller.setIndex(i);
-                controller.setSubImage(getSubImage(p));
-                if (i == activeSubindex) {
-                    controller.getAnchorPane();
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_Subcategory.fxml"));
+                    Node storeItem = loader.load();
+                    IMat_SubcategoryController controller = loader.getController();
+                    controller.setSubName(p);
+                    controller.setIndex(i);
+                    controller.setSubImage(getSubImage(p));
+                    if (i == activeSubindex) {
+                        controller.getAnchorPane();
+                    }
+                    i++;
+                    flowPane.getChildren().add(storeItem);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                i++;
-                flowPane.getChildren().add(storeItem);
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
+        
+        if(currentCategory.equals("topCategory")){
+            Text text1 = new Text(" Dina favoriter");
+            text1.setFont(Font.font("System", 42));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            flowPane.getChildren().add(textFlow);
+            flowPane.setAlignment(Pos.BASELINE_CENTER);
+        }
+        
+        
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
@@ -911,7 +927,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     }
 
     // Returns the presenter made in this class.
-
     public static IMat_presenter getPresenter() {
         return pres;
     }
