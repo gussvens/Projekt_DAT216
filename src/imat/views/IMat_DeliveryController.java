@@ -77,6 +77,8 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
 
     private static String staticMessage;
     private static String staticDaytime;
+    private static String staticDate;
+    private static String staticTime;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -148,6 +150,13 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
     public static String getStaticMessage() {
         return staticMessage;
     }
+    public static String getStaticDate() {
+        return staticDate;
+    }
+
+    public static String getStaticTime() {
+        return staticTime;
+    }
 
     public void shoppingCartChanged(CartEvent event) {
         pres.updateScrollPane();
@@ -180,9 +189,9 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                             error = "Ni måste välja ett datum för leverans.";
                         } else if (timeGroup.getSelectedToggle() == null) {
                             error = "Ni måste välja en tid för leverans.";
-                        } else if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+                        } else if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
                             error = "Er kundvagn kan inte vara \ntom när ni går vidare.";
-                        }else {
+                        } else {
                             try {
                                 String day = date.getEditor().getText();
                                 String time = "";
@@ -198,6 +207,8 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
 
                                 staticDaytime = daytime;
                                 staticMessage = msg;
+                                staticDate = day;
+                                staticTime = time;
 
                                 Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
                                 IMat.getStage().setScene(new Scene(start, 1360, 768));
