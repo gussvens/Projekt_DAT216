@@ -169,21 +169,22 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
         paymentBox.setValue(IMat_SettingsController.getPayment());
 
-        if (IMat_SettingsController.getPayment().equals("Faktura") || IMat_SettingsController.getPayment().equals("Kontant")){
-            card1.setDisable(true);
-            card2.setDisable(true);
-            card3.setDisable(true);
-            card4.setDisable(true);
-            cvc.setDisable(true);
-            cardTypeBox.setDisable(true);
-        } else {
-            card1.setDisable(false);
-            card2.setDisable(false);
-            card3.setDisable(false);
-            card4.setDisable(false);
-            cvc.setDisable(false);
-            cardTypeBox.setDisable(false);
-
+        if(IMat_SettingsController.getPayment() != null) {
+            if (IMat_SettingsController.getPayment().equals("Faktura") || IMat_SettingsController.getPayment().equals("Kontant")) {
+                card1.setDisable(true);
+                card2.setDisable(true);
+                card3.setDisable(true);
+                card4.setDisable(true);
+                cvc.setDisable(true);
+                cardTypeBox.setDisable(true);
+            } else {
+                card1.setDisable(false);
+                card2.setDisable(false);
+                card3.setDisable(false);
+                card4.setDisable(false);
+                cvc.setDisable(false);
+                cardTypeBox.setDisable(false);
+            }
         }
 
         cardTypeBox.setItems(IMat_SettingsController.getCardTypeOptions());
