@@ -502,7 +502,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         subNameList = new ArrayList<>();
                         List<Product> list = new ArrayList<>();
                         list = IMatDataHandler.getInstance().
-                        findProducts(searchField.getText());
+                        findProducts(searchField.getText().replaceAll("\\s+", ""));
 
                         currentCategory = "search";
 
@@ -529,7 +529,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     subNameList = new ArrayList<>();
                     List<Product> list = new ArrayList<>();
                     list = IMatDataHandler.getInstance().
-                    findProducts(searchField.getText());
+                    findProducts(searchField.getText().replaceAll("\\s+", ""));
 
                     currentCategory = "search";
                      if (!list.isEmpty()) {
