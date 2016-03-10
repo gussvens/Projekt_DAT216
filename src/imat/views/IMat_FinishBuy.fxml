@@ -1,64 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1360.0" style="-fx-background-color: #FFFFFF;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FinishBuy">
-    <stylesheets>
-        <URL value="@imat_checkout_v2.css" />
-    </stylesheets>
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FinishBuy">
    <children>
-      <HBox layoutX="533.0" layoutY="102.0" spacing="25.0">
+      <Pane fx:id="backButton" layoutX="200.0" layoutY="655.0" prefHeight="63.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
          <children>
-            <Label alignment="CENTER" layoutX="403.0" layoutY="97.0" prefHeight="26.0" prefWidth="178.0" text="Kontrollera uppgifter" textFill="#cececead">
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/back_arrow.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="69.0" prefWidth="200.0" text="      Tillbaka" textFill="#333333">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font size="24.0" />
                </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="92.0" text="Slutför köp" textFill="#fdc178ad">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
+               <tooltip>
+                  <Tooltip text="Tillbaka till dina personuppgifter" />
+               </tooltip>
             </Label>
          </children>
-      </HBox>
-      <Button fx:id="praiseGodButton" layoutX="1118.0" layoutY="507.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="117.0" text="Slutför Köp" AnchorPane.topAnchor="510.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="634.0" layoutY="161.0" text="Överblick">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="328.0" layoutY="220.0" prefHeight="352.0" prefWidth="335.0">
+      </Pane>
+      <AnchorPane id="inputPane" layoutX="200.0" layoutY="123.0" prefHeight="493.0" prefWidth="624.0">
          <children>
-            <Label layoutX="16.0" layoutY="7.0" prefHeight="20.0" prefWidth="311.0" text="Skickas till:">
+            <Label layoutX="88.0" layoutY="45.0" text="Dina uppgifter:">
                <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Label fx:id="adressnchill" alignment="TOP_LEFT" layoutX="87.0" layoutY="8.0" prefHeight="106.0" prefWidth="230.0" text="adress och namn                " wrapText="true" />
-            <Label layoutX="16.0" layoutY="163.0" prefHeight="20.0" prefWidth="60.0" text="Betalsätt:">
-               <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font size="27.0" />
                </font>
             </Label>
-            <Label fx:id="payme" layoutX="87.0" layoutY="163.0" prefHeight="20.0" prefWidth="117.0" text="Kontant" />
+            <Label layoutX="88.0" layoutY="214.0" text="Leverans:">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Pane layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="622.0" style="-fx-background-color: #8dCbBc;" styleClass="headPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label fx:id="adressnchill" layoutX="88.0" layoutY="84.0" prefHeight="130.0" prefWidth="200.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="timenchill" layoutX="88.0" layoutY="251.0" prefHeight="81.0" prefWidth="200.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="message" layoutX="87.0" layoutY="372.0" prefHeight="107.0" prefWidth="182.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="88.0" layoutY="332.0" text="Meddelande:">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" layoutX="663.0" layoutY="219.0" prefHeight="290.0" prefWidth="311.0" />
-      <Label layoutX="672.0" layoutY="559.0" prefHeight="20.0" prefWidth="60.0" text="Totalt:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="checkoutTotPrice1" layoutX="754.0" layoutY="560.0" />
+      <AnchorPane id="basketPane" layoutX="880.0" layoutY="123.0">
+         <children>
+            <VBox prefHeight="493.0">
+               <children>
+                  <Pane fx:id="basketTopPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="251.0" style="-fx-background-color: #8dCbBc;" styleClass="headPane">
+                     <children>
+                        <Label layoutX="11.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
+                        <Label layoutX="65.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
+                        <Label layoutX="191.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
+                     </children>
+                  </Pane>
+                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
+                  <HBox prefHeight="31.0" prefWidth="241.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="31.0" prefWidth="181.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="confirmButton" layoutX="880.0" layoutY="655.0" prefHeight="63.0" prefWidth="258.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="196.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/confirm.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="7.0" layoutY="-3.0" prefHeight="69.0" prefWidth="200.0" text="  Slutför köp" textFill="#333333">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Tillbaka till dina personuppgifter" />
+               </tooltip>
+            </Label>
+         </children>
+      </Pane>
+      <HBox layoutX="12.0" layoutY="12.0" prefHeight="42.0" prefWidth="182.0" spacing="20.0">
+         <children>
+            <Pane fx:id="backToStore" layoutX="33.0" layoutY="179.0" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/shoppingCart_small_new.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="backToHistory" layoutX="152.0" layoutY="179.0" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
+               <children>
+                  <ImageView fx:id="historyPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/history2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="backToSettings" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
+               <children>
+                  <ImageView fx:id="userPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <AnchorPane id="sequenceMap" layoutX="349.0" layoutY="30.0" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <HBox layoutX="158.0" layoutY="-20.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="182.0" text="Personuppgifter">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Leverans">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane id="selectedPane" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label id="selectedLabel" layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Bekräfta">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,5 +1,0 @@
-/*!CK:838774156!*//*1456887289,*/
-
-if (self.CavalryLogger) { CavalryLogger.start_js(["lSUSf"]); }
-
-__d("CubicBezier",[],function a(b,c,d,e,f,g){if(c.__markCompiled)c.__markCompiled();var h=.005;function i(j,k){"use strict";this.cx=3*j[0];this.bx=3*(k[0]-j[0])-this.cx;this.ax=1-this.cx-this.bx;this.cy=3*j[1];this.by=3*(k[1]-j[1])-this.cy;this.ay=1-this.cy-this.by;}i.prototype.sampleCurveX=function(j){"use strict";return ((this.ax*j+this.bx)*j+this.cx)*j;};i.prototype.solve=function(j){"use strict";j=this.solveCurveX(j);return ((this.ay*j+this.by)*j+this.cy)*j;};i.prototype.solveCurveX=function(j){"use strict";var k,l,m,n,o,p;for(o=j,l=0;l<8;l++){p=this.sampleCurveX(o)-j;if(Math.abs(p)<h)return o;k=(3*this.ax*o+2*this.bx)*o+this.cx;if(Math.abs(k)<1e-06)break;o-=p/k;}m=0;n=1;o=j;if(o<m)return m;if(o>n)return n;while(m<n){p=this.sampleCurveX(o);if(Math.abs(p-j)<h)return o;if(j>p){m=o;}else n=o;o=(n-m)/2+m;}return o;};f.exports=i;},null);
