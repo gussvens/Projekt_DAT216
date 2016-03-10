@@ -456,6 +456,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     }
 
     
+    // Sets the text in the center-scrollPane when a search does not give any results.
     public void searchFeedback(){
         FlowPane flowPane = new FlowPane();
                             flowPane.setVgap(6);
@@ -512,8 +513,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         } else {
                             searchFeedback();
                         }
-
-                        // TODO: if the list is empty, add text that displays this.
                     }
 
                 }
@@ -537,8 +536,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         } else {
                             searchFeedback();
                         }
-
-                    // TODO: if the list is empty, add text that displays this.
                 }
             };
 
