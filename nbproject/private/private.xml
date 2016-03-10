@@ -5,14 +5,11 @@
         <group>
             <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_HistoryController.java</file>
             <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_FXMLController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/imat_store.css</file>
             <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_BasketItemController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/css/imat_start.css</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_CheckOut_v2Controller.java</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_FinishBuy.java</file>
+            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat_Checkout_presenter.java</file>
             <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/IMat_presenter.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_StoreItemController.java</file>
-            <file>file:/C:/Users/Andreas/Documents/NetBeansProjects/IMat/src/imat/views/IMat_HistoryCategoriesController.java</file>
         </group>
     </open-files>
 </project-private>
