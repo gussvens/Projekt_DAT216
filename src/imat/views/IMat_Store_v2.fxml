@@ -211,7 +211,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="toCheckout" layoutX="81.0" layoutY="608.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #EEFFEE;" text="Till kassan" textFill="#274927">
+            <Button fx:id="toCheckout" layoutX="81.0" layoutY="613.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #EEFFEE;" text="Till kassan" textFill="#274927">
                <font>
                   <Font size="16.0" />
                </font>
@@ -232,14 +232,14 @@
             <Label layoutX="30.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
             <Label layoutX="88.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
             <Label layoutX="202.0" layoutY="156.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
-            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="100.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="100.0">
+            <Button fx:id="removeAllFromBasket" layoutX="170.0" layoutY="98.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" styleClass="storeButtons" stylesheets="@../css/imat_store.css" text="Töm varukorgen" textFill="#274927" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="98.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="152.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="152.0" />
-      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="362.0" layoutY="31.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="358.0" AnchorPane.topAnchor="21.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="150.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="150.0" />
+      <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="350.0" layoutY="26.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="26.0" />
    </children>
 </AnchorPane>
