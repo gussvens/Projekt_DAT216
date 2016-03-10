@@ -10,6 +10,10 @@
      -fx-background-insets: 0, 0, 1, 2;
 }
 
+.bgPane {
+    
+}
+
 .text {
     -fx-font-smoothing-type: lcd; 
 } 
