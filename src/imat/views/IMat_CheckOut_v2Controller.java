@@ -165,8 +165,17 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             cvc.setText(IMat_SettingsController.getCvc());
         }
 
-        if ((String) paymentBox.getValue() == "Faktura" || (String) paymentBox.getValue() == "Kontant") {
-            //shthahph!!
+
+        paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
+        paymentBox.setValue(IMat_SettingsController.getPayment());
+
+        if (IMat_SettingsController.getPayment().equals("Faktura") || IMat_SettingsController.getPayment().equals("Kontant")){
+            card1.setDisable(true);
+            card2.setDisable(true);
+            card3.setDisable(true);
+            card4.setDisable(true);
+            cvc.setDisable(true);
+            cardTypeBox.setDisable(true);
         } else {
             card1.setDisable(false);
             card2.setDisable(false);
@@ -176,9 +185,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
             cardTypeBox.setDisable(false);
 
         }
-
-        paymentBox.setItems(IMat_SettingsController.getPaymentOptions());
-        paymentBox.setValue(IMat_SettingsController.getPayment());
 
         cardTypeBox.setItems(IMat_SettingsController.getCardTypeOptions());
         cardTypeBox.setValue(IMat_SettingsController.getCardType());
