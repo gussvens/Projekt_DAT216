@@ -239,7 +239,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="150.0" prefHeight="547.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="150.0" />
+      <ScrollPane fx:id="storeItemScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="357.0" layoutY="150.0" prefHeight="548.0" prefWidth="647.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="150.0" />
       <ScrollPane fx:id="subScrollPane" focusTraversable="false" hbarPolicy="NEVER" layoutX="350.0" layoutY="26.0" prefHeight="103.0" prefWidth="641.0" styleClass="centerStageViews" stylesheets="@../css/imat_store.css" vbarPolicy="NEVER" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="365.0" AnchorPane.topAnchor="26.0" />
    </children>
 </AnchorPane>
