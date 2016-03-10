@@ -455,6 +455,43 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         return ((Pane) t.getSource()).getId();
     }
 
+    
+    public void searchFeedback(){
+        FlowPane flowPane = new FlowPane();
+                            flowPane.setVgap(6);
+                            flowPane.setHgap(6);
+                            flowPane.setPrefWidth(700);
+
+                            Text text1 = new Text("Sökningen gav inga träffar.");
+                            text1.setFont(Font.font("System", 21));
+                            text1.setTextAlignment(TextAlignment.JUSTIFY);
+                            text1.setFontSmoothingType(FontSmoothingType.LCD);
+                            Text text2 = new Text("\n\nTIPS: Du kan även använda kategorierna till vänster, samt filtreringen ovan, för att söka efter varor.");
+                            text2.setFont(Font.font("System", 11));
+                            text2.setTextAlignment(TextAlignment.JUSTIFY);
+                            text2.setFontSmoothingType(FontSmoothingType.LCD);
+                            TextFlow textFlow = new TextFlow(text1, text2);
+                            flowPane.getChildren().add(textFlow);
+                            flowPane.setAlignment(Pos.CENTER);
+                            storeItemScrollPane.setContent(flowPane);
+
+                            FlowPane flow = new FlowPane();
+                            flow.setHgap(6);
+                            flow.setPrefWidth(640);
+                            flow.setPrefHeight(104);
+
+                            Text text = new Text(" Din sökning");
+                            text.setFont(Font.font("System", 42));
+                            text.setFontSmoothingType(FontSmoothingType.LCD);
+                            TextFlow tFlow = new TextFlow(text);
+                            flow.getChildren().add(tFlow);
+                            flow.setAlignment(Pos.BASELINE_CENTER);
+
+                            subScrollPane.setContent(flow);
+    }
+    
+    
+    
     EventHandler<KeyEvent> searchEnterPressed
             = new EventHandler<KeyEvent>() {
 
@@ -468,7 +505,13 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         findProducts(searchField.getText());
 
                         currentCategory = "search";
-                        placeStoreItems(list);
+
+                        System.out.println("list size: " + list.size());
+                        if (!list.isEmpty()) {
+                            placeStoreItems(list);
+                        } else {
+                            searchFeedback();
+                        }
 
                         // TODO: if the list is empty, add text that displays this.
                     }
@@ -489,7 +532,11 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     findProducts(searchField.getText());
 
                     currentCategory = "search";
-                    placeStoreItems(list);
+                     if (!list.isEmpty()) {
+                            placeStoreItems(list);
+                        } else {
+                            searchFeedback();
+                        }
 
                     // TODO: if the list is empty, add text that displays this.
                 }
@@ -732,7 +779,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             System.out.println("null");
         }
 
-        if(currentCategory.equals("topCategory") && list.isEmpty()){
+        if (currentCategory.equals("topCategory") && list.isEmpty()) {
             Text text1 = new Text("Du har inte markerat någon produkt att vara favorit ännu.");
             text1.setFont(Font.font("System", 21));
             text1.setTextAlignment(TextAlignment.JUSTIFY);
@@ -745,18 +792,16 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             flowPane.getChildren().add(textFlow);
             flowPane.setAlignment(Pos.CENTER);
         }
-        
-        
+
         this.storeItemScrollPane.setContent(flowPane);
 
         /*
-        System.out.println("subNameList toString: " + subNameList.toString() + "\t subNameList size: " + subNameList.size());
-        System.out.println("currentCategory: " + currentCategory);
-        */
+         System.out.println("subNameList toString: " + subNameList.toString() + "\t subNameList size: " + subNameList.size());
+         System.out.println("currentCategory: " + currentCategory);
+         */
         if (!subNameList.isEmpty()) {
             placeSubItems(subNameList);
         }
-        
 
         if (subNameList.isEmpty() && currentCategory.equals("topCategory")) {
             FlowPane fPane = new FlowPane();
@@ -772,8 +817,6 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             fPane.setAlignment(Pos.BASELINE_CENTER);
 
             subScrollPane.setContent(fPane);
-            
-            
 
         } else if (subNameList.isEmpty() && currentCategory.equals("search")) {
             FlowPane flow = new FlowPane();
