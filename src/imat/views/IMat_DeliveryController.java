@@ -61,6 +61,10 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
     private RadioButton threeButton;
     @FXML
     private RadioButton fiveButton;
+    @FXML
+    private Pane seqOne;
+    @FXML
+    private Pane seqThree;
 
 
     private static IMat_Checkout_presenter pres;
@@ -82,6 +86,9 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
         backToSettings.setOnMouseClicked(backToSettingsClicked);
         nextButton.setOnMouseClicked(nextButtonClicked);
         backButton.setOnMouseClicked(backButtonClicked);
+
+        seqOne.setOnMouseClicked(backButtonClicked);
+        seqThree.setOnMouseClicked(nextButtonClicked);
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
 

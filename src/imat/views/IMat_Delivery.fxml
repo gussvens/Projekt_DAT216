@@ -162,7 +162,7 @@
          <children>
             <HBox layoutX="158.0" layoutY="-20.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                  <Pane fx:id="seqOne" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
                      <children>
                         <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="182.0" text="Personuppgifter">
                            <font>
@@ -180,7 +180,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                  <Pane fx:id="seqThree" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
                      <children>
                         <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Bekräfta">
                            <font>

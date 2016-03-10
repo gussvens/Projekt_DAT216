@@ -58,6 +58,10 @@ public class IMat_FinishBuy implements Initializable {
     private Pane backToHistory;
     @FXML
     private Pane backToSettings;
+    @FXML
+    private Pane seqOne;
+    @FXML
+    private Pane seqTwo;
     
 
 
@@ -103,7 +107,23 @@ public class IMat_FinishBuy implements Initializable {
         confirmButton.setOnMouseClicked(confirmButtonClicked);
         backButton.setOnMouseClicked(backButtonClicked);
 
+        seqOne.setOnMouseClicked(seqOneClicked);
+        seqTwo.setOnMouseClicked(backButtonClicked);
+
     }
+
+    EventHandler<MouseEvent> seqOneClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
 
     EventHandler<MouseEvent> backButtonClicked
             = new EventHandler<MouseEvent>() {
