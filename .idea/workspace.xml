@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46e6fc5c-f3b8-4670-a127-4694a5966ed5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/css/imat_store.css" afterPath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/css/imat_store.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/views/IMat_History.fxml" afterPath="$PROJECT_DIR$/out/production/Projekt_DAT216/imat/views/IMat_History.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/css/imat_historyCategories.css" afterPath="$PROJECT_DIR$/src/imat/css/imat_historyCategories.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategories.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategories.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java" />
     </list>
     <ignored path="Projekt_DAT216.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,23 +32,23 @@
         <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
+              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
               <folding>
-                <element signature="e#3662#3663#0" expanded="true" />
-                <element signature="e#3706#3707#0" expanded="true" />
-                <element signature="e#3747#3748#0" expanded="true" />
-                <element signature="e#3781#3782#0" expanded="true" />
-                <element signature="e#3817#3818#0" expanded="true" />
-                <element signature="e#3857#3858#0" expanded="true" />
+                <element signature="e#4472#4473#0" expanded="true" />
+                <element signature="e#4516#4517#0" expanded="true" />
+                <element signature="e#4557#4558#0" expanded="true" />
+                <element signature="e#4591#4592#0" expanded="true" />
+                <element signature="e#4627#4628#0" expanded="true" />
+                <element signature="e#4667#4668#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IMat_HistoryController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IMat_HistoryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.4814815">
+            <state vertical-scroll-proportion="0.0">
               <caret line="51" column="75" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="75" />
               <folding>
                 <element signature="e#10306#10307#0" expanded="true" />
@@ -57,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="imat_historyCategories.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="imat_historyCategories.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/imat/css/imat_historyCategories.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.37037036">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -128,8 +129,8 @@
         <option value="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_FXMLController.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java" />
-        <option value="$PROJECT_DIR$/src/imat/css/imat_historyCategories.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java" />
+        <option value="$PROJECT_DIR$/src/imat/css/imat_historyCategories.css" />
       </list>
     </option>
   </component>
@@ -1100,37 +1101,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/css/imat_historyCategories.css">
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
+          <caret line="51" column="75" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="75" />
+          <folding>
+            <element signature="e#10306#10307#0" expanded="true" />
+            <element signature="e#10364#10365#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
           <folding>
-            <element signature="e#3662#3663#0" expanded="true" />
-            <element signature="e#3706#3707#0" expanded="true" />
-            <element signature="e#3747#3748#0" expanded="true" />
-            <element signature="e#3781#3782#0" expanded="true" />
-            <element signature="e#3817#3818#0" expanded="true" />
-            <element signature="e#3857#3858#0" expanded="true" />
+            <element signature="e#4472#4473#0" expanded="true" />
+            <element signature="e#4516#4517#0" expanded="true" />
+            <element signature="e#4557#4558#0" expanded="true" />
+            <element signature="e#4591#4592#0" expanded="true" />
+            <element signature="e#4627#4628#0" expanded="true" />
+            <element signature="e#4667#4668#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_HistoryController.java">
+    <entry file="file://$PROJECT_DIR$/src/imat/css/imat_historyCategories.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4814815">
-          <caret line="51" column="75" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="75" />
-          <folding>
-            <element signature="e#10306#10307#0" expanded="true" />
-            <element signature="e#10364#10365#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.37037036">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
