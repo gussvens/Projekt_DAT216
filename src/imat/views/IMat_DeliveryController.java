@@ -26,11 +26,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.Cursor;
 
 /**
- * Created by Emil on 09/03/2016.
+ * Created by Group 12
  */
-public class IMat_DeliveryController implements Initializable, ShoppingCartListener{
+public class IMat_DeliveryController implements Initializable, ShoppingCartListener {
+
+    private final String PANE_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
+    private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
+    private final String PANE_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
+
     @FXML
     private Button doneButton;
     @FXML
@@ -66,13 +72,10 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
     @FXML
     private Pane seqThree;
 
-
     private static IMat_Checkout_presenter pres;
 
     private static String staticMessage;
     private static String staticDaytime;
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,11 +84,35 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                 checkoutTotPrice
         );
 
+        // StoreButton
         backToStore.setOnMouseClicked(backToStoreClicked);
+        backToStore.setOnMouseEntered(paneEnter);
+        backToStore.setOnMouseExited(paneExit);
+        backToStore.setCursor(Cursor.HAND);
+
+        // HistoryButton
         backToHistory.setOnMouseClicked(backToHistoryClicked);
+        backToHistory.setOnMouseEntered(paneEnter);
+        backToHistory.setOnMouseExited(paneExit);
+        backToHistory.setCursor(Cursor.HAND);
+
+        // SettingsButton
         backToSettings.setOnMouseClicked(backToSettingsClicked);
-        nextButton.setOnMouseClicked(nextButtonClicked);
+        backToSettings.setOnMouseEntered(paneEnter);
+        backToSettings.setOnMouseExited(paneExit);
+        backToSettings.setCursor(Cursor.HAND);
+
+        // BackButton
         backButton.setOnMouseClicked(backButtonClicked);
+        backButton.setOnMouseEntered(paneEnter);
+        backButton.setOnMouseExited(paneExit);
+        backButton.setCursor(Cursor.HAND);
+
+        // NextButton
+        nextButton.setOnMouseClicked(nextButtonClicked);
+        nextButton.setOnMouseEntered(paneEnter);
+        nextButton.setOnMouseExited(paneExit);
+        nextButton.setCursor(Cursor.HAND);
 
         seqOne.setOnMouseClicked(backButtonClicked);
         seqThree.setOnMouseClicked(nextButtonClicked);
@@ -95,130 +122,146 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
         pres.updateScrollPane();
     }
 
-    public static String getStaticDaytime(){
+    EventHandler<MouseEvent> paneEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((Pane) t.getSource()).setStyle(PANE_ENTER_COLOR);
+                }
+            };
+
+    EventHandler<MouseEvent> paneExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    ((Pane) t.getSource()).setStyle(PANE_DEFAULT_COLOR);
+                }
+            };
+
+    public static String getStaticDaytime() {
         return staticDaytime;
     }
 
-    public static String getStaticMessage(){
+    public static String getStaticMessage() {
         return staticMessage;
     }
 
-    public void shoppingCartChanged(CartEvent event){
+    public void shoppingCartChanged(CartEvent event) {
         pres.updateScrollPane();
     }
 
     EventHandler<MouseEvent> backButtonClicked
             = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
-
-    EventHandler<MouseEvent>nextButtonClicked
-            = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            errorLabel.setText("");
-
-            System.out.println(IMat_Model.getBackEnd().getOrders().size());
-
-            String error="noerror";
-            try{  if(date.getEditor().getText().isEmpty()) {
-                error = "Ni måste välja ett datum för leverans.";
-            } else if(timeGroup.getSelectedToggle() == null){
-                error = "Ni måste välja en tid för leverans.";
-            } else {
-                try {
-                    String day = date.getEditor().getText();
-                    String time = "";
-                    if(timeGroup.getSelectedToggle().equals(oneButton)){
-                        time = "13:00";
-                    } else if(timeGroup.getSelectedToggle().equals(threeButton)){
-                        time = "15:00";
-                    } else if(timeGroup.getSelectedToggle().equals(fiveButton)){
-                        time = "17:00";
-                    }
-                    String daytime = day + "\n" + time;
-                    String msg = message.getText();
-
-                    staticDaytime = daytime;
-                    staticMessage = msg;
-
-                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
-                    IMat.getStage().setScene(new Scene(start, 1360, 768));
-                } catch (IOException ex) {
-                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                @Override
+                public void handle(MouseEvent event) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+            };
 
-            } catch(NullPointerException e) {
-                error="Ni måste fylla i både datum och tid för leverans innan"+"\n"
+    EventHandler<MouseEvent> nextButtonClicked
+            = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    errorLabel.setText("");
+
+                    System.out.println(IMat_Model.getBackEnd().getOrders().size());
+
+                    String error = "noerror";
+                    try {
+                        if (date.getEditor().getText().isEmpty()) {
+                            error = "Ni måste välja ett datum för leverans.";
+                        } else if (timeGroup.getSelectedToggle() == null) {
+                            error = "Ni måste välja en tid för leverans.";
+                        } else {
+                            try {
+                                String day = date.getEditor().getText();
+                                String time = "";
+                                if (timeGroup.getSelectedToggle().equals(oneButton)) {
+                                    time = "13:00";
+                                } else if (timeGroup.getSelectedToggle().equals(threeButton)) {
+                                    time = "15:00";
+                                } else if (timeGroup.getSelectedToggle().equals(fiveButton)) {
+                                    time = "17:00";
+                                }
+                                String daytime = day + "\n" + time;
+                                String msg = message.getText();
+
+                                staticDaytime = daytime;
+                                staticMessage = msg;
+
+                                Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                                IMat.getStage().setScene(new Scene(start, 1360, 768));
+                            } catch (IOException ex) {
+                                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+
+                    } catch (NullPointerException e) {
+                        error = "Ni måste fylla i både datum och tid för leverans innan" + "\n"
                         + "ni betalar.";
 
-            } finally {
-                if (error=="noerror"){
+                    } finally {
+                        if (error == "noerror") {
 
-                } else {
-                    errorLabel.setTextFill(Color.RED);
-                    errorLabel.setText(error + "\n" + "Var god kontrollera igen.");
+                        } else {
+                            errorLabel.setTextFill(Color.RED);
+                            errorLabel.setText(error + "\n" + "Var god kontrollera igen.");
+
+                        }
+                    }
 
                 }
-            }
-
-
-        }
-    };
-
-
+            };
 
     // Back to store
     EventHandler<MouseEvent> backToStoreClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     // Back to store
     EventHandler<MouseEvent> backToHistoryClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 
     // Back to store
     EventHandler<MouseEvent> backToSettingsClicked
             = new EventHandler<MouseEvent>() {
 
-        @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            };
 }
