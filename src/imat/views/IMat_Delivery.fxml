@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -17,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_DeliveryController">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_DeliveryController">
    <children>
       <Pane fx:id="backButton" layoutX="200.0" layoutY="655.0" prefHeight="63.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
          <children>
@@ -88,7 +94,7 @@
                         <Label layoutX="196.0" layoutY="11.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
                      </children>
                   </Pane>
-                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
+                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/imat_store.css" />
                   <HBox prefHeight="31.0" prefWidth="241.0">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
