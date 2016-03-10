@@ -23,6 +23,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -179,7 +180,9 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                             error = "Ni måste välja ett datum för leverans.";
                         } else if (timeGroup.getSelectedToggle() == null) {
                             error = "Ni måste välja en tid för leverans.";
-                        } else {
+                        } else if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+                            error = "Er kundvagn kan inte vara \ntom när ni går vidare.";
+                        }else {
                             try {
                                 String day = date.getEditor().getText();
                                 String time = "";
