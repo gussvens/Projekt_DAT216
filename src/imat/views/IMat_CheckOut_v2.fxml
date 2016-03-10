@@ -35,7 +35,7 @@
                   <Font size="24.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Tillbaka till dina personuppgifter" />
+                  <Tooltip text="Tillbaka till butiken." />
                </tooltip>
             </Label>
          </children>
@@ -116,10 +116,10 @@
                         <Label layoutX="196.0" layoutY="11.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
                      </children>
                   </Pane>
-                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/imat_store.css" />
-                  <HBox prefHeight="60.0" prefWidth="258.0">
+                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="405.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/imat_store.css" />
+                  <HBox prefHeight="43.0" prefWidth="258.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="167.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="169.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -150,12 +150,12 @@
                   <Font size="24.0" />
                </font>
                <tooltip>
-                  <Tooltip text="Tillbaka till dina personuppgifter" />
+                  <Tooltip text="Fortsätt till nästa steg." />
                </tooltip>
             </Label>
          </children>
       </Pane>
-      <HBox layoutX="12.0" layoutY="12.0" prefHeight="42.0" prefWidth="182.0" spacing="20.0">
+      <HBox layoutX="12.0" layoutY="12.0" prefHeight="42.0" prefWidth="182.0" spacing="24.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="15.0">
          <children>
             <Pane fx:id="backToStore" layoutX="33.0" layoutY="179.0" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
                <children>
@@ -192,7 +192,7 @@
                <children>
                   <Pane id="selectedPane" fx:id="seqOne" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes" stylesheets="@imat_checkout_v2.css">
                      <children>
-                        <Label id="selectedLabel" layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="182.0" text="Personuppgifter">
+                        <Label id="selectedLabel" alignment="CENTER" layoutX="-4.0" layoutY="1.0" prefHeight="60.0" prefWidth="200.0" text="Personuppgifter">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -201,7 +201,7 @@
                   </Pane>
                   <Pane fx:id="seqTwo" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes" stylesheets="@imat_checkout_v2.css">
                      <children>
-                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Leverans">
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="1.0" prefHeight="60.0" prefWidth="200.0" text="Leverans">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -210,7 +210,7 @@
                   </Pane>
                   <Pane fx:id="seqThree" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes" stylesheets="@imat_checkout_v2.css">
                      <children>
-                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Bekräfta">
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="1.0" prefHeight="60.0" prefWidth="200.0" text="Bekräfta">
                            <font>
                               <Font size="16.0" />
                            </font>

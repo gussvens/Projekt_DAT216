@@ -70,8 +70,8 @@ public class IMat_FinishBuy implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
+        double d = Math.round(IMat_Model.getBackEnd().getShoppingCart().getTotal() * 100.0) / 100.0;
+        checkoutTotPrice.setText(Double.toString(d) + " kr");
 
         FlowPane receiptFlowPane = new FlowPane();
         receiptFlowPane.setVgap(3);
@@ -84,7 +84,8 @@ public class IMat_FinishBuy implements Initializable {
                 Node storeItem = loader.load();
                 IMat_ReceiptController controller = loader.getController();
                 controller.setReceiptProdName(p.getName());
-                controller.setReceiptProdPrice(p.getPrice() * s.getAmount());
+                double price = Math.round(p.getPrice()* s.getAmount() * 100.0) / 100.0;
+                controller.setReceiptProdPrice(price);
                 controller.setReceiptProdQuant("kr");
                 controller.setNrOfReceiptItems(s.getAmount());
                 receiptFlowPane.getChildren().add(storeItem);
