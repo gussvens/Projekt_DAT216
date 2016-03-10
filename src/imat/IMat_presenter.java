@@ -241,7 +241,8 @@ public class IMat_presenter extends Observable {
 
 
     public void setTotal() {
-        totalPrice.setText(Double.toString(getTotal()) + " kr");
+        double d = Math.round(getTotal()*100.0)/100.0;
+        totalPrice.setText(Double.toString(d) + " kr");
     }
 
     /* Sets the toCheckout-button to active 

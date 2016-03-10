@@ -5,6 +5,7 @@ import imat.IMat_StoreItemController;
 import imat.IMat_presenter;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -117,10 +118,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
     public void initialize(URL url, ResourceBundle rb) {
         totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
 
-        if(!IMat_Model.getBackEnd().favorites().isEmpty()){
+        if (!IMat_Model.getBackEnd().favorites().isEmpty()) {
             menuFavStar.setImage(new Image("imat/images/golden_star_trans_new.png"));
         }
-        
+
         pres = new IMat_presenter(
                 CategoryVegetables,
                 CategoryFruit_Berries,
@@ -181,13 +182,13 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
         removeAllFromBasket.setOnMouseEntered(removeButtonEnter);
         removeAllFromBasket.setOnMouseExited(removeButtonExit);
         removeAllFromBasket.setCursor(Cursor.HAND);
-        
+
         // CheckoutButton
         toCheckout.setOnMouseClicked(checkoutButtonClicked);
         toCheckout.setOnMouseEntered(toCheckOutEnter);
         toCheckout.setOnMouseExited(toCheckOutExit);
         toCheckout.setCursor(Cursor.HAND);
-        
+
         searchField.setOnKeyPressed(searchEnterPressed);
         // homeButton.setOnMouseClicked(homeButtonClicked);
         // saveAsListButton.setOnMouseClicked(saveList);
@@ -244,7 +245,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     }
                 }
             };
-    
+
     EventHandler<MouseEvent> toCheckOutEnter
             = new EventHandler<MouseEvent>() {
 
@@ -255,7 +256,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     }
                 }
             };
-     EventHandler<MouseEvent> toCheckOutExit
+    EventHandler<MouseEvent> toCheckOutExit
             = new EventHandler<MouseEvent>() {
 
                 @Override
@@ -265,15 +266,15 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     }
                 }
             };
-    
+
     EventHandler<MouseEvent> removeButtonExit
             = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent t) {
-                    
-                        removeAllFromBasket.setStyle(BTN_DEFAULT_EXIT);
-                   
+
+                    removeAllFromBasket.setStyle(BTN_DEFAULT_EXIT);
+
                 }
             };
 
@@ -355,14 +356,14 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             = new EventHandler<MouseEvent>() {
 
                 @Override
-        public void handle(MouseEvent t) {
-            try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
-                IMat.getStage().setScene(new Scene(start, 1360, 768));
-            } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+                public void handle(MouseEvent t) {
+                    try {
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        IMat.getStage().setScene(new Scene(start, 1360, 768));
+                    } catch (IOException ex) {
+                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             };
 
     EventHandler<MouseEvent> homeButtonClicked
@@ -905,11 +906,12 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
     // Sets the totalSum in the GUI
     public void setTotal() {
-        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()));
-        System.out.println(totalPrice.getText());
+        double d = Math.round(IMat_Model.getBackEnd().getShoppingCart().getTotal() * 100.0) / 100.0;
+        totalPrice.setText(Double.toString(d) + " kr");
     }
 
     // Returns the presenter made in this class.
+
     public static IMat_presenter getPresenter() {
         return pres;
     }

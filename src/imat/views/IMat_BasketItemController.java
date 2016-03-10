@@ -243,7 +243,9 @@ public class IMat_BasketItemController implements Initializable {
     }
 
     public void setItemPriceLabel(double price) {
-        this.basketProdPrice.setText(price + "");
+        double d = Math.round(price*100.0)/100.0;
+        
+        this.basketProdPrice.setText(d + "");
     }
 
     public void setItemQuantity(String quant) {

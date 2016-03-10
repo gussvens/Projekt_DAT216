@@ -23,11 +23,16 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.layout.Pane;
 
 /**
  * Created by Emil on 03/03/2016.
  */
 public class IMat_HistoryCategoriesController implements Initializable {
+
+    private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
+    private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
+    private final String BTN_DEFAULT_CLICK = "-fx-background-color: #9bd1c4;";
 
     @FXML
     private Label dateLabel;
@@ -38,17 +43,19 @@ public class IMat_HistoryCategoriesController implements Initializable {
 
     private Order order;
 
-    public void setCont(IMat_HistoryController cont){
+    public void setCont(IMat_HistoryController cont) {
         this.cont = cont;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         categoryPane.setOnMouseClicked(categoryPaneClicked);
+        //categoryPane.setOnMouseEntered(paneEnter);
+        //categoryPane.setOnMouseExited(paneExit);
     }
 
-    EventHandler<MouseEvent> categoryPaneClicked =
-            new EventHandler<MouseEvent>() {
+    EventHandler<MouseEvent> categoryPaneClicked
+            = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     FlowPane flowPane = new FlowPane();
@@ -56,7 +63,7 @@ public class IMat_HistoryCategoriesController implements Initializable {
                     flowPane.setHgap(6);
                     flowPane.setPrefWidth(700);
 
-                    for(ShoppingItem s : order.getItems()){
+                    for (ShoppingItem s : order.getItems()) {
                         try {
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_StoreItem.fxml"));
                             Node storeItem = loader.load();
@@ -68,19 +75,64 @@ public class IMat_HistoryCategoriesController implements Initializable {
                             controller.setItemQuantity(s.getProduct().getUnit());
                             controller.setItemID(s.getProduct().getProductId());
                             flowPane.getChildren().add(storeItem);
-                        } catch(IOException e){
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    cont.setHistoryItemScrollPane(flowPane);
+                        cont.setHistoryItemScrollPane(flowPane);
                     }
                 }
             };
 
-    public void setDateLabel(String date){
+    public void setDateLabel(String date) {
         this.dateLabel.setText(date);
     }
 
-    public void setOrder(Order order){
+    public void setOrder(Order order) {
         this.order = order;
     }
+
+    /*
+    EventHandler<MouseEvent> paneEnter
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    System.out.println(((AnchorPane) t.getSource()).getStyle().toString());
+                    if (categoryPane.getStyle().toString().contains("-fx-background-radius: 5 5 0 0;")) {
+
+                       
+                        ((AnchorPane) t.getSource()).setStyle("-fx-background-color: #bdfbec;");
+                        //categoryPane.setStyle("-fx-background-radius: 5 5 0 0;");
+                        System.out.println("hej");
+                    } else if (((AnchorPane) t.getSource()).getStyle().toString().contains("-fx-background-radius: 0 0 5 5;")) {
+                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
+                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
+                    } else {
+                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+                    }
+                    ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
+                       ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
+                }
+            };
+    EventHandler<MouseEvent> paneExit
+            = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent t) {
+                    if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 5 5 0 0;")) {
+
+                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
+                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
+                    } else if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 0 0 5 5;")) {
+                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
+                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
+                    } else {
+                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+                    }
+                }
+            };
+*/
 }

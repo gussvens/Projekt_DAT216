@@ -157,6 +157,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
+                    
                     if (i == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -181,6 +182,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                             + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
+                    
                     if (j == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -189,6 +191,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                         historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
                         historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
                     }
+                    
                     flowPane.getChildren().add(historyCategory);
                     j--;
                 } catch (IOException e) {
@@ -235,9 +238,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         
     }
     
-    public void updateBasket(){
-        
-    }
+    
     
     
 
