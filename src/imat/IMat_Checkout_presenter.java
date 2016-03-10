@@ -55,6 +55,7 @@ public class IMat_Checkout_presenter {
         }
 
         basketScrollPane.setContent(flowPane);
-        checkoutTotPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
+        double d = Math.round(IMat_Model.getBackEnd().getShoppingCart().getTotal() * 100.0) / 100.0;
+        checkoutTotPrice.setText(Double.toString(d) + " kr");
     }
 }

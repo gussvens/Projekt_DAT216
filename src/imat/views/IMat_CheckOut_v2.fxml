@@ -117,19 +117,19 @@
                      </children>
                   </Pane>
                   <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/imat_store.css" />
-                  <HBox prefHeight="31.0" prefWidth="241.0">
+                  <HBox prefHeight="60.0" prefWidth="258.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
+                        <Label alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="167.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="31.0" prefWidth="181.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
+                        <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="21.0" prefWidth="107.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                            <font>
-                              <Font size="18.0" />
+                              <Font size="15.0" />
                            </font>
                         </TextField>
                      </children>
