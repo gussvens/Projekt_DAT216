@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1360.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="imat.views.IMat_EndScreenController">
+   <children>
+      <AnchorPane id="background" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane id="inputPane" layoutX="368.0" layoutY="123.0" prefHeight="493.0" prefWidth="624.0">
+               <children>
+                  <Label alignment="CENTER" layoutY="238.0" prefHeight="17.0" prefWidth="624.0" text="Dina varor kommer leveraras till dig">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="189.0" prefHeight="39.0" prefWidth="624.0" text="Din beställning är nu skickad.">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="622.0" style="-fx-background-color: #8dCbBc;" styleClass="headPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label fx:id="date" alignment="CENTER" layoutY="257.0" prefHeight="56.0" prefWidth="624.0" text="Label" />
+               </children>
+            </AnchorPane>
+            <AnchorPane id="basketPane" layoutX="880.0" layoutY="123.0" />
+            <Pane fx:id="confirmButton" layoutX="880.0" layoutY="655.0" prefHeight="63.0" prefWidth="258.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
+               <children>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="196.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/confirm.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="7.0" layoutY="-3.0" prefHeight="69.0" prefWidth="200.0" text="  Slutför köp" textFill="#333333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Slutför köp genom att klicka på knappen." />
+                     </tooltip>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

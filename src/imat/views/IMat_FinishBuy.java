@@ -231,7 +231,7 @@ public class IMat_FinishBuy implements Initializable {
                     try {
                         IMat_Model.getBackEnd().placeOrder();
                         IMat_Model.getBackEnd().getShoppingCart().clear();
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_EndScreen.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
