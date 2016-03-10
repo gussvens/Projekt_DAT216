@@ -277,15 +277,15 @@ public class IMat_CheckOut_v2Controller implements Initializable {
 
                     String error = "noerror";
                     try {
-                        if (isAlpha(firstName.getText()) == false || firstName.getText().length() == 0) {
+                        if (isAlpha(firstName.getText().replaceAll("\\s+","")) == false || firstName.getText().length() == 0) {
                             error = "Ert förnamn kan bara innehålla"
                             + "\n bokstäver.";
-                        } else if (!isAlphaNumeric(lastName.getText()) || lastName.getText().length() == 0) {
+                        } else if (!isAlphaNumeric(lastName.getText().replaceAll("\\s+","")) || lastName.getText().length() == 0) {
                             error = "Ert efternamn kan bara innehålla bokstäver "
                             + "\n och siffror.";
-                        } else if (!isAlpha(city.getText()) || city.getText().length() == 0) {
+                        } else if (!isAlpha(city.getText().replaceAll("\\s+","")) || city.getText().length() == 0) {
                             error = "Er stad kan bara innehålla bokstäver.";
-                        } else if (!isAlphaNumeric(address.getText()) || address.getText().length() == 0) {
+                        } else if (!isAlphaNumeric(address.getText().replaceAll("\\s+","")) || address.getText().length() == 0) {
                             error = "Er gatuadress kan bara innehålla bokstäver "
                             + "\n och siffror.";
                         } else if (postCode.getText().length() != 5 || !postCode.getText().matches("[0-9]+")) {
@@ -313,7 +313,9 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                                     Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
-                        } else {
+                        } else if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+                            error = "Er kundvagn kan inte vara tom när ni går vidare.";
+                        }else {
                             try {
                                 personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
                                 + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
@@ -427,7 +429,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     }
 
     public boolean isAlphaNumeric(String s) {
-        String pattern = "^[a-zA-Z0-9]*$";
+        String pattern = "^[a-öA-Ö0-9]*$";
         if (s.matches(pattern)) {
             return true;
         }

@@ -179,7 +179,9 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                             error = "Ni måste välja ett datum för leverans.";
                         } else if (timeGroup.getSelectedToggle() == null) {
                             error = "Ni måste välja en tid för leverans.";
-                        } else {
+                        } else if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
+                            error = "Er kundvagn kan inte vara \ntom när ni går vidare.";
+                        }else {
                             try {
                                 String day = date.getEditor().getText();
                                 String time = "";
