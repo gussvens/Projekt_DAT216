@@ -7,9 +7,7 @@ package imat.views;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,17 +42,21 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author Group 12
  */
-public class IMat_HistoryController implements Initializable, ShoppingCartListener {
+public class IMat_HistoryController implements Initializable, ShoppingCartListener, Observer {
 
     private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
     private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
     private final String BTN_DEFAULT_CLICK = "-fx-background-color: #9bd1c4;";
 
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
+
     @FXML
     private Pane storeButton;
     @FXML
     private Pane settingsButton;
-    private List<IMat_HistoryCategoriesModel> models = new ArrayList<>();
+    private List<IMat_HistoryCategoriesController> categoryControllers = new ArrayList<>();
     @FXML
     private Pane historyCategoryPane;
 
@@ -173,6 +175,9 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
 
+                    categoryControllers.add(controller);
+
+
                     if (i == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -197,6 +202,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                             + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
+
+                    categoryControllers.add(controller);
 
                     if (j == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
@@ -254,6 +261,12 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
 
     public void setHistoryItemScrollPane(FlowPane flowPane) {
         historyItemScrollPane.setContent(flowPane);
+    }
+
+    public void update(Observable o, Object arg){
+        for(IMat_HistoryCategoriesController c : categoryControllers){
+            c.getCategoryPane().setStyle(MENU_DEFAULT_COLOR);
+        }
     }
 
     EventHandler<MouseEvent> paneEnter

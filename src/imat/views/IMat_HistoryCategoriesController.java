@@ -22,17 +22,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.scene.layout.Pane;
 
 /**
  * Created by Emil on 03/03/2016.
  */
-public class IMat_HistoryCategoriesController implements Initializable {
+public class IMat_HistoryCategoriesController extends Observable implements Initializable {
 
     private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
     private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
     private final String BTN_DEFAULT_CLICK = "-fx-background-color: #9bd1c4;";
+
+    private final String MENU_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
+    private final String MENU_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
+    private final String MENU_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
 
     @FXML
     private Label dateLabel;
@@ -45,14 +50,36 @@ public class IMat_HistoryCategoriesController implements Initializable {
 
     public void setCont(IMat_HistoryController cont) {
         this.cont = cont;
+        addObserver(cont);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         categoryPane.setOnMouseClicked(categoryPaneClicked);
-        //categoryPane.setOnMouseEntered(paneEnter);
-        //categoryPane.setOnMouseExited(paneExit);
+        categoryPane.setOnMouseEntered(categoryPaneEntered);
+        categoryPane.setOnMouseExited(getCategoryPaneExited);
+
     }
+
+    EventHandler<MouseEvent> categoryPaneEntered
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (!((Pane)event.getSource()).getStyle().equals(MENU_CLICKED_COLOR)) {
+                ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR);
+            }
+        }
+    };
+
+    EventHandler<MouseEvent> getCategoryPaneExited
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (((Pane)event.getSource()).getStyle().equals(MENU_ENTER_COLOR)) {
+                ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR);
+            }
+        }
+    };
 
     EventHandler<MouseEvent> categoryPaneClicked
             = new EventHandler<MouseEvent>() {
@@ -62,6 +89,10 @@ public class IMat_HistoryCategoriesController implements Initializable {
                     flowPane.setVgap(6);
                     flowPane.setHgap(6);
                     flowPane.setPrefWidth(700);
+                    
+                    notifyObservers();
+                    setChanged();
+                    ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR);
 
                     for (ShoppingItem s : order.getItems()) {
                         try {
@@ -80,6 +111,7 @@ public class IMat_HistoryCategoriesController implements Initializable {
                         }
                         cont.setHistoryItemScrollPane(flowPane);
                     }
+
                 }
             };
 
@@ -89,6 +121,10 @@ public class IMat_HistoryCategoriesController implements Initializable {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Pane getCategoryPane(){
+        return this.categoryPane;
     }
 
     /*
