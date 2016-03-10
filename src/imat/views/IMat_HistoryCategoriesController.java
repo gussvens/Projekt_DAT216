@@ -56,30 +56,10 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         categoryPane.setOnMouseClicked(categoryPaneClicked);
-        categoryPane.setOnMouseEntered(categoryPaneEntered);
-        categoryPane.setOnMouseExited(getCategoryPaneExited);
 
+     //   notifyObservers();
+     //   setChanged();
     }
-
-    EventHandler<MouseEvent> categoryPaneEntered
-            = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            if (!((Pane)event.getSource()).getStyle().equals(MENU_CLICKED_COLOR)) {
-                ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR);
-            }
-        }
-    };
-
-    EventHandler<MouseEvent> getCategoryPaneExited
-            = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            if (((Pane)event.getSource()).getStyle().equals(MENU_ENTER_COLOR)) {
-                ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR);
-            }
-        }
-    };
 
     EventHandler<MouseEvent> categoryPaneClicked
             = new EventHandler<MouseEvent>() {
@@ -89,9 +69,10 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
                     flowPane.setVgap(6);
                     flowPane.setHgap(6);
                     flowPane.setPrefWidth(700);
-                    
+
                     notifyObservers();
                     setChanged();
+
                     ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR);
 
                     for (ShoppingItem s : order.getItems()) {

@@ -2,7 +2,17 @@
     -fx-background-color: #FDFDFD;
 }
 
+#categoryPane:hover{
+    -fx-background-color: #bdfbec;
+}
+
 #categoryLabel{
     -fx-text-fill: #444444;
     -fx-font-weight: bold;
+    -fx-label-padding: 0 0 0 40;
 }
+
+#categoryLabel:hover{
+    -fx-font-size: 12pt;
+}
+

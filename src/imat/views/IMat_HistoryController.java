@@ -56,7 +56,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     private Pane storeButton;
     @FXML
     private Pane settingsButton;
-    private List<IMat_HistoryCategoriesController> categoryControllers = new ArrayList<>();
+    private List<Node> categories = new ArrayList<>();
     @FXML
     private Pane historyCategoryPane;
 
@@ -175,7 +175,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
 
-                    categoryControllers.add(controller);
+                    categories.add(historyCategory);
 
 
                     if (i == orderList.size() - 1) {
@@ -203,15 +203,15 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
 
-                    categoryControllers.add(controller);
+                    categories.add(historyCategory);
 
                     if (j == orderList.size() - 1) {
-                        historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
-                        historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
+                        historyCategory.getStyleClass().add("-fx-border-radius: 5 5 0 0;");
+                        historyCategory.getStyleClass().add("-fx-background-radius: 5 5 0 0; ");
                     }
                     if (j == 0) {
-                        historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
-                        historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
+                        historyCategory.getStyleClass().add("-fx-border-radius: 0 0 5 5;");
+                        historyCategory.getStyleClass().add("-fx-background-radius: 0 0 5 5; ");
                     }
 
                     flowPane.getChildren().add(historyCategory);
@@ -264,8 +264,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     }
 
     public void update(Observable o, Object arg){
-        for(IMat_HistoryCategoriesController c : categoryControllers){
-            c.getCategoryPane().setStyle(MENU_DEFAULT_COLOR);
+        for(Node c : categories){
+            c.setStyle(MENU_DEFAULT_COLOR);
         }
     }
 
