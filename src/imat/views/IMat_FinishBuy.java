@@ -43,6 +43,10 @@ public class IMat_FinishBuy implements Initializable {
     private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
     private final String PANE_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
 
+    private final String SEQUENCE_PANE_DEFAULT = "-fx-background-color: #FDFDFD;";
+    private final String SEQUENCE_PANE_ENTERED = "-fx-background-color: #adebdc;";
+    private final String SEQUENCE_PANE_CLICKED = "-fx-background-color: #8dCbBc;";
+
     @FXML
     private TextField checkoutTotPrice;
     @FXML
@@ -136,10 +140,75 @@ public class IMat_FinishBuy implements Initializable {
         confirmButton.setCursor(Cursor.HAND);
 
         // Seq
+        seqOne.setOnMouseEntered(seqOneEntered);
+        seqOne.setOnMouseExited(seqOneExited);
         seqOne.setOnMouseClicked(seqOneClicked);
+
+        seqTwo.setOnMouseEntered(seqTwoEntered);
+        seqTwo.setOnMouseExited(seqTwoExited);
+        seqTwo.setOnMouseClicked(seqTwoClicked);
         seqTwo.setOnMouseClicked(backButtonClicked);
 
     }
+
+    EventHandler<MouseEvent> seqOneEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqOne.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqOneExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqOne.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqOneClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            seqOne.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
 
     EventHandler<MouseEvent> paneEnter
             = new EventHandler<MouseEvent>() {
@@ -159,18 +228,7 @@ public class IMat_FinishBuy implements Initializable {
                 }
             };
 
-    EventHandler<MouseEvent> seqOneClicked
-            = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
-                        IMat.getStage().setScene(new Scene(start, 1360, 768));
-                    } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            };
+
 
     EventHandler<MouseEvent> backButtonClicked
             = new EventHandler<MouseEvent>() {

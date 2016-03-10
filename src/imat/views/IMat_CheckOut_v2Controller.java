@@ -52,6 +52,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
     private final String PANE_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
 
+    private final String SEQUENCE_PANE_DEFAULT = "-fx-background-color: #FDFDFD;";
+    private final String SEQUENCE_PANE_ENTERED = "-fx-background-color: #adebdc;";
+    private final String SEQUENCE_PANE_CLICKED = "-fx-background-color: #8dCbBc;";
+
     @FXML
     private TextField firstName;
     @FXML
@@ -138,7 +142,13 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         nextButton.setOnMouseClicked(nextButtonClicked);
         backButton.setOnMouseClicked(backToStoreClicked);
 
+        seqTwo.setOnMouseEntered(seqTwoEntered);
+        seqTwo.setOnMouseExited(seqTwoExited);
+        seqTwo.setOnMouseClicked(seqTwoClicked);
         seqTwo.setOnMouseClicked(nextButtonClicked);
+
+        seqThree.setOnMouseEntered(seqThreeEntered);
+        seqThree.setOnMouseExited(seqThreeExited);
         seqThree.setOnMouseClicked(seqThreeClicked);
 
         pres.updateScrollPane();
@@ -236,6 +246,73 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         }
     }
 
+    EventHandler<MouseEvent> seqTwoEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (personalInfo != null && IMat_DeliveryController.getStaticDaytime() != null
+                    && IMat_DeliveryController.getStaticMessage() != null) {
+                try {
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                    IMat.getStage().setScene(new Scene(start, 1360, 768));
+                } catch (IOException ex) {
+                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("Ni måste fylla i alla uppgifter innan" + "\n"
+                        + "ni betalar" + "\n" + "Var god kontrollera igen.");
+            }
+
+            seqThree.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
     EventHandler<MouseEvent> paneEnter
             = new EventHandler<MouseEvent>() {
 
@@ -251,26 +328,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     ((Pane) t.getSource()).setStyle(PANE_DEFAULT_COLOR);
-                }
-            };
-
-    EventHandler<MouseEvent> seqThreeClicked
-            = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (personalInfo != null && IMat_DeliveryController.getStaticDaytime() != null
-                    && IMat_DeliveryController.getStaticMessage() != null) {
-                        try {
-                            Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
-                            IMat.getStage().setScene(new Scene(start, 1360, 768));
-                        } catch (IOException ex) {
-                            Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } else {
-                        errorLabel.setTextFill(Color.RED);
-                        errorLabel.setText("Ni måste fylla i alla uppgifter innan" + "\n"
-                                + "ni betalar" + "\n" + "Var god kontrollera igen.");
-                    }
                 }
             };
 
