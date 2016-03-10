@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -20,12 +19,11 @@
 
 <AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_DeliveryController">
    <children>
-      <Pane id="sequenceMap" layoutX="350.0" layoutY="50.0" prefHeight="60.0" prefWidth="600.0" />
-      <Pane id="backButton" fx:id="backButton" layoutX="41.0" layoutY="46.0" prefHeight="63.0" prefWidth="200.0" stylesheets="@../css/imat_delivery.css">
+      <Pane fx:id="backButton" layoutX="200.0" layoutY="655.0" prefHeight="63.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
          <children>
             <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/back.png" />
+                  <Image url="@../images/back_arrow.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="69.0" prefWidth="200.0" text="      Tillbaka" textFill="#333333">
@@ -38,15 +36,15 @@
             </Label>
          </children>
       </Pane>
-      <AnchorPane layoutX="200.0" layoutY="150.0" prefHeight="493.0" prefWidth="624.0" style="-fx-border-color: #DDDDDD; -fx-background-color: #FDFDFD;">
+      <AnchorPane id="inputPane" layoutX="200.0" layoutY="123.0" prefHeight="493.0" prefWidth="624.0">
          <children>
-            <DatePicker layoutX="89.0" layoutY="111.0" promptText="DD/MM/YYYY" />
+            <DatePicker fx:id="date" layoutX="89.0" layoutY="111.0" promptText="DD/MM/YYYY" />
             <Label layoutX="88.0" layoutY="45.0" text="Leveransdag">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <RadioButton layoutX="89.0" layoutY="238.0" mnemonicParsing="false" text="13:00">
+            <RadioButton fx:id="oneButton" layoutX="89.0" layoutY="238.0" mnemonicParsing="false" text="13:00">
                <font>
                   <Font size="14.0" />
                </font>
@@ -59,61 +57,141 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <RadioButton layoutX="163.0" layoutY="238.0" mnemonicParsing="false" text="15:00" toggleGroup="$timeGroup">
+            <RadioButton fx:id="threeButton" layoutX="163.0" layoutY="238.0" mnemonicParsing="false" text="15:00" toggleGroup="$timeGroup">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="238.0" layoutY="238.0" mnemonicParsing="false" text="17:00" toggleGroup="$timeGroup">
+            <RadioButton fx:id="fiveButton" layoutX="238.0" layoutY="238.0" mnemonicParsing="false" text="17:00" toggleGroup="$timeGroup">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <TextArea fx:id="comment" layoutX="88.0" layoutY="340.0" prefHeight="130.0" prefWidth="269.0" promptText="T.ex. Jag hör dåligt var god knacka hårt." />
-            <Label layoutX="89.0" layoutY="286.0" text="Extra notering">
+            <TextArea fx:id="message" layoutX="88.0" layoutY="340.0" prefHeight="130.0" prefWidth="269.0" promptText="T.ex. Jag hör dåligt var god knacka hårt." />
+            <Label layoutX="89.0" layoutY="286.0" text="Meddelande">
                <font>
                   <Font size="27.0" />
                </font>
             </Label>
-            <Pane layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="622.0" style="-fx-background-color: #8dCbBc;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Pane layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="622.0" style="-fx-background-color: #8dCbBc;" styleClass="headPane" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Label fx:id="errorLabel" layoutX="391.0" layoutY="367.0" prefHeight="103.0" prefWidth="217.0" />
          </children>
       </AnchorPane>
-      <Button fx:id="doneButton" layoutX="957.0" layoutY="659.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="129.0" style="-fx-background-color: #FDFDFD;" text="Gå vidare">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <VBox layoutX="880.0" layoutY="150.0" prefHeight="493.0">
+      <AnchorPane id="basketPane" layoutX="880.0" layoutY="123.0">
          <children>
-            <Pane fx:id="basketTopPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="258.0" style="-fx-background-color: #8dCbBc;">
+            <VBox prefHeight="493.0">
                <children>
-                  <Label layoutX="11.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
-                  <Label layoutX="81.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
-                  <Label layoutX="196.0" layoutY="11.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
+                  <Pane fx:id="basketTopPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="251.0" style="-fx-background-color: #8dCbBc;" styleClass="headPane">
+                     <children>
+                        <Label layoutX="11.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Antal" textFill="#274927" />
+                        <Label layoutX="81.0" layoutY="12.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Produkt" textFill="#274927" />
+                        <Label layoutX="196.0" layoutY="11.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris" textFill="#274927" />
+                     </children>
+                  </Pane>
+                  <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
+                  <HBox prefHeight="31.0" prefWidth="241.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="31.0" prefWidth="181.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="nextButton" layoutX="938.0" layoutY="655.0" prefHeight="63.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="138.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/forward_arrow.png" />
+               </image>
+            </ImageView>
+            <Label layoutY="-2.0" prefHeight="69.0" prefWidth="200.0" text="     Nästa" textFill="#333333">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Tillbaka till dina personuppgifter" />
+               </tooltip>
+            </Label>
+         </children>
+      </Pane>
+      <HBox layoutX="12.0" layoutY="12.0" prefHeight="42.0" prefWidth="182.0" spacing="20.0">
+         <children>
+            <Pane fx:id="backToStore" layoutX="33.0" layoutY="179.0" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/shoppingCart_small_new.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
-            <ScrollPane fx:id="basketScrollPane" hbarPolicy="NEVER" prefHeight="417.0" prefWidth="258.0" style="-fx-background-color: #FFFFFF;" />
-            <HBox prefHeight="31.0" prefWidth="241.0">
+            <Pane fx:id="backToHistory" layoutX="152.0" layoutY="179.0" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="188.0" styleClass="storeLabels" stylesheets="@../css/imat_store.css" text="Totalt pris:" textFill="#274927">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="checkoutTotPrice" alignment="CENTER_RIGHT" editable="false" layoutX="189.0" layoutY="568.0" prefHeight="31.0" prefWidth="181.0" promptText="0 kr" style="-fx-background-color: transparent; -fx-font-style: #000000;">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
+                  <ImageView fx:id="historyPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/history2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="backToSettings" prefHeight="42.0" prefWidth="42.0" styleClass="buttons" stylesheets="@../css/imat_store.css">
+               <children>
+                  <ImageView fx:id="userPic" fitHeight="32.0" fitWidth="32.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <AnchorPane id="sequenceMap" layoutX="349.0" layoutY="30.0" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <HBox layoutX="158.0" layoutY="-20.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane fx:id="seqOne" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="182.0" text="Personuppgifter">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane id="selectedPane" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label id="selectedLabel" layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Leverans">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="seqThree" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
+                     <children>
+                        <Label layoutX="14.0" layoutY="1.0" prefHeight="60.0" prefWidth="189.0" text="Bekräfta">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </HBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,5 +1,5 @@
-#backButton{
-    -fx-background-color: #FDFDFD;
+.buttons{
+    -fx-background-color: #EFEFEF;
     -fx-border-radius: 5 5 5 5;
     -fx-background-radius: 5 5 5 5;
 }
@@ -13,4 +13,30 @@
     -fx-background-color: #FDFDFD;
     -fx-border-radius: 5 5 5 5;
      -fx-background-radius: 5 5 5 5;
+}
+
+.sequencePanes{
+    -fx-border-color: #DDDDDD;
+    -fx-background-color: #FDFDFD;
+}
+
+#selectedPane{
+    -fx-background-color: #8dCbBc;
+    -fx-border-color: #DDDDDD;
+
+}
+
+#selectedLabel{
+    -fx-font-weight: bold;
+}
+
+#inputPane, #basketPane{
+    -fx-background-color: #FDFDFD;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+}
+
+.headPane{
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5 5 0 0;
 }

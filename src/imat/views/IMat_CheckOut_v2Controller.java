@@ -78,13 +78,23 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     @FXML
     private Pane backToStore;
     @FXML
+    private Pane backToHistory;
+    @FXML
+    private Pane backToSettings;
+    @FXML
     private TextField checkoutTotPrice;
     @FXML
-    private Button doneButton;
+    private Pane backButton;
+    @FXML
+    private Pane nextButton;
     @FXML
     private Button saveButton;
     @FXML
     private Label saveFeedback;
+    @FXML
+    private Pane seqTwo;
+    @FXML
+    private Pane seqThree;
 
 
     // Had to have this to be able to delete products from this view.
@@ -120,7 +130,14 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         c = IMat_Model.getBackEnd().getCustomer();
         
         backToStore.setOnMouseClicked(backToStoreClicked);
-        doneButton.setOnMouseClicked(doneButtonClicked);
+        backToHistory.setOnMouseClicked(backToHistoryClicked);
+        backToSettings.setOnMouseClicked(backToSettingsClicked);
+        nextButton.setOnMouseClicked(nextButtonClicked);
+        backButton.setOnMouseClicked(backToStoreClicked);
+
+        seqTwo.setOnMouseClicked(nextButtonClicked);
+        seqThree.setOnMouseClicked(seqThreeClicked);
+
         pres.updateScrollPane();
 
         firstName.setText(c.getFirstName());
@@ -185,8 +202,28 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         }
     }
 
+    EventHandler<MouseEvent> seqThreeClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if(personalInfo != null && IMat_DeliveryController.getStaticDaytime() != null &&
+                    IMat_DeliveryController.getStaticMessage() != null){
+                try {
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                    IMat.getStage().setScene(new Scene(start, 1360, 768));
+                } catch (IOException ex) {
+                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else{
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("Ni måste fylla i alla uppgifter innan" + "\n" +
+                        "ni betalar" + "\n" + "Var god kontrollera igen.");
+            }
+        }
+    };
 
-    EventHandler<MouseEvent>doneButtonClicked
+
+    EventHandler<MouseEvent>nextButtonClicked
             = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
@@ -288,6 +325,36 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     }
                 }
             };
+
+    // Back to store
+    EventHandler<MouseEvent> backToHistoryClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+
+    // Back to store
+    EventHandler<MouseEvent> backToSettingsClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            try {
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
+                IMat.getStage().setScene(new Scene(start, 1360, 768));
+            } catch (IOException ex) {
+                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
 
     public static IMat_Checkout_presenter getPresenter(){
         return pres;

@@ -85,6 +85,8 @@ public class IMat_SettingsController implements Initializable {
     private TextArea comment;
     @FXML
     private Button saveSettings;
+    @FXML
+    private Label saveFeedback;
 
     private static String staticCity;
     private static String staticCard1;
@@ -121,7 +123,6 @@ public class IMat_SettingsController implements Initializable {
         cardTypeBox.setItems(cardTypeOptions);
         paymentBox.setValue(staticPayment);
         cardTypeBox.setValue(staticCardType);
-        saveSettings.setStyle(DEFAULT_COLOR);
 
         // StoreButton
         storeButton.setOnMouseClicked(storeButtonClicked);
@@ -137,8 +138,6 @@ public class IMat_SettingsController implements Initializable {
         
         // SaveButton
         saveSettings.setOnMouseClicked(onSaveButtonClick);
-        saveSettings.setOnMouseEntered(buttonEnter);
-        saveSettings.setOnMouseExited(buttonExit);
         saveSettings.setCursor(Cursor.HAND);
         /*
          List<String> list = new ArrayList<String>();
@@ -231,6 +230,8 @@ public class IMat_SettingsController implements Initializable {
                     setLastName();
                     staticPayment = (String) paymentBox.getValue();
                     setPostCode();
+
+                    saveFeedback.setText("Din information \nhar sparats!");
                 }
             };
 
