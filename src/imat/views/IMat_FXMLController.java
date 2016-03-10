@@ -466,6 +466,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         list = IMatDataHandler.getInstance().
                         findProducts(searchField.getText());
 
+                        currentCategory = "search";
                         placeStoreItems(list);
 
                         // TODO: if the list is empty, add text that displays this.
@@ -694,7 +695,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                     // Placing the items on the centerstage.
                     System.out.println(getCurrentPane(t));
                     currentCategory = getCurrentPane(t);
-                    
+
                     placeStoreItems(prodList);
                 }
             };
@@ -731,7 +732,41 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
 
         this.storeItemScrollPane.setContent(flowPane);
 
-        placeSubItems(subNameList);
+        System.out.println("subNameList toString: " + subNameList.toString() + "\t subNameList size: " + subNameList.size());
+        if (!subNameList.isEmpty()) {
+            placeSubItems(subNameList);
+        }
+
+        if (subNameList.isEmpty() && currentCategory.equals("topCategory")) {
+            FlowPane fPane = new FlowPane();
+            fPane.setHgap(6);
+            fPane.setPrefWidth(640);
+            fPane.setPrefHeight(104);
+            
+            Text text1 = new Text(" Dina favoriter");
+            text1.setFont(Font.font("System", 42));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            fPane.getChildren().add(textFlow);
+            fPane.setAlignment(Pos.BASELINE_CENTER);
+
+            subScrollPane.setContent(fPane);
+
+        } else if (subNameList.isEmpty() && currentCategory.equals("search")) {
+            FlowPane flow = new FlowPane();
+            flow.setHgap(6);
+            flow.setPrefWidth(640);
+            flow.setPrefHeight(104);
+
+            Text text1 = new Text(" Din sökning");
+            text1.setFont(Font.font("System", 42));
+            text1.setFontSmoothingType(FontSmoothingType.LCD);
+            TextFlow textFlow = new TextFlow(text1);
+            flow.getChildren().add(textFlow);
+            flow.setAlignment(Pos.BASELINE_CENTER);
+
+            subScrollPane.setContent(flow);
+        }
 
     }
 
@@ -811,8 +846,8 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 }
             }
         }
-        
-        if(currentCategory.equals("topCategory")){
+
+        if (currentCategory.equals("topCategory")) {
             Text text1 = new Text(" Dina favoriter");
             text1.setFont(Font.font("System", 42));
             text1.setFontSmoothingType(FontSmoothingType.LCD);
@@ -820,8 +855,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
             flowPane.getChildren().add(textFlow);
             flowPane.setAlignment(Pos.BASELINE_CENTER);
         }
-        
-        
+
         if (storeItemScrollPane == null) {
             System.out.println("null");
         }
