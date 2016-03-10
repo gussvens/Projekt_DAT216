@@ -28,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -67,6 +68,8 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     private Button removeAllFromBasket;
     @FXML
     private Button searchButton;
+    @FXML
+    private TextField totalPrice;
 
     /**
      * Initializes the controller class.
@@ -75,6 +78,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
     public void initialize(URL url, ResourceBundle rb) {
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
+        setTotal();
         if (IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
             toCheckout.setDisable(true);
             removeAllFromBasket.setDisable(true);
@@ -153,6 +157,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
+                    
                     if (i == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -177,6 +182,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                             + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(j));
                     controller.setCont(this);
+                    
                     if (j == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
                         historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
@@ -185,6 +191,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                         historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
                         historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
                     }
+                    
                     flowPane.getChildren().add(historyCategory);
                     j--;
                 } catch (IOException e) {
@@ -227,7 +234,13 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             
         }
         basketScrollPane.setContent(basketFlowPane);
+        setTotal();
+        
     }
+    
+    
+    
+    
 
     public void setHistoryItemScrollPane(FlowPane flowPane) {
         historyItemScrollPane.setContent(flowPane);
@@ -297,7 +310,9 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     IMat_Model.getBackEnd().getShoppingCart().clear();
                     System.out.println("Cart size: " + IMat_Model.getBackEnd().getShoppingCart().getItems().size());
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(null), true);
-
+                    
+                    
+                    setTotal();
                 }
             };
 
@@ -373,11 +388,17 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             TextFlow textFlow = new TextFlow(text1);
             basketFlowPane.getChildren().add(textFlow);
             basketFlowPane.setAlignment(Pos.CENTER);
+            totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
         } else {
             toCheckout.setDisable(false);
             removeAllFromBasket.setDisable(false);
-            //setSaveListButtonActive();
+            setTotal();
         }
     }
 
+    
+    
+    public void setTotal(){
+        totalPrice.setText(Double.toString(IMat_Model.getBackEnd().getShoppingCart().getTotal()) + " kr");
+    }
 }
