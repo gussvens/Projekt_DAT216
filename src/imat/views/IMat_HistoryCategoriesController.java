@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.Pane;
 
 /**
- * Created by Emil on 03/03/2016.
+ * Created by Group 12
  */
 public class IMat_HistoryCategoriesController extends Observable implements Initializable {
 

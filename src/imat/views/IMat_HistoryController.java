@@ -169,7 +169,7 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
                     IMat_HistoryCategoriesController controller = loader.getController();
-                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + orderList.get(i).getDate().getMonth() + 1
+                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + (orderList.get(i).getDate().getMonth() + 1)
                             + "-" + orderList.get(i).getDate().getDate());
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
