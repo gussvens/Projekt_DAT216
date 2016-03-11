@@ -61,7 +61,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     @FXML
     private TextField lastName;
     @FXML
-    private TextField city;
+    private TextField postAdress;
     @FXML
     private TextField address;
     @FXML
@@ -157,7 +157,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
-        city.setText(c.getPostAddress());
+        postAdress.setText(c.getPostAddress());
 
         if (IMat_SettingsController.getCard1() != null) {
             card1.setText(IMat_SettingsController.getCard1());
@@ -347,7 +347,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         } else if (!isAlphaNumeric(lastName.getText().replaceAll("\\s+","")) || lastName.getText().length() == 0) {
                             error = "Ert efternamn kan bara innehålla bokstäver "
                             + "\n och siffror.";
-                        } else if (!isAlpha(city.getText().replaceAll("\\s+","")) || city.getText().length() == 0) {
+                        } else if (!isAlpha(postAdress.getText().replaceAll("\\s+","")) || postAdress.getText().length() == 0) {
                             error = "Er stad kan bara innehålla bokstäver.";
                         } else if (!isAlphaNumeric(address.getText().replaceAll("\\s+","")) || address.getText().length() == 0) {
                             error = "Er gatuadress kan bara innehålla bokstäver "
@@ -370,7 +370,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                             } else {
                                 try {
                                     personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                                     Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                                 } catch (IOException ex) {
@@ -382,7 +382,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         }else {
                             try {
                                 personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                                + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                                + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                                 Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                 IMat.getStage().setScene(new Scene(start, 1360, 768));
                             } catch (IOException ex) {
@@ -405,10 +405,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     }
 
                     String pI = firstName.getText() + " " + lastName.getText() + "\n"
-                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
 
                     personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                     System.out.println(getPersonalInfo());
 
                 }
@@ -549,7 +549,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         c.setPostCode(postCode.getText());
         c.setFirstName(firstName.getText());
         c.setLastName(lastName.getText());
-        c.setPostAddress(city.getText());
+        c.setPostAddress(postAdress.getText());
         IMat_SettingsController.setCard1(card1.getText());
         IMat_SettingsController.setCard2(card2.getText());
         IMat_SettingsController.setCard3(card3.getText());

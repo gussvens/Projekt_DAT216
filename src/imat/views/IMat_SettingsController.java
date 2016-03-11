@@ -60,7 +60,7 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private TextField lastName;
     @FXML
-    private TextField city;
+    private TextField postAdress;
     @FXML
     private TextField address;
     @FXML
@@ -113,7 +113,7 @@ public class IMat_SettingsController implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
-        city.setText(staticCity);
+        postAdress.setText(c.getPostAddress());
         card1.setText(staticCard1);
         card2.setText(staticCard2);
         card3.setText(staticCard3);
@@ -224,12 +224,12 @@ public class IMat_SettingsController implements Initializable {
                     staticCard3 = card3.getText();
                     staticCard4 = card4.getText();
                     staticCardType = (String) cardTypeBox.getValue();
-                    staticCity = city.getText();
                     staticCvc = cvc.getText();
                     setFirstName();
                     setLastName();
                     staticPayment = (String) paymentBox.getValue();
                     setPostCode();
+                    setPostAdress();
 
                     saveFeedback.setText("Din information \nhar sparats!");
                 }
@@ -238,7 +238,7 @@ public class IMat_SettingsController implements Initializable {
     @FXML
     private void handleComboBoxAction() {
         String selectedOption = (String) paymentBox.getSelectionModel().getSelectedItem();
-        if (selectedOption == "Faktura" || selectedOption == "Kontant") {
+        if (selectedOption.equals("Faktura")|| selectedOption.equals("Kontant")) {
             cardTypeBox.setDisable(true);
             cvc.setDisable(true);
             card1.setDisable(true);
@@ -284,6 +284,11 @@ public class IMat_SettingsController implements Initializable {
     }
 
     @FXML
+    public void setPostAdress() {
+        c.setPostAddress(postAdress.getText());
+    }
+
+    @FXML
     public static void setPayment(String s) {
         staticPayment = s;
 
@@ -302,10 +307,6 @@ public class IMat_SettingsController implements Initializable {
     }
 
     // Setters for the static variables
-    public static void setCity(String s) {
-        staticCity = s;
-    }
-
     public static void setCard1(String s) {
         staticCard1 = s;
     }

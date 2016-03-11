@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46e6fc5c-f3b8-4670-a127-4694a5966ed5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_BasketItem.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_BasketItem.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_EndScreen.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_EndScreen.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_Receipt.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_Receipt.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" afterPath="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_Settings.fxml" afterPath="$PROJECT_DIR$/src/imat/views/IMat_Settings.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java" afterPath="$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java" />
     </list>
     <ignored path="Projekt_DAT216.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IMat_CheckOut_v2Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
+      <file leaf-file-name="IMat_SettingsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="273" selection-end-column="6" />
+              <caret line="248" column="42" selection-start-line="248" selection-start-column="42" selection-end-line="248" selection-end-column="42" />
+              <folding>
+                <element signature="e#9214#9215#0" expanded="true" />
+                <element signature="e#9268#9269#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IMat_CheckOut_v2Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7978395">
+              <caret line="397" column="49" selection-start-line="397" selection-start-column="49" selection-end-line="397" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -79,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IMat_FinishBuy.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IMat_FinishBuy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.074074075">
-              <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="148" column="48" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -140,7 +148,6 @@
         <option value="$PROJECT_DIR$/src/imat/css/imat_checkout.css" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_Delivery.fxml" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_BasketItemController.java" />
-        <option value="$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_settings.css" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_delivery.css" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_finishbuy.css" />
@@ -149,9 +156,10 @@
         <option value="$PROJECT_DIR$/src/imat/views/IMat_HistoryCategoriesController.java" />
         <option value="$PROJECT_DIR$/src/imat/css/imat_historyCategories.css" />
         <option value="$PROJECT_DIR$/src/imat/views/imat_checkout_v2.css" />
-        <option value="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java" />
         <option value="$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java" />
+        <option value="$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java" />
+        <option value="$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java" />
       </list>
     </option>
   </component>
@@ -1119,25 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3333334">
-          <caret line="149" column="42" selection-start-line="149" selection-start-column="42" selection-end-line="149" selection-end-column="42" />
-          <folding>
-            <element signature="e#6091#6092#0" expanded="true" />
-            <element signature="e#6174#6175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="273" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_DeliveryController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1164,8 +1153,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_FinishBuy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.074074075">
-          <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="148" column="48" selection-start-line="148" selection-start-column="48" selection-end-line="148" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_SettingsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="248" column="42" selection-start-line="248" selection-start-column="42" selection-end-line="248" selection-end-column="42" />
+          <folding>
+            <element signature="e#9214#9215#0" expanded="true" />
+            <element signature="e#9268#9269#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imat/views/IMat_CheckOut_v2Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7978395">
+          <caret line="397" column="49" selection-start-line="397" selection-start-column="49" selection-end-line="397" selection-end-column="49" />
           <folding />
         </state>
       </provider>

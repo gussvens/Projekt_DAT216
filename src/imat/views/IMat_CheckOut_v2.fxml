@@ -47,15 +47,15 @@
                               <TextField fx:id="lastName" layoutX="68.0" layoutY="81.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="72.0" />
                            </children>
                         </VBox>
-                        <VBox layoutX="100.0" layoutY="116.0" prefHeight="55.0" prefWidth="187.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
+                        <VBox layoutX="100.0" layoutY="116.0" prefHeight="83.0" prefWidth="187.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
                            <children>
-                              <TextField fx:id="city" layoutX="68.0" layoutY="126.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="125.0" />
                               <TextField fx:id="address" layoutX="73.0" layoutY="185.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="161.0" />
                               <Pane>
                                  <children>
-                                    <TextField fx:id="postCode" prefHeight="25.0" prefWidth="129.0" />
+                                    <TextField fx:id="postCode" prefHeight="25.0" prefWidth="129.0" promptText="T.ex. 12345" />
                                  </children>
                               </Pane>
+                              <TextField fx:id="postAdress" layoutX="68.0" layoutY="126.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="125.0" />
                            </children>
                         </VBox>
                         <ComboBox fx:id="paymentBox" layoutX="100.0" layoutY="225.0" onAction="#handleComboBoxAction" prefHeight="25.0" prefWidth="187.0" promptText="Välj betalsätt" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="190.0">
@@ -83,9 +83,9 @@
                         </VBox>
                         <VBox layoutX="6.0" layoutY="115.0" prefHeight="83.0" prefWidth="86.0" spacing="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="80.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" layoutX="185.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" text="Stad:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0" />
                               <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="163.0" prefHeight="25.0" prefWidth="135.0" text="Gatuadress:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="161.0" />
                               <Label alignment="CENTER_RIGHT" layoutX="187.0" layoutY="204.0" prefHeight="25.0" prefWidth="135.0" text="Postnummer:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="205.0" />
+                              <Label alignment="CENTER_RIGHT" layoutX="185.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" text="Postort:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0" />
                            </children>
                         </VBox>
                         <VBox layoutX="6.0" layoutY="224.0" prefHeight="118.0" prefWidth="86.0" spacing="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="190.0">
