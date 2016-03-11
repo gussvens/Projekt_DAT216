@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -19,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FinishBuy">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_FinishBuy">
    <children>
       <Pane fx:id="backButton" layoutX="200.0" layoutY="655.0" prefHeight="63.0" prefWidth="200.0" styleClass="buttons" stylesheets="@../css/imat_delivery.css">
          <children>
@@ -166,6 +160,9 @@
                            </font>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <Pane fx:id="seqTwo" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
                      <children>
@@ -175,6 +172,9 @@
                            </font>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <Pane id="selectedPane" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes">
                      <children>
@@ -184,6 +184,9 @@
                            </font>
                         </Label>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                </children>
             </HBox>

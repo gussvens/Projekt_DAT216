@@ -38,6 +38,10 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
     private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
     private final String PANE_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
 
+    private final String SEQUENCE_PANE_DEFAULT = "-fx-background-color: #FDFDFD;";
+    private final String SEQUENCE_PANE_ENTERED = "-fx-background-color: #adebdc;";
+    private final String SEQUENCE_PANE_CLICKED = "-fx-background-color: #8dCbBc;";
+
     @FXML
     private Button doneButton;
     @FXML
@@ -117,13 +121,75 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
         nextButton.setOnMouseExited(paneExit);
         nextButton.setCursor(Cursor.HAND);
 
+
+        seqOne.setOnMouseEntered(seqOneEntered);
+        seqOne.setOnMouseExited(seqOneExited);
+        seqOne.setOnMouseClicked(seqOneClicked);
         seqOne.setOnMouseClicked(backButtonClicked);
+
+        seqThree.setOnMouseEntered(seqThreeEntered);
+        seqThree.setOnMouseExited(seqThreeExited);
+        seqThree.setOnMouseClicked(seqThreeClicked);
         seqThree.setOnMouseClicked(nextButtonClicked);
+
 
         IMat_Model.getBackEnd().getShoppingCart().addShoppingCartListener(this);
 
         pres.updateScrollPane();
     }
+
+    EventHandler<MouseEvent> seqOneEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqOne.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqOneExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqOne.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqOneClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqOne.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+    EventHandler<MouseEvent> seqThreeClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
 
     EventHandler<MouseEvent> paneEnter
             = new EventHandler<MouseEvent>() {

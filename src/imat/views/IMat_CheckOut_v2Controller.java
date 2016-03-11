@@ -52,12 +52,16 @@ public class IMat_CheckOut_v2Controller implements Initializable {
     private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
     private final String PANE_CLICKED_COLOR = "-fx-background-color:  #adebdc;";
 
+    private final String SEQUENCE_PANE_DEFAULT = "-fx-background-color: #FDFDFD;";
+    private final String SEQUENCE_PANE_ENTERED = "-fx-background-color: #adebdc;";
+    private final String SEQUENCE_PANE_CLICKED = "-fx-background-color: #8dCbBc;";
+
     @FXML
     private TextField firstName;
     @FXML
     private TextField lastName;
     @FXML
-    private TextField city;
+    private TextField postAdress;
     @FXML
     private TextField address;
     @FXML
@@ -138,7 +142,13 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         nextButton.setOnMouseClicked(nextButtonClicked);
         backButton.setOnMouseClicked(backToStoreClicked);
 
+        seqTwo.setOnMouseEntered(seqTwoEntered);
+        seqTwo.setOnMouseExited(seqTwoExited);
+        seqTwo.setOnMouseClicked(seqTwoClicked);
         seqTwo.setOnMouseClicked(nextButtonClicked);
+
+        seqThree.setOnMouseEntered(seqThreeEntered);
+        seqThree.setOnMouseExited(seqThreeExited);
         seqThree.setOnMouseClicked(seqThreeClicked);
 
         pres.updateScrollPane();
@@ -147,7 +157,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         lastName.setText(c.getLastName());
         address.setText(c.getAddress());
         postCode.setText(c.getPostCode());
-        city.setText(c.getPostAddress());
+        postAdress.setText(c.getPostAddress());
 
         if (IMat_SettingsController.getCard1() != null) {
             card1.setText(IMat_SettingsController.getCard1());
@@ -236,6 +246,73 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         }
     }
 
+    EventHandler<MouseEvent> seqTwoEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqTwoClicked
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqTwo.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeEntered
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_ENTERED);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeExited
+            = new EventHandler<MouseEvent>() {
+
+        @Override
+        public void handle(MouseEvent t) {
+            seqThree.setStyle(SEQUENCE_PANE_DEFAULT);
+        }
+    };
+
+    EventHandler<MouseEvent> seqThreeClicked
+            = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent event) {
+            if (personalInfo != null && IMat_DeliveryController.getStaticDaytime() != null
+                    && IMat_DeliveryController.getStaticMessage() != null) {
+                try {
+                    Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
+                    IMat.getStage().setScene(new Scene(start, 1360, 768));
+                } catch (IOException ex) {
+                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                errorLabel.setTextFill(Color.RED);
+                errorLabel.setText("Ni måste fylla i alla uppgifter innan" + "\n"
+                        + "ni betalar" + "\n" + "Var god kontrollera igen.");
+            }
+
+            seqThree.setStyle(SEQUENCE_PANE_CLICKED);
+        }
+    };
+
     EventHandler<MouseEvent> paneEnter
             = new EventHandler<MouseEvent>() {
 
@@ -251,26 +328,6 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     ((Pane) t.getSource()).setStyle(PANE_DEFAULT_COLOR);
-                }
-            };
-
-    EventHandler<MouseEvent> seqThreeClicked
-            = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    if (personalInfo != null && IMat_DeliveryController.getStaticDaytime() != null
-                    && IMat_DeliveryController.getStaticMessage() != null) {
-                        try {
-                            Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
-                            IMat.getStage().setScene(new Scene(start, 1360, 768));
-                        } catch (IOException ex) {
-                            Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    } else {
-                        errorLabel.setTextFill(Color.RED);
-                        errorLabel.setText("Ni måste fylla i alla uppgifter innan" + "\n"
-                                + "ni betalar" + "\n" + "Var god kontrollera igen.");
-                    }
                 }
             };
 
@@ -290,7 +347,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         } else if (!isAlphaNumeric(lastName.getText().replaceAll("\\s+","")) || lastName.getText().length() == 0) {
                             error = "Ert efternamn kan bara innehålla bokstäver "
                             + "\n och siffror.";
-                        } else if (!isAlpha(city.getText().replaceAll("\\s+","")) || city.getText().length() == 0) {
+                        } else if (!isAlpha(postAdress.getText().replaceAll("\\s+","")) || postAdress.getText().length() == 0) {
                             error = "Er stad kan bara innehålla bokstäver.";
                         } else if (!isAlphaNumeric(address.getText().replaceAll("\\s+","")) || address.getText().length() == 0) {
                             error = "Er gatuadress kan bara innehålla bokstäver "
@@ -313,7 +370,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                             } else {
                                 try {
                                     personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                                     Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                                 } catch (IOException ex) {
@@ -325,7 +382,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         }else {
                             try {
                                 personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                                + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                                + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                                 Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                 IMat.getStage().setScene(new Scene(start, 1360, 768));
                             } catch (IOException ex) {
@@ -348,10 +405,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     }
 
                     String pI = firstName.getText() + " " + lastName.getText() + "\n"
-                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
 
                     personalInfo = firstName.getText() + " " + lastName.getText() + "\n"
-                    + address.getText() + "\n" + postCode.getText() + "\n" + city.getText();
+                    + address.getText() + "\n" + postCode.getText() + "\n" + postAdress.getText();
                     System.out.println(getPersonalInfo());
 
                 }
@@ -492,7 +549,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
         c.setPostCode(postCode.getText());
         c.setFirstName(firstName.getText());
         c.setLastName(lastName.getText());
-        c.setPostAddress(city.getText());
+        c.setPostAddress(postAdress.getText());
         IMat_SettingsController.setCard1(card1.getText());
         IMat_SettingsController.setCard2(card2.getText());
         IMat_SettingsController.setCard3(card3.getText());

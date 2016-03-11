@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -21,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_CheckOut_v2Controller">
+<AnchorPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1360.0" stylesheets="@../css/imat_delivery.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.views.IMat_CheckOut_v2Controller">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -53,19 +47,25 @@
                               <TextField fx:id="lastName" layoutX="68.0" layoutY="81.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="72.0" />
                            </children>
                         </VBox>
-                        <VBox layoutX="100.0" layoutY="116.0" prefHeight="55.0" prefWidth="187.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
+                        <VBox layoutX="100.0" layoutY="116.0" prefHeight="83.0" prefWidth="187.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
                            <children>
-                              <TextField fx:id="city" layoutX="68.0" layoutY="126.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="125.0" />
                               <TextField fx:id="address" layoutX="73.0" layoutY="185.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="161.0" />
                               <Pane>
                                  <children>
-                                    <TextField fx:id="postCode" prefHeight="25.0" prefWidth="129.0" />
+                                    <TextField fx:id="postCode" prefHeight="25.0" prefWidth="129.0" promptText="T.ex. 12345" />
                                  </children>
                               </Pane>
+                              <TextField fx:id="postAdress" layoutX="68.0" layoutY="126.0" prefHeight="25.0" prefWidth="149.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="125.0" />
                            </children>
                         </VBox>
-                        <ComboBox fx:id="paymentBox" layoutX="100.0" layoutY="225.0" onAction="#handleComboBoxAction" prefHeight="25.0" prefWidth="187.0" promptText="Välj betalsätt" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="190.0" />
-                        <ComboBox fx:id="cardTypeBox" layoutX="100.0" layoutY="256.0" prefHeight="25.0" prefWidth="187.0" promptText="Välj korttyp" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="221.0" />
+                        <ComboBox fx:id="paymentBox" layoutX="100.0" layoutY="225.0" onAction="#handleComboBoxAction" prefHeight="25.0" prefWidth="187.0" promptText="Välj betalsätt" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="190.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ComboBox>
+                        <ComboBox fx:id="cardTypeBox" layoutX="100.0" layoutY="256.0" prefHeight="25.0" prefWidth="187.0" promptText="Välj korttyp" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="221.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ComboBox>
                         <HBox layoutX="100.0" layoutY="287.0" spacing="5.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="252.0">
                            <children>
                               <TextField fx:id="card1" layoutX="390.0" layoutY="360.0" prefHeight="25.0" prefWidth="43.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="339.0" />
@@ -83,9 +83,9 @@
                         </VBox>
                         <VBox layoutX="6.0" layoutY="115.0" prefHeight="83.0" prefWidth="86.0" spacing="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="80.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" layoutX="185.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" text="Stad:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0" />
                               <Label alignment="CENTER_RIGHT" layoutX="179.0" layoutY="163.0" prefHeight="25.0" prefWidth="135.0" text="Gatuadress:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="161.0" />
                               <Label alignment="CENTER_RIGHT" layoutX="187.0" layoutY="204.0" prefHeight="25.0" prefWidth="135.0" text="Postnummer:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="205.0" />
+                              <Label alignment="CENTER_RIGHT" layoutX="185.0" layoutY="104.0" prefHeight="25.0" prefWidth="135.0" text="Postort:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="125.0" />
                            </children>
                         </VBox>
                         <VBox layoutX="6.0" layoutY="224.0" prefHeight="118.0" prefWidth="86.0" spacing="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="190.0">
@@ -96,10 +96,13 @@
                               <Label alignment="CENTER_RIGHT" layoutX="170.0" layoutY="385.0" prefHeight="25.0" prefWidth="128.0" text="CVC:" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="383.0" />
                            </children>
                         </VBox>
-                        <Button fx:id="saveButton" layoutX="173.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="25.0" prefWidth="113.0" text="Spara information" />
+                        <Button fx:id="saveButton" layoutX="173.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="25.0" prefWidth="113.0" text="Spara information">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </AnchorPane>
-                  <Label fx:id="errorLabel" layoutX="251.0" layoutY="440.0">
+                  <Label fx:id="errorLabel" layoutX="141.0" layoutY="420.0" prefHeight="69.0" prefWidth="268.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -200,6 +203,9 @@
                                  </font>
                               </Label>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Pane>
                         <Pane fx:id="seqTwo" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes" stylesheets="@imat_checkout_v2.css">
                            <children>
@@ -209,6 +215,9 @@
                                  </font>
                               </Label>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Pane>
                         <Pane fx:id="seqThree" prefHeight="200.0" prefWidth="200.0" styleClass="sequencePanes" stylesheets="@imat_checkout_v2.css">
                            <children>
@@ -218,6 +227,9 @@
                                  </font>
                               </Label>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Pane>
                      </children>
                   </HBox>
