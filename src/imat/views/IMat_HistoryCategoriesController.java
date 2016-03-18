@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.Pane;
 
 /**
- * Created by Emil on 03/03/2016.
+ * Created by Group 12
  */
 public class IMat_HistoryCategoriesController extends Observable implements Initializable {
 
@@ -65,23 +65,35 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
 
     EventHandler<MouseEvent> categoryPaneEntered
             = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            if (!((Pane)event.getSource()).getStyle().equals(MENU_CLICKED_COLOR)) {
-                ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent event) {
+                    if (!((Pane) event.getSource()).getStyle().equals(MENU_CLICKED_COLOR)) {
+                        if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 5 5 0 0;")) {
+                            ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR + "-fx-background-radius: 5 5 0 0;" + "-fx-border-radius: 5 5 0 0;");
+                        } else if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 0 0 5 5;")) {
+                            ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR + "-fx-background-radius: 0 0 5 5;" + "-fx-border-radius: 0 0 5 5;");
+                        } else {
+                            ((Pane) event.getSource()).setStyle(MENU_ENTER_COLOR);
+                        }
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> categoryPaneExited
             = new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            if (((Pane)event.getSource()).getStyle().equals(MENU_ENTER_COLOR)) {
-                ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR);
-            }
-        }
-    };
+                @Override
+                public void handle(MouseEvent event) {
+                    if (!((Pane) event.getSource()).getStyle().contains(MENU_CLICKED_COLOR)) {
+                        if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 5 5 0 0;")) {
+                            ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR + "-fx-background-radius: 5 5 0 0;" + "-fx-border-radius: 5 5 0 0;");
+                        } else if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 0 0 5 5;")) {
+                            ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR + "-fx-background-radius: 0 0 5 5;" + "-fx-border-radius: 0 0 5 5;");
+                        } else {
+                            ((Pane) event.getSource()).setStyle(MENU_DEFAULT_COLOR);
+                        }
+                    }
+                }
+            };
 
     EventHandler<MouseEvent> categoryPaneClicked
             = new EventHandler<MouseEvent>() {
@@ -95,7 +107,13 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
                     notifyObservers();
                     setChanged();
 
-                    ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR);
+                    if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 5 5 0 0;")) {
+                        ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR + "-fx-background-radius: 5 5 0 0;" + "-fx-border-radius: 5 5 0 0;");
+                    } else if (((Pane) event.getSource()).getStyle().contains("-fx-background-radius: 0 0 5 5;")) {
+                        ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR + "-fx-background-radius: 0 0 5 5;" + "-fx-border-radius: 0 0 5 5;");
+                    } else {
+                        ((Pane) event.getSource()).setStyle(MENU_CLICKED_COLOR);
+                    }
 
                     for (ShoppingItem s : order.getItems()) {
                         try {
@@ -112,9 +130,9 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+
                         cont.setHistoryItemScrollPane(flowPane);
                     }
-
                 }
             };
 
@@ -126,52 +144,52 @@ public class IMat_HistoryCategoriesController extends Observable implements Init
         this.order = order;
     }
 
-    public Pane getCategoryPane(){
+    public Pane getCategoryPane() {
         return this.categoryPane;
     }
 
     /*
-    EventHandler<MouseEvent> paneEnter
-            = new EventHandler<MouseEvent>() {
+     EventHandler<MouseEvent> paneEnter
+     = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    System.out.println(((AnchorPane) t.getSource()).getStyle().toString());
-                    if (categoryPane.getStyle().toString().contains("-fx-background-radius: 5 5 0 0;")) {
+     @Override
+     public void handle(MouseEvent t) {
+     System.out.println(((AnchorPane) t.getSource()).getStyle().toString());
+     if (categoryPane.getStyle().toString().contains("-fx-background-radius: 5 5 0 0;")) {
 
                        
-                        ((AnchorPane) t.getSource()).setStyle("-fx-background-color: #bdfbec;");
-                        //categoryPane.setStyle("-fx-background-radius: 5 5 0 0;");
-                        System.out.println("hej");
-                    } else if (((AnchorPane) t.getSource()).getStyle().toString().contains("-fx-background-radius: 0 0 5 5;")) {
-                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
-                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
-                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
-                    } else {
-                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
-                    }
-                    ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
-                       ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
-                }
-            };
-    EventHandler<MouseEvent> paneExit
-            = new EventHandler<MouseEvent>() {
+     ((AnchorPane) t.getSource()).setStyle("-fx-background-color: #bdfbec;");
+     //categoryPane.setStyle("-fx-background-radius: 5 5 0 0;");
+     System.out.println("hej");
+     } else if (((AnchorPane) t.getSource()).getStyle().toString().contains("-fx-background-radius: 0 0 5 5;")) {
+     ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+     ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
+     ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
+     } else {
+     ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_ENTER);
+     }
+     ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
+     ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
+     }
+     };
+     EventHandler<MouseEvent> paneExit
+     = new EventHandler<MouseEvent>() {
 
-                @Override
-                public void handle(MouseEvent t) {
-                    if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 5 5 0 0;")) {
+     @Override
+     public void handle(MouseEvent t) {
+     if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 5 5 0 0;")) {
 
-                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
-                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
-                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
-                    } else if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 0 0 5 5;")) {
-                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
-                        ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
-                        ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
-                    } else {
-                        ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
-                    }
-                }
-            };
-*/
+     ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+     ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 5 5 0 0;");
+     ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 5 5 0 0;");
+     } else if (((AnchorPane) t.getSource()).getStyle().toString().equals("-fx-background-radius: 0 0 5 5;")) {
+     ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+     ((AnchorPane) t.getSource()).setStyle("-fx-border-radius: 0 0 5 5;");
+     ((AnchorPane) t.getSource()).setStyle("-fx-background-radius: 0 0 5 5;");
+     } else {
+     ((AnchorPane) t.getSource()).setStyle(BTN_DEFAULT_EXIT);
+     }
+     }
+     };
+     */
 }

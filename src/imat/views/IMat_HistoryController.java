@@ -168,14 +168,13 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
                     Node historyCategory = loader.load();
                     IMat_HistoryCategoriesController controller = loader.getController();
-                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + orderList.get(i).getDate().getMonth() + 1
+                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + (orderList.get(i).getDate().getMonth() + 1)
                             + "-" + orderList.get(i).getDate().getDate());
                     //Should be a class for the content of the specific order
                     controller.setOrder(orderList.get(i));
                     controller.setCont(this);
 
                     categories.add(historyCategory);
-
 
                     if (i == orderList.size() - 1) {
                         historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
@@ -262,9 +261,15 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
         historyItemScrollPane.setContent(flowPane);
     }
 
-    public void update(Observable o, Object arg){
-        for(Node c : categories){
-            c.setStyle(MENU_DEFAULT_COLOR);
+    public void update(Observable o, Object arg) {
+        for (Node c : categories) {
+            if (c.getStyle().contains("-fx-background-radius: 5 5 0 0;")) {
+                c.setStyle(MENU_DEFAULT_COLOR + "-fx-background-radius: 5 5 0 0;" + "-fx-border-radius: 5 5 0 0;");
+            } else if (c.getStyle().contains("-fx-background-radius: 0 0 5 5;")) {
+                c.setStyle(MENU_DEFAULT_COLOR + "-fx-background-radius: 0 0 5 5;" + "-fx-border-radius: 0 0 5 5;");
+            } else {
+                c.setStyle(MENU_DEFAULT_COLOR);
+            }
         }
     }
 
@@ -415,6 +420,75 @@ public class IMat_HistoryController implements Initializable, ShoppingCartListen
             removeAllFromBasket.setDisable(false);
             setTotal();
         }
+    }
+
+    public void updateHistory() {
+        FlowPane flowPane = new FlowPane();
+        flowPane.setVgap(3);
+        flowPane.setHgap(6);
+        flowPane.setPrefWidth(250);
+
+        List<Order> orderList = IMat_Model.getBackEnd().getOrders();
+        if (orderList.size() >= 9) {
+            for (int i = orderList.size() - 1; i >= orderList.size() - 10;
+                    i--) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
+                    Node historyCategory = loader.load();
+                    IMat_HistoryCategoriesController controller = loader.getController();
+                    controller.setDateLabel(orderList.get(i).getDate().getYear() + 1900 + "-" + orderList.get(i).getDate().getMonth() + 1
+                            + "-" + orderList.get(i).getDate().getDate());
+                    //Should be a class for the content of the specific order
+                    controller.setOrder(orderList.get(i));
+                    controller.setCont(this);
+
+                    categories.add(historyCategory);
+
+                    if (i == orderList.size() - 1) {
+                        historyCategory.setStyle("-fx-border-radius: 5 5 0 0;");
+                        historyCategory.setStyle("-fx-background-radius: 5 5 0 0; ");
+                    }
+                    if (i == orderList.size() - 10) {
+                        historyCategory.setStyle("-fx-border-radius: 0 0 5 5;");
+                        historyCategory.setStyle("-fx-background-radius: 0 0 5 5; ");
+                    }
+                    flowPane.getChildren().add(historyCategory);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            int j = orderList.size() - 1;
+            while (j >= 0) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("IMat_HistoryCategories.fxml"));
+                    Node historyCategory = loader.load();
+                    IMat_HistoryCategoriesController controller = loader.getController();
+                    controller.setDateLabel(orderList.get(j).getDate().getYear() + 1900 + "-" + (orderList.get(j).getDate().getMonth() + 1)
+                            + "-" + (orderList.get(j).getDate().getDate()));                    //Should be a class for the content of the specific order
+                    controller.setOrder(orderList.get(j));
+                    controller.setCont(this);
+
+                    categories.add(historyCategory);
+
+                    if (j == orderList.size() - 1) {
+                        historyCategory.getStyleClass().add("-fx-border-radius: 5 5 0 0;");
+                        historyCategory.getStyleClass().add("-fx-background-radius: 5 5 0 0; ");
+                    }
+                    if (j == 0) {
+                        historyCategory.getStyleClass().add("-fx-border-radius: 0 0 5 5;");
+                        historyCategory.getStyleClass().add("-fx-background-radius: 0 0 5 5; ");
+                    }
+
+                    flowPane.getChildren().add(historyCategory);
+                    j--;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        historyCategoryPane.getChildren().add(flowPane);
     }
 
     public void setTotal() {
