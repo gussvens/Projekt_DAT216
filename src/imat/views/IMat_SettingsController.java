@@ -11,8 +11,7 @@ import java.util.ResourceBundle;
 
 import imat.IMat;
 import imat.IMat_Model;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -31,9 +30,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import se.chalmers.ait.dat215.project.Customer;
-import se.chalmers.ait.dat215.project.IMatDataHandler;
 
 /**
  * FXML Controller class
@@ -157,7 +154,7 @@ public class IMat_SettingsController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
                         Logger.getLogger(IMat_SettingsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -258,7 +255,7 @@ public class IMat_SettingsController implements Initializable {
     /*
      @FXML
      private void homeButtonClicked() throws IOException {
-     Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+     Parent start = FXMLLoader.load(getClass().getResource("IMat_Start.fxml"));
      IMat.getStage().setScene(new Scene(start, 1360, 768));
      }
 

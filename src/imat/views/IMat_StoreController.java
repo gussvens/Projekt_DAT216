@@ -5,7 +5,6 @@ import imat.IMat_StoreItemController;
 import imat.IMat_presenter;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -15,8 +14,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
@@ -34,7 +31,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -45,7 +41,7 @@ import se.chalmers.ait.dat215.project.*;
  *
  * @author Group 12
  */
-public class IMat_FXMLController implements Initializable, ShoppingCartListener {
+public class IMat_StoreController implements Initializable, ShoppingCartListener {
 
     private final String BTN_DEFAULT_ENTER = "-fx-background-color: #bdfbec;";
     private final String BTN_DEFAULT_EXIT = "-fx-background-color: #FFFFFF;";
@@ -360,10 +356,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -374,10 +370,10 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Start.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -392,7 +388,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -407,7 +403,7 @@ public class IMat_FXMLController implements Initializable, ShoppingCartListener 
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };

@@ -2,7 +2,6 @@ package imat;
 
 import java.io.IOException;
 
-import imat.views.IMat_FXMLController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +20,7 @@ public class IMat extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("views/IMat_Store_v2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/IMat_Store.fxml"));
 
         IMat_Model model = new IMat_Model();
 

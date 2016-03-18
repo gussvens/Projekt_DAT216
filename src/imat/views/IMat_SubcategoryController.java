@@ -108,9 +108,9 @@ public class IMat_SubcategoryController implements Initializable {
                         prod = ProductCategory.DAIRIES;
                     }
 
-                    IMat_FXMLController.activeSubIndex(indexNr);
+                    IMat_StoreController.activeSubIndex(indexNr);
                     //getButton(t).setStyle(MENU_CLICKED_COLOR);
-                    IMat_FXMLController.getPresenter().getFXMLCont().upDateCenter(prod);
+                    IMat_StoreController.getPresenter().getFXMLCont().upDateCenter(prod);
                     //getButton(t).setStyle(MENU_CLICKED_COLOR);
                 }
             };

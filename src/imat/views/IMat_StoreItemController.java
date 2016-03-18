@@ -1,18 +1,13 @@
 package imat;
 
-import imat.views.IMat_BasketItemController;
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import imat.views.IMat_FXMLController;
+import imat.views.IMat_StoreController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -20,9 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -84,12 +76,12 @@ public class IMat_StoreItemController implements Initializable {
                     if (!IMat_Model.getBackEnd().favorites().contains(prod)) {
                         favorizeStarImage.setImage(new Image("imat/images/golden_star_trans_new.png"));
                         IMat_Model.getBackEnd().addFavorite(prod);
-                        IMat_FXMLController.getPresenter().setFavStarActive();
+                        IMat_StoreController.getPresenter().setFavStarActive();
                     } else {
                         favorizeStarImage.setImage(new Image("imat/images/star_trans_new.png"));
                         IMat_Model.getBackEnd().removeFavorite(prod);
                         if (IMat_Model.getBackEnd().favorites().isEmpty()) {
-                            IMat_FXMLController.getPresenter().setFavStarInactive();
+                            IMat_StoreController.getPresenter().setFavStarInactive();
                         }
                     }
                 }
@@ -152,16 +144,16 @@ public class IMat_StoreItemController implements Initializable {
         }
 
         basketScrollPane.setContent(flowPane);
-        IMat_FXMLController.getPresenter().setRemoveAllFromBasketActive();
-        IMat_FXMLController.getPresenter().setSaveListButtonActive();
+        IMat_StoreController.getPresenter().setRemoveAllFromBasketActive();
+        IMat_StoreController.getPresenter().setSaveListButtonActive();
         updateTotalPrice();
     }*/
 
     
     
     public void updateTotalPrice() {
-        IMat_FXMLController.getPresenter().setTotal();
-        IMat_FXMLController.getPresenter().setButtonActive();
+        IMat_StoreController.getPresenter().setTotal();
+        IMat_StoreController.getPresenter().setButtonActive();
     }
 
     // Resets the color of the menuButton on mouseExit. 

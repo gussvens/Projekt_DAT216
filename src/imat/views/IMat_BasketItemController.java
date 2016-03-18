@@ -4,17 +4,13 @@ import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javafx.animation.Animation.Status.RUNNING;
+
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -25,6 +21,7 @@ import javafx.util.Duration;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
+import imat.controllers.*;
 
 /**
  * FXML Controller class
@@ -153,10 +150,10 @@ public class IMat_BasketItemController implements Initializable {
                         @Override
                         public void handle(ActionEvent event) {
                             sC.removeItem(sI);
-                            IMat_FXMLController.getPresenter().updateBasket();
+                            IMat_StoreController.getPresenter().updateBasket();
 
-                            if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                                IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                            if (IMat_CheckOutController.getPresenter() != null) {
+                                IMat_CheckOutController.getPresenter().updateScrollPane();
                             }
 
                         }
@@ -176,7 +173,7 @@ public class IMat_BasketItemController implements Initializable {
                         sC.removeItem(sI);
                     }
 
-                    IMat_FXMLController.getPresenter().updateBasket();
+                    IMat_StoreController.getPresenter().updateBasket();
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
@@ -213,7 +210,7 @@ public class IMat_BasketItemController implements Initializable {
                     }
                     nrOfBasketItems.setText(Integer.toString(Integer.parseInt(nrOfBasketItems.getText()) + 1));
 
-                    IMat_FXMLController.getPresenter().updateBasket();
+                    IMat_StoreController.getPresenter().updateBasket();
                     if (getPresenter() != null) {
                         getPresenter().updateScrollPane();
                     }
@@ -221,17 +218,17 @@ public class IMat_BasketItemController implements Initializable {
 
                     IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
 
-                    //IMat_FXMLController.getPresenter().updateBasket();
-                    if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                        IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                    //IMat_StoreController.getPresenter().updateBasket();
+                    if (IMat_CheckOutController.getPresenter() != null) {
+                        IMat_CheckOutController.getPresenter().updateScrollPane();
                     }
 
 
                     /*
                      //IMat_Model.getBackEnd().getShoppingCart().fireShoppingCartChanged(new ShoppingItem(p), true);
-                     IMat_FXMLController.getPresenter().updateBasket();
-                     if (IMat_CheckOut_v2Controller.getPresenter() != null) {
-                     IMat_CheckOut_v2Controller.getPresenter().updateScrollPane();
+                     IMat_StoreController.getPresenter().updateBasket();
+                     if (IMat_CheckOutController.getPresenter() != null) {
+                     IMat_CheckOutController.getPresenter().updateScrollPane();
                      }
                      */
 
@@ -261,6 +258,6 @@ public class IMat_BasketItemController implements Initializable {
     }
 
     private IMat_Checkout_presenter getPresenter() {
-        return IMat_CheckOut_v2Controller.getPresenter();
+        return IMat_CheckOutController.getPresenter();
     }
 }

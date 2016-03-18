@@ -1,7 +1,7 @@
 package imat;
 
 import imat.views.IMat_BasketItemController;
-import imat.views.IMat_FXMLController;
+import imat.views.IMat_StoreController;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -21,7 +20,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -51,7 +49,7 @@ public class IMat_presenter extends Observable {
     private final String SEARCH_BTN_ENTER = "-fx-background-color: #EEEEEE;";
     private final String SEARCH_BTN_DOWN = "-fx-background-color: #9bd1c4;";
 
-    private IMat_FXMLController FXMLcont;
+    private IMat_StoreController FXMLcont;
     private final List<Pane> menuButtonsList;
     private ScrollPane basketScrollPane;
     private ScrollPane checkOutScrollPane;
@@ -87,7 +85,7 @@ public class IMat_presenter extends Observable {
             Button toCheckout,
             ScrollPane basketScrollPane,
             ScrollPane subScrollPane,
-            IMat_FXMLController FXMLcont,
+            IMat_StoreController FXMLcont,
             Pane CategoryFavorites,
             ImageView menuFavStar,
             //Button saveAsListButton,
@@ -330,7 +328,7 @@ public class IMat_presenter extends Observable {
         stage.setScene(scene);
     }
 
-    public IMat_FXMLController getFXMLCont() {
+    public IMat_StoreController getFXMLCont() {
         return FXMLcont;
     }
 

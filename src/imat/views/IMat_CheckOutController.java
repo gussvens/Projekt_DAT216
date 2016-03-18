@@ -19,34 +19,26 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.chalmers.ait.dat215.project.Customer;
-import se.chalmers.ait.dat215.project.Product;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 /**
  * FXML Controller class
  *
  * @author Group 12
  */
-public class IMat_CheckOut_v2Controller implements Initializable {
+public class IMat_CheckOutController implements Initializable {
 
     private final String PANE_DEFAULT_COLOR = "-fx-background-color: #FDFDFD;";
     private final String PANE_ENTER_COLOR = "-fx-background-color:  #bdfbec;";
@@ -301,7 +293,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                     Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                 } catch (IOException ex) {
-                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 errorLabel.setTextFill(Color.RED);
@@ -374,7 +366,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                                     Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                     IMat.getStage().setScene(new Scene(start, 1360, 768));
                                 } catch (IOException ex) {
-                                    Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
                         } else if(IMat_Model.getBackEnd().getShoppingCart().getItems().isEmpty()) {
@@ -386,7 +378,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                                 Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                                 IMat.getStage().setScene(new Scene(start, 1360, 768));
                             } catch (IOException ex) {
-                                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
 
@@ -425,10 +417,10 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -443,7 +435,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -458,7 +450,7 @@ public class IMat_CheckOut_v2Controller implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };

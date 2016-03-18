@@ -7,23 +7,17 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import se.chalmers.ait.dat215.project.CartEvent;
-import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
-import se.chalmers.ait.dat215.project.ShoppingItem;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -233,10 +227,10 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                 @Override
                 public void handle(MouseEvent event) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -279,7 +273,7 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                                 Parent start = FXMLLoader.load(getClass().getResource("IMat_FinishBuy.fxml"));
                                 IMat.getStage().setScene(new Scene(start, 1360, 768));
                             } catch (IOException ex) {
-                                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
 
@@ -307,10 +301,10 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -325,7 +319,7 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -340,7 +334,7 @@ public class IMat_DeliveryController implements Initializable, ShoppingCartListe
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };

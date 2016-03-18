@@ -6,7 +6,6 @@
 package imat.views;
 
 import imat.IMat;
-import imat.IMat_Checkout_presenter;
 import imat.IMat_Model;
 
 import java.io.IOException;
@@ -104,8 +103,8 @@ public class IMat_FinishBuy implements Initializable {
 
         Customer c = IMat_Model.getBackEnd().getCustomer();
 
-        System.out.print(IMat_CheckOut_v2Controller.getPersonalInfo());
-        this.adressnchill.setText(IMat_CheckOut_v2Controller.getPersonalInfo());
+        System.out.print(IMat_CheckOutController.getPersonalInfo());
+        this.adressnchill.setText(IMat_CheckOutController.getPersonalInfo());
         this.timenchill.setText(IMat_DeliveryController.getStaticDaytime());
         this.message.setText(IMat_DeliveryController.getStaticMessage());
 
@@ -174,10 +173,10 @@ public class IMat_FinishBuy implements Initializable {
         @Override
         public void handle(MouseEvent event) {
             try {
-                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut_v2.fxml"));
+                Parent start = FXMLLoader.load(getClass().getResource("IMat_CheckOut.fxml"));
                 IMat.getStage().setScene(new Scene(start, 1360, 768));
             } catch (IOException ex) {
-                Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
             }
             seqOne.setStyle(SEQUENCE_PANE_CLICKED);
         }
@@ -238,7 +237,7 @@ public class IMat_FinishBuy implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_Delivery.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -248,10 +247,10 @@ public class IMat_FinishBuy implements Initializable {
                 @Override
                 public void handle(MouseEvent event) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -264,7 +263,7 @@ public class IMat_FinishBuy implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_History.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -277,7 +276,7 @@ public class IMat_FinishBuy implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_Settings.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
@@ -292,7 +291,7 @@ public class IMat_FinishBuy implements Initializable {
                         Parent start = FXMLLoader.load(getClass().getResource("IMat_EndScreen.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };

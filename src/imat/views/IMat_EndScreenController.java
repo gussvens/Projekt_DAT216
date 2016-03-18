@@ -6,7 +6,7 @@
 package imat.views;
 
 import imat.IMat;
-import imat.IMat_Model;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -62,10 +62,10 @@ public class IMat_EndScreenController implements Initializable {
                 @Override
                 public void handle(MouseEvent t) {
                     try {
-                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store_v2.fxml"));
+                        Parent start = FXMLLoader.load(getClass().getResource("IMat_Store.fxml"));
                         IMat.getStage().setScene(new Scene(start, 1360, 768));
                     } catch (IOException ex) {
-                        Logger.getLogger(IMat_FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(IMat_StoreController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             };
